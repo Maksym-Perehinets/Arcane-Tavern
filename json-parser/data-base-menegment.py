@@ -1,8 +1,6 @@
 import mysql
 
-ASD = asd
-
-S = """"
+""""
 CREATE DATABASE IF NOT EXISTS spells;
 USE spells;
 
@@ -52,5 +50,3 @@ CREATE TABLE IF NOT EXISTS spell(
     FOREIGN KEY (spell_duration_id) REFERENCES duration(id)
 );
 """
-
-asd
