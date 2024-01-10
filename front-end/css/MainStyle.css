@@ -21,64 +21,183 @@
     outline: 0;
   }
   
-  
+  .main-container {
+    position: relative;
+    width: 1920px;
+    height: 1020px;
+    margin: 0 auto;
+    background: #ffffff;
+    overflow: hidden;
+  }
+  .nav-rectangle {
+    position: absolute;
+    width: 1920px;
+    height: 100px;
+    top: 0;
+    left: 0;
+    background: #151515;
+    z-index: 2;
+  }
+  .logo {
+    position: absolute;
+    width: 119px;
+    height: 67px;
+    top: 16px;
+    left: 170px;
+    background: url(./assets/images/6d827136d4d3e1f58cb467d251e8dd570fe87102.png)
+      no-repeat center;
+    background-size: cover;
+    z-index: 3;
+  }
+  .src-bar {
+    position: absolute;
+    width: 651px;
+    height: 56px;
+    top: 22px;
+    left: 335px;
+    background: rgba(242, 242, 242, 0.5);
+    z-index: 4;
+    overflow: hidden;
+    border-radius: 27px;
+  }
+  .src-svg {
+    position: relative;
+    width: 38px;
+    height: 38px;
+    margin: 9px 0 0 593px;
+    background: url(./assets/images/6ad4b5c6-8c18-4af2-bac5-df48f91590f1.png)
+      no-repeat center;
+    background-size: 100% 100%;
+    z-index: 6;
+  }
+  .signup-btn {
+    position: absolute;
+    width: 161px;
+    height: 56px;
+    top: 22px;
+    left: 1706px;
+    cursor: pointer;
+    background: #ff010a;
+    border: none;
+    z-index: 8;
+    border-radius: 11px;
+  }
+  .signup-btn-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 132px;
+    height: 56px;
+    top: 0;
+    left: 16px;
+    color: #151515;
+    font-family: Kadwa, var(--default-font-family);
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 50.195px;
+    text-align: center;
+    white-space: nowrap;
+    z-index: 9;
+  }
   .flex-row-bbf {
+    position: absolute;
     width: 97.24%;
     height: 100%;
-    display: inline-block;
+    top: 0;
+    left: 0;
     z-index: 39;
   }
-    
-    /* Position for tabel */
-    /* table frame */
-    .table-lines {
-      position: fixed;
-      width: 816px;
-      height: 849px;
-      top: 139px;
-      left: 170px;
-      margin: 7px 0 0 0;
-      background-image: url(" /front-end/IMGs/med.png");
-      background-repeat: no-repeat;
+  .sidebar {
+    position: absolute;
+    width: 5.78%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: #252525;
+    z-index: 5;
+  }
+
+  
+  
+  .spellname {
+      position: absolute;
+      width: 796px;
+      height: 854px;
+      top: 143px;
+      left: 1073px;
+      font-size: 0px;
+      background: rgba(30, 30, 30, 1)
+      no-repeat center;
       background-size: cover;
-      border: 2px solid #424242;
-      z-index: 11;
+      z-index: 39;
     }
     
+    /* Position for tabel */
+    .table-lines {
+        position: relative;
+        width: 816px;
+        height: 849px;
+        margin: 7px 0 0 0;
+        background: url(./assets/images/7bd6b1dce878361aefbe0ab21690973a3d02a099.png)
+        no-repeat center;
+        background-size: cover;
+        border: 2px solid #424242;
+        z-index: 11;
+        overflow: visible auto;
+      }
     
+      .table-lines {
+        position: absolute;
+        width: 816px;
+        height: 856px;
+        top: 139px;
+        left: 170px;
+        background: url(./assets/images/f478926e-a007-4847-b04a-2405a688d8de.png) no-repeat center;
+        background-size: cover;
+        z-index: 19;
+      }
+      
+
+      /* Table look */
+      .table-lines {
+        position: absolute;
+        width: 816px;
+        height: 856px;
+        top: 139px;
+        left: 170px;
+        background: url(./assets/images/f478926e-a007-4847-b04a-2405a688d8de.png) no-repeat center;
+        background-size: cover;
+        z-index: 19;
+      }
+      
       .custom-table {
         width: 100%;
         border-collapse: collapse;
       }
       
-
-      /* .custom-table th, */
+      .custom-table th,
       .custom-table td {
-        border: 3px solid rgba(0, 0, 0, 0.15);
+        border: 1px solid red;
         padding: 8px;
         text-align: center; /* Center the text in all cells */
-        font-size: 16px;
-        font-family: DraconicFont;
-        font-weight: lighter;
       }
       
       .custom-table th {
-        background-color: rgba(12, 12, 12, 0.9);
-        
+        background-color: blue;
       }
       
       .custom-table a {
         text-decoration: none;
         color: #ffffff;
-        font-size: 16px;
-        font-family: DraconicFont;
-        font-weight: lighter;
+        font-weight: bold;
         display: block;
         padding: 8px;
       }
       
       .custom-table a:hover {
-        color: #555;
+        background-color: #555;
+        color: cadetblue;
       }
       
       /* Center the text in the "Name" column */
@@ -104,7 +223,7 @@
       }
       .custom-table td:nth-child(4)
       {
-        max-width: 10px ;
+        max-width: 20px ;
       }
 
       .custom-table td:nth-child(5)
@@ -119,11 +238,8 @@
 
       .custom-table td:nth-child(3),
       .custom-table td:nth-child(1) {
-        width: 80px; 
+        width: 80px; /* Adjust the width as needed */
       }
       
       
-      @font-face {
-        font-family:DraconicFont ;
-        src: url(/front-end/Fonts/Draconis-JRw6B.ttf);
-      }
+      
