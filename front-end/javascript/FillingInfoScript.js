@@ -1,7 +1,7 @@
 function populateTable(data) {
     var spellListTable = document.getElementById("spellList").getElementsByTagName('tbody')[0];
 
-    // Check if 'data.spell' is an array
+    // Check if 'data.spell' is an array--
     if (!Array.isArray(data.spell)) {
         console.error('Data.spell is not an array:', data.spell);
         return;
