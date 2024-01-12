@@ -1,4 +1,0 @@
-cred = {
-    'username': 'admin'
-
-}

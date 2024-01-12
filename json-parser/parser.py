@@ -3,7 +3,7 @@ import json
 
 class Parser:
         def index_parse(self):
-                with open('F:/github2/spells-json/index.json', 'r') as f:
+                with open('spells-json/index.json', 'r') as f:
                         data = json.load(f)
                 index_list = list(data.keys())
                 return index_list
