@@ -4,34 +4,44 @@
   src: url(/front-end/Fonts/Draconis-JRw6B.ttf);
 }
 
-  /* table frame */
-  .table-lines {
-    position: relative;
-    width: 816px;
-    height: 849px;
-    top: 139px;
-    left: 170px;
-    margin: 1%;
-    background-image: url(" /front-end/IMGs/med.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    border: 2px solid #424242;
-    z-index: 11;
-    display: inline-block;
-  }
+.table-lines {
+  position: relative;
+  width: 816px;
+  height: 849px;
+  top: 139px;
+  left: 170px;
+  margin: 1%;
+  background-image: url("/front-end/IMGs/med.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 2px solid #424242;
+  z-index: 11;
+  display: inline-block;
+  overflow-y: scroll;
+}
+
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Firefox scrollbar */
+.table-lines {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: thin; /* Firefox */
+}
+
+
   
+
   
-    .custom-table {
-      width: 100%;
-      border-collapse: collapse;
-    }
     
 
     /* .custom-table th, */
-    .custom-table td {
+    /* .custom-table td {
       border: 3px solid rgba(0, 0, 0, 0.15);
       padding: 8px;
-      text-align: center; /* Center the text in all cells */
+      text-align: center; 
       font-size: 16px;
       font-family: DraconicFont;
       font-weight: lighter;
@@ -39,7 +49,7 @@
     
     .custom-table th {
       background-color: rgba(12, 12, 12, 0.9);
-      
+       
     }
     
     .custom-table a {
@@ -51,11 +61,42 @@
       display: block;
       padding: 8px;
     }
-    
+      */
     .custom-table a:hover {
       color: #555;
+    } 
+    
+    /* .custom-table th, */
+    .custom-table td {
+      border: 3px solid rgba(5, 5, 5, 0.15);
+      padding: 8px;
+      text-align: center; /* Center the text in all cells */
+      font-size: 16px;
+      font-family: DraconicFont;
+      font-weight: lighter;
     }
     
+    .custom-table th {
+      background-color: rgba(12, 12, 12, 1);
+      position: sticky;
+      top: 0; /* Set the distance from the top where the <th> will stick */
+      z-index: 2; /* Set a higher z-index to make sure it appears above the regular cells */
+    }
+    
+  
+    
+    .custom-table a {
+      text-decoration: none;
+      color: #ffffff;
+      font-size: 16px;
+      font-family: DraconicFont;
+      font-weight: lighter;
+      display: block;
+      padding: 8px;
+    }
+    
+
+
     /* Center the text in the "Name" column */
     .custom-table td:nth-child(2) {
       text-align: left;
@@ -70,12 +111,12 @@
     
     .custom-table td:nth-child(2)
     {
-      max-width: 500px ;
+      max-width: 450px ;
     }
 
     .custom-table td:nth-child(3)
     {
-      max-width: 10px ;
+      max-width: 20px ;
     }
     .custom-table td:nth-child(4)
     {
