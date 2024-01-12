@@ -1,7 +1,7 @@
 
 @font-face {
   font-family:DraconicFont ;
-  src: url(/front-end/Fonts/Draconis-JRw6B.ttf);
+  src: url(../front-end/Fonts/Draconis-JRw6B.ttf);
 }
 /* - */
 .table-lines {
@@ -11,7 +11,7 @@
   top: 139px;
   left: 170px;
   margin: 1%;
-  background-image: url("/front-end/IMGs/med.png");
+  background-image: url("../IMGs/med.png");
   background-repeat: no-repeat;
   background-size: cover;
   border: 2px solid #424242;
@@ -29,6 +29,10 @@
 .table-lines {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: thin; /* Firefox */
+  
+}
+.table-lines::-webkit-scrollbar {
+  display: thin; /* Chrome opera safari */
 }
 
 
@@ -207,7 +211,52 @@
     a:active{color:inherit}
     a:visited{color:inherit}
     a:hover{color:inherit}
- 
+
+    
+
+    .spellNameDiv{
+      background-image: url("../IMGs/med.png");
+      position: absolute;
+      background-color: #15151570;
+      display: inline-block;
+      width: 600px;
+      height: 600px;
+      margin-left: 250px;
+      margin-top: 150px;
+      border-radius: 20px;
+
+      
+    }
+    
+    #spellNameText {
+      font-family: DraconicFont;
+      font-size: 32px;
+      color: #000;
+      margin-left: 75px;
+      
+    }
+
+    #spellChar{
+      font-size: 10px;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      color: #2b2b2b;
+      margin-left: 250px;
+    }
+
+    #infoAboutSpellDiv{
+      position: relative ;
+      /* background-image: url("../IMGs/med.png"); */
+      width: 500px ;
+      margin-top: 100px;
+      margin-left: 50px;
+      border-radius: 20px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 14px;
+      color: #000;
+    }
+
+
+
 
   
    
