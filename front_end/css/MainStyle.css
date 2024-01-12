@@ -1,24 +1,43 @@
 
 @font-face {
   font-family:DraconicFont ;
-  src: url(/front_end/Fonts/Draconis-JRw6B.ttf);
+  src: url(../Fonts/Draconis-JRw6B.ttf);
 }
 /* - */
 .table-lines {
   position: relative;
-  width: 816px;
-  height: 849px;
-  top: 139px;
-  left: 170px;
+  width: 800px;
+  min-width: 800px ;
+  height: 1100px;
+  column-count: auto;
+  width: 40%;
+  top: 10px;
+  left: 10%;
   margin: 1%;
-  background-image: url("/front_end/IMGs/med.png");
+  background-image: url("../IMGs/med.png");
   background-repeat: no-repeat;
   background-size: cover;
   border: 2px solid #424242;
-  z-index: 11;
   display: inline-block;
   overflow-y: scroll;
+  overflow-x: hidden;
+  border-radius: 2%;
+  vertical-align: top;
+
+  /* background-image: url("../IMGs/med.png");
+  position: relative;
+  background-color: #15151570;
+  display: inline-block;
+  width: 600px;
+  height: 600px;
+  margin-left: 15%;
+  margin-top: 5%;
+  border-radius: 20px;
+  padding: 20px;
+  vertical-align: top; */
+
 }
+
 
 .custom-table {
   width: 100%;
@@ -28,40 +47,13 @@
 /* Firefox scrollbar */
 .table-lines {
   -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: thin; /* Firefox */
+  scrollbar-width: none; /* Firefox */
+  
+}
+.table-lines::-webkit-scrollbar {
+  display: thin; /* Chrome opera safari */
 }
 
-
-  
-
-  
-    
-
-    /* .custom-table th, */
-    /* .custom-table td {
-      border: 3px solid rgba(0, 0, 0, 0.15);
-      padding: 8px;
-      text-align: center; 
-      font-size: 16px;
-      font-family: DraconicFont;
-      font-weight: lighter;
-    }
-    
-    .custom-table th {
-      background-color: rgba(12, 12, 12, 0.9);
-       
-    }
-    
-    .custom-table a {
-      text-decoration: none;
-      color: #ffffff;
-      font-size: 16px;
-      font-family: DraconicFont;
-      font-weight: lighter;
-      display: block;
-      padding: 8px;
-    }
-      */
     .custom-table a:hover {
       color: #555;
     } 
@@ -106,38 +98,35 @@
     
     .custom-table td:nth-child(1)
     {
-      max-width: 5px ;
+      width: 1px ;
+      max-height: 1px;
     }
     
     .custom-table td:nth-child(2)
     {
-      max-width: 450px ;
+      width: 350px ;
     }
 
     .custom-table td:nth-child(3)
     {
-      max-width: 20px ;
+      width: 20px ;
     }
     .custom-table td:nth-child(4)
     {
-      max-width: 10px ;
+      width: 25px ;
     }
 
     .custom-table td:nth-child(5)
     {
-      max-width: 15px ;
+      width: 25px ;
     }
     
     .custom-table td:nth-child(6)
     {
-      max-width: 15px ;
-    }
-
-    .custom-table td:nth-child(3),
-    .custom-table td:nth-child(1) {
-      width: 80px; 
+      width: 25px ;
     }
     
+  
     
    
 
@@ -207,7 +196,57 @@
     a:active{color:inherit}
     a:visited{color:inherit}
     a:hover{color:inherit}
- 
+
+    
+
+    .spellNameDiv{
+      background-image: url("../IMGs/med.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+      position: relative;
+      background-color: #15151570;
+      display: inline-block;
+      width: 600px;
+      height: 600px;
+      margin-left: 15%;
+      margin-top: 5%;
+      border-radius: 20px;
+      padding: 20px;
+      vertical-align: top;
+
+      
+    }
+
+    
+    #spellNameText {
+      font-family: DraconicFont;
+      font-size: 32px;
+      color: #000;
+      margin-left: 75px;
+      
+    }
+
+    #spellChar{
+      font-size: 10px;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      color: #2b2b2b;
+      margin-left: 250px;
+    }
+
+    #infoAboutSpellDiv{
+      position: relative ;
+      /* background-image: url("../IMGs/med.png"); */
+      width: 500px ;
+      margin-top: 100px;
+      margin-left: 50px;
+      border-radius: 20px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 14px;
+      color: #000;
+    }
+
+
+
 
   
    
