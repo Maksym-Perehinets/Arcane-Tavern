@@ -1,23 +1,25 @@
 
 @font-face {
   font-family:DraconicFont ;
-  src: url(/front-end/Fonts/Draconis-JRw6B.ttf);
+  src: url(../Fonts/Draconis-JRw6B.ttf);
 }
 /* - */
 .table-lines {
   position: relative;
-  width: 816px;
-  height: 849px;
-  top: 139px;
-  left: 170px;
+  width: 40%;
+  max-height: 850px;
+  top: 10px;
+  left: 10%;
   margin: 1%;
-  background-image: url("/front-end/IMGs/med.png");
+  background-image: url("../IMGs/med.png");
   background-repeat: no-repeat;
   background-size: cover;
   border: 2px solid #424242;
-  z-index: 11;
   display: inline-block;
   overflow-y: scroll;
+  overflow-x: hidden;
+  border-radius: 2%;
+
 }
 
 .custom-table {
@@ -29,39 +31,11 @@
 .table-lines {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: thin; /* Firefox */
+  border-radius: 2%;
 }
-
-
-  
-
-  
-    
-
-    /* .custom-table th, */
-    /* .custom-table td {
-      border: 3px solid rgba(0, 0, 0, 0.15);
-      padding: 8px;
-      text-align: center; 
-      font-size: 16px;
-      font-family: DraconicFont;
-      font-weight: lighter;
-    }
-    
-    .custom-table th {
-      background-color: rgba(12, 12, 12, 0.9);
-       
-    }
-    
-    .custom-table a {
-      text-decoration: none;
-      color: #ffffff;
-      font-size: 16px;
-      font-family: DraconicFont;
-      font-weight: lighter;
-      display: block;
-      padding: 8px;
-    }
-      */
+.table-lines::-webkit-scrollbar {
+  display: thin; /* Chrome opera safari */
+}
     .custom-table a:hover {
       color: #555;
     } 
@@ -106,38 +80,35 @@
     
     .custom-table td:nth-child(1)
     {
-      max-width: 5px ;
+      width: 1px ;
+      max-height: 1px;
     }
     
     .custom-table td:nth-child(2)
     {
-      max-width: 450px ;
+      width: 350px ;
     }
 
     .custom-table td:nth-child(3)
     {
-      max-width: 20px ;
+      width: 20px ;
     }
     .custom-table td:nth-child(4)
     {
-      max-width: 10px ;
+      width: 25px ;
     }
 
     .custom-table td:nth-child(5)
     {
-      max-width: 15px ;
+      width: 25px ;
     }
     
     .custom-table td:nth-child(6)
     {
-      max-width: 15px ;
-    }
-
-    .custom-table td:nth-child(3),
-    .custom-table td:nth-child(1) {
-      width: 80px; 
+      width: 25px ;
     }
     
+  
     
    
 
