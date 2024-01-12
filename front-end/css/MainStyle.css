@@ -1,245 +1,172 @@
-:root {
-    --default-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-      Ubuntu, "Helvetica Neue", Helvetica, Arial, "PingFang SC",
-      "Hiragino Sans GB", "Microsoft Yahei UI", "Microsoft Yahei",
-      "Source Han Sans CN", sans-serif;
-  }
-  
-  .main-container {
-    overflow: hidden;
-  }
-  
-  .main-container,
-  .main-container * {
-    box-sizing: border-box;
-  }
-  
-  input,
-  select,
-  textarea,
-  button {
-    outline: 0;
-  }
-  
-  .main-container {
-    position: relative;
-    width: 1920px;
-    height: 1020px;
-    margin: 0 auto;
-    background: #ffffff;
-    overflow: hidden;
-  }
-  .nav-rectangle {
-    position: absolute;
-    width: 1920px;
-    height: 100px;
-    top: 0;
-    left: 0;
-    background: #151515;
-    z-index: 2;
-  }
-  .logo {
-    position: absolute;
-    width: 119px;
-    height: 67px;
-    top: 16px;
-    left: 170px;
-    background: url(./assets/images/6d827136d4d3e1f58cb467d251e8dd570fe87102.png)
-      no-repeat center;
-    background-size: cover;
-    z-index: 3;
-  }
-  .src-bar {
-    position: absolute;
-    width: 651px;
-    height: 56px;
-    top: 22px;
-    left: 335px;
-    background: rgba(242, 242, 242, 0.5);
-    z-index: 4;
-    overflow: hidden;
-    border-radius: 27px;
-  }
-  .src-svg {
-    position: relative;
-    width: 38px;
-    height: 38px;
-    margin: 9px 0 0 593px;
-    background: url(./assets/images/6ad4b5c6-8c18-4af2-bac5-df48f91590f1.png)
-      no-repeat center;
-    background-size: 100% 100%;
-    z-index: 6;
-  }
-  .signup-btn {
-    position: absolute;
-    width: 161px;
-    height: 56px;
-    top: 22px;
-    left: 1706px;
-    cursor: pointer;
-    background: #ff010a;
-    border: none;
-    z-index: 8;
-    border-radius: 11px;
-  }
-  .signup-btn-text {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    width: 132px;
-    height: 56px;
-    top: 0;
-    left: 16px;
-    color: #151515;
-    font-family: Kadwa, var(--default-font-family);
-    font-size: 25px;
-    font-weight: 700;
-    line-height: 50.195px;
-    text-align: center;
-    white-space: nowrap;
-    z-index: 9;
-  }
-  .flex-row-bbf {
-    position: absolute;
-    width: 97.24%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: 39;
-  }
-  .sidebar {
-    position: absolute;
-    width: 5.78%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background: #252525;
-    z-index: 5;
-  }
 
+@font-face {
+  font-family:DraconicFont ;
+  src: url(/front-end/Fonts/Draconis-JRw6B.ttf);
+}
+
+  /* table frame */
+  .table-lines {
+    position: relative;
+    width: 816px;
+    height: 849px;
+    top: 139px;
+    left: 170px;
+    margin: 1%;
+    background-image: url(" /front-end/IMGs/med.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 2px solid #424242;
+    z-index: 11;
+    display: inline-block;
+  }
   
   
-  .spellname {
-      position: absolute;
-      width: 796px;
-      height: 854px;
-      top: 143px;
-      left: 1073px;
-      font-size: 0px;
-      background: rgba(30, 30, 30, 1)
-      no-repeat center;
-      background-size: cover;
-      z-index: 39;
+    .custom-table {
+      width: 100%;
+      border-collapse: collapse;
     }
     
-    /* Position for tabel */
-    .table-lines {
-        position: relative;
-        width: 816px;
-        height: 849px;
-        margin: 7px 0 0 0;
-        background: url(./assets/images/7bd6b1dce878361aefbe0ab21690973a3d02a099.png)
-        no-repeat center;
-        background-size: cover;
-        border: 2px solid #424242;
-        z-index: 11;
-        overflow: visible auto;
-      }
+
+    /* .custom-table th, */
+    .custom-table td {
+      border: 3px solid rgba(0, 0, 0, 0.15);
+      padding: 8px;
+      text-align: center; /* Center the text in all cells */
+      font-size: 16px;
+      font-family: DraconicFont;
+      font-weight: lighter;
+    }
     
-      .table-lines {
-        position: absolute;
-        width: 816px;
-        height: 856px;
-        top: 139px;
-        left: 170px;
-        background: url(./assets/images/f478926e-a007-4847-b04a-2405a688d8de.png) no-repeat center;
-        background-size: cover;
-        z-index: 19;
-      }
+    .custom-table th {
+      background-color: rgba(12, 12, 12, 0.9);
       
+    }
+    
+    .custom-table a {
+      text-decoration: none;
+      color: #ffffff;
+      font-size: 16px;
+      font-family: DraconicFont;
+      font-weight: lighter;
+      display: block;
+      padding: 8px;
+    }
+    
+    .custom-table a:hover {
+      color: #555;
+    }
+    
+    /* Center the text in the "Name" column */
+    .custom-table td:nth-child(2) {
+      text-align: left;
+    }
+    
+    /* Set specific widths for the "Time," "C," and "Lvl" columns */
+    
+    .custom-table td:nth-child(1)
+    {
+      max-width: 5px ;
+    }
+    
+    .custom-table td:nth-child(2)
+    {
+      max-width: 500px ;
+    }
 
-      /* Table look */
-      .table-lines {
-        position: absolute;
-        width: 816px;
-        height: 856px;
-        top: 139px;
-        left: 170px;
-        background: url(./assets/images/f478926e-a007-4847-b04a-2405a688d8de.png) no-repeat center;
-        background-size: cover;
-        z-index: 19;
-      }
-      
-      .custom-table {
-        width: 100%;
-        border-collapse: collapse;
-      }
-      
-      .custom-table th,
-      .custom-table td {
-        border: 1px solid red;
-        padding: 8px;
-        text-align: center; /* Center the text in all cells */
-      }
-      
-      .custom-table th {
-        background-color: blue;
-      }
-      
-      .custom-table a {
-        text-decoration: none;
-        color: #ffffff;
-        font-weight: bold;
-        display: block;
-        padding: 8px;
-      }
-      
-      .custom-table a:hover {
-        background-color: #555;
-        color: cadetblue;
-      }
-      
-      /* Center the text in the "Name" column */
-      .custom-table td:nth-child(2) {
-        text-align: left;
-      }
-      
-      /* Set specific widths for the "Time," "C," and "Lvl" columns */
-      
-      .custom-table td:nth-child(1)
-      {
-        max-width: 5px ;
-      }
-      
-      .custom-table td:nth-child(2)
-      {
-        max-width: 500px ;
-      }
+    .custom-table td:nth-child(3)
+    {
+      max-width: 10px ;
+    }
+    .custom-table td:nth-child(4)
+    {
+      max-width: 10px ;
+    }
 
-      .custom-table td:nth-child(3)
-      {
-        max-width: 10px ;
-      }
-      .custom-table td:nth-child(4)
-      {
-        max-width: 20px ;
-      }
+    .custom-table td:nth-child(5)
+    {
+      max-width: 15px ;
+    }
+    
+    .custom-table td:nth-child(6)
+    {
+      max-width: 15px ;
+    }
 
-      .custom-table td:nth-child(5)
-      {
-        max-width: 15px ;
-      }
-      
-      .custom-table td:nth-child(6)
-      {
-        max-width: 15px ;
-      }
+    .custom-table td:nth-child(3),
+    .custom-table td:nth-child(1) {
+      width: 80px; 
+    }
+    
+    
+   
 
-      .custom-table td:nth-child(3),
-      .custom-table td:nth-child(1) {
-        width: 80px; /* Adjust the width as needed */
-      }
-      
-      
-      
+    /* CSS Yura */
+
+    body {
+      background-color: #202020;
+      margin: 0px;
+      padding: 0px;
+    }
+    
+    #navbar {
+    
+      position: sticky;
+      height: 80px;
+      background-color: #151515;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+    }
+    
+    #srcbar {
+      background-color: #f2f2f27a;
+      height: 50px;
+      width: 600px;
+      margin-left: 200px;
+      border-radius: 25px;
+      text-align: center;
+      font-size: 26px;
+      border-color: transparent;
+      user-select: none;
+      text-decoration: none;
+    }
+    #srcbar:focus { outline: none;}
+    
+    #signupBtn {
+      background-color: #ff010a;
+      color: #151515;
+      border-radius: 10px;
+      width: 200px;
+      height: 50px;
+      text-align: center;
+      align-items: center;
+      font-size: 22px;
+      line-height: 50px;
+      margin-right: 50px;
+      border-color: transparent;
+      text-decoration: none;
+    }
+    
+    label {
+      position: relative;
+    }
+    
+    label:before {
+      content: "";
+      position: absolute;
+      left: 775px;
+      top: 0;
+      bottom: 0;
+      width: 20px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='25' height='25' viewBox='0 0 25 25' fill-rule='evenodd'%3E%3Cpath d='M16.036 18.455l2.404-2.405 5.586 5.587-2.404 2.404zM8.5 2C12.1 2 15 4.9 15 8.5S12.1 15 8.5 15 2 12.1 2 8.5 4.9 2 8.5 2zm0-2C3.8 0 0 3.8 0 8.5S3.8 17 8.5 17 17 13.2 17 8.5 13.2 0 8.5 0zM15 16a1 1 0 1 1 2 0 1 1 0 1 1-2 0'%3E%3C/path%3E%3C/svg%3E") center / contain no-repeat;
+    }
+    
+    a:link{text-decoration: none; color:inherit}
+    a:active{color:inherit}
+    a:visited{color:inherit}
+    a:hover{color:inherit}
+ 
+
+  
+   

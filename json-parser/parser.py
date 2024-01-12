@@ -1,5 +1,6 @@
 import mysql
 import json
+import os, sys
 
 class Parser:
         def index_parse(self):
@@ -8,7 +9,7 @@ class Parser:
                 index_list = list(data.keys())
                 return index_list
         def sources_parse(self):
-                with open("sources.json", "r") as file:
+                with open("F:/github2/spells-json/sources.json", "r") as file:
                         data = json.load(file)
 
                 all_sources = []
@@ -23,7 +24,9 @@ class Parser:
                                                 if source_value:
                                                         all_sources.append(source_value)
 
-                print("All source values:", all_sources)
+                return all_sources
+
+
 
 parser_instance = Parser()
 parser_instance.sources_parse()
