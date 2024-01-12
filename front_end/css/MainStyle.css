@@ -1,7 +1,7 @@
 
 @font-face {
   font-family:DraconicFont ;
-  src: url(/front-end/Fonts/Draconis-JRw6B.ttf);
+  src: url(/front_end/Fonts/Draconis-JRw6B.ttf);
 }
 /* - */
 .table-lines {
@@ -11,7 +11,7 @@
   top: 139px;
   left: 170px;
   margin: 1%;
-  background-image: url("/front-end/IMGs/med.png");
+  background-image: url("/front_end/IMGs/med.png");
   background-repeat: no-repeat;
   background-size: cover;
   border: 2px solid #424242;
