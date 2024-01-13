@@ -1,4 +1,3 @@
-import mysql
 
 """"
 CREATE DATABASE IF NOT EXISTS spells;
@@ -7,13 +6,6 @@ USE spells;
 CREATE TABLE IF NOT EXISTS sources(
 	id INT,
     book_name VARCHAR(100),
-    PRIMARY KEY (id)
-);
-
-CREATE TABLE IF NOT EXISTS cast_time(
-	id INT,
-    casting_type VARCHAR(70),
-    casting_time INT,
     PRIMARY KEY (id)
 );
 
@@ -28,6 +20,7 @@ CREATE TABLE IF NOT EXISTS duration(
 	id INT,
     duration_type varchar(100),
     duretion_time INT,
+    concentration INT,
     PRIMARY KEY (id)
 );
 
@@ -38,7 +31,7 @@ CREATE TABLE IF NOT EXISTS spell(
     book_page INT,
     spell_level INT,
     school VARCHAR(100),
-    cast_time_id INT,
+    cast_time VARCHAR(50),
     spell_range_id INT,
     components VARCHAR(255),
     spell_duration_id INT,
@@ -50,3 +43,6 @@ CREATE TABLE IF NOT EXISTS spell(
     FOREIGN KEY (spell_duration_id) REFERENCES duration(id)
 );
 """
+
+
+

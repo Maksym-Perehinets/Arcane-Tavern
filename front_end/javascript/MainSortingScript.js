@@ -34,6 +34,7 @@
 //             switchcount ++;
 //         } 
         
+<<<<<<< HEAD:front-end/javascript/MainSortingScript.js
 //         else {
 //             if (switchcount == 0 && dir == "asc") {
 //                 dir = "desc";
@@ -67,3 +68,14 @@ function sortTable(n) {
         console.error('Error:', error);
     });
 }
+=======
+        else {
+            if (switchcount == 0 && dir == "asc") {
+                dir = "desc";
+                switching = true;
+            } 
+        }
+    }
+}
+// --
+>>>>>>> c6642b8ece5300afcbd4578c178b4acdaf1dbd19:front_end/javascript/MainSortingScript.js
