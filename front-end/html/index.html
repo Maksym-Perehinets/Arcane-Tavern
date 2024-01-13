@@ -1,60 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Main</title>
-    <link rel="stylesheet" href="..\css\MainStyle.css">
+ <head>
+  <link rel="stylesheet" href="/front-end/css/navbar.css">
+  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+ </head>
+ <body>
+   <input type="checkbox" id="check">
+   <label for="check">
+     <i class="fas fa-bars" id="btn"></i>
+     <i class="fas fa-times" id="cancel"></i>
+   </label>
+   <div class="sidebar">
+     <header>Menu</header>
+     <a href="#" class="active">
+       <i class="fas fa-qrcode"></i>
+       <span>Dashboard</span>
+     </a>
+     <a href="#">
+       <i class="fas fa-link"></i>
+       <span>Shortcuts</span>
+     </a>
+     <a href="#">
+       <i class="fas fa-stream"></i>
+       <span>Overview</span>
+     </a>
+     <a href="#">
+        <i class="fas fa-calendar"></i>
+       <span>Events</span>
+     </a>
+     <a href="#">
+       <i class="far fa-question-circle"></i>
+       <span>About</span>
+     </a>
+     <a href="#">
+       <i class="fas fa-sliders-h"></i>
+       <span>Services</span>
+     </a>
+     <a href="#">
+       <i class="far fa-envelope"></i>
+       <span>Contact</span>
+     </a>
+   </div>
+</body>
+   
+ <div class="frame">
+<p> Responsive </p>
+<h2>SIDE BAR</h2>
+ <p>in Pure CSS</p>
 
-    <script src="..\javascript\MainSortingScript.js"></script>
-    <script src="..\javascript\FillingInfoScript.js"></script>
+</div>  
+   
+</body>
 
-  </head>
-  <body>
-    <!-- -------------------------UI---------------- --->
-    <nav id="navbar">
-  
-    <label><input type="text" placeholder="Search" name="" id="srcbar"></label>
-    <b id="signupBtn"><a href="#"><span>Sign Up</span></a></b>
-  </nav>
-  
-    
-      <div class="sidebar"><div class="more-svg"></div></div>
-<!-- ------------------------------------------------- -->
 
-      <div class="flex-row-bbf">
-        <div class="sidebar"><div class="more-svg"></div></div>
-        
-        <!-- all spells table  -->
-        <div class="table-lines">
-          <table id="spellList" class="custom-table">
-            <thead>
-              <tr>
-                <th><a onclick="sortTable(0)">Lvl</a></th>
-                <th><a onclick="sortTable(1)">Name</a></th>
-                <th><a onclick="sortTable(2)">C</a></th>
-                <th><a onclick="sortTable(3)">Duration</a></th>
-                <th><a onclick="sortTable(4)">Time</a></th>
-                <th><a onclick="sortTable(5)">Range</a></th>
-                  </tr>
-                </thead>
-                <tbody>
-                 
-                </tbody>
-            </table>       
-          </div>
-          <div class="spellNameDiv">
-            <span id="spellNameText">Spell Name</span><br>
-            <span id="spellChar">bla bla bla</span>
-            <div id="infoAboutSpellDiv">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                 Molestias, optio. Quasi omnis autem laboriosam, quidem eius, fugit reprehenderit 
-                 minima voluptate voluptatibus ex necessitatibus exercitationem illo porro aliquid dolorem veniam et.
-            </div>
-          
-
-          </div>
-        </div>
-    
-  </body>
 </html>
