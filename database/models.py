@@ -1,4 +1,6 @@
-from database import db
+from sqlalchemy import Column, Integer, String
+from sqlalchemy.sql.expression import null
+from .database import Base
 
 
 """
@@ -10,10 +12,10 @@ CREATE TABLE IF NOT EXISTS sources(
 """
 
 
-class Sources(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    book_name = db.Column(db.String(100), nullable=False)
-    spell_source = db.relationship('Spell', backref='source')
+class Sources(Base.Model):
+    id = Base.Column(Base.Integer, primary_key=True)
+    book_name = Base.Column(Base.String(100), nullable=False)
+    spell_source = Base.relationship('Spell', backref='source')
 
 
 """
@@ -27,12 +29,12 @@ CREATE TABLE IF NOT EXISTS spell_range(
 """
 
 
-class Ranges(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    shape = db.Column(db.String(150), nullable=False)
-    distance_type = db.Column(db.String(255), nullable=False)
-    distance_range = db.Column(db.Integer, nullable=False)
-    spell_range = db.relationship('Spell', backref='spell_range')
+class Ranges(Base.Model):
+    id = Base.Column(Base.Integer, primary_key=True)
+    shape = Base.Column(Base.String(150), nullable=False)
+    distance_type = Base.Column(Base.String(255), nullable=False)
+    distance_range = Base.Column(Base.Integer, nullable=False)
+    spell_range = Base.relationship('Spell', backref='spell_range')
 
 
 """
@@ -46,12 +48,12 @@ CREATE TABLE IF NOT EXISTS duration(
 """
 
 
-class Duration(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    duration_type = db.Column(db.String(100), nullable=False)
-    duretion_time = db.Column(db.Integer, nullable=False)
-    concentration = db.Column(db.Integer, nullable=False)
-    spell_dur = db.relationship('Spell', backref='duration')
+class Duration(Base.Model):
+    id = Base.Column(Base.Integer, primary_key=True)
+    duration_type = Base.Column(Base.String(100), nullable=False)
+    duretion_time = Base.Column(Base.Integer, nullable=False)
+    concentration = Base.Column(Base.Integer, nullable=False)
+    spell_dur = Base.relationship('Spell', backref='duration')
 
 
 """
@@ -77,17 +79,17 @@ CREATE TABLE IF NOT EXISTS spell(
 """
 
 
-class Spell(db.Model):
+class Spell(Base.Model):
     __tablename__ = 'spell'
-    id = db.Column(db.Integer, primary_key=True)
-    spell_name = db.Column(db.String, unique=True, nullable=False)
-    book_page = db.Column(db.Integer, nullable=False)
-    spell_level = db.Column(db.Integer, nullable=False)
-    school = db.Column(db.String(100), nullable=False)
-    cast_time = db.Column(db.String(255), nullable=False)
-    components = db.Column(db.String(255), nullable=False)
-    spell_description = db.Column(db.String, nullable=False)
-    ariatags = db.Column(db.String(10), nullable=False)
-    source_id = db.Column(db.Integer, db.ForeignKey('sources.id'))
-    spell_range_id = db.Column(db.Integer, db.ForeignKey('ranges.id'))
-    duration_id = db.Column(db.Integer, db.ForeignKey('duration.id'))
+    id = Base.Column(Base.Integer, primary_key=True)
+    spell_name = Base.Column(Base.String, unique=True, nullable=False)
+    book_page = Base.Column(Base.Integer, nullable=False)
+    spell_level = Base.Column(Base.Integer, nullable=False)
+    school = Base.Column(Base.String(100), nullable=False)
+    cast_time = Base.Column(Base.String(255), nullable=False)
+    components = Base.Column(Base.String(255), nullable=False)
+    spell_description = Base.Column(Base.String, nullable=False)
+    ariatags = Base.Column(Base.String(10), nullable=False)
+    source_id = Base.Column(Base.Integer, Base.ForeignKey('sources.id'))
+    spell_range_id = Base.Column(Base.Integer, Base.ForeignKey('ranges.id'))
+    duration_id = Base.Column(Base.Integer, Base.ForeignKey('duration.id'))
