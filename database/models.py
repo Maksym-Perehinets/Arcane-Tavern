@@ -1,4 +1,4 @@
-from .extensions import db
+from database import db
 
 
 """
@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS sources(
 class Sources(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     book_name = db.Column(db.String(100), nullable=False)
-    spell_sourcчe = db.relationship('Spelчl', backref='source')
+    spell_source = db.relationship('Spell', backref='source')
 
 
 """
@@ -91,5 +91,3 @@ class Spell(db.Model):
     source_id = db.Column(db.Integer, db.ForeignKey('sources.id'))
     spell_range_id = db.Column(db.Integer, db.ForeignKey('ranges.id'))
     duration_id = db.Column(db.Integer, db.ForeignKey('duration.id'))
-
-
