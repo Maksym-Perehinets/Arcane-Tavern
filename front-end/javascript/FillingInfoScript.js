@@ -31,7 +31,7 @@ function populateTable(data) {
             spell.duration[0] && spell.duration[0].concentration 
             ? "Yes"
             : "No";
-
+            
         durationCell.innerHTML = 
             durationEntry.type == "timed"
             ? `${durationEntry.duration.type} ${durationEntry.duration.amount}` 
@@ -48,6 +48,8 @@ function populateTable(data) {
 }
 
     
+
+
 fetch("http://127.0.0.1:5500/spells-json/spells-phb.json")
 .then(response => response.json())
 .then(data => {populateTable(data);})
