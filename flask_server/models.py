@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS sources(
 class Sources(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     book_name = db.Column(db.String(100), nullable=False)
-    spell_source = db.relationship('Spell', backref='source')
+    spell_sourcчe = db.relationship('Spelчl', backref='source')
 
 
 """
