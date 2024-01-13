@@ -35,7 +35,6 @@
 }
 .table-lines::-webkit-scrollbar {
   display: thin; /* Chrome opera safari */
-  /* background-color: #000; */
 }
 
 
@@ -216,26 +215,21 @@
 
     .spellNameDiv{
       background-image: url("../IMGs/med.png");
-      background-repeat: no-repeat;
-      background-size: cover;
-      position: relative;
+      position: absolute;
       background-color: #15151570;
       display: inline-block;
-      min-width: 600px;
-      min-height: 600px;
-      margin-left: 15%;
-      margin-top: 5%;
+      width: 600px;
+      height: 600px;
+      margin-left: 250px;
+      margin-top: 150px;
       border-radius: 20px;
-      padding: 20px;
-      vertical-align: top;
-      text-size-adjust: inherit;
 
       
     }
     
     #spellNameText {
       font-family: DraconicFont;
-      font-size: 3rem;
+      font-size: 32px;
       color: #000;
       margin-left: 75px;
       
@@ -256,7 +250,7 @@
       margin-left: 50px;
       border-radius: 20px;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      font-size: 0.9rem;
+      font-size: 14px;
       color: #000;
     }
 

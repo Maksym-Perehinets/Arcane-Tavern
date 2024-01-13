@@ -1,6 +1,5 @@
 /venv
 __pycache__
-flask-env
 /.idea/inspectionProfiles/profiles_settings.xml
 /.idea/shelf/Uncommitted_changes_before_Checkout_at_1_9_24,_1_15_PM_[Changes]/shelved.patch
 /.idea/shelf/Uncommitted_changes_before_rebase_[Changes]/_speedups.cpython-311-x86_64-linux-gnu.so

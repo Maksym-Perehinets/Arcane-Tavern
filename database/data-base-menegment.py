@@ -43,3 +43,6 @@ CREATE TABLE IF NOT EXISTS spell(
     FOREIGN KEY (spell_duration_id) REFERENCES duration(id)
 );
 """
+
+
+
