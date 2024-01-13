@@ -1,9 +1,10 @@
-from sqlalchemy import Column, Integer, String
-from sqlalchemy.sql.expression import null
-from .database import Base
-
+from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy.orm import relationship
+from database.database import Base
 
 """
+Sources table
+
 CREATE TABLE IF NOT EXISTS sources(
     id INT,
     book_name VARCHAR(100),
@@ -12,13 +13,18 @@ CREATE TABLE IF NOT EXISTS sources(
 """
 
 
-class Sources(Base.Model):
-    id = Base.Column(Base.Integer, primary_key=True)
-    book_name = Base.Column(Base.String(100), nullable=False)
-    spell_source = Base.relationship('Spell', backref='source')
+class Sources(Base):
+    __tablename__ = 'sources'
+    id = Column(Integer, primary_key=True)
+    book_name = Column(String(100), nullable=False)
+
+    spells = relationship('Spell', back_populates='source')
+
 
 
 """
+Spell ranges table 
+
 CREATE TABLE IF NOT EXISTS spell_range(
     id INT,
     shape VARCHAR(100),
@@ -29,15 +35,18 @@ CREATE TABLE IF NOT EXISTS spell_range(
 """
 
 
-class Ranges(Base.Model):
-    id = Base.Column(Base.Integer, primary_key=True)
-    shape = Base.Column(Base.String(150), nullable=False)
-    distance_type = Base.Column(Base.String(255), nullable=False)
-    distance_range = Base.Column(Base.Integer, nullable=False)
-    spell_range = Base.relationship('Spell', backref='spell_range')
+class Ranges(Base):
+    __tablename__ = 'ranges'
+    id = Column(Integer, primary_key=True)
+    shape = Column(String(150), nullable=False)
+    distance_type = Column(String(255), nullable=False)
+    distance_range = Column(Integer, nullable=False)
+    spells = relationship('Spell', back_populates='spell_range')
 
 
 """
+Duration table
+
 CREATE TABLE IF NOT EXISTS duration(
     id INT,
     duration_type varchar(100),
@@ -48,15 +57,17 @@ CREATE TABLE IF NOT EXISTS duration(
 """
 
 
-class Duration(Base.Model):
-    id = Base.Column(Base.Integer, primary_key=True)
-    duration_type = Base.Column(Base.String(100), nullable=False)
-    duretion_time = Base.Column(Base.Integer, nullable=False)
-    concentration = Base.Column(Base.Integer, nullable=False)
-    spell_dur = Base.relationship('Spell', backref='duration')
+class Duration(Base):
+    __tablename__ = 'durations'
+    id = Column(Integer, primary_key=True)
+    duration_type = Column(String(100), nullable=False)
+    duration_time = Column(Integer, nullable=False)
+    concentration = Column(Integer, nullable=False)
+    spells = relationship('Spell', back_populates='duration')
 
 
 """
+Spell table 
 
 CREATE TABLE IF NOT EXISTS spell(
     id INT,
@@ -79,17 +90,23 @@ CREATE TABLE IF NOT EXISTS spell(
 """
 
 
-class Spell(Base.Model):
-    __tablename__ = 'spell'
-    id = Base.Column(Base.Integer, primary_key=True)
-    spell_name = Base.Column(Base.String, unique=True, nullable=False)
-    book_page = Base.Column(Base.Integer, nullable=False)
-    spell_level = Base.Column(Base.Integer, nullable=False)
-    school = Base.Column(Base.String(100), nullable=False)
-    cast_time = Base.Column(Base.String(255), nullable=False)
-    components = Base.Column(Base.String(255), nullable=False)
-    spell_description = Base.Column(Base.String, nullable=False)
-    ariatags = Base.Column(Base.String(10), nullable=False)
-    source_id = Base.Column(Base.Integer, Base.ForeignKey('sources.id'))
-    spell_range_id = Base.Column(Base.Integer, Base.ForeignKey('ranges.id'))
-    duration_id = Base.Column(Base.Integer, Base.ForeignKey('duration.id'))
+class Spell(Base):
+    __tablename__ = 'spells'
+    id = Column(Integer, primary_key=True)
+    spell_name = Column(String, unique=True, nullable=False)
+    book_page = Column(Integer, nullable=False)
+    spell_level = Column(Integer, nullable=False)
+    school = Column(String(100), nullable=False)
+    cast_time = Column(String(255), nullable=False)
+    components = Column(String(255), nullable=False)
+    spell_description = Column(String, nullable=False)
+    ariatags = Column(String(10), nullable=False)
+    source_id = Column(Integer, ForeignKey('sources.id'))  # Foreign key reference sources table
+    spell_range_id = Column(Integer, ForeignKey('ranges.id'))  # Foreign key reference to ranges able
+    duration_id = Column(Integer, ForeignKey('durations.id'))  # Foreign key reference to durations table
+
+    source = relationship('Source', back_populates='spell')
+    range = relationship('Range', back_populates='range')
+    duration = relationship('Duration', back_populates='duration')
+
+
