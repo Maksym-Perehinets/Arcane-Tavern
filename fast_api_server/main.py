@@ -3,10 +3,17 @@ from sqlalchemy.orm import Session
 from database.database import engine, get_db
 from database import models
 
-
 app = FastAPI()
-
 models.Base.metadata.create_all(bind=engine)
+
+
+"""
+To run server pleas enter the following command 
+cd directory/to/your/practice/file 
+then enter
+uvicorn fast_api_server.main:app --reload
+beforehand you must have installed venv and all requirements
+"""
 
 
 @app.get("/")
@@ -77,3 +84,4 @@ async def test():
 				"ST",
 				"MT"
 			]}
+
