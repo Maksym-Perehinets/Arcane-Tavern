@@ -6,11 +6,8 @@
 /* - */
 .table-lines {
   position: relative;
-  width: 800px;
-  min-width: 800px ;
-  height: 1100px;
-  column-count: auto;
   width: 40%;
+  max-height: 850px;
   top: 10px;
   left: 10%;
   margin: 1%;
@@ -22,22 +19,8 @@
   overflow-y: scroll;
   overflow-x: hidden;
   border-radius: 2%;
-  vertical-align: top;
-
-  /* background-image: url("../IMGs/med.png");
-  position: relative;
-  background-color: #15151570;
-  display: inline-block;
-  width: 600px;
-  height: 600px;
-  margin-left: 15%;
-  margin-top: 5%;
-  border-radius: 20px;
-  padding: 20px;
-  vertical-align: top; */
 
 }
-
 
 .custom-table {
   width: 100%;
@@ -47,13 +30,44 @@
 /* Firefox scrollbar */
 .table-lines {
   -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  scrollbar-width: thin; /* Firefox */
   
 }
 .table-lines::-webkit-scrollbar {
   display: thin; /* Chrome opera safari */
 }
 
+
+  
+
+  
+    
+
+    /* .custom-table th, */
+    /* .custom-table td {
+      border: 3px solid rgba(0, 0, 0, 0.15);
+      padding: 8px;
+      text-align: center; 
+      font-size: 16px;
+      font-family: DraconicFont;
+      font-weight: lighter;
+    }
+    
+    .custom-table th {
+      background-color: rgba(12, 12, 12, 0.9);
+       
+    }
+    
+    .custom-table a {
+      text-decoration: none;
+      color: #ffffff;
+      font-size: 16px;
+      font-family: DraconicFont;
+      font-weight: lighter;
+      display: block;
+      padding: 8px;
+    }
+      */
     .custom-table a:hover {
       color: #555;
     } 
@@ -201,22 +215,17 @@
 
     .spellNameDiv{
       background-image: url("../IMGs/med.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-      position: relative;
+      position: absolute;
       background-color: #15151570;
       display: inline-block;
       width: 600px;
       height: 600px;
-      margin-left: 15%;
-      margin-top: 5%;
+      margin-left: 250px;
+      margin-top: 150px;
       border-radius: 20px;
-      padding: 20px;
-      vertical-align: top;
 
       
     }
-
     
     #spellNameText {
       font-family: DraconicFont;

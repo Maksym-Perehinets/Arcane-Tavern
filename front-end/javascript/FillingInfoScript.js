@@ -1,7 +1,7 @@
 function populateTable(data) {
     var spellListTable = document.getElementById("spellList").getElementsByTagName('tbody')[0];
 
-    // Check if 'data.spell' is an array--
+    // Check if 'data.spell' is an array
     if (!Array.isArray(data.spell)) {
         console.error('Data.spell is not an array:', data.spell);
         return;
@@ -55,3 +55,8 @@ fetch("http://127.0.0.1:5500/spells-json/spells-phb.json")
 .then(data => {populateTable(data);})
 .catch(error => console.error('Error fetching data:', error));
     
+Нахуй той ваш гітхаб
+Йобаний рот
+Їбануті?
+Де телеграм бренч?
+Нахуй гіт всьо я в телеграм
