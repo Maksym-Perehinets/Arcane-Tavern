@@ -1,0 +1,122 @@
+body {
+    background-color: #202020;
+    margin: 0px;
+    padding: 0px;
+  }
+
+  #navbar {
+    
+    position: sticky;
+    height: 80px;
+    background-color: #151515;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+  }
+
+  #srcbar {
+    background-color: #f2f2f27a;
+    height: 50px;
+    width: 600px;
+    margin-left: 200px;
+    border-radius: 25px;
+    text-align: center;
+    font-size: 26px;
+    border-color: transparent;
+    user-select: none;
+    text-decoration: none;
+  }
+  #srcbar:focus { outline: none;}
+
+
+  #signupDiv{
+    background-color: #161616;
+    width: 800px;
+    height: 800px;
+    border-radius: 25px;
+    position: relative;
+    margin-top: 30px;
+    margin-left: 30%;
+    text-align: center;
+    padding: 10px 5px;
+  }
+
+
+
+
+  #signupTitle {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 36px;
+    color: #ffffff8f;
+    user-select: none;
+  }
+
+  #formDiv {
+    margin-top: 100px;
+    color: #ffffff8f;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: left;
+    margin-left: 150px;
+  }
+
+  input[type="email"] {
+    background-color: #ffffff7e;
+    width: 500px;
+    height: 50px;
+    border-radius: 10px;
+    font-size: 22px;
+    border-color: transparent;
+  }
+
+  input[type="email"]:focus {outline: none;}
+  
+  input[type="password"] {
+    background-color: #ffffff7e;
+    width: 500px;
+    height: 50px;
+    border-radius: 10px;
+    font-size: 22px;
+    border-color: transparent;
+  }
+
+  input[type="password"]:focus {outline: none;}
+
+  input[type="submit"] {
+    width: 250px;
+    height: 50px;
+    background-color: #BF1818;
+    border-color: transparent;
+    color: #161616;
+    border-radius: 10px;
+    font-size: 16px;
+  }
+
+  input[type="submit"]:hover {
+    transition: all .7s;
+    color: #BF1818;
+    background-color: #bf18182a;
+    border-width: 1px;
+    border-color: #BF1818;
+  }
+
+  #altHref {
+    color: #ffffff65;
+    font-size: 12px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  #altHref:hover {
+    transition: all .7s;
+    color: #BF1818;
+  }
+
+
+
+  a {
+    user-select: none;
+    text-decoration: none;
+  }
+
+  a:visited { text-decoration: none;}
+  a:hover { text-decoration: none;}
