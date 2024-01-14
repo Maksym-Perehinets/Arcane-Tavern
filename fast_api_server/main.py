@@ -2,6 +2,7 @@ from fastapi import FastAPI, Depends
 from sqlalchemy.orm import Session
 from database.database import engine, get_db
 from database import models
+from . import schemas
 
 app = FastAPI()
 models.Base.metadata.create_all(bind=engine)
@@ -18,7 +19,19 @@ beforehand you must have installed venv and all requirements
 
 @app.get("/")
 async def root():
-    return {"message": "Hello World"}
+	return {"message": "Hello World"}
+
+
+@app.get("/get-spell/{spell_id}")
+async def get_spell(spell_id: int):
+	# logic shoould be provided
+	return {"requested spell id": spell_id}
+
+
+"""
+Test requests further
+should not be commited to prod
+"""
 
 
 @app.get("/dbtest")
@@ -28,7 +41,7 @@ async def dbtest(db: Session = Depends(get_db)):
 
 @app.get("/test")
 async def test():
-    return {"name": "Acid Splash",
+	return {"name": "Acid Splash",
 			"source": "PHB",
 			"page": 211,
 			"srd": "true",
@@ -84,4 +97,3 @@ async def test():
 				"ST",
 				"MT"
 			]}
-
