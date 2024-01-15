@@ -5,22 +5,186 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Main</title>
     <link rel="stylesheet" href="..\css\MainStyle.css">
+    <link rel="stylesheet" href="..\css\navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+     integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />    
 
     <script src="..\javascript\MainSortingScript.js"></script>
     <script src="..\javascript\FillingInfoScript.js"></script>
-
+    <script src="/front_end/javascript/navbar.js"></script>
   </head>
   <body>
     <!-- -------------------------UI---------------- --->
-    <nav id="navbar">
-  
-    <label><input type="text" placeholder="Search" name="" id="srcbar"></label>
-    <b id="signupBtn"><a href="#"><span>Sign Up</span></a></b>
-  </nav>
-  
+    <!-- -------------sidebar----------- -->
+    <div class="sidebar">
+    <div class="sidebar_header">
+      <img src="/front_end/IMGs/DnDLogoTest.png" alt="logo"> 
+    </div>
+<!-- --------------Filters Bar------------- -->
+    <div class="sidebar_menu">
+
+        <select class="DropList" name="Level">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+        </select>
+
+        <h4>Level</h4>
+      </a>
+      
+
+      
+          <select class="DropList" name="Level">
+            <option value="1">Arcane tricster</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+          </select>
+          
+          <h4>Class</h4>
+        
+        
+       </a>
+
+      
+          
+          <select class="DropList" name="Level">
+            <option value="1">Arcane tricster</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+          </select>
+
+          <h4>Subclass</h4>
+        </a>
+
+
+       
+          <select class="DropList" name="Level">
+            <option value="1">Dwarf</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+          </select>
+          
+          <h4>Race</h4>
+        </a>
+
+
+        
+          <select class="DropList" name="Level">
+            <option value="1">Conjuration</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+          </select>
+          
+          <h4>School</h4>
+        </a>
+
+
+      
+          <select class="DropList" name="Level">
+            <option value="1">acid</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+          </select>
+          
+          <h4>Damage Type</h4>
+        </a>
+
+
+       
+          <select class="DropList" name="Level">
+            <option value="1">60 Feet</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+          </select>
+          
+          <h4>Range</h4>
+        </a>
+
+
+        
+          <select class="DropList" name="Level">
+            <option value="1">Instantaneous</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option style="font-family: 'Times New Roman'">Trebuchet MS</option>
+          </select>
+          
+          <h4>Duration</h4>
+        </a>
+        
+          <button class="apply">Apply</button>
+          <button class="clear">Clear</button>
+        
+        
+      </div>
+  </div>
+
+  <div class="container">
+    <header class="header">
+      <button class="btn-toggle" role="button" ><span class="text">Filters</span></button>
+     
+      <div class="wrap">
+        <div class="search">
+           <input type="text" class="searchTerm" placeholder="What are you looking for?">
+           <div class="searchButton"> <img class="SearchIco" src="/front_end/IMGs/Search.svg" alt="SearchIco"></div>
+           
+        </div>
+     </div>
+      <b id="signupBtn"><a href="#"><span>Sign Up</span></a></b>
     
-      <div class="sidebar"><div class="more-svg"></div></div>
-<!-- ------------------------------------------------- -->
+    </header>
+
+
+<!-- -----------------------Spell table-------------------------- -->
 
       <div class="flex-row-bbf">
         <div class="sidebar"><div class="more-svg"></div></div>
@@ -43,6 +207,8 @@
                 </tbody>
             </table>       
           </div>
+          
+          <!------------------------ Spell Info------------- -->
           <div class="spellNameDiv">
             <span id="spellNameText">Spell Name</span><br>
             <span id="spellChar">bla bla bla</span>
