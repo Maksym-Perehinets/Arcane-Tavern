@@ -1,12 +1,31 @@
-from fastapi import FastAPI, Depends
+from fastapi import FastAPI, Depends, responses, status
+from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 from database.database import engine, get_db
 from database import models
 from . import schemas
 
+
+
+
+
 app = FastAPI()
 models.Base.metadata.create_all(bind=engine)
 
+
+origins = [
+    "http://localhost"
+    "http://localhost:5500",
+	"http://127.0.0.1:5500"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 """
 To run server pleas enter the following command 
@@ -26,6 +45,16 @@ async def root():
 async def get_spell(spell_id: int):
 	# logic shoould be provided
 	return {"requested spell id": spell_id}
+
+
+"""
+Registration and Log in 
+"""
+
+
+@app.post("/register/")
+async def register():
+	return responses.RedirectResponse("/?msg=sucsessfull", status_code=status.HTTP_201_CREATED)
 
 
 """
