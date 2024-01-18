@@ -2,3 +2,4 @@
 __pycache__
 /.idea
 /spells_db.db
+/.node_modules
