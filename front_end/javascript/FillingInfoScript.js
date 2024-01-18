@@ -39,10 +39,10 @@ function populateTable(data) {
                 ? `${data.range.distance.amount} ${data.range.distance.type}`
                 : data.range.distance.type
             : data.range.type;
+            ultratestqwerty();
     // });
 }
 
-    
 
 
 // fetch("http://127.0.0.1:8000/test")
@@ -85,3 +85,6 @@ async function fetchData() {
 }
 
 fetchData();
+
+
+

@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Depends, responses, status
+from fastapi import FastAPI, Depends, HTTPException, responses, status
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 from database.database import engine, get_db

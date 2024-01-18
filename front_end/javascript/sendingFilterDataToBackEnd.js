@@ -1,7 +1,4 @@
 
-
-
-
 // Замініть URL на адресу вашого бекенду, який оброблює POST-запити
 const backendUrlUpload = 'http://localhost:8000/process_data/';
 

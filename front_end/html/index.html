@@ -15,6 +15,7 @@
     <script src="..\javascript\FillingInfoScript.js"></script>
     <script src="..\javascript\sendingFilterDataToBackEnd.js"></script>
     <script src="/front_end/javascript/navbar.js"></script>
+    <script src="../javascript/showSpellinfo.js"></script> 
   </head>
   <body>
     <!-- -------------------------UI---------------- --->
@@ -191,7 +192,7 @@
 
 <!-- -----------------------Spell table-------------------------- -->
 
-      <div class="flex-row-bbf">
+      <div id="testaa" class="flex-row-bbf">
         <div class="sidebar"><div class="more-svg"></div></div>
         
         <!-- all spells table  -->
@@ -205,30 +206,31 @@
                 <th><a onclick="sortTable(3)">Duration</a></th>
                 <th><a onclick="sortTable(4)">Time</a></th>
                 <th><a onclick="sortTable(5)">Range</a></th>
-                  </tr>
-                </thead>
-                <tbody>
+              </tr>
+            </thead>
+            <tbody id="tableBody">
                  
-                </tbody>
-            </table>       
-          </div>
+            </tbody>
+          </table>       
+        </div>
           
           <!------------------------ Spell Info------------- -->
-          <div class="spellNameDiv">     
+        <div class="spellNameDiv">     
           <div class="spellNameText">
-            <span>Spell Name</span>
+            <span id="spellName">Spell Name</span>
           </div>
           
           <div class="spellChar">
-          <span >Range suration balh blah</span>
+          <span id="spellRange">Range</span>
+          <span id="spellCastingTime">Casting Time</span>
+          <span id="spellComponents">Components</span>
+          <span id="spellDuration">Duration</span>
           </div>
             
-            <div class="infoAboutSpellDiv">
-                <a class="infotext"> ipsum dolor sit amet consectetur, adipisicing eli. Molestias, optio. 
-                  Quasi omnis autem laboriosam, quidem eius, fugit reprehenderit minima voluptate voluptatibus 
-                  ex necessitatibus exercitationem illo porro aliquid dolorem veniam et.</a>
-            </div>
-          
+          <div class="infoAboutSpellDiv">
+              <a id="spellDescription" class="infotext"> </a>
+          </div>
+        
 
           </div>
         </div>
