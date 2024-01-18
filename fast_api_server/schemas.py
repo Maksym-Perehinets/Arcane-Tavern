@@ -11,3 +11,9 @@ class CreateUser(BaseModel):
                 "password": "123hui_zalupka_perizoc"
             }
         }
+
+
+
+class Item(BaseModel):
+    name: str
+    description: str = None

@@ -126,3 +126,14 @@ async def test():
 				"ST",
 				"MT"
 			]}
+
+
+
+@app.post("/process_data/")
+async def process_data(item: schemas.Item):
+    try:
+        # Отримайте дані з об'єкта item та обробіть їх
+        processed_data = f"Processed: {item.name} - {item.description}"
+        return {"status": "success", "result": processed_data}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
