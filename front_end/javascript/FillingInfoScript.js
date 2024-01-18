@@ -1,11 +1,7 @@
 function populateTable(data) {
-    // var spellListTable = document.getElementById("spellList").getElementsByTagName('tbody')[0];
+    var spellListTable = document.getElementById("spellList").getElementsByTagName('tbody')[0];
 
-    // // Check if 'data.spell' is an array--
-    // if (!Array.isArray(data.spell)) {
-    //     console.error('Data.spell is not an array:', data.spell);
-    //     return;
-    // }
+    // Check if 'data.spell' is an array--
 
     // if (data.spell.length === 0) {
     //     console.warn('Data.spell array is empty.');
@@ -13,39 +9,37 @@ function populateTable(data) {
     // }
     
 
-    // // Use 'data.spell' instead of 'data' in the forEach loop
-    // data.spell.forEach(spell => {
-    //     var durationEntry = spell.duration[0]
-    //     var row = spellListTable.insertRow();
-    //     var levelCell = row.insertCell(0);
-    //     var nameCell = row.insertCell(1);
-    //     var concentration = row.insertCell(2);
-    //     var durationCell = row.insertCell(3);
-    //     var timeCell = row.insertCell(4);
-    //     var rangeCell = row.insertCell(5);
+    // Use 'data.spell' instead of 'data' in the forEach loop
+    // data.forEach(data => {
+        var row = spellListTable.insertRow();
+        var levelCell = row.insertCell(0);
+        var nameCell = row.insertCell(1);
+        var concentration = row.insertCell(2);
+        var durationCell = row.insertCell(3);
+        var timeCell = row.insertCell(4);
+        var rangeCell = row.insertCell(5);
 
-    //     levelCell.innerHTML = spell.level;
-    //     nameCell.innerHTML = spell.name;
+        levelCell.innerHTML = data.level;
+        nameCell.innerHTML = data.name;
 
-    //     concentration.innerHTML =
-    //         spell.duration[0] && spell.duration[0].concentration 
-    //         ? "Yes"
-    //         : "No";
+        concentration.innerHTML =
+            data.duration[0] && data.duration[0].concentration 
+            ? "Yes"
+            : "No";
             
-    //     durationCell.innerHTML = 
-    //         durationEntry.type == "timed"
-    //         ? `${durationEntry.duration.type} ${durationEntry.duration.amount}` 
-    //         : `${durationEntry.type}`;
+        durationCell.innerHTML = 
+            data.duration.type == "timed"
+            ? `${data.duration.type} ${data.duration.amount}` 
+            : `${data.duration[0].type}`;
 
-    //     timeCell.innerHTML = `${spell.time[0].number} ${spell.time[0].unit}`;
-    //     rangeCell.innerHTML = 
-    //         spell.range.distance
-    //         ? spell.range.distance.amount
-    //             ? `${spell.range.distance.amount} ${spell.range.distance.type}`
-    //             : spell.range.distance.type
-    //         : spell.range.type;
+        timeCell.innerHTML = `${data.time[0].number} ${data.time[0].unit}`;
+        rangeCell.innerHTML = 
+            data.range.distance
+            ? data.range.distance.amount
+                ? `${data.range.distance.amount} ${data.range.distance.type}`
+                : data.range.distance.type
+            : data.range.type;
     // });
-    console.log("Tasty bebra321");
 }
 
     
@@ -73,8 +67,7 @@ function populateTable(data) {
 
 
 
-// Замініть URL на адресу вашого бекенду
-const backendUrl = 'http://localhost:5500/test';
+const backendUrl = 'http://localhost:8000/test';
 
 async function fetchData() {
   try {
@@ -83,16 +76,12 @@ async function fetchData() {
 
     // Отримуємо дані з відповіді
     const jsonData = response.data;
-
-    // Обробка отриманих JSON-даних
-    console.log('Отримані дані:', jsonData);
+    populateTable(jsonData);
 
     // Додаткова обробка JSON-даних тут
-
   } catch (error) {
     console.error('Помилка при отриманні даних:', error.message);
   }
 }
 
-// Викликаємо функцію для отримання даних
 fetchData();
