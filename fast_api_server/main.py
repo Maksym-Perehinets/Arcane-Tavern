@@ -5,10 +5,6 @@ from database.database import engine, get_db
 from database import models
 from . import schemas
 
-
-
-
-
 app = FastAPI()
 models.Base.metadata.create_all(bind=engine)
 
