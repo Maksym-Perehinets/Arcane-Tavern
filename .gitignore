@@ -1,5 +1,5 @@
 /venv
 __pycache__
 /.idea
-/.spells_db.db
+*.db
 /.node_modules
