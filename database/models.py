@@ -101,6 +101,7 @@ class Spell(Base):
     components = Column(String(255), nullable=False)
     spell_description = Column(String, nullable=False)
     ariatags = Column(String(10), nullable=False)
+    suitable_casters = Column(String, nullable=False)
     source_id = Column(Integer, ForeignKey('sources.id'))  # Foreign key reference sources table
     spell_range_id = Column(Integer, ForeignKey('ranges.id'))  # Foreign key reference to ranges able
     duration_id = Column(Integer, ForeignKey('durations.id'))  # Foreign key reference to durations table
