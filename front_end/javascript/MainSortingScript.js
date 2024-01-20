@@ -44,11 +44,7 @@
 // }
 
 function sortTable(n) {
-    var jsonData = {
-        "name": "John Doe",
-        "age": 25,
-        "city": "Example City"
-    };
+    
     
     var jsonString = JSON.stringify(jsonData);
 

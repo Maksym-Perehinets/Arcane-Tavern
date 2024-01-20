@@ -1,46 +1,44 @@
 function populateTable(data) {
+  try{
     var spellListTable = document.getElementById("spellList").getElementsByTagName('tbody')[0];
-
-    // Check if 'data.spell' is an array--
-
-    // if (data.spell.length === 0) {
-    //     console.warn('Data.spell array is empty.');
-    //     return;
-    // }
-    
+  
 
     // Use 'data.spell' instead of 'data' in the forEach loop
-    // data.forEach(data => {
-        var row = spellListTable.insertRow();
-        var levelCell = row.insertCell(0);
-        var nameCell = row.insertCell(1);
-        var concentration = row.insertCell(2);
-        var durationCell = row.insertCell(3);
-        var timeCell = row.insertCell(4);
-        var rangeCell = row.insertCell(5);
+    data.spell.forEach(spell => {
+      var row = spellListTable.insertRow();
+      var levelCell = row.insertCell(0);
+      var nameCell = row.insertCell(1);
+      var concentration = row.insertCell(2);
+      var durationCell = row.insertCell(3);
+      var timeCell = row.insertCell(4);
+      var rangeCell = row.insertCell(5);
 
-        levelCell.innerHTML = data.level;
-        nameCell.innerHTML = data.name;
+      levelCell.innerHTML = spell.level;
+      nameCell.innerHTML = spell.name;
 
-        concentration.innerHTML =
-            data.duration[0] && data.duration[0].concentration 
-            ? "Yes"
-            : "No";
-            
-        durationCell.innerHTML = 
-            data.duration.type == "timed"
-            ? `${data.duration.type} ${data.duration.amount}` 
-            : `${data.duration[0].type}`;
+      concentration.innerHTML =
+        spell.duration[0] && spell.duration[0].concentration 
+          ? "Yes"
+          : "No";
+          
+      durationCell.innerHTML = 
+          spell.duration.type == "timed"
+          ? `${spell.duration.type} ${spell.duration.amount}` 
+          : `${spell.duration[0].type}`;
 
-        timeCell.innerHTML = `${data.time[0].number} ${data.time[0].unit}`;
-        rangeCell.innerHTML = 
-            data.range.distance
-            ? data.range.distance.amount
-                ? `${data.range.distance.amount} ${data.range.distance.type}`
-                : data.range.distance.type
-            : data.range.type;
-            ultratestqwerty();
-    // });
+      timeCell.innerHTML = `${spell.time[0].number} ${spell.time[0].unit}`;
+      rangeCell.innerHTML = 
+          spell.range.distance
+          ? spell.range.distance.amount
+              ? `${spell.range.distance.amount} ${spell.range.distance.type}`
+              : spell.range.distance.type
+          : spell.range.type;
+          
+      hui();
+    });
+  } catch (error) {
+    console.error("Error " + error);
+  }
 }
 
 
@@ -49,7 +47,7 @@ function populateTable(data) {
 // .then(response => response.text())
 // .then(data => {populateTable(data);})
 // .catch(error => console.error('Error fetching data:', error));
-    
+  
 
 // fetch("http://127.0.0.1:8000/test")
 // .then(res => res.text())
@@ -65,11 +63,11 @@ function populateTable(data) {
 //     fs.readFile(__dirname + )
 // })
 
+window.onload = getData();
+function getData(){
+  const backendUrl = 'http://127.0.0.1:8000/test';
 
-
-const backendUrl = 'http://localhost:8000/test';
-
-async function fetchData() {
+  async function fetchData() {
   try {
     // Axios вже доступний як глобальний об'єкт через CDN
     const response = await axios.get(backendUrl);
@@ -82,9 +80,7 @@ async function fetchData() {
   } catch (error) {
     console.error('Помилка при отриманні даних:', error.message);
   }
+  }
+
+  fetchData();
 }
-
-fetchData();
-
-
-

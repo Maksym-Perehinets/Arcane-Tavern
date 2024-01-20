@@ -65,13 +65,14 @@ async def dbtest(db: Session = Depends(get_db)):
 
 
 @app.get("/test")
-async def test():
-	return {"name": "Acid Splash",
-			"source": "PHB",
-			"page": 211,
-			"srd": "true",
-			"basicRules": "true",
-			"level": 0,
+def test():
+	return {
+	"spell": [
+		{
+			"name": "Air Bubble",
+			"source": "AAG",
+			"page": 22,
+			"level": 2,
 			"school": "C",
 			"time": [
 				{
@@ -87,8 +88,60 @@ async def test():
 				}
 			},
 			"components": {
-				"v": "true",
 				"s": "true"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 24
+					}
+				}
+			],
+			"entries": [
+				"You create a spectral globe around the head of a willing creature you can see within range. The globe is filled with fresh air that lasts until the spell ends. If the creature has more than one head, the globe of air appears around only one of its heads (which is all the creature needs to avoid suffocation, assuming that all its heads share the same respiratory system)."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"When you cast this spell using a spell slot of 3rd level or higher, you can create two additional globes of fresh air for each slot level above 2nd."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"hasFluffImages": "true"
+		},
+		{
+			"name": "Create Spelljamming Helm",
+			"source": "AAG",
+			"page": 22,
+			"level": 5,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": "true",
+				"s": "true",
+				"m": {
+					"text": "a crystal rod worth at least 5,000 gp, which the spell consumes",
+					"cost": 500000,
+					"consume": "true"
+				}
 			},
 			"duration": [
 				{
@@ -96,32 +149,12 @@ async def test():
 				}
 			],
 			"entries": [
-				"You hurl a bubble of acid. Choose one creature you can see within range, or choose two creatures you can see within range that are within 5 feet of each other. A target must succeed on a Dexterity saving throw or take {@damage 1d6} acid damage.",
-				"This spell's damage increases by {@dice 1d6} when you reach 5th level ({@damage 2d6}), 11th level ({@damage 3d6}), and 17th level ({@damage 4d6})."
-			],
-			"scalingLevelDice": {
-				"label": "acid damage",
-				"scaling": {
-					"1": "1d6",
-					"5": "2d6",
-					"11": "3d6",
-					"17": "4d6"
-				}
-			},
-			"damageInflict": [
-				"acid"
-			],
-			"savingThrow": [
-				"dexterity"
-			],
-			"miscTags": [
-				"SCL",
-				"SGT"
-			],
-			"areaTags": [
-				"ST",
-				"MT"
-			]}
+				"Holding the rod used in the casting of the spell, you touch a Large or smaller chair that is unoccupied. The rod disappears, and the chair is transformed into a {@item spelljamming helm|AAG}."
+			]
+		}
+	]
+
+	}	
 
 
 
@@ -129,7 +162,52 @@ async def test():
 async def process_data(item: schemas.Item):
     try:
         # Отримайте дані з об'єкта item та обробіть їх
-        processed_data = f"Processed: {item.name} - {item.description}"
-        return {"status": "success", "result": processed_data}
+        processed_data = f"{item.name}"
+        return {"name": "Air Bubble",
+			"source": "AAG",
+			"page": 22,
+			"level": 2,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"s": "true"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 24
+					}
+				}
+			],
+			"entries": [
+				"You create a spectral globe around the head of a willing creature you can see within range. The globe is filled with fresh air that lasts until the spell ends. If the creature has more than one head, the globe of air appears around only one of its heads (which is all the creature needs to avoid suffocation, assuming that all its heads share the same respiratory system)."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"When you cast this spell using a spell slot of 3rd level or higher, you can create two additional globes of fresh air for each slot level above 2nd."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"hasFluffImages": "true"}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
