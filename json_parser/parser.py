@@ -73,28 +73,40 @@ class JsonParser:
         dict: key(book_name) value current path to book.json
         """
         self.json_files = dict()
-        self.wanted_data = ["name", "source", "page", "level", "school", "time", "range", "components", "duration"]
+        self.wanted_data = ['name', 'source', 'page', 'level', 'school', 'time', 'range', 'components', 'duration']
         with open(index_file, 'r') as opened_index:
             for key, value in json.load(opened_index).items():
                 self.json_files[key] = f"./spells_json/{value}"
-        print(self.json_files)
 
-    def __json_filter(self, json_data, list_of_filters):
+    def __json_filter(self, json_data, book_name=None):
+        """
+        :param json_data:
+        :param book_name:
+        :return result as dict with all needed data:
+        """
         result = dict()
-
-        if isinstance(json_data, dict):
+        # looks for wanted data in json that was passed to filter
+        for key, value in json_data.items():
+            # if key is in wanted data list than its appends to
+            if key in self.wanted_data:
+                result[key] = value
+                if key == 'name':
+                    with open('./spells_json/sources.json', 'r') as opened_json:
+                        data = json.load(opened_json)
+                        try:
+                            result['class'] = data[book_name][value]['class']
+                        except KeyError:
+                            result['class'] = [{"name": "Wizard", "source": "PHB"}]
+                else:
+                    pass
+        return result
 
 
     def get_all_sources(self):
         """
-		Get all sources from
-		:param self.json_files:
-		:return only keys from that file as list of strings:
-		other fields has no matter
+		:return only keys from json_file variable as list of strings:
 		"""
-        with open(self.json_files.values(), 'r') as json_file:
-            data = json.load(json_file).keys()
-        return list(data)
+        return list(self.json_files.keys())
 
     def get_all_ranges(self):
         """
@@ -141,12 +153,18 @@ class JsonParser:
         return unique_ranges
 
     def get_all_spells(self):
+        """
+        :return:
+        """
         spell_list = list()
-        for json_file in self.json_files.values():
+        for key, json_file in self.json_files.items():
             with open(json_file, 'r') as open_json_file:
                 for spell in json.load(open_json_file).get('spell'):
-                    return spell_list.append(spell[self.json_files])
+
+                    spell_list.append(self.__json_filter(spell, key))
+
+        return spell_list
 
 
 get_data = JsonParser('./spells_json/index.json')
-print(get_data.get_all_spells())
+print(get_data.get_all_sources())
