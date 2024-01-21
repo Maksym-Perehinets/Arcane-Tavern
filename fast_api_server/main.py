@@ -1,4 +1,5 @@
-from fastapi import FastAPI, Depends
+from fastapi import FastAPI, Depends, HTTPException, responses, status
+from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 from database.database import engine, get_db
 from database import models
@@ -7,6 +8,20 @@ from . import schemas
 app = FastAPI()
 models.Base.metadata.create_all(bind=engine)
 
+
+origins = [
+    "http://localhost"
+    "http://localhost:5500",
+	"http://127.0.0.1:5500"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 """
 To run server pleas enter the following command 
@@ -26,6 +41,16 @@ async def root():
 async def get_spell(spell_id: int):
 	# logic shoould be provided
 	return {"requested spell id": spell_id}
+
+
+"""
+Registration and Log in 
+"""
+
+
+@app.post("/register/")
+async def register():
+	return responses.RedirectResponse("/?msg=sucsessfull", status_code=status.HTTP_201_CREATED)
 
 
 """
@@ -97,3 +122,16 @@ async def test():
 				"ST",
 				"MT"
 			]}
+
+
+"""
+@app.post("/process_data/")
+async def process_data(item: schemas.Item):
+    try:
+        # Отримайте дані з об'єкта item та обробіть їх
+        processed_data = f"Processed: {item.name} - {item.description}"
+        return {"status": "success", "result": processed_data}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+        
+"""
