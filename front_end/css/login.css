@@ -189,14 +189,3 @@ body {
     padding-top: 11px;
     box-shadow: 4px 4px 10px black;
   }
-
-
-  #passError {
-    color: #BF1818;
-    font-size: 12px;
-  }
-
-  #errorDiv {
-    margin-left: 20px;
-    margin-top: 5px;
-  }
