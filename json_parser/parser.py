@@ -1,66 +1,18 @@
 import json
+import os
 
-list_of_links = ['./spells_json/index.json', './spells_json/spells-aag.json', './spells_json/spells-ai.json',
-                 './spells_json/spells-aitfr-avt.json', './spells_json/spells-egw.json',
-                 './spells_json/spells-ftd.json',
-                 './spells_json/spells-ggr.json', './spells_json/spells-idrotf.json',
-                 './spells_json/spells-llk.json', './spells_json/spells-phb.json', './spells_json/spells-sato.json',
-                 './spells_json/spells-scc.json', './spells_json/spells-tce.json', './spells_json/spells-tdcsr.json',
-                 './spells_json/spells-ua-2020por.json', './spells_json/spells-ua-2020smt.json',
-                 './spells_json/spells-ua-2021do.json', './spells_json/spells-ua-2022wotm.json',
-                 './spells_json/spells-ua-ar.json', './spells_json/spells-ua-frw.json',
-                 './spells_json/spells-ua-mm.json',
-                 './spells_json/spells-ua-saw.json', './spells_json/spells-ua-ss.json',
-                 './spells_json/spells-ua-tobm.json',
-                 './spells_json/spells-xge.json', ]
-a = {
-    "spell": [
-        {
-            "name": "Distort Value",
-            "source": "AI",
-            "page": 75,
-            "level": 1,
-            "school": "I",
-            "time": [
-                {
-                    "number": 1,
-                    "unit": "minute"
-                }
-            ],
-            "range": {
-                "type": "point",
-                "distance": {
-                    "type": "touch"
-                }
-            },
-            "components": {
-                "v": 'true'
-            },
-            "duration": [
-                {
-                    "type": "timed",
-                    "duration": {
-                        "type": "hour",
-                        "amount": 8
-                    }
-                }
-            ],
-            "entries": [
-                "Do you need to squeeze a few more gold pieces out of a merchant as you try to sell that weird octopus statue you liberated from the chaos temple? Do you need to downplay the worth of some magical assets when the tax collector stops by? Distort value has you covered.",
-                "You cast this spell on an object no more than 1 foot on a side, doubling the object's perceived value by adding illusory flourishes or polish to it, or reducing its perceived value by half with the help of illusory scratches, dents, and other unsightly features. Anyone examining the object can ascertain its true value with a successful Intelligence ({@skill Investigation}) check against your spell save DC."
-            ],
-            "entriesHigherLevel": [
-                {
-                    "type": "entries",
-                    "name": "At Higher Levels",
-                    "entries": [
-                        "When you cast this spell using a spell slot of 2nd level or higher, the maximum size of the object increases by 1 foot for each slot level above 1st."
-                    ]
-                }
-            ]
-        }
-    ]
-}
+# Used to make this work when importing JsonParser
+# Have no faking idea how to make it work other way
+script_dir = os.path.dirname(os.path.realpath(__file__))
+os.chdir(script_dir)
+
+"""
+If you diceded to use this paser pleas initiate 
+a class with inputting a path to your index.json
+like this example = JsonParser('./path/to/your/index.json')
+after that you are welcome to use it but do not forget 
+to store spells_fson folder in same folder as your parser
+"""
 
 
 class JsonParser:
@@ -101,12 +53,15 @@ class JsonParser:
                     pass
         return result
 
-
     def get_all_sources(self):
         """
-		:return only keys from json_file variable as list of strings:
+        returns all sources for easy input to database with sqlalchemy
+		:return only keys from json_file as list of dictionaries:
 		"""
-        return list(self.json_files.keys())
+        result = []
+        for book_name in self.json_files.keys():
+            result.append({'book_name': book_name})
+        return result
 
     def get_all_ranges(self):
         """
@@ -160,11 +115,8 @@ class JsonParser:
         for key, json_file in self.json_files.items():
             with open(json_file, 'r') as open_json_file:
                 for spell in json.load(open_json_file).get('spell'):
-
                     spell_list.append(self.__json_filter(spell, key))
 
         return spell_list
 
 
-get_data = JsonParser('./spells_json/index.json')
-print(get_data.get_all_sources())
