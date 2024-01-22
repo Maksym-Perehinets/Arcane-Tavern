@@ -14,14 +14,16 @@
     <script src="..\javascript\MainSortingScript.js"></script>
     <script src="..\javascript\FillingInfoScript.js"></script>
     <script src="..\javascript\sendingFilterDataToBackEnd.js"></script>
-    <script src="/front_end/javascript/navbar.js"></script>
+    <script src="..\javascript\navbar.js"></script>
+
   </head>
   <body>
     <!-- -------------------------UI---------------- --->
     <!-- -------------sidebar----------- -->
     <div class="sidebar">
-    <div class="sidebar_header">
-      <img src="/front_end/IMGs/DnDLogoTest.png" alt="logo"> 
+      <button class="backward" onclick="load()" ><img class="backwardico" src="/front_end/IMGs/Backward.png"></button>
+      <div class="sidebar_header">
+      <div><img class="logo" src="/front_end/IMGs/DnDLogoTest.png" alt="logo"></div> 
     </div>
 <!-- --------------Filters Bar------------- -->
     <div class="sidebar_menu">
@@ -41,11 +43,6 @@
       
         <h4>Level</h4>
         
-
-
-      
-
-      
           <select class="DropList" name="Level">
             <option value="1">Arcane tricster</option>
             <option value="2">2</option>
@@ -191,9 +188,7 @@
 
 <!-- -----------------------Spell table-------------------------- -->
 
-      <div class="flex-row-bbf">
-        <div class="sidebar"><div class="more-svg"></div></div>
-        
+      
         <!-- all spells table  -->
         <div class="table-lines">
           <table id="spellList" class="custom-table">
@@ -209,29 +204,18 @@
                 </thead>
                 <tbody>
                  
+
                 </tbody>
             </table>       
           </div>
           
           <!------------------------ Spell Info------------- -->
           <div class="spellNameDiv">     
-          <div class="spellNameText">
-            <span>Spell Name</span>
-          </div>
           
-          <div class="spellChar">
-          <span >Range suration balh blah</span>
-          </div>
-            
-            <div class="infoAboutSpellDiv">
-                <a class="infotext"> ipsum dolor sit amet consectetur, adipisicing eli. Molestias, optio. 
-                  Quasi omnis autem laboriosam, quidem eius, fugit reprehenderit minima voluptate voluptatibus 
-                  ex necessitatibus exercitationem illo porro aliquid dolorem veniam et.</a>
-            </div>
           
 
           </div>
-        </div>
+        
     
   </body>
 </html>
