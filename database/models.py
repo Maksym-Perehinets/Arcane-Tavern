@@ -17,7 +17,7 @@ class Sources(Base):
     __tablename__ = 'sources'
     id = Column(Integer, primary_key=True)
     book_name = Column(String(100), nullable=False)
-    # Declaration of relation with spell table as foreign key
+
     spells = relationship('Spell', back_populates='source')
 
 
@@ -41,7 +41,6 @@ class Ranges(Base):
     shape = Column(String(150), nullable=False)
     distance_type = Column(String(255), nullable=False)
     distance_range = Column(Integer, nullable=False)
-    # Declaration of relation with spell table as foreign key
     spells = relationship('Spell', back_populates='spell_range')
 
 
@@ -64,7 +63,6 @@ class Duration(Base):
     duration_type = Column(String(100), nullable=False)
     duration_time = Column(Integer, nullable=False)
     concentration = Column(Integer, nullable=False)
-    # Declaration of relation with spell table as foreign key
     spells = relationship('Spell', back_populates='duration')
 
 
@@ -103,11 +101,10 @@ class Spell(Base):
     components = Column(String(255), nullable=False)
     spell_description = Column(String, nullable=False)
     ariatags = Column(String(10), nullable=False)
-    suitable_casters = Column(String, nullable=False)
     source_id = Column(Integer, ForeignKey('sources.id'))  # Foreign key reference sources table
     spell_range_id = Column(Integer, ForeignKey('ranges.id'))  # Foreign key reference to ranges able
     duration_id = Column(Integer, ForeignKey('durations.id'))  # Foreign key reference to durations table
-    # Declaration of relation with other tabels as foreign key
+
     source = relationship('Source', back_populates='spell')
     range = relationship('Range', back_populates='range')
     duration = relationship('Duration', back_populates='duration')
