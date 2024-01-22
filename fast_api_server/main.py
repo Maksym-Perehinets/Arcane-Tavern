@@ -157,7 +157,7 @@ def test():
 	}	
 
 
-
+"""
 @app.post("/process_data/")
 async def process_data(item: schemas.Item):
     try:
@@ -211,3 +211,5 @@ async def process_data(item: schemas.Item):
 			"hasFluffImages": "true"}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+        
+"""
