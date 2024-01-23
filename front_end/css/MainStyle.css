@@ -70,17 +70,7 @@
       display: block;
       padding: 8px;
     }
-    
-
-
-    /* Center the text in the "Name" column */
-    .custom-table td:nth-child(2) {
-      text-align: left;
-    }
-    
-    /* Set specific widths for the "Time," "C," and "Lvl" columns */
-    
-    .custom-table th:nth-child(1),
+        
     .custom-table td:nth-child(1)
     {
 
@@ -92,21 +82,27 @@
     {
       width: 350px ;
       word-wrap: break-word; 
-      word-break: break-word;  
+      word-break: break-word;
+      text-align: left;  
     }
 
     .custom-table td:nth-child(3)
     {
       width: 20px ;
     }
+    
+    
     .custom-table td:nth-child(4)
     {
-      width: 25px ;
+      width: 10px ;
+      word-wrap: break-word; 
+      word-break: break-word; 
     }
 
     .custom-table td:nth-child(5)
     {
       width: 25px ;
+    
     }
     
     .custom-table td:nth-child(6)
@@ -267,7 +263,10 @@
     @media only screen and (max-width: 1000px) {
   /* Styles for screens up to 480px wide (phones) */
   .table-lines {
+    z-index: 1;
+    
     height: 45vh;
+
     margin: 2%;
     width: 96%;
     left: 0;
@@ -291,8 +290,10 @@
   #signupBtn
   {
     position: absolute;
-    margin-left: 150px;
+    margin-left: 65px;
   }
+
+ 
 
   .custom-table a
   {
@@ -316,3 +317,6 @@
     font-size: 120%;
   }
 }
+
+
+
