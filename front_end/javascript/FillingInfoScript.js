@@ -12,7 +12,10 @@ function populateTable(data) {
       var durationCell = row.insertCell(3);
       var timeCell = row.insertCell(4);
       var rangeCell = row.insertCell(5);
+      var idCell = row.insertCell(6);
+      idCell.style.display = "none";
 
+      idCell.innerHTML = spell.id;
       levelCell.innerHTML = spell.level;
       nameCell.innerHTML = spell.name;
 
@@ -33,8 +36,9 @@ function populateTable(data) {
               ? `${spell.range.distance.amount} ${spell.range.distance.type}`
               : spell.range.distance.type
           : spell.range.type;
-          
-      hui();
+      
+      ClickChecking();
+
     });
   } catch (error) {
     console.error("Error " + error);
@@ -62,6 +66,9 @@ function populateTable(data) {
 // app.get('/getUsers', function(req, res){
 //     fs.readFile(__dirname + )
 // })
+
+
+
 
 window.onload = getData();
 function getData(){

@@ -6,11 +6,11 @@ var spellComponents =  document.getElementById("spellComponents");
 var spellDescription =  document.getElementById("spellDescription");
 
 
-function hui(){
+function ClickChecking(){
     var spellTable = document.getElementById("spellList").getElementsByTagName('tbody')[0];
     for (var i = 0; i < spellTable.rows.length; i++) {
         spellTable.rows[i].onclick = function() {
-            console.log(SendData({"name": this.id}));
+            SendData({"name": this.cells[6].innerHTML});
         };
     }
 }

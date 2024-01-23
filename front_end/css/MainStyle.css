@@ -33,8 +33,10 @@
   scrollbar-width: thin; /* Firefox */
   
 }
+
 .table-lines::-webkit-scrollbar {
-  display: thin; /* Chrome opera safari */
+ /* Chrome opera safari */
+  scrollbar-width: thin;
 }
 
 
