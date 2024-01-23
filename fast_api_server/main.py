@@ -160,8 +160,19 @@ def test():
 
 
 
-@app.post("/process_data/")
-async def process_data(item: schemas.Item):
+@app.post("/returnSpellsToTable/")
+async def returnSpellsToTable(item: schemas.Item):
+    try:
+        processed_data = f"{item.name}"
+        return processed_data
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+
+
+@app.post("/findSpellByName/")
+async def findSpellByName(item: schemas.Item):
     try:
         processed_data = f"{item.name}"
         return processed_data
