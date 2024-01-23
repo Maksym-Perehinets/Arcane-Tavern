@@ -1,5 +1,3 @@
-
-var btnToggle = document.querySelector(".btn-toggle");
 var sidebar = document.querySelector(".sidebar");
 var container = document.querySelector(".container");
 
