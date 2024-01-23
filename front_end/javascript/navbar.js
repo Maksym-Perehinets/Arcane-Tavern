@@ -1,6 +1,7 @@
 window.onload = load;
 
-function load() {
+function load() 
+{
   let btnToggle = document.querySelector(".btn-toggle");
 
   btnToggle.addEventListener("click", (e) => {
