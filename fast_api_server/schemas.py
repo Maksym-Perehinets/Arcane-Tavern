@@ -16,4 +16,3 @@ class CreateUser(BaseModel):
 
 class Item(BaseModel):
     name: str
-    description: str = None

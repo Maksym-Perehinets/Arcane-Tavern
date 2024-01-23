@@ -33,9 +33,10 @@
   scrollbar-width: thin; /* Firefox */
   
 }
-/* Chrome scrollbar */
+
 .table-lines::-webkit-scrollbar {
-  display: none;
+ /* Chrome opera safari */
+  scrollbar-width: thin;
 }
 
     .custom-table a:hover {

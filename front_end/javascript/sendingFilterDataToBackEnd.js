@@ -1,18 +1,6 @@
-
-
-
-
-// Замініть URL на адресу вашого бекенду, який оброблює POST-запити
-const backendUrlUpload = 'http://localhost:8000/process_data/';
-
-const dataToSend = {
-  name: 'John Doe',
-  description: 'Some description'
-};
-
-function testMyFunc(){
-    console.log("sent");
-    fetch(backendUrlUpload, {
+function SendData(dataToSend, url){
+    // console.log("sent");
+    fetch(url, {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json'
