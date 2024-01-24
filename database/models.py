@@ -63,7 +63,7 @@ class Duration(Base):
     id = Column(Integer, primary_key=True)
     duration_type = Column(String(100), nullable=False)
     duration_time = Column(Integer, nullable=False)
-    concentration = Column(Integer, nullable=False)
+    concentration = Column(String, nullable=False)
     # Declaration of relation with spell table as foreign key
     spells = relationship('Spell', back_populates='duration')
 
@@ -102,8 +102,8 @@ class Spell(Base):
     cast_time = Column(String(255), nullable=False)
     components = Column(String(255), nullable=False)
     spell_description = Column(String, nullable=False)
-    ariatags = Column(String(10), nullable=False)
     suitable_casters = Column(String, nullable=False)
+    entries_higher_level = Column(String, nullable=False)
     source_id = Column(Integer, ForeignKey('sources.id'))  # Foreign key reference sources table
     spell_range_id = Column(Integer, ForeignKey('ranges.id'))  # Foreign key reference to ranges able
     duration_id = Column(Integer, ForeignKey('durations.id'))  # Foreign key reference to durations table
