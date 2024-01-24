@@ -16,3 +16,38 @@ function ClickChecking() {
     };
   }
 }
+
+function pizdaHui1234 (sdata) {
+  // spellName.innerHTML = sdata.name;
+  // spellRange.innerHTML = sdata.range;
+  // spellDuration.innerHTML = sdata.duration;
+  // spellCastingTime.innerHTML = sdata.castingTime;
+  // spellComponents.innerHTML = sdata.components;
+  // spellDescription.innerHTML = sdata.description;
+
+  // levelCell.innerHTML = spell.level;
+        spellName.innerHTML = sdata.name;
+
+
+        spellDuration.innerHTML =
+          sdata.duration.type == "timed"
+            ? `${sdata.duration.duration.type} ${sdata.duration.duration.amount}`
+            : `${sdata.duration.type}`;
+
+            spellCastingTime.innerHTML = `${sdata.time[0].number} ${sdata.time[0].unit}`;
+
+            spellRange.innerHTML = sdata.range.distance
+          ? sdata.range.distance.amount
+            ? `${sdata.range.distance.amount} ${sdata.range.distance.type}`
+            : sdata.range.distance.type
+          : sdata.range.type;
+
+
+  
+
+}
+document.addEventListener('DOMContentLoaded', async function() {
+
+pizdaHui1234(getData("http://127.0.0.1:8000/test"));
+});
+
