@@ -6,7 +6,7 @@
 /* - */
 .table-lines {
   float: left;
-  width: 40%;
+  width: 50%;
   max-height: 800px;
   top: 10px;
   left: 10%;
@@ -282,8 +282,8 @@
       background-size: cover;
       
       margin-top: 1%;
-      margin-right: 10%;
-      margin-left: 10%;
+      margin-right: 9%;
+      margin-left: 9%;
       padding-bottom: 10%;
       padding-left: 2%;
       padding-right: 2%;
@@ -291,7 +291,7 @@
 
       top: 1%;
       font-family: DraconicFont;
-      border-radius: 4%;
+      border-radius: 10px;
     }
   
     .spellChar {
@@ -300,6 +300,7 @@
       color: rgb(255, 255, 255);
       margin-left: 9%;
     }
+
 
     @media only screen and (max-width: 1000px) {
   /* Styles for screens up to 480px wide (phones) */
