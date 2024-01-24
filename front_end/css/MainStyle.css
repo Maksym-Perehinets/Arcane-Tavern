@@ -240,7 +240,8 @@
 
     .spellNameDiv {
       float: right;
-      background-color: rgba(19, 19, 19, 0.692);
+      background: url(../IMGs/bg.png);
+      background-size: cover;
       border: solid;
       border-color: black; /* Set the border color to blue */
       border-width: 3px;
@@ -260,13 +261,15 @@
       top: 10%;
       font-family: DraconicFont;
       font-size: 300%;
-      color: #000;
+      color: #ffffff;
       margin-left: 9%;
     }
-
-    .infotext
-    {
-      
+    .bookName {
+      float:right;
+      top: 5%;
+      font-family: DraconicFont;
+      color: #ffffff;
+      margin-right: 9%;
     }
 
     .infoAboutSpellDiv
@@ -292,9 +295,9 @@
     }
   
     .spellChar {
-      font-size: 150%;
+      font-size: 130%;
       font-family: DraconicFont;
-      color: rgb(0, 0, 0);
+      color: rgb(255, 255, 255);
       margin-left: 9%;
     }
 
