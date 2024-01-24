@@ -92,14 +92,14 @@ class JsonParser:
         for json_file in self.json_files.values():
             with open(json_file, 'r') as open_json_file:
                 for spell in json.load(open_json_file).get('spell'):
-                    range_dict = spell.get('duration')
-                    if range_dict is not None:
+                    duration_dict = spell.get('duration')
+                    if duration_dict is not None:
                         # Convert the dictionary to a JSON string for comparison
-                        range_str = json.dumps(range_dict, sort_keys=True)
+                        range_str = json.dumps(duration_dict, sort_keys=True)
 
                         # Check if the JSON string is already in unique_durations
                         if range_str not in [json.dumps(r, sort_keys=True) for r in unique_durations]:
-                            unique_durations.append(range_dict)
+                            unique_durations.append(duration_dict)
         return unique_durations
 
     def __get_spells(self):
@@ -166,8 +166,9 @@ class JsonParser:
                                 'distance_range': item['distance'].get('amount')
                                 })
             else:
-                pass
-
+                result.append({
+                                'shape': item['type'],
+                })
         return result
 
 
@@ -185,8 +186,11 @@ class JsonParser:
                                "concentration": value[-1].get('concentration', False)
                                })
             else:
-                pass
-
+                result.append({
+                    "duration_type": value[0]['type'],
+                    "duration_time": 'Null',
+                    "concentration": value[-1].get('concentration', False)
+                })
         return result
 
     def get_all_spells(self):
@@ -207,3 +211,8 @@ class JsonParser:
                             "duration_id":          spell['duration']
                             })
         return result
+
+
+get_data = JsonParser('spells_json/index.json')
+get_data.get_all_durations()
+
