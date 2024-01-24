@@ -3,13 +3,13 @@ import json
 import os
 
 # Used to make this work when importing JsonParser
-# Have no faking idea how to make it work other way
+# Have no fucking idea how to make it work other way
 script_dir = os.path.dirname(os.path.realpath(__file__))
 os.chdir(script_dir)
 
 """
-If you diceded to use this paser pleas initiate 
-a class with inputting a path to your index.json
+If you decide to use this parser please initiate 
+a class with inputing a path to your index.json
 like this example = JsonParser('./path/to/your/index.json')
 after that you are welcome to use it but do not forget 
 to store spells_fson folder in same folder as your parser
