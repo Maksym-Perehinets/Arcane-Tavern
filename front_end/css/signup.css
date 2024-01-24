@@ -196,36 +196,3 @@ body {
  span {
     user-select: none;
  }
-
- .backmenu {
-    min-width: 130px;
-    width: 130px;
-    height: 40px;
-    border: none;
-    border-radius: 10px;
-    display: flex;
-    background-color: red;
-    font-family: DraconicFont;
-    font-size: 120%;
-    color: rgba(21, 21, 21, 1);
-    margin: 1%;
-    cursor: pointer;
-    transition: all 0.3s linear;
-    vertical-align: middle;
-    margin-left: 20px;
-    
-    padding-left: 24px;
-    padding-top: 11px;
-    box-shadow: 4px 4px 10px black;
-  }
-
-
-  #passError {
-    color: #BF1818;
-    font-size: 12px;
-  }
-
-  #errorDiv {
-    margin-left: 20px;
-    margin-top: 5px;
-  }

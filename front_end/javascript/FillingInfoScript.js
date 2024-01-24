@@ -1,16 +1,14 @@
 function populateTable(data) {
-    var spellListTable = document.getElementById("spellList").getElementsByTagName('tbody')[0];
+  // try {
+    var spellListTable = document
+      .getElementById("spellList")
+      .getElementsByTagName("tbody")[0];
 
-    // Check if 'data.spell' is an array--
+    console.log(data);
 
-    // if (data.spell.length === 0) {
-    //     console.warn('Data.spell array is empty.');
-    //     return;
-    // }
-    
-
-    // Use 'data.spell' instead of 'data' in the forEach loop
-    // data.forEach(data => {
+    if (data.spell) { // Check if data.spell is defined
+      data.spell.forEach(spell => {
+        var durationEntry = spell.duration[0];
         var row = spellListTable.insertRow();
         var levelCell = row.insertCell(0);
         var nameCell = row.insertCell(1);
@@ -18,73 +16,63 @@ function populateTable(data) {
         var durationCell = row.insertCell(3);
         var timeCell = row.insertCell(4);
         var rangeCell = row.insertCell(5);
-
-        levelCell.innerHTML = data.level;
-        nameCell.innerHTML = data.name;
+        var idCell = row.insertCell(6);
+        idCell.style.display = "none";
+        console.log("safd");
+        idCell.innerHTML = spell.id;
+        levelCell.innerHTML = spell.level;
+        nameCell.innerHTML = spell.name;
 
         concentration.innerHTML =
-            data.duration[0] && data.duration[0].concentration 
-            ? "Yes"
-            : "No";
-            
-        durationCell.innerHTML = 
-            data.duration.type == "timed"
-            ? `${data.duration.type} ${data.duration.amount}` 
-            : `${data.duration[0].type}`;
+          spell.duration[0] && spell.duration[0].concentration ? "Yes" : "No";
 
-        timeCell.innerHTML = `${data.time[0].number} ${data.time[0].unit}`;
-        rangeCell.innerHTML = 
-            data.range.distance
-            ? data.range.distance.amount
-                ? `${data.range.distance.amount} ${data.range.distance.type}`
-                : data.range.distance.type
-            : data.range.type;
-            ultratestqwerty();
-    // });
+        durationCell.innerHTML =
+          durationEntry.type == "timed"
+            ? `${durationEntry.duration.type} ${durationEntry.duration.amount}`
+            : `${durationEntry.type}`;
+
+        timeCell.innerHTML = `${spell.time[0].number} ${spell.time[0].unit}`;
+
+        rangeCell.innerHTML = spell.range.distance
+          ? spell.range.distance.amount
+            ? `${spell.range.distance.amount} ${spell.range.distance.type}`
+            : spell.range.distance.type
+          : spell.range.type;
+
+        ClickChecking();
+      });
+    } else {
+      console.log('No "spell" data found.');
+    }
+  // } catch (error) {
+  //   console.error("Error " + error);
+  // }
 }
 
 
 
-// fetch("http://127.0.0.1:8000/test")
-// .then(response => response.text())
-// .then(data => {populateTable(data);})
-// .catch(error => console.error('Error fetching data:', error));
-    
+// document.addEventListener('DOMContentLoaded', async function() {
+//   var spellListTable = document.getElementById("spellList");
 
-// fetch("http://127.0.0.1:8000/test")
-// .then(res => res.text())
-// .then(text => JSON.parse(text.slice(1)))
-// .then(json => console.log(json.pageItems))
+//   if (spellListTable) {
+//     var tbody = spellListTable.getElementsByTagName('tbody')[0];
 
+//     if (tbody) {
+//       try {
+//         const data = await getData("http://127.0.0.1:8000/test");
+//         console.log(data);
+//         populateTable(data);
+//       } catch (error) {
+//         console.error("Error:", error);
+//       }
+//     } else {
+//       console.error('Table body not found.');
+//     }
+//   } else {
+//     console.error('Table with ID "spellList" not found.');
+//   }
+// });
 
-// var express = require('express');
-// var app = express();
-// var fs = require('fs');
-
-// app.get('/getUsers', function(req, res){
-//     fs.readFile(__dirname + )
-// })
-
-
-
-const backendUrl = 'http://localhost:8000/test';
-
-async function fetchData() {
-  try {
-    // Axios вже доступний як глобальний об'єкт через CDN
-    const response = await axios.get(backendUrl);
-
-    // Отримуємо дані з відповіді
-    const jsonData = response.data;
-    populateTable(jsonData);
-
-    // Додаткова обробка JSON-даних тут
-  } catch (error) {
-    console.error('Помилка при отриманні даних:', error.message);
-  }
-}
-
-fetchData();
-
-
-
+// // window.onload =
+// // console.log(getData("http://127.0.0.1:8000/test"));
+// // populateTable(getData("http://127.0.0.1:8000/test"));
