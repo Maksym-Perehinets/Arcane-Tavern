@@ -11,7 +11,7 @@ function ClickChecking() {
   }
 }
 
-function pizdaHui1234(data) {
+function insertInfoIntoDescription(data) {
   var sdata = data.spell[0];
   var bebra123 = sdata.duration[0];
 
@@ -50,7 +50,7 @@ const backendUrlUpload = "http://localhost:8000/returnSpellsToTable/";
 document.addEventListener("DOMContentLoaded", async function () {
   try {
     const data = await getSpellDescription();
-    pizdaHui1234(data);
+    insertInfoIntoDescription(data);
   } catch (error) {
     console.error("Error:", error);
   }

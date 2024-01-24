@@ -61,9 +61,9 @@ CREATE TABLE IF NOT EXISTS duration(
 class Durations(Base):
     __tablename__ = 'durations'
     id = Column(Integer, primary_key=True)
-    duration_type = Column(String(100), nullable=False)
-    duration_time = Column(Integer, nullable=False)
-    concentration = Column(Boolean, nullable=False)
+    duration_type = Column(String(100), nullable=True)
+    duration_time = Column(Integer, nullable=True)
+    concentration = Column(Boolean, nullable=True)
     # Declaration of relation with spell table as foreign key
     spells = relationship('Spell', back_populates='duration')
 
