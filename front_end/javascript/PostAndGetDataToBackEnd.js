@@ -1,6 +1,6 @@
-function SendData(dataToSend, url) {
+function SendData(dataToSend) {
   // console.log("sent");
-  fetch(url, {
+  fetch("http://127.0.0.1:8000/findSpellByName", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -18,8 +18,8 @@ function SendData(dataToSend, url) {
 
 
 async function getAllSpells() {
-  console.log("sent");
-  const backendUrl = "http://127.0.0.1:8000/test";
+  // console.log("sent");
+  const backendUrl = "http://127.0.0.1:8000/spells";
   try {
     const response = await axios.get(backendUrl);
     return response.data;
@@ -31,7 +31,7 @@ async function getAllSpells() {
 
 
 async function getSpellDescription() {
-  console.log("sent");
+  // console.log("sent");
   const backendUrl = "http://127.0.0.1:8000/returnSpellsToTable/";
   try {
     const response = await axios.get(backendUrl);
