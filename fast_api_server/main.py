@@ -43,10 +43,28 @@ async def root():
 @app.get("/spells")
 async def dbtest(db: Session = Depends(get_db)):
     """
-    Gets no values created to get short info of each spell in database\n
-    DO NOT INSERT ANYTHING\n
-    If its response like this "Something went wrong with database pleas contact owner"\n
-    then something went wrong with your local database
+    Get short information of each spell in the database.
+
+    **DO NOT INSERT ANYTHING.**
+
+    If the response is like this "Something went wrong with the database, please contact the owner,"
+    then something went wrong with your local database delete file and read documentation for database_fulfillment.
+
+    Returns:
+    - `status`: A string indicating the status of the request.
+    - `data`: A list of dictionaries containing short information about each spell.
+
+    Raises:
+    - `HTTPException`: If there is an issue with the database.
+
+    Example Usage:
+    ```python
+    response = client.get("/spells")
+    assert response.status_code == 200
+    assert response.json()["status"] == "spell"
+    assert len(response.json()["data"]) > 0
+    ```
+
     """
     result = (
         db.query(Spell, Durations, Ranges)
@@ -95,7 +113,39 @@ async def dbtest(db: Session = Depends(get_db)):
 @app.get("/get-spell/{spell_id}")
 async def get_spell(spell_id: int, db: Session = Depends(get_db)):
     """
+    Retrieve information about a spell by its ID.
 
+    Parameters:
+    - `spell_id`: The unique identifier for the spell.
+
+    Returns:
+    - `status`: A string indicating the status of the request.
+    - `data`: A list of dictionaries containing information about the spell.
+
+    Raises:
+    - `HTTPException`: If there is an issue with the database or the requested spell is not found.
+
+    Example Usage:
+    ```JavaScript
+    // Fetch spell information by ID
+    async function getSpellById(spellId) {
+    const response = await fetch(`http://localhost:8000/get-spell/${spellId}`);
+    const data = await response.json();
+
+    if (response.status !== 200) {
+        console.error(`Error: ${data.detail}`);
+        // Handle error appropriately
+        return null;
+    }
+
+    console.log("Spell Data:", data.data);
+    return data.data;
+    }
+
+    // Example Usage
+    const spellId = 1; // Replace with the desired spell ID
+    getSpellById(spellId);
+    ```
     """
     result = (
         db.query(Spell, Sources.book_name, Durations, Ranges)
@@ -116,7 +166,10 @@ async def get_spell(spell_id: int, db: Session = Depends(get_db)):
             {
                 "id":           spell.id,
                 "name":         spell.spell_name,
+                "source":       source,
+                "page":         spell.book_page,
                 "level":        spell.spell_level,
+                "school":       spell.school,
                 "components":   spell.components,
                 # Duration type, time, concentration
                 "duration": {
@@ -132,7 +185,10 @@ async def get_spell(spell_id: int, db: Session = Depends(get_db)):
                         "type":     ranges.distance_type,
                         "amount":   ranges.distance_range
                     }
-                }
+                },
+                "casters":                   spell.suitable_casters,
+                "description":               spell.spell_description,
+                "descriptionOnHigherLevels": spell.entries_higher_level
             }
             for spell, source, duration, ranges in result
         ]
