@@ -1,9 +1,6 @@
-const backendUrlUpload = 'http://localhost:8000/process_data/';
-
-
-function SendData(dataToSend){
-    console.log("sent");
-    fetch(backendUrlUpload, {
+function SendData(dataToSend, url){
+    // console.log("sent");
+    fetch(url, {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json'

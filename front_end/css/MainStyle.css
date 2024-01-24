@@ -5,17 +5,18 @@
 }
 /* - */
 .table-lines {
-  position: relative;
+  float: left;
   width: 40%;
-  max-height: 850px;
+  max-height: 800px;
   top: 10px;
   left: 10%;
   margin: 1%;
+  margin-left: 3%;
   background-image: url("../IMGs/med.png");
   background-repeat: no-repeat;
   background-size: cover;
   border: 2px solid #424242;
-  display: inline-block;
+  /* display: inline-block; */
   overflow-y: scroll;
   overflow-x: hidden;
   border-radius: 2%;
@@ -38,7 +39,6 @@
  /* Chrome opera safari */
   scrollbar-width: thin;
 }
-
 
     .custom-table a:hover {
       color: #555;
@@ -72,39 +72,39 @@
       display: block;
       padding: 8px;
     }
-    
-
-
-    /* Center the text in the "Name" column */
-    .custom-table td:nth-child(2) {
-      text-align: left;
-    }
-    
-    /* Set specific widths for the "Time," "C," and "Lvl" columns */
-    
+        
     .custom-table td:nth-child(1)
     {
-      width: 1px ;
-      max-height: 1px;
+
+      width: 10px ;
+      max-height: 40px;
     }
     
     .custom-table td:nth-child(2)
     {
       width: 350px ;
+      word-wrap: break-word; 
+      word-break: break-word;
+      text-align: left;  
     }
 
     .custom-table td:nth-child(3)
     {
       width: 20px ;
     }
+    
+    
     .custom-table td:nth-child(4)
     {
-      width: 25px ;
+      width: 10px ;
+      word-wrap: break-word; 
+      word-break: break-word; 
     }
 
     .custom-table td:nth-child(5)
     {
       width: 25px ;
+    
     }
     
     .custom-table td:nth-child(6)
@@ -142,6 +142,7 @@
     }
     
     .searchTerm {
+      
       font-family: DraconicFont;
       font-size: 120%;
       width: 100%;
@@ -154,22 +155,22 @@
       outline: none;
       color: rgba(21, 21, 21, 1); /* Text color behind */
       background-color: rgba(238, 235, 235, 0.155);
+      
     }
     
     .SearchIco
     {
+      float: right;
       height: 100%;
       width: 100%;
     }
-
-   
-
-
     .searchTerm:focus{
       color: rgb(0, 0, 0);
     }
     
     .searchButton {
+      
+      
       width: 50px;
       height: 50px;
       border: 1px solid red;
@@ -181,35 +182,17 @@
       font-size: 20px;
     }
     
-    
-
     /*Resize the wrap to see the search bar change!*/
     .wrap{
       width: 50%;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
     }
 
     .fa-solid fa-magnifying-glass
     {
       position: absolute;
     }
-    /* #srcbar {
-      background-color: #f2f2f27a;
-      height: 50px;
-      width: 600px;
-      margin-left: 200px;
-      border-radius: 25px;
-      text-align: center;
-      font-size: 26px;
-      border-color: transparent;
-      user-select: none;
-      text-decoration: none;
-    }
-    #srcbar:focus { outline: none;} */
-    
+ 
+  
     /* -------------Sign up ----------- */
     #signupBtn {
       min-width: 100px;
@@ -234,6 +217,7 @@
       background-color: rgb(252, 133, 133);
     } 
 
+/* ----------------------------- */
     label {
       position: relative;
     }
@@ -253,11 +237,6 @@
     a:visited{color:inherit}
     a:hover{color:inherit}
 
-    
-    .tables {
-      display: flex;
-      justify-content: space-around;
-    }
 
     .spellNameDiv {
       float: right;
@@ -267,14 +246,26 @@
       border-width: 3px;
       /* Add other styles as needed */
       width: 40%;
+      margin-right: 4%;
+      margin-top: 1%;
       padding-top: 1%;
-      padding-bottom: 2%;
+      padding-bottom: 3%;
       top: 55px; 
       left: 55%;
       border-radius: 20px;
     }
-    
-    .spellNameDivPos {
+  
+    .spellNameText
+    {
+      top: 10%;
+      font-family: DraconicFont;
+      font-size: 300%;
+      color: #000;
+      margin-left: 9%;
+    }
+
+    .infotext
+    {
       
     }
 
@@ -287,58 +278,85 @@
       background-repeat: no-repeat;
       background-size: cover;
       
-      
+      margin-top: 1%;
       margin-right: 10%;
       margin-left: 10%;
-      padding-bottom: 5%;
+      padding-bottom: 10%;
+      padding-left: 2%;
+      padding-right: 2%;
+      padding-top: 2%;
 
       top: 1%;
       font-family: DraconicFont;
-      border-radius: 3%;
+      border-radius: 4%;
     }
-
-    .spellNameDivPos {
-      
-    }
-    
-    .spellNameText
-    {
-      top: 10%;
-      font-family: DraconicFont;
-      font-size: 300%;
-      color: #000;
-      margin-left: 9%;
-    }
-    
-    .infotext
-    {
-      margin: 3%;
-    }
-
-    .spellChar{
+  
+    .spellChar {
       font-size: 150%;
       font-family: DraconicFont;
-      color: #2b2b2b;
+      color: rgb(0, 0, 0);
       margin-left: 9%;
     }
 
-    /* .table-lines {
-      position: relative;
-      width: 40%;
-      max-height: 850px;
-      top: 10px;
-      left: 10%;
-      margin: 1%;
-      background-image: url("../IMGs/med.png");
-      background-repeat: no-repeat;
-      background-size: cover;
-      border: 2px solid #424242;------
-      overflow-y: scroll;
-      overflow-x: hidden;
-      border-radius: 2%;  
-    } */
+    @media only screen and (max-width: 1000px) {
+  /* Styles for screens up to 480px wide (phones) */
+  .table-lines {
+    z-index: 1;
+    
+    height: 45vh;
 
-
-
+    margin: 2%;
+    width: 96%;
+    left: 0;
+    /* word-wrap: break-word; --
+    /* word-break: break-word;   */
+  }
   
-   
+
+.search
+{
+  margin-right: 10%;
+}
+
+  .wrap
+  {
+    position: relative;
+    top: 0%;
+    margin-left: 49%;
+  }
+
+  #signupBtn
+  {
+    position: absolute;
+    margin-left: 65px;
+  }
+
+ 
+
+  .custom-table a
+  {
+    font-size: 20px;
+  }
+  
+  
+  .spellNameDiv
+  {
+    float: left;
+    width: 96%;
+    margin: 2%;
+  }
+  .infoAboutSpellDiv {
+    margin: 4%;
+  }
+
+  .custom-table td {
+    font-size: 20px;
+  }
+
+  .searchTerm {
+    font-size: 120%;
+  }
+}
+
+
+
