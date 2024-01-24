@@ -18,6 +18,7 @@
   <script src="../javascript/navbar.js"></script>
   <script src="../javascript/SendingSearchInfo.js"></script>
   <script src="../javascript/showSpellinfo.js"></script>
+  <script src="../javascript/resetButton.js"></script>
 </head>
 
 <body>
@@ -31,7 +32,7 @@
     <!-- --------------Filters Bar------------- -->
     <div class="sidebar_menu">
 
-      <select class="DropList" name="Level">
+      <select class="DropList" name="Level" id="actionDropdown">
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -46,7 +47,7 @@
 
       <h4>Level</h4>
 
-      <select class="DropList" name="Class">
+      <select class="DropList" name="Class" id="actionDropdown">
         <option value="1">Artificer</option>
         <option value="2">Barbarian</option>
         <option value="3">Bard</option>
@@ -67,24 +68,7 @@
 
       </a>
 
-
-
-      <select class="DropList" name="Level">
-        <option value="1">Arcane tricster</option>
-        <option value="2">22</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-      </select>
-
-      <h4>Subclass</h4>
-      </a>
-
-      <select class="DropList" name="School">
+      <select class="DropList" name="School" id="actionDropdown">
         <option value="1">Abjuration</option>
         <option value="2">Alteration</option>
         <option value="3">Conjuration</option>
@@ -100,7 +84,7 @@
 
 
 
-      <select class="DropList" name="DamageType">
+      <select class="DropList" name="DamageType" id="actionDropdown">
         <option value="1">Acid</option>
         <option value="2">Bludgeoning</option>
         <option value="3">Cold</option>
@@ -121,7 +105,7 @@
 
 
 
-      <select class="DropList" name="Range">
+      <select class="DropList" name="Range" id="actionDropdown">
         <option value="1">Self (5-foot radius)</option>
         <option value="2">Self (10-foot radius)</option>
         <option value="3">Self (15-foot radius)</option>
@@ -152,7 +136,7 @@
       </a>
 
 
-      <select class="DropList" name="Duration">
+      <select class="DropList" name="Duration" id="actionDropdown">
         <option value="1">Instantaneous</option>
         <option value="2">1 round</option>
         <option value="3">1 minute</option>
@@ -177,7 +161,7 @@
       <h4>Duration</h4>
       </a>
 
-      <select class="DropList" name="Action">
+      <select class="DropList" name="Action" id="actionDropdown">
         <option value="1">1 action</option>
         <option value="2">1 bonus action</option>
         <option value="3">1 reaction</option>
@@ -190,7 +174,7 @@
       </a>
 
       <button class="apply" onclick="testMyFunc()">Apply</button>
-      <button class="clear">Reset</button>
+      <button class="clear" onclick="resetAllDropdowns()">Reset</button>
 
 
     </div>
