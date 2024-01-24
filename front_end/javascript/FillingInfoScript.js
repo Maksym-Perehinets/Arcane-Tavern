@@ -4,8 +4,6 @@ function populateTable(data) {
       .getElementById("spellList")
       .getElementsByTagName("tbody")[0];
 
-    console.log(data);
-
     if (data.spell) { // Check if data.spell is defined
       data.spell.forEach(spell => {
         var durationEntry = spell.duration[0];
@@ -18,7 +16,6 @@ function populateTable(data) {
         var rangeCell = row.insertCell(5);
         var idCell = row.insertCell(6);
         idCell.style.display = "none";
-        console.log("safd");
         idCell.innerHTML = spell.id;
         levelCell.innerHTML = spell.level;
         nameCell.innerHTML = spell.name;
@@ -51,28 +48,28 @@ function populateTable(data) {
 
 
 
-// document.addEventListener('DOMContentLoaded', async function() {
-//   var spellListTable = document.getElementById("spellList");
+document.addEventListener('DOMContentLoaded', async function() {
+  var spellListTable = document.getElementById("spellList");
 
-//   if (spellListTable) {
-//     var tbody = spellListTable.getElementsByTagName('tbody')[0];
+  if (spellListTable) {
+    var tbody = spellListTable.getElementsByTagName('tbody')[0];
 
-//     if (tbody) {
-//       try {
-//         const data = await getData("http://127.0.0.1:8000/test");
-//         console.log(data);
-//         populateTable(data);
-//       } catch (error) {
-//         console.error("Error:", error);
-//       }
-//     } else {
-//       console.error('Table body not found.');
-//     }
-//   } else {
-//     console.error('Table with ID "spellList" not found.');
-//   }
-// });
+    if (tbody) {
+      try {
+        const data = await getAllSpells();
+        console.log(data);
+        populateTable(data);
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    } else {
+      console.error('Table body not found.');
+    }
+  } else {
+    console.error('Table with ID "spellList" not found.');
+  }
+});
 
-// // window.onload =
-// // console.log(getData("http://127.0.0.1:8000/test"));
-// // populateTable(getData("http://127.0.0.1:8000/test"));
+// window.onload =
+// console.log(getData("http://127.0.0.1:8000/test"));
+// populateTable(getData("http://127.0.0.1:8000/test"));

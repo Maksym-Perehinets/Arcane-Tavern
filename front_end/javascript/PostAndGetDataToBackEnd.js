@@ -16,22 +16,39 @@ function SendData(dataToSend, url) {
     });
 }
 
-function getData(url) {
-  const backendUrl = "http://127.0.0.1:8000/test";
+
+async function getAllSpells() {
   console.log("sent");
-  var jsonData;
-  async function fetchData() {
-    try {
-      var response = await axios.get(backendUrl);
-      return response.data;
-    } catch (error) {
-      console.error("Помилка при отриманні даних:", error.message);
-    }
+  const backendUrl = "http://127.0.0.1:8000/test";
+  try {
+    const response = await axios.get(backendUrl);
+    return response.data;
+  } catch (error) {
+    console.error("Помилка при отриманні даних:", error.message);
+    throw error;
   }
-  console.log(jsonData);
-  jsonData = fetchData();
-  console.log(jsonData);
-  return jsonData;
 }
 
-console.log(getData("http://127.0.0.1:8000/test"));
+
+async function getSpellDescription() {
+  console.log("sent");
+  const backendUrl = "http://127.0.0.1:8000/returnSpellsToTable/";
+  try {
+    const response = await axios.get(backendUrl);
+    return response.data;
+  } catch (error) {
+    console.error("Помилка при отриманні даних:", error.message);
+    throw error;
+  }
+}
+
+
+// Example usage
+// (async () => {
+//   try {
+      
+//     const jsonData = await getData("http://127.0.0.1:8000/test");
+//   } catch (error) {
+//     console.error("Error:", error.message);
+//   }
+// })();

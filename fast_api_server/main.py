@@ -209,13 +209,61 @@ def test():
     }
 
 
-@app.post("/returnSpellsToTable/")
-async def returnSpellsToTable(item: schemas.Item):
-    try:
-        processed_data = f"{item.name}"
-        return processed_data
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+@app.get("/returnSpellsToTable/")
+def returnSpellsToTable():
+	return {
+	"spell": [
+		{
+			"name": "Air Bubble",
+			"source": "AAG",
+			"page": 22,
+			"level": 2,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": "s",
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 24
+					}
+				}
+			],
+			"entries": [
+				"You create a spectral globe around the head of a willing creature you can see within range. The globe is filled with fresh air that lasts until the spell ends. If the creature has more than one head, the globe of air appears around only one of its heads (which is all the creature needs to avoid suffocation, assuming that all its heads share the same respiratory system)."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"When you cast this spell using a spell slot of 3rd level or higher, you can create two additional globes of fresh air for each slot level above 2nd."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"hasFluffImages": "true"
+		}
+	]
+
+	}	
+    # except Exception as e:
+    #     raise HTTPException(status_code=500, detail=str(e))
 
 
 @app.post("/findSpellByName/")
