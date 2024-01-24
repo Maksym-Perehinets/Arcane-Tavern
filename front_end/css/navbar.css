@@ -88,9 +88,9 @@ select {
 }
 
 img {
-  border-radius: 4px;
-  padding: 5px;
-  width: 70px;
+  border-radius: 2px;
+  padding: 3px;
+  width: 110px;
   transition: margin-right 4s ease-in-out;
 }
 
@@ -247,6 +247,8 @@ img {
   font-family: DraconicFont;
   color: #a20c04;
   float: left;
+  margin-bottom: 10px;
+  margin-top: -10px;
 }
 
 /* Phones */
