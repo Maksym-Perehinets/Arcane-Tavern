@@ -49,8 +49,7 @@ async def dbtest(db: Session = Depends(get_db)):
     then something went wrong with your local database
     """
     result = (
-        db.query(Spell, Sources.book_name, Durations, Ranges)
-        .join(Sources, Sources.id == Spell.source_id)
+        db.query(Spell, Durations, Ranges)
         .join(Durations, Durations.id == Spell.duration_id)
         .join(Ranges, Ranges.id == Spell.spell_range_id)
         .all()
@@ -84,7 +83,7 @@ async def dbtest(db: Session = Depends(get_db)):
                     }
                 }
             }
-            for spell, source, duration, ranges in result
+            for spell, duration, ranges in result
         ]
 
         return {
@@ -96,16 +95,14 @@ async def dbtest(db: Session = Depends(get_db)):
 @app.get("/get-spell/{spell_id}")
 async def get_spell(spell_id: int, db: Session = Depends(get_db)):
     """
-    Gets no values created to get short info of each spell in database\n
-    DO NOT INSERT ANYTHING\n
-    If its response like this "Something went wrong with database pleas contact owner"\n
-    then something went wrong with your local database
+
     """
     result = (
         db.query(Spell, Sources.book_name, Durations, Ranges)
         .join(Sources, Sources.id == Spell.source_id)
         .join(Durations, Durations.id == Spell.duration_id)
         .join(Ranges, Ranges.id == Spell.spell_range_id)
+        .filter(Spell.id == spell_id)
         .all()
     )
 

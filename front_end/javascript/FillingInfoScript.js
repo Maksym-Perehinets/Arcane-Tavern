@@ -22,10 +22,10 @@ function populateTable(data) {
       concentration.innerHTML =
         spell.duration.concentration == true ? "Yes" : "No";
 
-      durationCell.innerHTML =
-        spell.duration.type == "instant"
-          ? `${spell.type}`
-          : `${spell.duration.type} ${spell.duration.time}`;
+      durationCell.innerHTML = 
+        spell.duration.type.toLowerCase() == "instant" || spell.duration.type.toLowerCase() == "permanent" 
+          ? `${spell.duration.type}`
+          : `${spell.duration.time} ${spell.duration.type}`;
 
       timeCell.innerHTML = `${spell.time[0].number} ${spell.time[0].unit}`;
 
