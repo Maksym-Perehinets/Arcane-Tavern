@@ -14,7 +14,7 @@
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="..\javascript\MainSortingScript.js"></script>
   <script src="..\javascript\FillingInfoScript.js"></script>
-  <script src="..\javascript\sendingFilterDataToBackEnd.js"></script>
+  <script src="..\javascript/PostAndGetDataToBackEnd.js"></script>
   <script src="../javascript/navbar.js"></script>
   <script src="../javascript/SendingSearchInfo.js"></script>
   <script src="../javascript/showSpellinfo.js"></script>
@@ -24,7 +24,7 @@
   <!-- -------------------------UI---------------- --->
   <!-- -------------sidebar----------- -->
   <div class="sidebar">
-    <button class="backward" onclick="load()"><img class="backwardico" src="/front_end/IMGs/Backward.png"></button>
+    <button class="backward" onclick="navbarFeature()"><img class="backwardico" src="/front_end/IMGs/Backward.png"></button>
     <div class="sidebar_header">
       <div><img class="logo" src="/front_end/IMGs/DnDLogoTest.png" alt="logo"></div>
     </div>
@@ -242,7 +242,7 @@
       </div>
 
       <div class="spellChar">
-        <p class="level">Level</p>
+        <a id="spellLevel" class="level">Level</p>
         <a id="spellRange">Range</a>
         <a id="spellCastingTime">Casting Time</a>
         <a id="spellComponents">Components</a>
