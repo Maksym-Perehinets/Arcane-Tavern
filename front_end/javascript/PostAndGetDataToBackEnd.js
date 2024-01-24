@@ -17,13 +17,11 @@ function SendData(dataToSend, url) {
 }
 
 
-async function getData(url) {
-  const backendUrl = "http://127.0.0.1:8000/test";
+async function getAllSpells() {
   console.log("sent");
-
+  const backendUrl = "http://127.0.0.1:8000/test";
   try {
     const response = await axios.get(backendUrl);
-    console.log(response.data);
     return response.data;
   } catch (error) {
     console.error("Помилка при отриманні даних:", error.message);
@@ -31,12 +29,26 @@ async function getData(url) {
   }
 }
 
-// Example usage
-(async () => {
+
+async function getSpellDescription() {
+  console.log("sent");
+  const backendUrl = "http://127.0.0.1:8000/returnSpellsToTable/";
   try {
-    const jsonData = await getData("http://127.0.0.1:8000/test");
-    console.log("Final result", jsonData);
+    const response = await axios.get(backendUrl);
+    return response.data;
   } catch (error) {
-    console.error("Error:", error.message);
+    console.error("Помилка при отриманні даних:", error.message);
+    throw error;
   }
-})();
+}
+
+
+// Example usage
+// (async () => {
+//   try {
+      
+//     const jsonData = await getData("http://127.0.0.1:8000/test");
+//   } catch (error) {
+//     console.error("Error:", error.message);
+//   }
+// })();
