@@ -97,7 +97,7 @@ class JsonParser:
                         # Convert the dictionary to a JSON string for comparison
                         range_str = json.dumps(range_dict, sort_keys=True)
 
-                        # Check if the JSON string is already in unique_ranges
+                        # Check if the JSON string is already in unique_durations
                         if range_str not in [json.dumps(r, sort_keys=True) for r in unique_durations]:
                             unique_durations.append(range_dict)
         return unique_durations
@@ -110,10 +110,16 @@ class JsonParser:
         hashed_sources = []
         hashed_ranges = []
         hashed_durations = []
-        for source, range, durations in zip(self.json_files.keys(), self.__get_ranges(), self.__get_durations()):
+        for source in self.json_files.keys():
             hashed_sources.append(hash(source))
+        for range in self.__get_ranges():
             hashed_ranges.append(hash(str(range)))
-            hashed_durations.append(hash(str(durations)))
+        for duration in self.__get_durations():
+            hashed_durations.append(hash(str(duration)))
+        # for source, range, durations in zip(self.json_files.keys(), self.__get_ranges(), self.__get_durations()):
+        #     hashed_sources.append(hash(source))
+        #     hashed_ranges.append(hash(str(range)))
+        #     hashed_durations.append(hash(str(durations)))
             # Only for testing DELETE LATER
             # print(hashed_sources)
             # print(hashed_ranges)
