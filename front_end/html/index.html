@@ -31,6 +31,7 @@
   <script src="../javascript/SendingSearchInfo.js"></script>
   <script src="../javascript/showSpellinfo.js"></script>
   <script src="../javascript/resetButton.js"></script>
+  <script src="../javascript/search.js"></script>
 </head>
 
 <body>
@@ -205,7 +206,7 @@
      
       <div class="wrap">
         <div class="search">
-          <input type="text" id="searchTerm" class="searchTerm" placeholder="What are you looking for?">
+          <input onkeyup="srcInTable()" type="text" id="searchTerm" class="searchTerm" placeholder="What are you looking for?">
           <div class="searchButton"> <img class="SearchIco" src="/front_end/IMGs/Search.svg" alt="SearchIco"></div>
 
         </div>
