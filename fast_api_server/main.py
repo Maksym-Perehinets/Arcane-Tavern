@@ -170,7 +170,7 @@ async def get_spell(spell_id: int, db: Session = Depends(get_db)):
         }
 
 
-@app.get("/data_filter/")
+@app.get("/data-filter/")
 async def data_filter(filter_name: str, asc_value: bool = True, db: Session = Depends(get_db)):
     """
     Endpoint to filter and retrieve data based on different criteria.
