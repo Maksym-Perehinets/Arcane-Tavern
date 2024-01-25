@@ -1,12 +1,11 @@
 from fastapi import FastAPI, Depends, HTTPException, responses, status
 from fastapi.middleware.cors import CORSMiddleware
-
+from sqlalchemy import func, asc, desc
 from sqlalchemy.orm import Session
-
+from fast_api_server.service import Service
 from database.database import engine, get_db
 from database.models import Sources, Durations, Ranges, Spell
 from database import models
-
 from . import schemas
 
 app = FastAPI()
@@ -81,23 +80,23 @@ async def dbtest(db: Session = Depends(get_db)):
         # if data is correct then return list of dicts
         formatted_result = [
             {
-                "id":           spell.id,
-                "name":         spell.spell_name,
-                "level":        spell.spell_level,
-                "components":   spell.components,
+                "id": spell.id,
+                "name": spell.spell_name,
+                "level": spell.spell_level,
+                "components": spell.components,
                 # Duration type, time, concentration
                 "duration": {
-                    "type":          duration.duration_type,
-                    "time":          duration.duration_time,
+                    "type": duration.duration_type,
+                    "time": duration.duration_time,
                     "concentration": duration.concentration
                 },
-                "time":         spell.cast_time,
+                "time": spell.cast_time,
                 # Range with
                 "ranges": {
-                    "type":     ranges.shape,
+                    "type": ranges.shape,
                     "distance": {
-                        "type":     ranges.distance_type,
-                        "amount":   ranges.distance_range
+                        "type": ranges.distance_type,
+                        "amount": ranges.distance_range
                     }
                 }
             }
@@ -106,7 +105,7 @@ async def dbtest(db: Session = Depends(get_db)):
 
         return {
             "status": "spell",
-            "data":   formatted_result
+            "data": formatted_result
         }
 
 
@@ -147,6 +146,8 @@ async def get_spell(spell_id: int, db: Session = Depends(get_db)):
     getSpellById(spellId);
     ```
     """
+    service_instance = Service()
+
     result = (
         db.query(Spell, Sources.book_name, Durations, Ranges)
         .join(Sources, Sources.id == Spell.source_id)
@@ -162,40 +163,120 @@ async def get_spell(spell_id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="Something went wrong with database pleas contact owner")
     else:
         # if data is correct then return list of dicts
-        formatted_result = [
-            {
-                "id":           spell.id,
-                "name":         spell.spell_name,
-                "source":       source,
-                "page":         spell.book_page,
-                "level":        spell.spell_level,
-                "school":       spell.school,
-                "components":   spell.components,
-                # Duration type, time, concentration
-                "duration": {
-                    "type":          duration.duration_type,
-                    "time":          duration.duration_time,
-                    "concentration": duration.concentration
-                },
-                "time":         spell.cast_time,
-                # Range with
-                "ranges": {
-                    "type":     ranges.shape,
-                    "distance": {
-                        "type":     ranges.distance_type,
-                        "amount":   ranges.distance_range
-                    }
-                },
-                "casters":                   spell.suitable_casters,
-                "description":               spell.spell_description,
-                "descriptionOnHigherLevels": spell.entries_higher_level
-            }
-            for spell, source, duration, ranges in result
-        ]
-
+        formatted_result = service_instance.format_spell(result)
         return {
             "status": "pussy test",
-            "data":   formatted_result
+            "data": formatted_result
+        }
+
+
+@app.get("/data-sort/")
+async def data_filter(filter_name: str, asc_value: bool = True, db: Session = Depends(get_db)):
+    """
+    Endpoint to filter and retrieve data based on different criteria.
+
+    Args:
+        filter_name (str): The filter criteria (e.g., "lvl", "name", "concentration", "duration", "time", "range").
+        asc_value (bool, optional): Ascending order if True, descending order if False. Default is True.
+        db (Session): SQLAlchemy database session.
+
+    Returns:
+        dict: A dictionary containing the status and filtered data.
+
+    Raises:
+        HTTPException: Raised if there is an issue with the database or if the data is corrupted.
+
+    Notes:
+        The endpoint supports filtering data based on different criteria such as spell level, spell name,
+        concentration, duration, casting time, and spell range.
+
+        - For `filter_name` = "lvl", the data is filtered and ordered by spell level.
+        - For `filter_name` = "name", the data is filtered and ordered by spell name.
+        - For `filter_name` = "concentration", the data is filtered based on concentration (1 for True, 0 for False).
+        - For `filter_name` = "duration", the data is filtered and ordered by spell duration.
+        - For `filter_name` = "time", the data is filtered and ordered by casting time.
+        - For `filter_name` = "range", the data is filtered and ordered by spell range.
+
+        The result is returned as a dictionary with a status and a list of dictionaries containing the formatted data.
+
+    Example:
+        To retrieve spells ordered by level in descending order:
+        ```
+        /data_filter/?filter_name=lvl&asc_value=False
+        ```
+
+        To retrieve spells with concentration in ascending order:
+        ```
+        /data_filter/?filter_name=concentration&asc_value=True
+        ```
+    """
+    service_instance = Service()
+    result = None
+    if filter_name == "lvl":
+        result = (
+            db.query(Spell, Sources.book_name, Durations, Ranges)
+            .join(Sources, Sources.id == Spell.source_id)
+            .join(Durations, Durations.id == Spell.duration_id)
+            .join(Ranges, Ranges.id == Spell.spell_range_id)
+            .order_by(asc(Spell.spell_level) if asc_value == True else desc(Spell.spell_level))
+        ).all()
+
+    elif filter_name == "name":
+        result = (
+            db.query(Spell, Sources.book_name, Durations, Ranges)
+            .join(Sources, Sources.id == Spell.source_id)
+            .join(Durations, Durations.id == Spell.duration_id)
+            .join(Ranges, Ranges.id == Spell.spell_range_id)
+            .order_by(asc(Spell.spell_name) if asc_value == True else desc(Spell.spell_name))
+        ).all()
+
+    elif filter_name == "concentration":
+        result = (
+            db.query(Spell, Sources.book_name, Durations, Ranges)
+            .join(Sources, Sources.id == Spell.source_id)
+            .join(Durations, Durations.id == Spell.duration_id)
+            .join(Ranges, Ranges.id == Spell.spell_range_id)
+            .filter(Durations.concentration == 1 if asc_value == True else Durations.concentration == 0)
+        ).all()
+
+    elif filter_name == "duration":
+        result = (
+            db.query(Spell, Sources.book_name, Durations, Ranges)
+            .join(Sources, Sources.id == Spell.source_id)
+            .join(Durations, Durations.id == Spell.duration_id)
+            .join(Ranges, Ranges.id == Spell.spell_range_id)
+            .order_by(asc(Durations.duration_time) if asc_value == True else desc(Durations.duration_time))
+            .order_by(desc(Durations.duration_type))
+        ).all()
+
+    elif filter_name == "time":
+        result = (
+            db.query(Spell, Sources.book_name, Durations, Ranges)
+            .join(Sources, Sources.id == Spell.source_id)
+            .join(Durations, Durations.id == Spell.duration_id)
+            .join(Ranges, Ranges.id == Spell.spell_range_id)
+            .order_by(asc(Spell.cast_time) if asc_value == True else desc(Spell.cast_time))
+        ).all()
+
+    elif filter_name == "range":
+        result = (
+            db.query(Spell, Sources.book_name, Durations, Ranges)
+            .join(Sources, Sources.id == Spell.source_id)
+            .join(Durations, Durations.id == Spell.duration_id)
+            .join(Ranges, Ranges.id == Spell.spell_range_id)
+            .order_by(asc(Ranges.distance_range) if asc_value == True else desc(Ranges.distance_range))
+            .order_by(desc(Durations.duration_type))
+        ).all()
+
+    if None in result:
+        # if data is corrupted
+        raise HTTPException(status_code=404, detail="Something went wrong with database pleas contact owner")
+    else:
+        # if data is correct then return list of dicts
+        formatted_result = service_instance.format_spell(result)
+        return {
+            "status": "pussy test",
+            "data": formatted_result
         }
 
 
@@ -214,156 +295,9 @@ Test requests further
 should not be commited to prod
 """
 
-@app.get("/test")
-def test():
-    return {
-        "spell": [
-            {
-                "id": 1,
-                "name": "Air Bubble",
-                "source": "AAG",
-                "page": 22,
-                "level": 2,
-                "school": "C",
-                "time": [
-                    {
-                        "number": 1,
-                        "unit": "action"
-                    }
-                ],
-                "range": {
-                    "type": "point",
-                    "distance": {
-                        "type": "feet",
-                        "amount": 60
-                    }
-                },
-                "components": {
-                    "s": "true"
-                },
-                "duration": [
-                    {
-                        "type": "timed",
-                        "duration": {
-                            "type": "hour",
-                            "amount": 24
-                        }
-                    }
-                ],
-                "entries": [
-                    "You create a spectral globe around the head of a willing creature you can see within range. The globe is filled with fresh air that lasts until the spell ends. If the creature has more than one head, the globe of air appears around only one of its heads (which is all the creature needs to avoid suffocation, assuming that all its heads share the same respiratory system)."
-                ],
-                "entriesHigherLevel": [
-                    {
-                        "type": "entries",
-                        "name": "At Higher Levels",
-                        "entries": [
-                            "When you cast this spell using a spell slot of 3rd level or higher, you can create two additional globes of fresh air for each slot level above 2nd."
-                        ]
-                    }
-                ],
-                "miscTags": [
-                    "SGT"
-                ],
-                "hasFluffImages": "true"
-            },
-            {
-                "id": 2,
-                "name": "Create Spelljamming Helm",
-                "source": "AAG",
-                "page": 22,
-                "level": 5,
-                "school": "T",
-                "time": [
-                    {
-                        "number": 1,
-                        "unit": "action"
-                    }
-                ],
-                "range": {
-                    "type": "point",
-                    "distance": {
-                        "type": "touch"
-                    }
-                },
-                "components": {
-                    "v": "true",
-                    "s": "true",
-                    "m": {
-                        "text": "a crystal rod worth at least 5,000 gp, which the spell consumes",
-                        "cost": 500000,
-                        "consume": "true"
-                    }
-                },
-                "duration": [
-                    {
-                        "type": "instant"
-                    }
-                ],
-                "entries": [
-                    "Holding the rod used in the casting of the spell, you touch a Large or smaller chair that is unoccupied. The rod disappears, and the chair is transformed into a {@item spelljamming helm|AAG}."
-                ]
-            }
-        ]
 
-    }
-
-
-@app.get("/returnSpellsToTable/")
-def returnSpellsToTable():
-	return {
-	"spell": [
-		{
-			"name": "Air Bubble",
-			"source": "AAG",
-			"page": 22,
-			"level": 2,
-			"school": "C",
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			],
-			"range": {
-				"type": "point",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
-			},
-			"components": "s",
-			"duration": [
-				{
-					"type": "timed",
-					"duration": {
-						"type": "hour",
-						"amount": 24
-					}
-				}
-			],
-			"entries": [
-				"You create a spectral globe around the head of a willing creature you can see within range. The globe is filled with fresh air that lasts until the spell ends. If the creature has more than one head, the globe of air appears around only one of its heads (which is all the creature needs to avoid suffocation, assuming that all its heads share the same respiratory system)."
-			],
-			"entriesHigherLevel": [
-				{
-					"type": "entries",
-					"name": "At Higher Levels",
-					"entries": [
-						"When you cast this spell using a spell slot of 3rd level or higher, you can create two additional globes of fresh air for each slot level above 2nd."
-					]
-				}
-			],
-			"miscTags": [
-				"SGT"
-			],
-			"hasFluffImages": "true"
-		}
-	]
-
-	}	
-    # except Exception as e:
-    #     raise HTTPException(status_code=500, detail=str(e))
+# except Exception as e:
+#     raise HTTPException(status_code=500, detail=str(e))
 
 
 @app.post("/findSpellByName/")

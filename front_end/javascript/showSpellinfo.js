@@ -31,8 +31,11 @@ async function handleTableRowClick(event) {
 }
 
 function insertInfoIntoDescription(data) {
+
   var sdata = data.data[0];
-  var bebra123 = sdata.duration;
+  console.log(sdata);
+  var spell = sdata.duration;
+  let betterDescription = sdata.descriptionOnHigherLevels;
 
   spellName = document.getElementById("spellName");
   spellRange = document.getElementById("spellRange");
@@ -49,10 +52,11 @@ function insertInfoIntoDescription(data) {
   spellName.innerHTML = sdata.name;
 
   spellDuration.innerHTML =
-    bebra123.type.toLowerCase() == "instant" ||
-    bebra123.type.toLowerCase() == "permanent"
-      ? `${bebra123.type}`
-      : `${bebra123.time} ${bebra123.type}`;
+    spell.type.toLowerCase() == "instant" ||
+    spell.type.toLowerCase() == "permanent" ||
+    spell.type.toLowerCase() == "special"
+      ? `${spell.type}`
+      : `${spell.time} ${spell.type}`;
 
   spellCastingTime.innerHTML = `${sdata.time[0].number} ${sdata.time[0].unit}`;
 
@@ -67,7 +71,7 @@ function insertInfoIntoDescription(data) {
 
   spellBookName.innerHTML = sdata.source;
 
-  spellBookPage.innerHTML = `Page: ${sdata.page}`;
+  spellBookPage.innerHTML = `${sdata.page}`;
 
   spellComponents.innerHTML = " "
   if (sdata.components.v) {
@@ -84,13 +88,27 @@ function insertInfoIntoDescription(data) {
       : ` M - ${sdata.components.m}`;
   }
 
-  spellOnHigherLvl.innerHTML = sdata.descriptionOnHigherLevels[0].entries;
+  spellOnHigherLvl.innerHTML = betterDescription != null
+  ?  `${betterDescription[0].name}: ${betterDescription[0].entries} `
+  : "";
 
-
-  spellCasters.innerHTML = `Casters: ${sdata.casters[0].name}`;
+  spellCasters.innerHTML = ""; 
+  sdata.casters.forEach((currentSpellCaster)=>{
+    console.log(currentSpellCaster.name);
+    spellCasters.innerHTML += `${currentSpellCaster.name} `;
+  } )
 }
 
-
+// "casters": [
+//   {
+//       "name": "Sorcerer",
+//       "source": "PHB"
+//   },
+//   {
+//       "name": "Wizard",
+//       "source": "PHB"
+//   }
+// ]
 
 // async function loadData(){
 //   try {
@@ -101,3 +119,5 @@ function insertInfoIntoDescription(data) {
 //     console.error("Error:", error);
 //   }
 // }
+
+

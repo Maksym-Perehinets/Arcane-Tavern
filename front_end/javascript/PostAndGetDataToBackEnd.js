@@ -58,6 +58,16 @@ async function SendCurrentSpell(dataToSend) {
   }
 }
 
+async function SortTableData(filterName, sortingType) {
+  const backendUrl = `http://127.0.0.1:8000/data-sort/?filter_name=${filterName}&asc_value=${sortingType}`;
+  try {
+    const response = await axios.get(backendUrl);
+    return response.data;
+  } catch (error) {
+    console.error("Помилка при отриманні даних:", error.message);
+    throw error;
+  }
+}
 
 // Example usage
 // (async () => {

@@ -1,65 +1,74 @@
-// function sortTable(n) {
-//     var spellListTable, i, x, y, switchcount;
-//     switchcount = 0;
-//     var dir = "asc";
-//     var switching = true;
-//     spellListTable = document.getElementById("spellList");
+var spellName,
+  spellRange,
+  spellDuration,
+  spellCastingTime,
+  spellConcentration,
+  spellLevel;
 
-//     while (switching) {
-//         switching = false;
-//         var rows = spellListTable.rows;
+let checkDesc = true;
+let bibaboba_aboba = " ";
 
-//         for (i = 1; i < (rows.length - 1); i++) {
-//             var Switch = false;
+document.addEventListener("DOMContentLoaded", function () {
+  var spellListTable = document.getElementById("spellList");
+  var thead = spellListTable.getElementsByTagName("thead")[0];
 
-//             x = rows[i].getElementsByTagName("TD")[n];
-//             y = rows[i + 1].getElementsByTagName("TD")[n];
+  thead.addEventListener("click", (event) => {
+    sortTable(event.target.id);
+  });
+});
 
-//             if (dir == "asc") {
-//                 if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-//                     Switch = true;
-//                     break;
-//                 }
-//             } else if (dir == "desc") {
-//                 if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-//                     Switch = true;
-//                     break;
-//                 }
-//             }
-//         }
+async function sortTable(name) {
+  checkDesc = bibaboba_aboba == name? !checkDesc : true;
+  bibaboba_aboba = name;
+  let response = await SortTableData(name, checkDesc);
+  replaceTableData(response);
+}
 
-//         if (Switch) { 
-//             rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-//             switching = true;
-//             switchcount ++;
-//         } 
-        
-//         else {
-//             if (switchcount == 0 && dir == "asc") {
-//                 dir = "desc";
-//                 switching = true;
-//             } 
-//         }
-//     }
-// }
+function replaceTableData(newData) {
+  var spellListTable = document
+    .getElementById("spellList")
+    .getElementsByTagName("tbody")[0];
+  var row, cells;
 
-function sortTable(n) {
-    
-    
-    var jsonString = JSON.stringify(jsonData);
+  newData.data.forEach((spell, index) => {
+    row = spellListTable.rows[index];
+    if (row) {
+      cells = row.cells;
+      if (cells.length >= 2) {
+        var levelCell = cells[0];
+        var nameCell = cells[1];
+        var concentration = cells[2];
+        var durationCell = cells[3];
+        var timeCell = cells[4];
+        var rangeCell = cells[5];
+        var idCell = cells[6];
+      } else {
+        console.warn(`Insufficient cells in row ${index}`);
+      }
+    } else {
+      console.warn(`Row not found for index ${index}`);
+    }
+    idCell.style.display = "none";
 
-    fetch('your-backend-endpoint', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: jsonString,
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Success:', data);
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
+    idCell.innerHTML = spell.id;
+    levelCell.innerHTML = spell.level;
+    nameCell.innerHTML = spell.name;
+
+    concentration.innerHTML = spell.duration.concentration == true ? "✔" : "✖";
+
+    durationCell.innerHTML =
+      spell.duration.type.toLowerCase() == "instant" ||
+      spell.duration.type.toLowerCase() == "permanent" ||
+      spell.duration.type.toLowerCase() == "special"
+        ? `${spell.duration.type}`
+        : `${spell.duration.time} ${spell.duration.type}`;
+
+    timeCell.innerHTML = `${spell.time[0].number} ${spell.time[0].unit}`;
+
+    rangeCell.innerHTML = spell.ranges.distance
+      ? spell.ranges.distance.amount
+        ? `${spell.ranges.distance.amount} ${spell.ranges.distance.type}`
+        : spell.ranges.distance.type
+      : spell.ranges.type;
+  });
 }

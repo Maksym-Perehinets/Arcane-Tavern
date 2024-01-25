@@ -10,7 +10,7 @@ os.chdir(script_dir)
 """
 If you decide to use this parser please initiate 
 a class with inputing a path to your index.json
-like this example = JsonParser('./path/to/your/index.json')
+like in this example = JsonParser('./path/to/your/index.json')
 after that you are welcome to use it but do not forget 
 to store spells_fson folder in same folder as your parser
 """
@@ -26,7 +26,8 @@ class JsonParser:
         dict: key(book_name) value current path to book.json
         """
         self.json_files = dict()
-        self.wanted_data = ['name', 'source', 'page', 'level', 'school', 'entries',
+        self.wanted_data = [
+                            'name', 'source', 'page', 'level', 'school', 'entries',
                             'time', 'range', 'components', 'duration', 'entriesHigherLevel'
                             ]
         with open(index_file, 'r') as opened_index:
