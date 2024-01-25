@@ -20,7 +20,7 @@ function populateTable(data) {
       nameCell.innerHTML = spell.name;
 
       concentration.innerHTML =
-        spell.duration.concentration == true ? "Yes" : "No";
+        spell.duration.concentration == true ? "✖" : "✔";
 
       durationCell.innerHTML = 
         spell.duration.type.toLowerCase() == "instant" || spell.duration.type.toLowerCase() == "permanent" 
@@ -34,8 +34,7 @@ function populateTable(data) {
           ? `${spell.ranges.distance.amount} ${spell.ranges.distance.type}`
           : spell.ranges.distance.type
         : spell.ranges.type;
-
-      ClickChecking();
+      
     });
   } catch (error) {
     console.error("Error " + error);
@@ -43,25 +42,13 @@ function populateTable(data) {
 }
 
 document.addEventListener("DOMContentLoaded", async function () {
-  var spellListTable = document.getElementById("spellList");
-
-  if (spellListTable) {
-    var tbody = spellListTable.getElementsByTagName("tbody")[0];
-
-    if (tbody) {
       try {
         const data = await getAllSpells();
         populateTable(data);
       } catch (error) {
         console.error("Error:", error);
       }
-    } else {
-      console.error("Table body not found.");
-    }
-  } else {
-    console.error('Table with ID "spellList" not found.');
-  }
-});
+    });
 
 // window.onload =
 // console.log(getData("http://127.0.0.1:8000/test"));

@@ -16,6 +16,23 @@ function SendData(dataToSend) {
     });
 }
 
+// function SendCurrentSpell(dataToSend) {
+//   // console.log("sent");
+//   fetch(`http://127.0.0.1:8000/get-spell/${dataToSend}`, {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(dataToSend),
+//   })
+//     .then((response) => response.json())
+//     .then((data) => {
+//       console.log("Отримано від сервера:", data);
+//     })
+//     .catch((error) => {
+//       console.error("Помилка відправлення:", error);
+//     });
+// }
 
 async function getAllSpells() {
   // console.log("sent");
@@ -30,9 +47,8 @@ async function getAllSpells() {
 }
 
 
-async function getSpellDescription() {
-  // console.log("sent");
-  const backendUrl = "http://127.0.0.1:8000/returnSpellsToTable/";
+async function SendCurrentSpell(dataToSend) {
+  const backendUrl = `http://127.0.0.1:8000/get-spell/${dataToSend}`;
   try {
     const response = await axios.get(backendUrl);
     return response.data;
