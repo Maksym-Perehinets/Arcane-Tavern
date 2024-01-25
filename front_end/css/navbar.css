@@ -73,7 +73,7 @@ select {
 
 .sidebar_header {
   width: 100%;
-  height: 100px;
+  height: 70px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -118,16 +118,13 @@ img {
   height: 40px;
   border: none;
   border-radius: 15px;
-
-      /* background-color: aqua; */
-      background-color: rgba(0, 0, 0, 0);
-      
-      font-family: DraconicFont;
-      font-size: 160%;
-      margin-left: 2%;
-      margin-top: 2%;
-      cursor: pointer;
-      transition: all 0.3s linear;
+  background-color: rgba(0, 0, 0, 0);
+  font-family: DraconicFont;
+  font-size: 160%;
+  margin-left: 3%;
+  margin-top: 4%;
+  cursor: pointer;
+  transition: all 0.3s linear;
     }
 
 .backwardico {
@@ -142,6 +139,7 @@ img {
   justify-content: center;
   align-items: center;
   text-align: center;
+  width: 90px;
 }
 
 /* ////////////////////
@@ -173,7 +171,7 @@ img {
   margin-right: 5%;
   margin-bottom: 5%;
   font-family: DraconicFont;
-  font-size: 111%;
+  font-size: 170%;
   background-color: red;
   color: rgba(21, 21, 21, 1);
   outline: none;
@@ -196,7 +194,7 @@ img {
   margin-right: 55%;
   margin-bottom: 5%;
   font-family: DraconicFont;
-  font-size: 111%;
+  font-size: 170%;
   background-color: red;
   color: rgba(21, 21, 21, 1);
   outline: none;
@@ -253,8 +251,30 @@ img {
 
 /* Phones */
 @media only screen and (max-width: 1000px) {
-  .sidebar.active {
+  
+  .header {
+    position: fixed;
     z-index: 2;
+  }
+  
+  .active_margin_left
+  {
+    margin-left: 0%;
+    overflow-y: none; /* Hide vertical scrollbar */
+    overflow-x: none; /* Hide horizontal scrollbar */
+  }
+  
+  .sidebar
+  {
+    z-index: 3;
+  }
+
+
+  .sidebar.active {
+    z-index: 3;
+    width: 100%;
+    overflow-y: none; /* Hide vertical scrollbar */
+    overflow-x: none; /* Hide horizontal scrollbar */
   }
 
   .backward
@@ -271,6 +291,7 @@ img {
     position: absolute;
     width: 50px;
     height: 50px;
+    margin: 7px;
   }
 
   .ListIco {
@@ -284,6 +305,8 @@ img {
   }
 
     .sidebar_menu {
+      z-index: 2;
+      
       display: inline-block;
       flex-direction: column;
     }
