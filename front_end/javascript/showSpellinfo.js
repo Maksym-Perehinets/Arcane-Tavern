@@ -26,9 +26,7 @@ async function handleTableRowClick(event) {
     console.warn("Row ID not found.");
   }
 }
-//----------------------------------------------------------\
-//    Доробіть так щоб кастери магії з'являлися в таблиці| О |
-//----------------------------------------------------------/
+
 function insertInfoIntoDescription(data) {
   var sdata = data.data[0];
   var bebra123 = sdata.duration;
