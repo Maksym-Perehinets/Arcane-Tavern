@@ -1,19 +1,35 @@
-var spellName, spellRange, spellDuration, spellCastingTim, spellComponents, spellDescriptio, spellLevel;
+var spellName,
+  spellRange,
+  spellDuration,
+  spellCastingTim,
+  spellComponents,
+  spellDescriptio,
+  spellLevel,
+  spellBookName;
 
-function ClickChecking() {
-  var spellTable = document
-    .getElementById("spellList")
-    .getElementsByTagName("tbody")[0];
-  for (var i = 0; i < spellTable.rows.length; i++) {
-    spellTable.rows[i].onclick = function () {
-      SendData({ name: this.cells[6].innerHTML }, backendUrlUpload);
-    };
+document.addEventListener("DOMContentLoaded", function () {
+  var spellListTable = document.getElementById("spellList");
+  var tbody = spellListTable.getElementsByTagName("tbody")[0];
+
+  tbody.addEventListener("click", function (event) {
+    handleTableRowClick(event);
+  });
+});
+
+async function handleTableRowClick(event) {
+  var clickedElement = event.target;
+  var rowId = clickedElement.parentNode.cells[6].innerHTML;
+  if (rowId) {
+    let res = await SendCurrentSpell(rowId);
+    insertInfoIntoDescription(res);
+  } else {
+    console.warn("Row ID not found.");
   }
 }
 
 function insertInfoIntoDescription(data) {
-  var sdata = data.spell[0];
-  var bebra123 = sdata.duration[0];
+  var sdata = data.data[0];
+  var bebra123 = sdata.duration;
 
   spellName = document.getElementById("spellName");
   spellRange = document.getElementById("spellRange");
@@ -22,36 +38,53 @@ function insertInfoIntoDescription(data) {
   spellComponents = document.getElementById("spellComponents");
   spellDescription = document.getElementById("spellDescription");
   spellLevel = document.getElementById("spellLevel");
+  spellBookName = document.getElementById("bookName");
 
-  console.log(sdata);
   spellName.innerHTML = sdata.name;
-  console.log(spellName.innerHTML);
+
   spellDuration.innerHTML =
-    bebra123.type == "timed"
-      ? `${bebra123.duration.type} ${bebra123.duration.amount}`
-      : `${bebra123.type}`;
+    bebra123.type.toLowerCase() == "instant" ||
+    bebra123.type.toLowerCase() == "permanent"
+      ? `${bebra123.type}`
+      : `${bebra123.time} ${bebra123.type}`;
 
   spellCastingTime.innerHTML = `${sdata.time[0].number} ${sdata.time[0].unit}`;
 
-  spellRange.innerHTML = sdata.range.distance
-    ? sdata.range.distance.amount
-      ? `${sdata.range.distance.amount} ${sdata.range.distance.type}`
-      : sdata.range.distance.type
-    : sdata.range.type;
+console.log(sdata.ranges);
 
-  spellDescription.innerHTML = sdata.entries;
+  spellRange.innerHTML = sdata.ranges.distance.amount
+    ? `${sdata.ranges.distance.amount} ${sdata.ranges.distance.type}`
+      : sdata.ranges.distance.type
 
-  spellComponents.innerHTML = sdata.components;
+
+  spellDescription.innerHTML = sdata.description;
 
   spellLevel.innerHTML = sdata.level;
+
+  spellBookName.innerHTML = sdata.source;
+
+  spellComponents.innerHTML = " "
+  if (sdata.components.v) {
+    spellComponents.innerHTML = "V";
+  }
+
+  if (sdata.components.s) {
+    spellComponents.innerHTML += " S";
+  }
+
+  if (sdata.components.m) {
+    spellComponents.innerHTML += sdata.components.m.text
+      ? ` M - ${sdata.components.m.text}`
+      : ` M - ${sdata.components.m}`;
+  }
 }
 
-const backendUrlUpload = "http://localhost:8000/returnSpellsToTable/";
-document.addEventListener("DOMContentLoaded", async function () {
-  try {
-    const data = await getSpellDescription();
-    insertInfoIntoDescription(data);
-  } catch (error) {
-    console.error("Error:", error);
-  }
-});
+// async function loadData(){
+//   try {
+//     const data = await getSpellDescription();
+//     console.log(data);
+//     insertInfoIntoDescription(data);
+//   } catch (error) {
+//     console.error("Error:", error);
+//   }
+// }
