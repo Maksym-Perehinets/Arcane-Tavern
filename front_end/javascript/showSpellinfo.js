@@ -31,8 +31,11 @@ async function handleTableRowClick(event) {
 }
 
 function insertInfoIntoDescription(data) {
+
   var sdata = data.data[0];
+  console.log(sdata);
   var bebra123 = sdata.duration;
+  let cmih = sdata.descriptionOnHigherLevels;
 
   spellName = document.getElementById("spellName");
   spellRange = document.getElementById("spellRange");
@@ -67,7 +70,7 @@ function insertInfoIntoDescription(data) {
 
   spellBookName.innerHTML = sdata.source;
 
-  spellBookPage.innerHTML = `Page: ${sdata.page}`;
+  spellBookPage.innerHTML = `${sdata.page}`;
 
   spellComponents.innerHTML = " "
   if (sdata.components.v) {
@@ -84,13 +87,27 @@ function insertInfoIntoDescription(data) {
       : ` M - ${sdata.components.m}`;
   }
 
-  spellOnHigherLvl.innerHTML = sdata.descriptionOnHigherLevels[0].entries;
+  spellOnHigherLvl.innerHTML = cmih != null
+  ?  `${cmih[0].name}: ${cmih[0].entries} `
+  : "";
 
 
-  spellCasters.innerHTML = `Casters: ${sdata.casters[0].name}`;
+  sdata.casters.forEach((currentSpellCaster)=>{
+    console.log(currentSpellCaster.name);
+    spellCasters.innerHTML += `${currentSpellCaster.name} `;
+  } )
 }
 
-
+// "casters": [
+//   {
+//       "name": "Sorcerer",
+//       "source": "PHB"
+//   },
+//   {
+//       "name": "Wizard",
+//       "source": "PHB"
+//   }
+// ]
 
 // async function loadData(){
 //   try {
