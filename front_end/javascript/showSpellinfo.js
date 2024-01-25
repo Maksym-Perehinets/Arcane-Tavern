@@ -5,7 +5,10 @@ var spellName,
   spellComponents,
   spellDescriptio,
   spellLevel,
-  spellBookName;
+  spellBookName,
+  spellBookPage,
+  spellOnHigherLvl,
+  spellCasters;
 
 document.addEventListener("DOMContentLoaded", function () {
   var spellListTable = document.getElementById("spellList");
@@ -39,6 +42,9 @@ function insertInfoIntoDescription(data) {
   spellDescription = document.getElementById("spellDescription");
   spellLevel = document.getElementById("spellLevel");
   spellBookName = document.getElementById("bookName");
+  spellBookPage = document.getElementById("bookPage");
+  spellCasters = document.getElementById("casters");
+  spellOnHigherLvl = document.getElementById("descOnHigherLvl");
 
   spellName.innerHTML = sdata.name;
 
@@ -61,6 +67,8 @@ function insertInfoIntoDescription(data) {
 
   spellBookName.innerHTML = sdata.source;
 
+  spellBookPage.innerHTML = `Page: ${sdata.page}`;
+
   spellComponents.innerHTML = " "
   if (sdata.components.v) {
     spellComponents.innerHTML = "V";
@@ -75,7 +83,14 @@ function insertInfoIntoDescription(data) {
       ? ` M - ${sdata.components.m.text}`
       : ` M - ${sdata.components.m}`;
   }
+
+  spellOnHigherLvl.innerHTML = sdata.descriptionOnHigherLevels[0].entries;
+
+
+  spellCasters.innerHTML = `Casters: ${sdata.casters[0].name}`;
 }
+
+
 
 // async function loadData(){
 //   try {
