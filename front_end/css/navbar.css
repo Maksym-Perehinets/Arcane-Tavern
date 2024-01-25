@@ -148,10 +148,6 @@ img {
 .header {
   width: 100%;
   height: 50px;
-  display: flex;
-  justify-content: start;
-  align-items: center;
-
   background-color: rgba(37, 37, 37, 1);
   position: sticky;
   height: 80px;
@@ -260,8 +256,6 @@ img {
   .active_margin_left
   {
     margin-left: 0%;
-    overflow-y: none; /* Hide vertical scrollbar */
-    overflow-x: none; /* Hide horizontal scrollbar */
   }
   
   .sidebar
@@ -273,8 +267,6 @@ img {
   .sidebar.active {
     z-index: 3;
     width: 100%;
-    overflow-y: none; /* Hide vertical scrollbar */
-    overflow-x: none; /* Hide horizontal scrollbar */
   }
 
   .backward
