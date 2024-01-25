@@ -3,7 +3,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
 # Path to database
-SQLALCHEMY_DATABASE_URL = "sqlite:///./spells_db.db"
+SQLALCHEMY_DATABASE_URL = "sqlite:///json_parser/spells_db.db"
 
 # Engine creation for future connection
 engine = create_engine(
@@ -11,7 +11,7 @@ engine = create_engine(
     connect_args={"check_same_thread": False}
 )
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-
+session = SessionLocal()
 Base = declarative_base()
 
 

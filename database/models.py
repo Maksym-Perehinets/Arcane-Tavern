@@ -1,6 +1,6 @@
-from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy import Column, Integer, String, ForeignKey, Boolean, JSON
 from sqlalchemy.orm import relationship
-from database.database import Base
+from .database import Base
 
 """
 Sources table
@@ -17,7 +17,7 @@ class Sources(Base):
     __tablename__ = 'sources'
     id = Column(Integer, primary_key=True)
     book_name = Column(String(100), nullable=False)
-
+    # Declaration of relation with spell table as foreign key
     spells = relationship('Spell', back_populates='source')
 
 
@@ -38,9 +38,10 @@ CREATE TABLE IF NOT EXISTS spell_range(
 class Ranges(Base):
     __tablename__ = 'ranges'
     id = Column(Integer, primary_key=True)
-    shape = Column(String(150), nullable=False)
-    distance_type = Column(String(255), nullable=False)
-    distance_range = Column(Integer, nullable=False)
+    shape = Column(String(150), nullable=True)
+    distance_type = Column(String(255), nullable=True)
+    distance_range = Column(Integer, nullable=True)
+    # Declaration of relation with spell table as foreign key
     spells = relationship('Spell', back_populates='spell_range')
 
 
@@ -57,12 +58,13 @@ CREATE TABLE IF NOT EXISTS duration(
 """
 
 
-class Duration(Base):
+class Durations(Base):
     __tablename__ = 'durations'
     id = Column(Integer, primary_key=True)
-    duration_type = Column(String(100), nullable=False)
-    duration_time = Column(Integer, nullable=False)
-    concentration = Column(Integer, nullable=False)
+    duration_type = Column(String(100), nullable=True)
+    duration_time = Column(Integer, nullable=True)
+    concentration = Column(Boolean, nullable=True)
+    # Declaration of relation with spell table as foreign key
     spells = relationship('Spell', back_populates='duration')
 
 
@@ -93,20 +95,21 @@ CREATE TABLE IF NOT EXISTS spell(
 class Spell(Base):
     __tablename__ = 'spells'
     id = Column(Integer, primary_key=True)
-    spell_name = Column(String, unique=True, nullable=False)
+    spell_name = Column(String, unique=False, nullable=False)
     book_page = Column(Integer, nullable=False)
     spell_level = Column(Integer, nullable=False)
     school = Column(String(100), nullable=False)
-    cast_time = Column(String(255), nullable=False)
-    components = Column(String(255), nullable=False)
-    spell_description = Column(String, nullable=False)
-    ariatags = Column(String(10), nullable=False)
+    cast_time = Column(JSON, nullable=False)
+    components = Column(JSON, nullable=False)
+    spell_description = Column(JSON, nullable=False)
+    suitable_casters = Column(JSON, nullable=False)
+    entries_higher_level = Column(JSON, nullable=False)
     source_id = Column(Integer, ForeignKey('sources.id'))  # Foreign key reference sources table
     spell_range_id = Column(Integer, ForeignKey('ranges.id'))  # Foreign key reference to ranges able
     duration_id = Column(Integer, ForeignKey('durations.id'))  # Foreign key reference to durations table
-
-    source = relationship('Source', back_populates='spell')
-    range = relationship('Range', back_populates='range')
-    duration = relationship('Duration', back_populates='duration')
+    # Declaration of relation with other tabels as foreign key
+    source = relationship('Sources', back_populates='spells')
+    spell_range = relationship('Ranges', back_populates='spells')
+    duration = relationship('Durations', back_populates='spells')
 
 
