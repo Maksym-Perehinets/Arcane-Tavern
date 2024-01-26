@@ -69,10 +69,35 @@ async function SortTableData(filterName, sortingType) {
   }
 }
 
+async function SortFilters(level, caster_class, school, damage_type, range_distance, range_type, range_shape, duration_time, duration_type, casting_time, casting_type) {
+  const backendUrl = `http://127.0.0.1:8000/data-filter/`;
+  var url = backendUrl + '?';
+
+  url += level !== undefined? `&level=${level}` : '';
+  if (caster_class !== undefined) url += `&caster_class=${caster_class}`;
+  if (school !== undefined) url += `&school=${school}`;
+  if (damage_type !== undefined) url += `&damage_type=${damage_type}`;
+  if (range_distance !== undefined) url += `&range_distance=${range_distance}`;
+  if (range_type !== undefined) url += `&range_type=${range_type}`;
+  if (range_shape !== undefined) url += `&range_shape=${range_shape}`;
+  if (duration_time !== undefined) url += `&duration_time=${duration_time}`;
+  if (duration_type !== undefined) url += `&duration_type=${duration_type}`;
+  if (casting_time !== undefined) url += `&casting_time=${casting_time}`;
+  if (casting_type !== undefined) url += `&casting_type=${casting_type}`;
+
+  console.log(backendUrl);
+  try {
+    const response = await axios.get(backendUrl);
+    return response.data;
+  } catch (error) {
+    console.error("Помилка при отриманні даних:", error.message);
+    throw error;
+  }
+}
+
 // Example usage
 // (async () => {
 //   try {
-      
 //     const jsonData = await getData("http://127.0.0.1:8000/test");
 //   } catch (error) {
 //     console.error("Error:", error.message);

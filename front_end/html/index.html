@@ -31,7 +31,8 @@
   <script src="../javascript/SendingSearchInfo.js"></script>
   <script src="../javascript/showSpellinfo.js"></script>
   <script src="../javascript/resetButton.js"></script>
-
+  <script src="../javascript/SendFilterData.js"></script>
+  <script src="../javascript/selectBox.js"></script>
 
 
 
@@ -199,15 +200,29 @@
         <option value="6">1 hour</option> 
       </select>
 
+
       <h4>Action</h4>
       </a>
 
-      <button class="apply" onclick="testMyFunc()">Apply</button>
+      <div id="list1" class="dropdown-check-list" tabindex="100">
+        <span class="anchor">Select Fruits</span>
+        <ul class="items">
+          <li>1 action <input type="checkbox"/></li>
+          <li>1 bonus action <input type="checkbox"/></li>
+          <li>1 reaction <input type="checkbox"/></li>
+          <li>1 minute <input type="checkbox"/></li>
+          <li>10 minutes <input type="checkbox"/></li>
+          <li>1 hour <input type="checkbox"/></li>
+        </ul>
+      </div>
+
+      <button class="apply" onclick="collectFilters()">Apply</button>
       <button class="clear" onclick="resetAllDropdowns()">Reset</button>
 
-
+    
     </div>
   </div>
+
 
   <div class="container">
     <header class="header">
