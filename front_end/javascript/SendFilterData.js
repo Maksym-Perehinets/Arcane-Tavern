@@ -1,6 +1,6 @@
 let filterList = [];
 
-function sendFilters(filters) {
+async function sendFilters(filters) {
 
   let level = filters[0];
   let caster_class = filters[1];
@@ -15,8 +15,8 @@ function sendFilters(filters) {
   let casting_type = filters[6];
   console.log(caster_class);
 
-  // res = await SortFilters(filters);
-  // ShowFiltered(res);
+  res = await SortFilters(filters);
+  ShowFiltered(res);
   
   // "range": {
   //   "type": "line",
