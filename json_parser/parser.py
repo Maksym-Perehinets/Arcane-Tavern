@@ -27,7 +27,7 @@ class JsonParser:
         """
         self.json_files = dict()
         self.wanted_data = [
-                            'name', 'source', 'page', 'level', 'school', 'entries',
+                            'name', 'source', 'page', 'level', 'school', 'entries', 'damageInflict',
                             'time', 'range', 'components', 'duration', 'entriesHigherLevel'
                             ]
         with open(index_file, 'r') as opened_index:
@@ -207,6 +207,7 @@ class JsonParser:
                             "spell_description":    spell['entries'],
                             "suitable_casters":     spell['class'],
                             "entries_higher_level": spell.get('entriesHigherLevel', None),
+                            "damage_type":          spell.get('damageInflict', None),
                             "source_id":            spell['source'],
                             "spell_range_id":       spell['range'],
                             "duration_id":          spell['duration']
@@ -216,4 +217,3 @@ class JsonParser:
 
 get_data = JsonParser('spells_json/index.json')
 get_data.get_all_durations()
-
