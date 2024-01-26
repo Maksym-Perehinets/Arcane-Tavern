@@ -73,7 +73,7 @@ async function SortFilters(level, caster_class, school, damage_type, range_dista
   const backendUrl = `http://127.0.0.1:8000/data-filter/`;
   var url = backendUrl + '?';
 
-  url += level !== undefined? `&level=${level}` : '';
+  if (caster_class !== undefined) url += `&level=${level}`;
   if (caster_class !== undefined) url += `&caster_class=${caster_class}`;
   if (school !== undefined) url += `&school=${school}`;
   if (damage_type !== undefined) url += `&damage_type=${damage_type}`;
@@ -85,9 +85,9 @@ async function SortFilters(level, caster_class, school, damage_type, range_dista
   if (casting_time !== undefined) url += `&casting_time=${casting_time}`;
   if (casting_type !== undefined) url += `&casting_type=${casting_type}`;
 
-  console.log(backendUrl);
+  console.log(url);
   try {
-    const response = await axios.get(backendUrl);
+    const response = await axios.get(url);
     return response.data;
   } catch (error) {
     console.error("Помилка при отриманні даних:", error.message);

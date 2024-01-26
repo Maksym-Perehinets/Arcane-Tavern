@@ -114,6 +114,7 @@ img {
   font-weight: lighter;
   font-family: DraconicFont;
   color: white;
+  width: 86%;
 }
 
 .dropdown-check-list .anchor {
@@ -122,6 +123,7 @@ img {
   display: inline-block;
   padding: 5px 50px 5px 10px;
   border: 1px solid #ccc;
+  width: 100%;
 }
 
 .dropdown-check-list .anchor:after {
@@ -162,6 +164,7 @@ img {
 
 .dropdown-check-list.visible .items {
   display: block;
+  padding-left: 3%;
 }
 
 /* -------------------------------------------------------------------------------------------------------- */
