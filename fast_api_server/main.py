@@ -1,12 +1,13 @@
 from fastapi import FastAPI, Depends, HTTPException, responses, status
 from fastapi.middleware.cors import CORSMiddleware
-from sqlalchemy import func, asc, desc
+from sqlalchemy import asc, desc
 from sqlalchemy.orm import Session
 from fast_api_server.service import Service
 from database.database import engine, get_db
 from database.models import Sources, Durations, Ranges, Spell
 from database import models
 from . import schemas
+import json
 
 app = FastAPI()
 models.Base.metadata.create_all(bind=engine)
@@ -278,6 +279,93 @@ async def data_filter(filter_name: str, asc_value: bool = True, db: Session = De
             "status": "pussy test",
             "data": formatted_result
         }
+
+
+@app.get("/data-filter/")
+async def data_filter(
+        level: int = None,
+        caster_class: str = None,
+        school: str = None,
+        damage_type: str = None,
+        range_distance: int = None,
+        range_type: str = None,
+        range_shape: str = None,
+        duration_time: int = None,
+        duration_type: str = None,
+        casting_time: str = None,
+        casting_type: str = None,
+        db: Session = Depends(get_db)
+):
+    """
+    Endpoint to filter and retrieve spell data based on specified parameters.
+
+    Parameters:
+    - `level` (int): Filter spells by their spell level.
+    - `caster_class` (str): Filter spells based on the caster's class.
+    - `school` (str): Filter spells by their school.
+    - `damage_type` (str): Filter spells by their damage type.
+    - `range_distance` (int): Filter spells by the range distance.
+    - `range_type` (str): Filter spells by the range type.
+    - `range_shape` (str): Filter spells by the range shape.
+    - `duration_time` (int): Filter spells by the duration time.
+    - `duration_type` (str): Filter spells by the duration type.
+    - `casting_time` (str): Filter spells by the casting time.
+    - `casting_type` (str): Filter spells by the casting type.
+    - `db` (Session): Dependency injection for the database session.
+
+    Query Parameters:
+    - `page` (int): Page number for paginated results (default: 1).
+    - `page_size` (int): Number of items per page (default: 10).
+
+    Example Usage:
+    GET http://127.0.0.1:8000/data-filter/?duration_time=24&duration_type=hour&range_shape=point&range_type=feet&range_distance=30&casting_type=minute&casting_time=10
+    Returns:
+    - `status` (str): A string indicating the status of the request.
+    - `data` (dict): A dictionary containing paginated results and metadata.
+    """
+    service_instance = Service()
+    db_request = db.query(Spell, Sources.book_name, Durations, Ranges) \
+        .join(Sources, Sources.id == Spell.source_id) \
+        .join(Durations, Durations.id == Spell.duration_id) \
+        .join(Ranges, Ranges.id == Spell.spell_range_id)
+
+    if level is not None:
+        db_request = db_request.filter(Spell.spell_level == level)
+
+    if school is not None:
+        db_request = db_request.filter(Spell.school == school)
+    if damage_type is not None:
+        db_request = db_request.filter(Spell.damage_type == [damage_type])
+    if range_distance is not None or range_type is not None or range_shape is not None:
+        db_request = db_request.filter(
+            (Ranges.distance_range == range_distance) &
+            (Ranges.distance_type == range_type) &
+            (Ranges.shape == range_shape)
+        )
+    if duration_time is not None or duration_type is not None:
+        db_request = db_request.filter(
+            (Durations.duration_time == duration_time) &
+            (Durations.duration_type == duration_type)
+        )
+    if casting_type is not None and casting_time is not None:
+        filter_condition = json.dumps([{"number": int(casting_time), "unit": casting_type}])
+        db_request = db_request.filter(Spell.cast_time == filter_condition)
+
+    formatted_result = service_instance.format_spell(db_request.all())
+    formatted_result = formatted_result
+
+
+
+    if caster_class is not None:
+        formatted_result = [
+                            spell_data for spell_data in formatted_result
+                            if any(caster['name'] in caster_class for caster in spell_data.get('casters', []))
+                           ]
+
+    return {
+        "status": "pussy test",
+        "data": formatted_result
+    }
 
 
 """
