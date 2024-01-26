@@ -1,10 +1,11 @@
+import json
+
 
 class Service:
     def __init__(self):
         pass
 
     def format_spell(self, data):
-
         formatted_result = [
             {
                 "id": spell.id,
@@ -36,3 +37,6 @@ class Service:
             for spell, source, duration, ranges in data
         ]
         return formatted_result
+
+    def casting_type_for_comperation(self, casting_type, casting_time):
+        return json.dumps([{"number": int(casting_time), "unit": casting_type}])

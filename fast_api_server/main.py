@@ -3,11 +3,13 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import asc, desc
 from sqlalchemy.orm import Session
 from fast_api_server.service import Service
+from typing import List
+
 from database.database import engine, get_db
 from database.models import Sources, Durations, Ranges, Spell
 from database import models
 from . import schemas
-import json
+
 
 app = FastAPI()
 models.Base.metadata.create_all(bind=engine)
@@ -212,60 +214,41 @@ async def data_filter(filter_name: str, asc_value: bool = True, db: Session = De
         ```
     """
     service_instance = Service()
-    result = None
-    if filter_name == "lvl":
-        result = (
+    result = (
             db.query(Spell, Sources.book_name, Durations, Ranges)
             .join(Sources, Sources.id == Spell.source_id)
             .join(Durations, Durations.id == Spell.duration_id)
             .join(Ranges, Ranges.id == Spell.spell_range_id)
-            .order_by(asc(Spell.spell_level) if asc_value == True else desc(Spell.spell_level))
+        )
+    if filter_name == "lvl":
+        result = (
+            result.order_by(asc(Spell.spell_level) if asc_value is True else desc(Spell.spell_level))
         ).all()
 
     elif filter_name == "name":
         result = (
-            db.query(Spell, Sources.book_name, Durations, Ranges)
-            .join(Sources, Sources.id == Spell.source_id)
-            .join(Durations, Durations.id == Spell.duration_id)
-            .join(Ranges, Ranges.id == Spell.spell_range_id)
-            .order_by(asc(Spell.spell_name) if asc_value == True else desc(Spell.spell_name))
+            result.order_by(asc(Spell.spell_name) if asc_value is True else desc(Spell.spell_name))
         ).all()
 
     elif filter_name == "concentration":
         result = (
-            db.query(Spell, Sources.book_name, Durations, Ranges)
-            .join(Sources, Sources.id == Spell.source_id)
-            .join(Durations, Durations.id == Spell.duration_id)
-            .join(Ranges, Ranges.id == Spell.spell_range_id)
-            .filter(Durations.concentration == 1 if asc_value == True else Durations.concentration == 0)
+            result.filter(Durations.concentration == 1 if asc_value is True else Durations.concentration == 0)
         ).all()
 
     elif filter_name == "duration":
         result = (
-            db.query(Spell, Sources.book_name, Durations, Ranges)
-            .join(Sources, Sources.id == Spell.source_id)
-            .join(Durations, Durations.id == Spell.duration_id)
-            .join(Ranges, Ranges.id == Spell.spell_range_id)
-            .order_by(asc(Durations.duration_time) if asc_value == True else desc(Durations.duration_time))
+            result.order_by(asc(Durations.duration_time) if asc_value is True else desc(Durations.duration_time))
             .order_by(desc(Durations.duration_type))
         ).all()
 
     elif filter_name == "time":
         result = (
-            db.query(Spell, Sources.book_name, Durations, Ranges)
-            .join(Sources, Sources.id == Spell.source_id)
-            .join(Durations, Durations.id == Spell.duration_id)
-            .join(Ranges, Ranges.id == Spell.spell_range_id)
-            .order_by(asc(Spell.cast_time) if asc_value == True else desc(Spell.cast_time))
+            result.order_by(asc(Spell.cast_time) if asc_value is True else desc(Spell.cast_time))
         ).all()
 
     elif filter_name == "range":
         result = (
-            db.query(Spell, Sources.book_name, Durations, Ranges)
-            .join(Sources, Sources.id == Spell.source_id)
-            .join(Durations, Durations.id == Spell.duration_id)
-            .join(Ranges, Ranges.id == Spell.spell_range_id)
-            .order_by(asc(Ranges.distance_range) if asc_value == True else desc(Ranges.distance_range))
+            result.order_by(asc(Ranges.distance_range) if asc_value is True else desc(Ranges.distance_range))
             .order_by(desc(Durations.duration_type))
         ).all()
 
@@ -331,30 +314,49 @@ async def data_filter(
 
     if level is not None:
         db_request = db_request.filter(Spell.spell_level == level)
-
     if school is not None:
         db_request = db_request.filter(Spell.school == school)
     if damage_type is not None:
         db_request = db_request.filter(Spell.damage_type == [damage_type])
-    if range_distance is not None or range_type is not None or range_shape is not None:
+
+    # filters if all ranges is passed
+    if range_distance is not None and range_type is not None and range_shape is not None:
         db_request = db_request.filter(
             (Ranges.distance_range == range_distance) &
             (Ranges.distance_type == range_type) &
             (Ranges.shape == range_shape)
         )
-    if duration_time is not None or duration_type is not None:
+    # if only range_shape and range_type is given as input
+    elif range_distance is None and range_type is not None and range_shape is not None:
+        db_request = db_request.filter(
+            (Ranges.distance_type == range_type) &
+            (Ranges.shape == range_shape)
+        )
+    elif range_distance is None and range_type is None and range_shape is not None:
+        db_request = db_request.filter(
+            Ranges.shape == range_shape
+        )
+
+    # Duration type because duration time is
+    if duration_type is not None and duration_time is not None:
         db_request = db_request.filter(
             (Durations.duration_time == duration_time) &
             (Durations.duration_type == duration_type)
         )
-    if casting_type is not None and casting_time is not None:
-        filter_condition = json.dumps([{"number": int(casting_time), "unit": casting_type}])
-        db_request = db_request.filter(Spell.cast_time == filter_condition)
+    # if only duration time provided
+    elif duration_time is None and duration_type is not None:
+        db_request = db_request.filter(
+            (Durations.duration_type == duration_type)
+        )
 
+    if casting_type is not None and casting_time is not None:
+        db_request = db_request.filter(
+            Spell.cast_time == service_instance.casting_type_for_comperation(casting_type, casting_time)
+        )
+
+    # Result formatting to suite response model
     formatted_result = service_instance.format_spell(db_request.all())
     formatted_result = formatted_result
-
-
 
     if caster_class is not None:
         formatted_result = [
@@ -376,22 +378,3 @@ Registration and Log in
 @app.post("/register/")
 async def register():
     return responses.RedirectResponse("/?msg=sucsessfull", status_code=status.HTTP_201_CREATED)
-
-
-"""
-Test requests further
-should not be commited to prod
-"""
-
-
-# except Exception as e:
-#     raise HTTPException(status_code=500, detail=str(e))
-
-
-@app.post("/findSpellByName/")
-async def findSpellByName(item: schemas.Item):
-    try:
-        processed_data = f"{item.name}"
-        return processed_data
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
