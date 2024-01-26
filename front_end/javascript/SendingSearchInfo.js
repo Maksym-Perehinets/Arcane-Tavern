@@ -1,7 +1,7 @@
 const backendSearchUrl = "http://localhost:8000/findSpellByName/";
 
 document.addEventListener("DOMContentLoaded", () => {
-  var searchBar = document.getElementById("searchTerm");
+  let searchBar = document.getElementById("searchTerm");
 
   function sendSearchResult(searchValue) {
     SendData({ name: searchValue }, backendSearchUrl);
