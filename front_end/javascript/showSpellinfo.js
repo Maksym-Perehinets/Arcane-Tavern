@@ -34,8 +34,8 @@ function insertInfoIntoDescription(data) {
 
   var sdata = data.data[0];
   console.log(sdata);
-  var bebra123 = sdata.duration;
-  let cmih = sdata.descriptionOnHigherLevels;
+  var spell = sdata.duration;
+  let betterDescription = sdata.descriptionOnHigherLevels;
 
   spellName = document.getElementById("spellName");
   spellRange = document.getElementById("spellRange");
@@ -52,16 +52,20 @@ function insertInfoIntoDescription(data) {
   spellName.innerHTML = sdata.name;
 
   spellDuration.innerHTML =
-    bebra123.type.toLowerCase() == "instant" ||
-    bebra123.type.toLowerCase() == "permanent"
-      ? `${bebra123.type}`
-      : `${bebra123.time} ${bebra123.type}`;
+    spell.type.toLowerCase() == "instant" ||
+    spell.type.toLowerCase() == "permanent" ||
+    spell.type.toLowerCase() == "special"
+      ? `${spell.type}`
+      : `${spell.time} ${spell.type}`;
 
   spellCastingTime.innerHTML = `${sdata.time[0].number} ${sdata.time[0].unit}`;
 
   spellRange.innerHTML = sdata.ranges.distance.amount
     ? `${sdata.ranges.distance.amount} ${sdata.ranges.distance.type}`
       : sdata.ranges.distance.type
+
+
+    
 
 
   spellDescription.innerHTML = sdata.description;
@@ -87,11 +91,11 @@ function insertInfoIntoDescription(data) {
       : ` M - ${sdata.components.m}`;
   }
 
-  spellOnHigherLvl.innerHTML = cmih != null
-  ?  `${cmih[0].name}: ${cmih[0].entries} `
+  spellOnHigherLvl.innerHTML = betterDescription != null
+  ?  `${betterDescription[0].name}: ${betterDescription[0].entries} `
   : "";
 
-
+  spellCasters.innerHTML = ""; 
   sdata.casters.forEach((currentSpellCaster)=>{
     console.log(currentSpellCaster.name);
     spellCasters.innerHTML += `${currentSpellCaster.name} `;
@@ -118,3 +122,5 @@ function insertInfoIntoDescription(data) {
 //     console.error("Error:", error);
 //   }
 // }
+
+

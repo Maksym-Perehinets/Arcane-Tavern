@@ -23,7 +23,7 @@ function populateTable(data) {
         spell.duration.concentration == true ? "✔" : "✖";
 
       durationCell.innerHTML = 
-        spell.duration.type.toLowerCase() == "instant" || spell.duration.type.toLowerCase() == "permanent" 
+        spell.duration.type.toLowerCase() == "instant" || spell.duration.type.toLowerCase() == "permanent" || spell.duration.type.toLowerCase() == "special"
           ? `${spell.duration.type}`
           : `${spell.duration.time} ${spell.duration.type}`;
 
