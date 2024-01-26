@@ -13,11 +13,16 @@ var spellName,
 document.addEventListener("DOMContentLoaded", function () {
   var spellListTable = document.getElementById("spellList");
   var tbody = spellListTable.getElementsByTagName("tbody")[0];
-
+  firstInfoFulfilment();
   tbody.addEventListener("click", function (event) {
     handleTableRowClick(event);
   });
 });
+
+async function firstInfoFulfilment() {
+    let res = await SendCurrentSpell(1);
+    insertInfoIntoDescription(res);
+}
 
 async function handleTableRowClick(event) {
   var clickedElement = event.target;
@@ -31,9 +36,7 @@ async function handleTableRowClick(event) {
 }
 
 function insertInfoIntoDescription(data) {
-
   var sdata = data.data[0];
-  console.log(sdata);
   var spell = sdata.duration;
   let betterDescription = sdata.descriptionOnHigherLevels;
 
@@ -64,8 +67,11 @@ function insertInfoIntoDescription(data) {
     ? `${sdata.ranges.distance.amount} ${sdata.ranges.distance.type}`
       : sdata.ranges.distance.type
 
-
+      
   spellDescription.innerHTML = sdata.description;
+  spellDescription.innerHTML = spellDescription.innerHTML.replace(/\{.*?\}/g, 
+    function(capturedText){ return "<a href='#sad' onclick='clickableTextFunc(\" " + capturedText + "\")'>" + capturedText + "</a>";}
+  );
 
   spellLevel.innerHTML = sdata.level;
 
@@ -94,10 +100,22 @@ function insertInfoIntoDescription(data) {
 
   spellCasters.innerHTML = ""; 
   sdata.casters.forEach((currentSpellCaster)=>{
-    console.log(currentSpellCaster.name);
     spellCasters.innerHTML += `${currentSpellCaster.name} `;
   } )
 }
+
+function clickableTextFunc(incomingText){
+  var matches = incomingText.match(/@(.*?)\s/);
+  someText = matches[1];
+  switch(someText){
+    case "dice": 
+      console.log(Math.floor((Math.random() * 20) + 1));
+  }
+ 
+}
+
+
+
 
 // "casters": [
 //   {

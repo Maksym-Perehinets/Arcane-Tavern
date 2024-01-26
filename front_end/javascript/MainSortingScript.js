@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 async function sortTable(name) {
-  checkDesc = bibaboba_aboba == name? !checkDesc : true;
+  checkDesc = bibaboba_aboba == name ? !checkDesc : true;
   bibaboba_aboba = name;
   let response = await SortTableData(name, checkDesc);
   replaceTableData(response);
