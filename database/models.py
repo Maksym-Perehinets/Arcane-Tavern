@@ -104,6 +104,7 @@ class Spell(Base):
     spell_description = Column(JSON, nullable=False)
     suitable_casters = Column(JSON, nullable=False)
     entries_higher_level = Column(JSON, nullable=False)
+    damage_type = Column(JSON, nullable=True)
     source_id = Column(Integer, ForeignKey('sources.id'))  # Foreign key reference sources table
     spell_range_id = Column(Integer, ForeignKey('ranges.id'))  # Foreign key reference to ranges able
     duration_id = Column(Integer, ForeignKey('durations.id'))  # Foreign key reference to durations table
@@ -111,5 +112,3 @@ class Spell(Base):
     source = relationship('Sources', back_populates='spells')
     spell_range = relationship('Ranges', back_populates='spells')
     duration = relationship('Durations', back_populates='spells')
-
-
