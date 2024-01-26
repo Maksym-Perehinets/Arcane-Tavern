@@ -14,10 +14,14 @@ function srcInTable() {
         if (found) {
             tr[i].style.display = "";
             found = false;
-        } else {
+        }
+
+        else {
             tr[i].style.display = "none";
         }
     }
+
 }
+
 
 

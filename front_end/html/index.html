@@ -31,7 +31,11 @@
   <script src="../javascript/SendingSearchInfo.js"></script>
   <script src="../javascript/showSpellinfo.js"></script>
   <script src="../javascript/resetButton.js"></script>
-  <script src="../javascript/search.js"></script>
+
+
+
+
+
 </head>
 
 <body>
@@ -52,6 +56,7 @@
     <!-- --------------Filters Bar------------- -->
     <div class="sidebar_menu">
       <select class="DropList" name="Level" id="actionDropdown">
+        <option value=" ">-</option>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -63,10 +68,11 @@
         <option value="9">9</option>
       </select>
 
-
+      
       <h4>Level</h4>
 
       <select class="DropList" name="Class" id="actionDropdown">
+        <option value=" ">-</option>
         <option value="1">Artificer</option>
         <option value="2">Barbarian</option>
         <option value="3">Bard</option>
@@ -88,6 +94,7 @@
       </a>
 
       <select class="DropList" name="School" id="actionDropdown">
+        <option value=" ">-</option>
         <option value="1">Abjuration</option>
         <option value="2">Alteration</option>
         <option value="3">Conjuration</option>
@@ -104,6 +111,7 @@
 
 
       <select class="DropList" name="DamageType" id="actionDropdown">
+        <option value=" ">-</option>
         <option value="1">Acid</option>
         <option value="2">Bludgeoning</option>
         <option value="3">Cold</option>
@@ -125,6 +133,7 @@
 
 
       <select class="DropList" name="Range" id="actionDropdown">
+        <option value=" ">-</option>
         <option value="1">Self (5-foot radius)</option>
         <option value="2">Self (10-foot radius)</option>
         <option value="3">Self (15-foot radius)</option>
@@ -156,6 +165,7 @@
 
 
       <select class="DropList" name="Duration" id="actionDropdown">
+        <option value=" ">-</option>
         <option value="1">Instantaneous</option>
         <option value="2">1 round</option>
         <option value="3">1 minute</option>
@@ -181,6 +191,7 @@
       </a>
 
       <select class="DropList" name="Action" id="actionDropdown">
+        <option value=" ">-</option>
         <option value="1">1 action</option>
         <option value="2">1 bonus action</option>
         <option value="3">1 reaction</option>
@@ -206,13 +217,15 @@
       <div class="wrap">
         <div class="search">
           <input onkeyup="srcInTable()" type="text" id="searchTerm" class="searchTerm" placeholder="What are you looking for?">
-          <div class="searchButton"> <img class="SearchIco" src="/front_end/IMGs/Search.svg" alt="SearchIco"></div>
+          <div id="chipiImg" class="searchButton"> <img class="SearchIco" src="/front_end/IMGs/Search.svg" alt="SearchIco"></div>
 
         </div>
       </div>
       <b id="signupBtn"><a href="/front_end/html/signup.html"><span>Sign Up</span></a></b>
 
     </header>
+
+    <script src="../javascript/search.js"></script>
 
 
     <!-- -----------------------Spell table-------------------------- -->

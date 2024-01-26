@@ -65,6 +65,9 @@ function insertInfoIntoDescription(data) {
       : sdata.ranges.distance.type
 
 
+    
+
+
   spellDescription.innerHTML = sdata.description;
 
   spellLevel.innerHTML = sdata.level;
