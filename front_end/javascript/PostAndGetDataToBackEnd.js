@@ -70,25 +70,30 @@ async function SortTableData(filterName, sortingType) {
 }
 
 async function SortFilters(level, caster_class, school, damage_type, range_distance, range_type, range_shape, duration_time, duration_type, casting_time, casting_type) {
-  console.log(level, caster_class, school, damage_type, range_distance, range_type, range_shape, duration_time, duration_type, casting_time, casting_type);
   const backendUrl = `http://127.0.0.1:8000/data-filter/`;
-  var url = backendUrl + '?';
+  var url = '';
 
-  if (typeof caster_class !== undefined) url += `&level=${level}`;
-  if (typeof caster_class !== undefined) url += `&caster_class=${caster_class}`;
-  if (typeof school !== undefined) url += `&school=${school}`;
-  if (typeof damage_type !== undefined) url += `&damage_type=${damage_type}`;
-  if (typeof range_distance !== undefined) url += `&range_distance=${range_distance}`;
-  if (typeof range_type !== undefined) url += `&range_type=${range_type}`;
-  if (typeof range_shape !== undefined) url += `&range_shape=${range_shape}`;
-  if (typeof duration_time !== undefined) url += `&duration_time=${duration_time}`;
-  if (typeof duration_type !== undefined) url += `&duration_type=${duration_type}`;
-  if (typeof casting_time !== undefined) url += `&casting_time=${casting_time}`;
-  if (typeof casting_type !== undefined) url += `&casting_type=${casting_type}`;
+  url += (typeof(duration_time) != 'undefined')? `&duration_time=${duration_time}` : '';
+  url += (typeof(damage_type != 'undefined')) ? `&damage_type=${damage_type}` : '';
+  url += (typeof(level != 'undefined')) ? `&level=${level}` : '';
+  url += (typeof(caster_class != 'undefined')) ? `&caster_class=${caster_class}` : '';
+  url += (typeof(school != 'undefined')) ? `&school=${school}` : '';
+  url += (typeof(range_distance != 'undefined')) ? `&range_distance=${range_distance}` : '';
+  url += (typeof(range_type != 'undefined')) ? `&range_type=${range_type}` : '';
+  url += (typeof(range_shape != 'undefined')) ? `&range_shape=${range_shape}` : '';
+  url += (typeof(duration_type != 'undefined')) ? `&duration_type=${duration_type}` : '';
+  url += (typeof(casting_time != 'undefined')) ? `&casting_time=${casting_time}` : '';
+  url += (typeof(casting_type != 'undefined')) ? `&casting_type=${casting_type}` : '';
 
-  console.log(url);
+  console.log(typeof(duration_time));
+  console.log((typeof(duration_time) != 'undefined'));
+  var trueURL = backendUrl + '?' + url.substring(1);
+  trueURL = trueURL.replace(' ', '');
+  trueURL = trueURL.toLowerCase();
+
+  console.log(trueURL);
   try {
-    const response = await axios.get(url);
+    const response = await axios.get(trueURL);
     return response.data;
   } catch (error) {
     console.error("Помилка при отриманні даних:", error.message);

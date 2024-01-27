@@ -82,8 +82,31 @@ async def dbtest(db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="Something went wrong with database pleas contact owner")
     else:
         # if data is correct then return list of dicts
-        formatted_result = service_instance.format_result_for_all_spells(result.all())
-        print(result.all())
+        formatted_result = [
+            {
+                "id": spell.id,
+                "name": spell.spell_name,
+                "level": spell.spell_level,
+                "components": spell.components,
+                # Duration type, time, concentration
+                "duration": {
+                    "type": duration.duration_type,
+                    "time": duration.duration_time,
+                    "concentration": duration.concentration
+                },
+                "time": spell.cast_time,
+                # Range with
+                "ranges": {
+                    "type": ranges.shape,
+                    "distance": {
+                        "type": ranges.distance_type,
+                        "amount": ranges.distance_range
+                    }
+                }
+            }
+            for spell, duration, ranges in result
+        ]
+
         return {
             "status": "spell",
             "data": formatted_result
@@ -209,8 +232,8 @@ async def data_filter(filter_name: str, asc_value: bool = True, db: Session = De
 
     elif filter_name == "concentration":
         result = (
-            result.order_by(Durations.concentration.asc() if asc_value is True else Durations.concentration.desc())
-        )
+            result.filter(Durations.concentration == 1 if asc_value is True else Durations.concentration == 0)
+        ).all()
 
     elif filter_name == "duration":
         result = (
@@ -234,7 +257,7 @@ async def data_filter(filter_name: str, asc_value: bool = True, db: Session = De
         raise HTTPException(status_code=404, detail="Something went wrong with database pleas contact owner")
     else:
         # if data is correct then return list of dicts
-        formatted_result = service_instance.format_result_for_all_spells(result.all())
+        formatted_result = service_instance.format_spell(result)
         return {
             "status": "pussy test",
             "data": formatted_result
