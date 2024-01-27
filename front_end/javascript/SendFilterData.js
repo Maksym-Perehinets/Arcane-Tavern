@@ -1,81 +1,30 @@
 let filterList = [];
 
 async function sendFilters(filters) {
-  let level, caster_class, school, damage_type, range_distance, range_type, range_shape, duration_time, duration_type, casting_time, casting_type = "";
-
-
-  level = filters[0];
-  caster_class = filters[1];
-  school = filters[2];
-  try{
-  damage_type = '';}catch(error){console.log("ПОХУЙ БЛЯТЬ");}
-
-  // range_distance = filters[4].split(" ")[0];
-  // range_type = filters[4].split(" ")[1];
-  range_shape = typeof filters[4].split(" ")[2] == 'undefined' ? "point" : filters[4].split(" ")[2];
-
-  switch(filters[4].split(" ").length){
-    case 1: 
-      range_type = filters[4]; 
-      break;
-    case 2:
-      range_distance = filters[4].split(" ")[0];
-      range_type = filters[4].split(" ")[1];
-      break;
-    default:
-      range_type = filters[4].split(" ")[0]; 
-      range_distance = filters[4].split(" ")[1].split("-")[0];
-    }
-
-  switch(filters[5].split(" ").length){
-  case 1: 
-    duration_type = filters[5]; 
-    break;
-  case 2:
-    duration_time = filters[5].split(" ")[0];
-    duration_type = filters[5].split(" ")[1];
-    break
-  default:
-    duration_type = filters[5]; 
-  }
-
-    casting_time = filters[6].split(" ")[0];
-    casting_type = filters[6].split(" ")[1];
-  
-
-  console.log(level, caster_class, school, damage_type, range_distance, range_type, range_shape, duration_time, duration_type, casting_time, casting_type);
-
-  res = await SortFilters(level, caster_class, school, damage_type, range_distance, range_type, range_shape, duration_time, duration_type, casting_time, casting_type);
+  res = await SortFilters(filters);
   ShowFiltered(res);
-  
-  // "range": {
-  //   "type": "line",
-  //   "distance": {
-  //     "type": "feet",
-  //     "amount": 100
-  //   }
-  // }
 }
 
 function collectFilters(){
     var elms = document.querySelectorAll("[id='actionDropdown']");
+    var filters = ""
     for(var i = 0; i < elms.length; i++){ 
-      try{
-      filterList.push(elms[i].options[elms[i].selectedIndex].text.replace(/\(|\)/g, ""));
-    } catch(error){
-      console.log("Похуй на " + error);
+      filters += elms[i].value;
     }
-    }
-    sendFilters(filterList);
+    sendFilters(filters);
     filterList = [];
 }
 
 function ShowFiltered(data) {
+  console.log(data.data);
   var spellListTable = document
     .getElementById("spellList")
     .getElementsByTagName("tbody")[0];
+    console.log(spellListTable);
+    spellListTable.innerHTML = ""
 
   data.data.forEach((spell) => {
+    console.log(spell);
     var row = spellListTable.insertRow();
     var levelCell = row.insertCell(0);
     var nameCell = row.insertCell(1);
