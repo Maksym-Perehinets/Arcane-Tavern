@@ -7,9 +7,23 @@ async function sendFilters(filters) {
   caster_class = filters[1];
   school = filters[2];
   damage_type = filters[3];
-  range_distance = filters[4].split(" ")[1];
-  range_type = filters[4].split(" ")[0];
+
+  // range_distance = filters[4].split(" ")[0];
+  // range_type = filters[4].split(" ")[1];
   range_shape = typeof filters[4].split(" ")[2] == 'undefined' ? "point" : filters[4].split(" ")[2];
+
+  switch(filters[4].split(" ").length){
+    case 1: 
+      range_type = filters[4]; 
+      break;
+    case 2:
+      range_distance = filters[4].split(" ")[0];
+      range_type = filters[4].split(" ")[1];
+      break;
+    default:
+      range_type = filters[4].split(" ")[0]; 
+      range_distance = filters[4].split(" ")[1].value;
+    }
 
   switch(filters[5].split(" ").length){
   case 1: 
@@ -27,10 +41,10 @@ async function sendFilters(filters) {
     casting_type = filters[6].split(" ")[1];
   
 
-  console.log(range_shape);
+  console.log(range_distance);
 
-  // res = await SortFilters(filters);
-  // ShowFiltered(res);
+  res = await SortFilters(level, caster_class, school, damage_type, range_distance, range_type, range_shape, duration_time, duration_type, casting_time, casting_type);
+  ShowFiltered(res);
   
   // "range": {
   //   "type": "line",

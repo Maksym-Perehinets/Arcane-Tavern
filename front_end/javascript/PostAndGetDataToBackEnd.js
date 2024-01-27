@@ -86,9 +86,9 @@ async function SortFilters(level, caster_class, school, damage_type, range_dista
   if (typeof casting_time !== undefined) url += `&casting_time=${casting_time}`;
   if (typeof casting_type !== undefined) url += `&casting_type=${casting_type}`;
 
-  console.log(url);
+  console.log(toLowerCase(url));
   try {
-    const response = await axios.get(url);
+    const response = await axios.get(toLowerCase(url));
     return response.data;
   } catch (error) {
     console.error("Помилка при отриманні даних:", error.message);
