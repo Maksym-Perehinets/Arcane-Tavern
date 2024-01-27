@@ -28,7 +28,7 @@ class Service:
                     }
                 }
             }
-            for spell, source, duration, ranges in data
+            for spell, duration, ranges in data
         ]
         return formatted_result
 

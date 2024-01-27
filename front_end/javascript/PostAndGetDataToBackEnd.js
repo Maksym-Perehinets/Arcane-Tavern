@@ -71,6 +71,7 @@ async function SortTableData(filterName, sortingType) {
 
 async function SortFilters(level, caster_class, school, damage_type, range_distance, range_type, range_shape, duration_time, duration_type, casting_time, casting_type) {
   console.log(level, caster_class, school, damage_type, range_distance, range_type, range_shape, duration_time, duration_type, casting_time, casting_type);
+  console.log(level, caster_class, school, damage_type, range_distance, range_type, range_shape, duration_time, duration_type, casting_time, casting_type);
   const backendUrl = `http://127.0.0.1:8000/data-filter/`;
   var url = backendUrl + '?';
 
@@ -86,9 +87,9 @@ async function SortFilters(level, caster_class, school, damage_type, range_dista
   if (typeof casting_time !== undefined) url += `&casting_time=${casting_time}`;
   if (typeof casting_type !== undefined) url += `&casting_type=${casting_type}`;
 
-  console.log(toLowerCase(url));
+  console.log(backendUrl);
   try {
-    const response = await axios.get(toLowerCase(url));
+    const response = await axios.get(backendUrl);
     return response.data;
   } catch (error) {
     console.error("Помилка при отриманні даних:", error.message);
