@@ -15,7 +15,7 @@ app = FastAPI()
 models.Base.metadata.create_all(bind=engine)
 
 origins = [
-    "http://localhost"
+    "http://localhost",
     "http://localhost:5500",
     "http://127.0.0.1:5500"
 ]
@@ -73,8 +73,8 @@ async def dbtest(db: Session = Depends(get_db)):
         db.query(Spell, Durations, Ranges)
         .join(Durations, Durations.id == Spell.duration_id)
         .join(Ranges, Ranges.id == Spell.spell_range_id)
-        .all()
     )
+
 
     # Data consistency check
     if None in result:
@@ -83,6 +83,7 @@ async def dbtest(db: Session = Depends(get_db)):
     else:
         # if data is correct then return list of dicts
         formatted_result = service_instance.format_result_for_all_spells(result.all())
+        print(result.all())
         return {
             "status": "spell",
             "data": formatted_result
@@ -134,8 +135,7 @@ async def get_spell(spell_id: int, db: Session = Depends(get_db)):
         .join(Durations, Durations.id == Spell.duration_id)
         .join(Ranges, Ranges.id == Spell.spell_range_id)
         .filter(Spell.id == spell_id)
-        .all()
-    )
+    ).all()
 
     # Data consistency check
     if None in result:
@@ -193,49 +193,48 @@ async def data_filter(filter_name: str, asc_value: bool = True, db: Session = De
     """
     service_instance = Service()
     result = (
-            db.query(Spell, Sources.book_name, Durations, Ranges)
-            .join(Sources, Sources.id == Spell.source_id)
+            db.query(Spell, Durations, Ranges)
             .join(Durations, Durations.id == Spell.duration_id)
             .join(Ranges, Ranges.id == Spell.spell_range_id)
         )
     if filter_name == "lvl":
         result = (
             result.order_by(asc(Spell.spell_level) if asc_value is True else desc(Spell.spell_level))
-        ).all()
+        )
 
     elif filter_name == "name":
         result = (
             result.order_by(asc(Spell.spell_name) if asc_value is True else desc(Spell.spell_name))
-        ).all()
+        )
 
     elif filter_name == "concentration":
         result = (
             result.order_by(Durations.concentration.asc() if asc_value is True else Durations.concentration.desc())
-        ).all()
+        )
 
     elif filter_name == "duration":
         result = (
             result.order_by(asc(Durations.duration_time) if asc_value is True else desc(Durations.duration_time))
             .order_by(desc(Durations.duration_type))
-        ).all()
+        )
 
     elif filter_name == "time":
         result = (
             result.order_by(asc(Spell.cast_time) if asc_value is True else desc(Spell.cast_time))
-        ).all()
+        )
 
     elif filter_name == "range":
         result = (
             result.order_by(asc(Ranges.distance_range) if asc_value is True else desc(Ranges.distance_range))
             .order_by(desc(Durations.duration_type))
-        ).all()
+        )
 
     if None in result:
         # if data is corrupted
         raise HTTPException(status_code=404, detail="Something went wrong with database pleas contact owner")
     else:
         # if data is correct then return list of dicts
-        formatted_result = service_instance.format_result_for_all_spells(result)
+        formatted_result = service_instance.format_result_for_all_spells(result.all())
         return {
             "status": "pussy test",
             "data": formatted_result
@@ -286,8 +285,7 @@ async def data_filter(
     - `data` (dict): A dictionary containing paginated results and metadata.
     """
     service_instance = Service()
-    db_request = db.query(Spell, Sources.book_name, Durations, Ranges) \
-        .join(Sources, Sources.id == Spell.source_id) \
+    db_request = db.query(Spell, Durations, Ranges)  \
         .join(Durations, Durations.id == Spell.duration_id) \
         .join(Ranges, Ranges.id == Spell.spell_range_id)
 
