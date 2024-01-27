@@ -68,6 +68,7 @@ async def dbtest(db: Session = Depends(get_db)):
     ```
 
     """
+    service_instance = Service()
     result = (
         db.query(Spell, Durations, Ranges)
         .join(Durations, Durations.id == Spell.duration_id)
@@ -81,31 +82,7 @@ async def dbtest(db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="Something went wrong with database pleas contact owner")
     else:
         # if data is correct then return list of dicts
-        formatted_result = [
-            {
-                "id": spell.id,
-                "name": spell.spell_name,
-                "level": spell.spell_level,
-                "components": spell.components,
-                # Duration type, time, concentration
-                "duration": {
-                    "type": duration.duration_type,
-                    "time": duration.duration_time,
-                    "concentration": duration.concentration
-                },
-                "time": spell.cast_time,
-                # Range with
-                "ranges": {
-                    "type": ranges.shape,
-                    "distance": {
-                        "type": ranges.distance_type,
-                        "amount": ranges.distance_range
-                    }
-                }
-            }
-            for spell, duration, ranges in result
-        ]
-
+        formatted_result = service_instance.format_result_for_all_spells(result.all())
         return {
             "status": "spell",
             "data": formatted_result
@@ -196,7 +173,8 @@ async def data_filter(filter_name: str, asc_value: bool = True, db: Session = De
         - For `filter_name` = "lvl", the data is filtered and ordered by spell level.
         - For `filter_name` = "name", the data is filtered and ordered by spell name.
         - For `filter_name` = "concentration", the data is filtered based on concentration (1 for True, 0 for False).
-        - For `filter_name` = "duration", the data is filtered and ordered by spell duration.
+        - For `filter_name` = "duration", the data is filtered and ordered by spell duration `to get non-durational
+         spells first do not pass anithing to asc_value else pass False`
         - For `filter_name` = "time", the data is filtered and ordered by casting time.
         - For `filter_name` = "range", the data is filtered and ordered by spell range.
 
@@ -232,7 +210,7 @@ async def data_filter(filter_name: str, asc_value: bool = True, db: Session = De
 
     elif filter_name == "concentration":
         result = (
-            result.filter(Durations.concentration == 1 if asc_value is True else Durations.concentration == 0)
+            result.order_by(Durations.concentration.asc() if asc_value is True else Durations.concentration.desc())
         ).all()
 
     elif filter_name == "duration":
@@ -257,7 +235,7 @@ async def data_filter(filter_name: str, asc_value: bool = True, db: Session = De
         raise HTTPException(status_code=404, detail="Something went wrong with database pleas contact owner")
     else:
         # if data is correct then return list of dicts
-        formatted_result = service_instance.format_spell(result)
+        formatted_result = service_instance.format_result_for_all_spells(result)
         return {
             "status": "pussy test",
             "data": formatted_result
@@ -293,7 +271,8 @@ async def data_filter(
     - `duration_time` (int): Filter spells by the duration time.
     - `duration_type` (str): Filter spells by the duration type.
     - `casting_time` (str): Filter spells by the casting time.
-    - `casting_type` (str): Filter spells by the casting type.
+    - `casting_type` (str): Filter spells by the casting type if you want to get spells that casts for bonus actiona
+       `just enter bonus`.
     - `db` (Session): Dependency injection for the database session.
 
     Query Parameters:
@@ -355,8 +334,7 @@ async def data_filter(
         )
 
     # Result formatting to suite response model
-    formatted_result = service_instance.format_spell(db_request.all())
-    formatted_result = formatted_result
+    formatted_result = service_instance.format_result_for_all_spells(db_request.all())
 
     if caster_class is not None:
         formatted_result = [

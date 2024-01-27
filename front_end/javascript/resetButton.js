@@ -1,7 +1,7 @@
 function resetAllDropdowns() {
-    var dropdowns = document.querySelectorAll('.DropList');
+    var dropdowns = document.querySelectorAll('#actionDropdown');
 
     dropdowns.forEach(function (dropdown) {
-      dropdown.selectedIndex = 0;
+      dropdown.value = '';
     });
-  }
+}
