@@ -29,8 +29,8 @@ async function sendFilters(filters) {
 
   console.log(range_shape);
 
-  res = await SortFilters(level, caster_class, school, damage_type, range_distance, range_type, range_shape, duration_time, duration_type, casting_time, casting_type);
-  ShowFiltered(res);
+  // res = await SortFilters(filters);
+  // ShowFiltered(res);
   
   // "range": {
   //   "type": "line",
