@@ -67,7 +67,14 @@ function insertInfoIntoDescription(data) {
     ? `${sdata.ranges.distance.amount} ${sdata.ranges.distance.type}`
       : sdata.ranges.distance.type
 
-      
+ 
+
+
+  // if (sdata.description[2] == undefined)   spellDescription.innerHTML = sdata.description;
+  // if (sdata.description[2] != undefined) spellDescription.innerHTML = sdata.description[2]; 
+
+  
+
   spellDescription.innerHTML = sdata.description;
   spellDescription.innerHTML = spellDescription.innerHTML.replace(/\{.*?\}/g, 
     function(capturedText){ return "<a href='#sad' onclick='clickableTextFunc(\" " + capturedText + "\")'>" + capturedText + "</a>";}
