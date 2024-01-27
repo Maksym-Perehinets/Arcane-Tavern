@@ -5,6 +5,34 @@ class Service:
     def __init__(self):
         pass
 
+    def format_result_for_all_spells(self, data):
+        formatted_result = [
+            {
+                "id": spell.id,
+                "name": spell.spell_name,
+                "level": spell.spell_level,
+                "components": spell.components,
+                # Duration type, time, concentration
+                "duration": {
+                    "type": duration.duration_type,
+                    "time": duration.duration_time,
+                    "concentration": duration.concentration
+                },
+                "time": spell.cast_time,
+                # Range with
+                "ranges": {
+                    "type": ranges.shape,
+                    "distance": {
+                        "type": ranges.distance_type,
+                        "amount": ranges.distance_range
+                    }
+                }
+            }
+            for spell, source, duration, ranges in data
+        ]
+        return formatted_result
+
+
     def format_spell(self, data):
         formatted_result = [
             {

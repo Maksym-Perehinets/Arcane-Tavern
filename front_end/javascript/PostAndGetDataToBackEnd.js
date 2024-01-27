@@ -70,20 +70,21 @@ async function SortTableData(filterName, sortingType) {
 }
 
 async function SortFilters(level, caster_class, school, damage_type, range_distance, range_type, range_shape, duration_time, duration_type, casting_time, casting_type) {
+  console.log(level, caster_class, school, damage_type, range_distance, range_type, range_shape, duration_time, duration_type, casting_time, casting_type);
   const backendUrl = `http://127.0.0.1:8000/data-filter/`;
   var url = backendUrl + '?';
 
-  if (caster_class !== undefined) url += `&level=${level}`;
-  if (caster_class !== undefined) url += `&caster_class=${caster_class}`;
-  if (school !== undefined) url += `&school=${school}`;
-  if (damage_type !== undefined) url += `&damage_type=${damage_type}`;
-  if (range_distance !== undefined) url += `&range_distance=${range_distance}`;
-  if (range_type !== undefined) url += `&range_type=${range_type}`;
-  if (range_shape !== undefined) url += `&range_shape=${range_shape}`;
-  if (duration_time !== undefined) url += `&duration_time=${duration_time}`;
-  if (duration_type !== undefined) url += `&duration_type=${duration_type}`;
-  if (casting_time !== undefined) url += `&casting_time=${casting_time}`;
-  if (casting_type !== undefined) url += `&casting_type=${casting_type}`;
+  if (typeof caster_class !== undefined) url += `&level=${level}`;
+  if (typeof caster_class !== undefined) url += `&caster_class=${caster_class}`;
+  if (typeof school !== undefined) url += `&school=${school}`;
+  if (typeof damage_type !== undefined) url += `&damage_type=${damage_type}`;
+  if (typeof range_distance !== undefined) url += `&range_distance=${range_distance}`;
+  if (typeof range_type !== undefined) url += `&range_type=${range_type}`;
+  if (typeof range_shape !== undefined) url += `&range_shape=${range_shape}`;
+  if (typeof duration_time !== undefined) url += `&duration_time=${duration_time}`;
+  if (typeof duration_type !== undefined) url += `&duration_type=${duration_type}`;
+  if (typeof casting_time !== undefined) url += `&casting_time=${casting_time}`;
+  if (typeof casting_type !== undefined) url += `&casting_type=${casting_type}`;
 
   console.log(url);
   try {

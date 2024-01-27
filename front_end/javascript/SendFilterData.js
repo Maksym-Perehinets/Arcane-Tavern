@@ -1,21 +1,35 @@
 let filterList = [];
 
 async function sendFilters(filters) {
+  let level, caster_class, school, damage_type, range_distance, range_type, range_shape, duration_time, duration_type, casting_time, casting_type = "";
 
-  let level = filters[0];
-  let caster_class = filters[1];
-  let school = filters[2];
-  let damage_type = filters[3];
-  let range_distance = filters[4].split(" ")[1];
-  let range_type = filters[4].split(" ")[0];
-  let range_shape = filters[4].split(" ")[2];
-  let duration_time = filters[5];
-  let duration_type = filters[5];
-  let casting_time = filters[6];
-  let casting_type = filters[6];
-  console.log(caster_class);
+  level = filters[0];
+  caster_class = filters[1];
+  school = filters[2];
+  damage_type = filters[3];
+  range_distance = filters[4].split(" ")[1];
+  range_type = filters[4].split(" ")[0];
+  range_shape = typeof filters[4].split(" ")[2] == 'undefined' ? "point" : filters[4].split(" ")[2];
 
-  res = await SortFilters(filters);
+  switch(filters[5].split(" ").length){
+  case 1: 
+    duration_type = filters[5]; 
+    break;
+  case 2:
+    duration_time = filters[5].split(" ")[0];
+    duration_type = filters[5].split(" ")[1];
+    break
+  default:
+    duration_type = filters[5]; 
+  }
+
+    casting_time = filters[6].split(" ")[0];
+    casting_type = filters[6].split(" ")[1];
+  
+
+  console.log(range_shape);
+
+  res = await SortFilters(level, caster_class, school, damage_type, range_distance, range_type, range_shape, duration_time, duration_type, casting_time, casting_type);
   ShowFiltered(res);
   
   // "range": {
