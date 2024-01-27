@@ -332,13 +332,18 @@ async def data_filter(
         )
 
     # Result formatting to suite response model
-    formatted_result = service_instance.format_result_for_all_spells(db_request.all())
+    print(db_request.all())
 
     if caster_class is not None:
+        db_data = db.query(Spell.suitable_casters)
+        print(db_data.all())
         formatted_result = [
-                            spell_data for spell_data in formatted_result
-                            if any(caster['name'] in caster_class for caster in spell_data.get('casters', []))
-                           ]
+            spell for spell, durations, ranges in db_request.all()
+            if any(caster['name'] in spell.suitable_casters for caster in db_data)
+        ]
+    else:
+        formatted_result = service_instance.format_result_for_all_spells(db_request.all())
+        print(formatted_result)
 
     return {
         "status": "pussy test",
