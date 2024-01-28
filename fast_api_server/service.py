@@ -88,9 +88,9 @@ class Service:
                  ,)
             ),
             "concentration": (
-                result.filter,
-                (models.Durations.concentration == 1 if asc_value else
-                 models.Durations.concentration == 0
+                result.order_by,
+                (asc(models.Durations.concentration) if asc_value else
+                 desc(models.Durations.concentration)
                  ,)
             ),
             "duration": (
