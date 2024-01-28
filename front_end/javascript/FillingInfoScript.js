@@ -42,8 +42,10 @@
 // }
 
 document.addEventListener("DOMContentLoaded", async function () {
+  console.log("a1");
   try {
     const data = await getAllSpells();
+    console.log("as");
     insertData(data, false);
   } catch (error) {
     console.error("Error:", error);

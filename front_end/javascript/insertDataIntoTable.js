@@ -1,4 +1,5 @@
 async function insertData(data, clear) {
+    console.log("start");
     var spellListTable = document
       .getElementById("spellList")
       .getElementsByTagName("tbody")[0];
