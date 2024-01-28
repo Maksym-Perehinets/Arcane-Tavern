@@ -381,9 +381,10 @@ async def data_filter(
 
 """
 Registration and Log in 
+Will be provided in further updates
 """
 
 
-@app.post("/register/")
-async def register():
-    return responses.RedirectResponse("/?msg=sucsessfull", status_code=status.HTTP_201_CREATED)
+# @app.post("/register/")
+# async def register():
+#     return responses.RedirectResponse("/?msg=success", status_code=status.HTTP_201_CREATED)
