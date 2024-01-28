@@ -257,7 +257,7 @@ async def data_filter(filter_name: str, asc_value: bool = True, db: Session = De
         raise HTTPException(status_code=404, detail="Something went wrong with database pleas contact owner")
     else:
         # if data is correct then return list of dicts
-        formatted_result = service_instance.format_spell(result)
+        formatted_result = service_instance.format_result_for_all_spells(result)
         return {
             "status": "pussy test",
             "data": formatted_result
