@@ -162,7 +162,7 @@ async def get_spell(spell_id: int, db: Session = Depends(get_db)):
 
 
 @app.get("/data-sort/")
-async def data_filter(filter_name: str, asc_value: bool = True, db: Session = Depends(get_db)):
+async def data_sort(filter_name: str, asc_value: bool = True, db: Session = Depends(get_db)):
     """
     Endpoint to filter and retrieve data based on different criteria.
 
@@ -208,37 +208,6 @@ async def data_filter(filter_name: str, asc_value: bool = True, db: Session = De
             .join(Durations, Durations.id == Spell.duration_id)
             .join(Ranges, Ranges.id == Spell.spell_range_id)
         )
-    if filter_name == "lvl":
-        result = (
-            result.order_by(asc(Spell.spell_level) if asc_value is True else desc(Spell.spell_level))
-        )
-    elif filter_name == "name":
-        result = (
-            result.order_by(asc(Spell.spell_name) if asc_value is True else desc(Spell.spell_name))
-        )
-    elif filter_name == "concentration":
-        result = (
-            result.filter(Durations.concentration == 1 if asc_value is True else Durations.concentration == 0)
-        ).all()
-    elif filter_name == "duration":
-        result = (
-            result.order_by(asc(Durations.duration_time) if asc_value is True else desc(Durations.duration_time))
-            .order_by(desc(Durations.duration_type))
-        )
-    elif filter_name == "time":
-        result = (
-            result.order_by(asc(Spell.cast_time) if asc_value is True else desc(Spell.cast_time))
-        )
-    elif filter_name == "range":
-        result = (
-            result.order_by(asc(Ranges.distance_range) if asc_value is True else desc(Ranges.distance_range))
-            .order_by(desc(Durations.duration_type))
-        )
-    else:
-        raise HTTPException(
-            status_code=400,
-            detail="Invalid input parameters"
-        )
 
     if None in result:
         # if data is corrupted
@@ -248,7 +217,7 @@ async def data_filter(filter_name: str, asc_value: bool = True, db: Session = De
         )
     else:
         # if data is correct then return list of dicts
-        formatted_result = service_instance.format_result_for_all_spells(result)
+        formatted_result = service_instance.apply_sort(result, filter_name, asc_value)
         return {
             "status": "success",
             "data": formatted_result
