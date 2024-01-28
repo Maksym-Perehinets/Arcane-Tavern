@@ -236,7 +236,7 @@ img {
   margin-bottom: 5%;
   font-family: DraconicFont;
   font-size: 170%;
-  background-color: red;
+  background-color: rgb(163, 12, 4);
   color: rgba(21, 21, 21, 1);
   outline: none;
   cursor: pointer;
@@ -259,7 +259,7 @@ img {
   margin-bottom: 5%;
   font-family: DraconicFont;
   font-size: 170%;
-  background-color: red;
+  background-color: rgb(163, 12, 4);
   color: rgba(21, 21, 21, 1);
   outline: none;
   cursor: pointer;
@@ -283,7 +283,7 @@ img {
   border: none;
   border-radius: 10px;
   display: flex;
-  background-color: red;
+  background-color: rgb(163, 12, 4);
   /* font-family: DraconicFont; */
   /* font-size: 160%; */
   color: rgba(21, 21, 21, 1);
