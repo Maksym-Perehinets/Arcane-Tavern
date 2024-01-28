@@ -358,11 +358,28 @@ async def data_filter(
     print(db_request.all())
 
     if caster_class is not None:
-        db_data = db.query(Spell.suitable_casters)
-        print(db_data.all())
         formatted_result = [
-            spell for spell, durations, ranges in db_request.all()
-            if any(caster['name'] in spell.suitable_casters for caster in db_data)
+            {
+                "id": spell.id,
+                "name": spell.spell_name,
+                "level": spell.spell_level,
+                "components": spell.components,
+                "duration": {
+                    "type": duration.duration_type,
+                    "time": duration.duration_time,
+                    "concentration": duration.concentration
+                },
+                "time": spell.cast_time,
+                "ranges": {
+                    "type": ranges.shape,
+                    "distance": {
+                        "type": ranges.distance_type,
+                        "amount": ranges.distance_range
+                    }
+                }
+            }
+            for spell, duration, ranges in db_request.all()
+            if any(caster_class in caster.get("name", "") for caster in spell.suitable_casters)
         ]
     else:
         formatted_result = service_instance.format_result_for_all_spells(db_request.all())
