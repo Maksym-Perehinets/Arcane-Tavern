@@ -381,8 +381,6 @@ async def data_filter(
             for spell, duration, ranges in db_request.all()
             if any(caster_class in caster.get("name", "") for caster in spell.suitable_casters)
         ]
-
-
     else:
         formatted_result = service_instance.format_result_for_all_spells(db_request.all())
         print(formatted_result)
