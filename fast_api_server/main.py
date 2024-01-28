@@ -1,6 +1,5 @@
-from fastapi import FastAPI, Depends, HTTPException, responses, status
+from fastapi import FastAPI, Depends, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from sqlalchemy import asc, desc
 from sqlalchemy.orm import Session
 from fast_api_server.service import Service
 
@@ -45,7 +44,9 @@ async def root():
 
 
 @app.get("/spells")
-async def dbtest(db: Session = Depends(get_db)):
+async def dbtest(
+        db: Session = Depends(get_db)
+):
     """
     Get short information of each spell in the database.
 
@@ -92,7 +93,10 @@ async def dbtest(db: Session = Depends(get_db)):
 
 
 @app.get("/get-spell/{spell_id}")
-async def get_spell(spell_id: int, db: Session = Depends(get_db)):
+async def get_spell(
+        spell_id: int,
+        db: Session = Depends(get_db)
+):
     """
     Retrieve information about a spell by its ID.
 
@@ -162,7 +166,11 @@ async def get_spell(spell_id: int, db: Session = Depends(get_db)):
 
 
 @app.get("/data-sort/")
-async def data_sort(filter_name: str, asc_value: bool = True, db: Session = Depends(get_db)):
+async def data_sort(
+        filter_name: str,
+        asc_value: bool = True,
+        db: Session = Depends(get_db)
+):
     """
     Endpoint to filter and retrieve data based on different criteria.
 
