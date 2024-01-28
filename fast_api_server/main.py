@@ -82,30 +82,7 @@ async def dbtest(db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="Something went wrong with database pleas contact owner")
     else:
         # if data is correct then return list of dicts
-        formatted_result = [
-            {
-                "id": spell.id,
-                "name": spell.spell_name,
-                "level": spell.spell_level,
-                "components": spell.components,
-                # Duration type, time, concentration
-                "duration": {
-                    "type": duration.duration_type,
-                    "time": duration.duration_time,
-                    "concentration": duration.concentration
-                },
-                "time": spell.cast_time,
-                # Range with
-                "ranges": {
-                    "type": ranges.shape,
-                    "distance": {
-                        "type": ranges.distance_type,
-                        "amount": ranges.distance_range
-                    }
-                }
-            }
-            for spell, duration, ranges in result
-        ]
+        formatted_result = service_instance.format_result_for_all_spells(result.all())
 
         return {
             "status": "spell",
@@ -353,9 +330,6 @@ async def data_filter(
         db_request = db_request.filter(
             Spell.cast_time == service_instance.casting_type_for_comperation(casting_type, casting_time)
         )
-
-    # Result formatting to suite response model
-    print(db_request.all())
 
     if caster_class is not None:
         formatted_result = [
