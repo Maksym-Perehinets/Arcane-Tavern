@@ -16,7 +16,6 @@
   background-repeat: no-repeat;
   background-size: cover;
   border: 2px solid #424242;
-  /* display: inline-block; */
   overflow-y: scroll;
   overflow-x: hidden;
   border-radius: 5px;
@@ -55,18 +54,20 @@
 .custom-table th {
   background-color: rgba(12, 12, 12, 1);
   position: sticky;
-  top: 0; /* Set the distance from the top where the <th> will stick */
-  z-index: 2; /* Set a higher z-index to make sure it appears above the regular cells */
+  top: 0; 
+  z-index: 2; 
 }
 
 .custom-table a {
   text-decoration: none;
   color: #ffffff;
-  font-size: 16px;
+  /* font-size: 16px; */
+  font-size: 125%;
   font-family: DraconicFont;
   font-weight: lighter;
   display: block;
   padding: 8px;
+  user-select: none;
 }
 
 .custom-table td:nth-child(1) {
@@ -286,6 +287,18 @@ a:hover {
   font-family: DraconicFont;
   color: rgb(255, 255, 255);
   margin-left: 9%;
+}
+
+#casters
+{
+  color: rgb(59, 4, 1);
+  
+}
+
+.casters-bold
+{
+  font-size: 20px;
+  font-weight: bold;
 }
 
     #extras {
