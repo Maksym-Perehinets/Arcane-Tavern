@@ -18,3 +18,28 @@ YuranJo's expertise shines in crafting the navigation bar, registration and logi
 
 **Chang31ing:**
 Chang31ing assumed the role of a meticulous bugfixer, resolving issues to ensure a smooth user experience. Additionally, he made valuable contributions by creating the site logo background, adding a distinctive visual element to the project. Chang31ing's commitment to perfection and eye for detail played a crucial role in maintaining the project's integrity and overall visual appeal.
+
+**How to Use This Repo:**
+1. **Clone the Repository:** Start by cloning this repository to your local machine using the provided Git URL.
+
+   ```bash
+   git clone https://github.com/your-username/repository-name.git
+   ```
+
+2. **Set Up the Environment:**
+   - Ensure you have the necessary dependencies installed for both the front-end and back-end. Refer to the documentation provided by each developer in their respective sections of the project.
+   - Install any required packages or libraries by following the instructions in the documentation.
+
+3. **Run the Application:**
+   - Navigate to the front-end directory and launch the application using the appropriate commands or scripts.
+   - Similarly, start the back-end server by following the instructions provided in the back-end section.
+
+4. **Explore and Contribute:**
+   - Once the application is running, explore the features and functionalities implemented by each developer.
+   - If you wish to contribute, follow the guidelines outlined in the project's contributing documentation.
+
+5. **Collaborate and Communicate:**
+   - Use the designated communication channels to collaborate with the team.
+   - Report issues, suggest improvements, or discuss potential enhancements with your fellow developers.
+
+By following these steps, you'll be able to set up, run, and contribute to this full-stack web application effectively.
