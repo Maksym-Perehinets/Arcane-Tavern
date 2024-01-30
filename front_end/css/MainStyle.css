@@ -25,6 +25,10 @@
   border-collapse: collapse;
 }
 
+br {
+  user-select: none;
+}
+
 /* Firefox scrollbar */
 .table-lines {
   -ms-overflow-style: none; 
