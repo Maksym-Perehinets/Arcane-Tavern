@@ -7,7 +7,8 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Arcane Tavern</title>
-        <!-- Favicon -->
+        
+        <!-- Favicon ----------------------------------------------------------------------------->
         <link rel="apple-touch-icon" sizes="180x180" href="../IMGs/Favicon/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="../IMGs/Favicon/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="../IMGs/Favicon/favicon-16x16.png" />
@@ -15,20 +16,16 @@
         <link rel="mask-icon" href="../IMGs/Favicon/safari-pinned-tab.svg" color="#5bbad5" />
         <meta name="msapplication-TileColor" content="#000000" />
         <meta name="theme-color" content="#ffffff" />
-        <!-- ------- -->
-        <link rel="stylesheet" href="..\css\MainStyle.css" />
-        <link rel="stylesheet" href="..\css\navbar.css" />
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-            integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-            crossorigin="anonymous"
-            referrerpolicy="no-referrer"
-        />
+        
+        <!-- CSS --------------------------------------------------------------------------------->
+        <link rel="stylesheet" href="../css/MainStyle.css" />
+        <link rel="stylesheet" href="../css/navbar.css" />
+        
+        <!-- JavaScript -------------------------------------------------------------------------->
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-        <script src="..\javascript\MainSortingScript.js"></script>
-        <script src="..\javascript\FillingInfoScript.js"></script>
-        <script src="..\javascript/PostAndGetDataToBackEnd.js"></script>
+        <script src="../javascript/MainSortingScript.js"></script>
+        <script src="../javascript/FillingInfoScript.js"></script>
+        <script src="../javascript/PostAndGetDataToBackEnd.js"></script>
         <script src="../javascript/navbar.js"></script>
         <script src="../javascript/SendingSearchInfo.js"></script>
         <script src="../javascript/showSpellinfo.js"></script>
@@ -37,9 +34,10 @@
         <script src="../javascript/selectBox.js"></script>
         <script src="../javascript/insertDataIntoTable.js"></script>
     </head>
+
     <body>
         <!-- -------------------------UI---------------- --->
-        <!-- -------------sidebar----------- -->
+        <!-- -------------Sidebar----------- -->
         <div class="sidebar">
             <button class="backward" onclick="navbarFeature()"><img class="backwardico" src="/front_end/IMGs/Backward.png" /></button>
             <div class="sidebar_header">
@@ -63,23 +61,25 @@
                     <option value="&level=9">9</option>
                 </select>
                 <h4>Level</h4>
+
                 <select class="DropList" name="Class" id="actionDropdown">
                     <option value=""> </option>
-                    <option value="&caster_class=Artificer">Artificer</option>
-                    <option value="&caster_class=Barbarian">Barbarian</option>
-                    <option value="&caster_class=Bard">Bard</option>
-                    <option value="&caster_class=Cleric">Cleric</option>
-                    <option value="&caster_class=Druid">Druid</option>
-                    <option value="&caster_class=Fighter">Fighter</option>
-                    <option value="&caster_class=Monk">Monk</option>
-                    <option value="&caster_class=Paladin">Paladin</option>
-                    <option value="&caster_class=Ranger">Ranger</option>
-                    <option value="&caster_class=Rogue">Rogue</option>
-                    <option value="&caster_class=Sorcerer">Sorcerer</option>
-                    <option value="&caster_class=Warlock">Warlock</option>
-                    <option value="&caster_class=Wizard">Wizard</option>
+                    <option value="&caster_clas=Artificer">Artificer</option>
+                    <option value="&caster_clas=Barbarian">Barbarian</option>
+                    <option value="&caster_clas=Bard">Bard</option>
+                    <option value="&caster_clas=Cleric">Cleric</option>
+                    <option value="&caster_clas=Druid">Druid</option>
+                    <option value="&caster_clas=Fighter">Fighter</option>
+                    <option value="&caster_clas=Monk">Monk</option>
+                    <option value="&caster_clas=Paladin">Paladin</option>
+                    <option value="&caster_clas=Ranger">Ranger</option>
+                    <option value="&caster_clas=Rogue">Rogue</option>
+                    <option value="&caster_clas=Sorcerer">Sorcerer</option>
+                    <option value="&caster_clas=Warlock">Warlock</option>
+                    <option value="&caster_clas=Wizard">Wizard</option>
                 </select>
                 <h4>Class</h4>
+
                 <select class="DropList" name="School" id="actionDropdown">
                     <option value=""> </option>
                     <option value="&school=A">Abjuration</option>
@@ -92,6 +92,7 @@
                     <option value="&school=T">Transmutation</option>
                 </select>
                 <h4>School</h4>
+
                 <select class="DropList" name="DamageType" id="actionDropdown">
                     <option value=""> </option>
                     <option value="&damage_type=acid">Acid</option>
@@ -109,6 +110,7 @@
                     <option value="&damage_type=thunder">Thunder</option>
                 </select>
                 <h4>Damage Type</h4>
+
                 <select class="DropList" name="Range" id="actionDropdown">
                     <option value=""> </option>
                     <option value="&range_shape=radius&range_type=self&range_distance=5">Self (5-foot radius)</option>
@@ -137,7 +139,7 @@
                     <option value="&range_shape=point&range_type=sight">Sight</option>
                 </select>
                 <h4>Range</h4>
-                <!--  http://127.0.0.1:8000/data-filter/?duration_time=24&duration_type=hour&range_shape=point&range_type=feet&range_distance=30&casting_type=minute&casting_time=10 Returns: -->
+
                 <select class="DropList" name="Duration" id="actionDropdown">
                     <option value=""> </option>
                     <option value="&duration_type=instant">Instant</option>
@@ -154,6 +156,7 @@
                     <option value="&duration_type=special">Special</option>
                 </select>
                 <h4>Duration</h4>
+
                 <select class="DropList" name="Action" id="actionDropdown">
                     <option value=""> </option>
                     <option value="&casting_type=action&casting_time=1">1 action</option>
@@ -164,6 +167,7 @@
                     <option value="&casting_type=hour&casting_time=1">1 hour</option>
                 </select>
                 <h4>Action</h4>
+
                 <div id="list1" class="dropdown-check-list" tabindex="100">
                     <span class="anchor">Action</span>
                     <ul class="items">
@@ -179,9 +183,12 @@
                 <button class="clear" onclick="resetAllDropdowns()">Reset</button>
             </div>
         </div>
+        
+        <!-- All Buttons in main page --------------------------------------------------------------------------------------------------------------->
         <div class="container">
             <header class="header">
                 <button class="btn-toggle" onclick="navbarFeature()" role="button"><img class="ListIco" src="/front_end/IMGs/ListIco.png" /></button>
+
                 <div class="wrap">
                     <div class="search">
                         <input onkeyup="srcInTable()" type="text" id="searchTerm" class="searchTerm" placeholder="What are you looking for?" />
@@ -193,8 +200,10 @@
                 </b>
             </header>
             <script src="../javascript/search.js"></script>
-            <!-- -----------------------Spell table-------------------------- -->
-            <!-- all spells table  -->
+
+            <!-- -----------------------Spell table----------------------------->
+            
+            <!-- All spells-table  --------------------------------------------->
             <div class="table-lines">
                 <table id="spellList" class="custom-table">
                     <thead>
@@ -210,7 +219,8 @@
                     <tbody id="tableBody"></tbody>
                 </table>
             </div>
-            <!------------------------ Spell Info------------- -->
+            
+            <!-- Spell Info table --------------------------------------------->
             <div class="spellNameDiv">
                 <div class="spellNameText">
                     <span id="spellName">Spell Name</span>
@@ -236,7 +246,7 @@
                     <a id="descOnHigherLvl"></a>
                     <br />
                     <br />
-                    <a>Casters: </a>
+                    <a><b class="casters-bold">Casters: </b></a>
                     <a id="casters"> </a>
                 </div>
             </div>
