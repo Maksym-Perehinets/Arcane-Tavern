@@ -202,6 +202,11 @@ body {
   background-color: rgb(252, 133, 133);
 }
 
+.clickable 
+{
+  color: rgb(163, 12, 4);
+}
+
 /* ----------------------------- */
 label {
   position: relative;
@@ -298,6 +303,13 @@ a:hover {
 .casters-bold {
   font-size: 20px;
   font-weight: bold;
+}
+
+.fotter
+{
+  background-color: black;
+  color: aqua;
+  height: 50px;
 }
 
 @media only screen and (max-width: 1000px) {

@@ -51,7 +51,7 @@ select {
 //////////////////// */
 .container {
   width: auto;
-  min-height: 100vh;
+  height: 100vh;
   transition: margin-left 0.3s linear;
 }
 
