@@ -10,7 +10,6 @@ from database import models
 
 
 app = FastAPI()
-models.Base.metadata.create_all(bind=engine)
 
 origins = [
     "http://localhost",
@@ -348,7 +347,6 @@ async def data_filter(
         ]
     else:
         formatted_result = service_instance.format_result_for_all_spells(db_request.all())
-        print(formatted_result)
 
     return {
         "status": "success",
