@@ -66,12 +66,19 @@ function insertInfoIntoDescription(data) {
   spellRange.innerHTML = sdata.ranges.distance.amount
     ? `${sdata.ranges.distance.amount} ${sdata.ranges.distance.type}`
       : sdata.ranges.distance.type
-
       
   spellDescription.innerHTML = sdata.description;
+
   spellDescription.innerHTML = spellDescription.innerHTML.replace(/\{.*?\}/g, 
+<<<<<<< HEAD
     function(capturedText){ return "<a href='#sad' data-tooltip='Click me!' class='clickable' onclick='clickableTextFunc(\" " + capturedText + "\")'>" + capturedText + "</a>";}
   );
+=======
+  function(capturedText)
+  {
+    return "<a href='#sad' class='clickable' onclick='clickableTextFunc(\" " + capturedText.slice(2, -1) + "\")'>" + capturedText.slice(2, -1) + "</a>";
+  });
+>>>>>>> ba09ff0df7aa3717b96d0cac45fb60d6af69da5c
 
   spellLevel.innerHTML = sdata.level;
 
@@ -104,18 +111,28 @@ function insertInfoIntoDescription(data) {
   } )
 }
 
+
 function clickableTextFunc(incomingText){
-  var matches = incomingText.match(/@(.*?)\s/);
-  someText = matches[1];
-  switch(someText){
+  var matches = incomingText.split(" ");
+  var textType = matches[1];
+  var dice =  matches[2].split("d");
+  var result = [];
+
+
+  switch(textType){
     case "dice": 
-      console.log(Math.floor((Math.random() * 20) + 1));
+      for (var i = 0; i < dice[0]; i++){
+        result.push(Math.floor((Math.random() * dice[1]) + 1));
+      }
       break;
     case "damage":
-      console.log(Math.floor((Math.random() * 20) + 1));
+      for (var i = 0; i < dice[0]; i++){
+        result.push(Math.floor((Math.random() * dice[1]) + 1));
+      }
       break;
-  }
- 
+    }
+
+    alert(result);
 }
 
 document.addEventListener("DOMContentLoaded", function() {
