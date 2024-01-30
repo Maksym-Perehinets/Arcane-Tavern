@@ -53,7 +53,7 @@ async function SortTableData(filterName, sortingType) {
   }
 }
 
-async function SortFilters(url) {
+async function ApplyFilters(url) {
   const backendUrl = `http://127.0.0.1:8000/data-filter/`;
 
   var trueURL = backendUrl + '?' + url.substring(1);

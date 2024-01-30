@@ -110,6 +110,10 @@ function clickableTextFunc(incomingText){
   switch(someText){
     case "dice": 
       console.log(Math.floor((Math.random() * 20) + 1));
+      break;
+    case "damage":
+      console.log(Math.floor((Math.random() * 20) + 1));
+      break;
   }
  
 }

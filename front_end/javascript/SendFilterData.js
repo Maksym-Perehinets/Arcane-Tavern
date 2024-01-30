@@ -1,7 +1,7 @@
 let filterList = [];
 
 async function sendFilters(filters) {
-  res = await SortTableData(filters);
+  res = await ApplyFilters(filters);
   insertData(res, true);
 }
 

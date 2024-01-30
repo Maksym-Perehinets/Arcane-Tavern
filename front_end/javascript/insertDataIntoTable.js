@@ -1,5 +1,4 @@
 async function insertData(data, clear) {
-    console.log("start");
     var spellListTable = document
       .getElementById("spellList")
       .getElementsByTagName("tbody")[0];
@@ -21,7 +20,7 @@ async function insertData(data, clear) {
       levelCell.innerHTML = spell.level;
       nameCell.innerHTML = spell.name;
   
-      concentration.innerHTML = spell.duration.concentration == true ? "✔" : "✖";
+      concentration.innerHTML = spell.duration.concentration == true ? "✔" : "✖"; 
   
       durationCell.innerHTML =
         spell.duration.type.toLowerCase() == "instant" ||

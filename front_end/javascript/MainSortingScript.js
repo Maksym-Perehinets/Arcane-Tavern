@@ -9,7 +9,6 @@ let checkDesc = true;
 let secondTimeClickedName = " ";
 
 document.addEventListener("DOMContentLoaded", function () {
-  console.log("qwery");
   var spellListTable = document.getElementById("spellList");
   var thead = spellListTable.getElementsByTagName("thead")[0];
 
@@ -56,7 +55,7 @@ function replaceTableData(newData) {
       levelCell.innerHTML = spell.level;
       nameCell.innerHTML = spell.name;
   
-      concentration.innerHTML = spell.duration.concentration == true ? "✔️" : "✖️";
+      concentration.innerHTML = spell.duration.concentration == true ? "✔" : "✖"; 
   
       durationCell.innerHTML =
         spell.duration.type.toLowerCase() == "instant" ||
