@@ -70,10 +70,15 @@ function insertInfoIntoDescription(data) {
   spellDescription.innerHTML = sdata.description;
 
   spellDescription.innerHTML = spellDescription.innerHTML.replace(/\{.*?\}/g, 
+<<<<<<< HEAD
+    function(capturedText){ return "<a href='#sad' data-tooltip='Click me!' class='clickable' onclick='clickableTextFunc(\" " + capturedText + "\")'>" + capturedText + "</a>";}
+  );
+=======
   function(capturedText)
   {
     return "<a href='#sad' class='clickable' onclick='clickableTextFunc(\" " + capturedText.slice(2, -1) + "\")'>" + capturedText.slice(2, -1) + "</a>";
   });
+>>>>>>> ba09ff0df7aa3717b96d0cac45fb60d6af69da5c
 
   spellLevel.innerHTML = sdata.level;
 
@@ -130,28 +135,23 @@ function clickableTextFunc(incomingText){
     alert(result);
 }
 
+document.addEventListener("DOMContentLoaded", function() {
+  var tooltip = document.getElementsByClassName("clickable");
 
+  document.addEventListener("mousemove", function(event) {
+    tooltip.style.left = (event.pageX + 5) + "px";
+    tooltip.style.top = (event.pageY + -200) + "px";
+  });
 
+  document.addEventListener("mouseover", function(event) {
+    if (event.target.dataset.tooltip) {
+      tooltip.style.display = "block";
+    }
+  });
 
-// "casters": [
-//   {
-//       "name": "Sorcerer",
-//       "source": "PHB"
-//   },
-//   {
-//       "name": "Wizard",
-//       "source": "PHB"
-//   }
-// ]
-
-// async function loadData(){
-//   try {
-//     const data = await getSpellDescription();
-//     console.log(data);
-//     insertInfoIntoDescription(data);
-//   } catch (error) {
-//     console.error("Error:", error);
-//   }
-// }
-
-
+  document.addEventListener("mouseout", function(event) {
+    if (event.target.dataset.tooltip) {
+      tooltip.style.display = "none";
+    }
+  });
+});
