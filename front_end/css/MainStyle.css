@@ -46,6 +46,7 @@
 
 .custom-table a:hover {
   color: #555;
+  transition: all 0.2s linear;
 }
 
 /* .custom-table th */
@@ -56,6 +57,16 @@
   font-size: 125%;
   font-family: DraconicFont;
   font-weight: lighter;
+  user-select: none;
+  cursor: pointer;
+}
+
+.custom-table tr:hover
+{
+  /* background-color: rgba(135, 130, 117, 0.5); */
+  background-color: #55555550;
+  transition: all 0.3s linear;
+  
 }
 
 .custom-table th {
@@ -68,7 +79,6 @@
 .custom-table a {
   text-decoration: none;
   color: #ffffff;
-  /* font-size: 16px; */
   font-size: 125%;
   font-family: DraconicFont;
   font-weight: lighter;
@@ -143,7 +153,7 @@ body {
   height: 50px;
   border-radius: 10px 0 0 10px;
   outline: none;
-  color: rgba(21, 21, 21, 1); /* Text color behind */
+  color: rgba(21, 21, 21, 1); 
   background-color: rgba(238, 235, 235, 0.155);
 }
 
@@ -168,7 +178,6 @@ body {
   font-size: 20px;
 }
 
-/*Resize the wrap to see the search bar change!*/
 .wrap {
   width: 50%;
 }
@@ -202,9 +211,15 @@ body {
   background-color: rgb(252, 133, 133);
 }
 
-.clickable 
+.clickable a:link
 {
-  color: rgb(163, 12, 4);
+  background-color: rgba(163, 12, 4, 0.469);
+}
+
+
+.bookPage 
+{
+  font-size: 50%;
 }
 
 /* ----------------------------- */
@@ -307,9 +322,7 @@ a:hover {
 
 .fotter
 {
-  background-color: black;
-  color: aqua;
-  height: 50px;
+ /* There is no fotter only butter 🧈 */
 }
 
 @media only screen and (max-width: 1000px) {
@@ -321,7 +334,6 @@ a:hover {
   .table-lines {
     position: absolute;
     z-index: 1;
-    /* height: 45vh; */
     height: 500px;
     margin: 2%;
     width: 96%;
