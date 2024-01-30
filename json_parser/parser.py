@@ -2,7 +2,6 @@ import json
 import os
 
 # Used to make this work when importing JsonParser
-# Have no fucking idea how to make it work other way
 script_dir = os.path.dirname(os.path.realpath(__file__))
 os.chdir(script_dir)
 
