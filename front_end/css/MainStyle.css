@@ -5,11 +5,16 @@
 
 #tooltip {
   position: absolute;
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: #252525d1;
+  color: #ffffff;
+  min-width: 80px;
+  min-height: 20px;
   display: none;
-  background-color: #fff;
-  border: 1px solid #ccc;
+  border-radius: 5px;
   padding: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
 }
 
 .table-lines {
@@ -226,7 +231,10 @@ body {
 
 .clickable
 {
-  background-color: rgba(163, 12, 4, 0.469);
+  /* display: inline-block; */
+  background-color: rgba(163, 12, 4, 0.205);
+  border-radius: 3.5px;
+  /* text-decoration:line-through; */
   /* background-color: red; */
 }
 

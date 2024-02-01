@@ -20,15 +20,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var tooltip = document.getElementById("tooltip");
 
-  document.addEventListener("mousemove", function(event) {
-    tooltip.style.left = (event.pageX + 5) + "px";
-    tooltip.style.top = (event.pageY + -200) + "px";
-  });
-
-  document.addEventListener("mouseover", function(event) {
+  document.addEventListener("click", function(event) {
     if (event.target.dataset.tooltip) {
       tooltip.style.display = "block";
+      tooltip.style.left = (event.pageX + 0) + "px";
+      tooltip.style.top = (event.pageY + -25) + "px";
+      // tooltip.innerHTML = "";
     }
+      
+    
   });
 
   document.addEventListener("mouseout", function(event) {
@@ -97,7 +97,7 @@ function insertInfoIntoDescription(data) {
 })
 
   spellDescription.innerHTML = spellDescription.innerHTML.replace(/\{.*?\}/g, 
-    function(capturedText){ return "<a href='#sad' data-tooltip='Click me!' class='clickable' onclick='clickableTextFunc(\" " + capturedText + "\")'>" + capturedText + "</a>";}
+  function(capturedText){ return "<a href='#sad' data-tooltip='Click me!' class='clickable' onclick='clickableTextFunc(\" " + capturedText.slice(2, -1) + "\")'>" + capturedText.slice(2, -1) + "</a>";}
   );
 
   spellLevel.innerHTML = sdata.level;
@@ -138,6 +138,7 @@ function clickableTextFunc(incomingText){
   var dice =  matches[2].split("d");
   var result = [];
   var resultSum = 0;
+  var tipDiv = document.getElementById("tooltip");
 
 
   switch(textType){
@@ -158,8 +159,9 @@ function clickableTextFunc(incomingText){
       break;
     }
 
-    alert(result);
-    alert(resultSum);
+    let resultString = result.join("+");
+
+  tipDiv.innerHTML = `${resultString} = ${resultSum}`;
 }
 
 
