@@ -215,9 +215,10 @@ body {
   background-color: rgb(252, 133, 133);
 }
 
-.clickable a:link
+.clickable
 {
   background-color: rgba(163, 12, 4, 0.469);
+  /* background-color: red; */
 }
 
 
@@ -303,6 +304,7 @@ a:hover {
   padding-right: 2%;
   padding-top: 2%;
   min-height: 580px;
+  /* min-width: 580px; */
   top: 1%;
   font-family: DraconicFont;
   border-radius: 10px;

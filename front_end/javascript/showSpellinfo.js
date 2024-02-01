@@ -78,10 +78,8 @@ function insertInfoIntoDescription(data) {
 })
 
   spellDescription.innerHTML = spellDescription.innerHTML.replace(/\{.*?\}/g, 
-  function(capturedText)
-  {
-    return "<a href='#sad' class='clickable' onclick='clickableTextFunc(\" " + capturedText.slice(2, -1) + "\")'>" + capturedText.slice(2, -1) + "</a>";
-  });
+    function(capturedText){ return "<a href='#sad' data-tooltip='Click me!' class='clickable' onclick='clickableTextFunc(\" " + capturedText + "\")'>" + capturedText + "</a>";}
+  );
 
   spellLevel.innerHTML = sdata.level;
 
