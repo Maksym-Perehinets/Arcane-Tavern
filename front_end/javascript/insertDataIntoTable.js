@@ -14,7 +14,7 @@ async function insertData(data, clear) {
       var timeCell = row.insertCell(4);
       var rangeCell = row.insertCell(5);
       var idCell = row.insertCell(6);
-      idCell.style.display = "none";
+      // idCell.style.display = "none";
   
       idCell.innerHTML = spell.id;
       levelCell.innerHTML = spell.level;

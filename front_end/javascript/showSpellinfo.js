@@ -67,7 +67,15 @@ function insertInfoIntoDescription(data) {
     ? `${sdata.ranges.distance.amount} ${sdata.ranges.distance.type}`
       : sdata.ranges.distance.type
       
-  spellDescription.innerHTML = sdata.description;
+  spellDescription.innerHTML = " ";
+  sdata.description.forEach(entries=> {
+    console.log(entries.type);
+    if(entries.type){
+      spellDescription.innerHTML += "<p>" + entries.name + " " + entries.entries + "</a>";
+    } else {
+      spellDescription.innerHTML += "<p>" + entries + "</a>";
+    }
+})
 
   spellDescription.innerHTML = spellDescription.innerHTML.replace(/\{.*?\}/g, 
   function(capturedText)
@@ -112,6 +120,7 @@ function clickableTextFunc(incomingText){
   var textType = matches[1];
   var dice =  matches[2].split("d");
   var result = [];
+  var resultSum = 0;
 
 
   switch(textType){
@@ -122,12 +131,17 @@ function clickableTextFunc(incomingText){
       break;
     case "damage":
       for (var i = 0; i < dice[0]; i++){
-        result.push(Math.floor((Math.random() * dice[1]) + 1));
+        randSum = Math.floor((Math.random() * dice[1]) + 1)
+        result.push(randSum);
+        resultSum += randSum;
       }
       break;
+    case "spell":
+      srcInTable();
     }
 
     alert(result);
+    alert(resultSum);
 }
 
 
@@ -153,5 +167,4 @@ function clickableTextFunc(incomingText){
 //     console.error("Error:", error);
 //   }
 // }
-
 
