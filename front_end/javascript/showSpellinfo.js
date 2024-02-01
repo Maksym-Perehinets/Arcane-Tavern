@@ -17,6 +17,25 @@ document.addEventListener("DOMContentLoaded", function () {
   tbody.addEventListener("click", function (event) {
     handleTableRowClick(event);
   });
+
+  var tooltip = document.getElementById("tooltip");
+
+  document.addEventListener("mousemove", function(event) {
+    tooltip.style.left = (event.pageX + 5) + "px";
+    tooltip.style.top = (event.pageY + -200) + "px";
+  });
+
+  document.addEventListener("mouseover", function(event) {
+    if (event.target.dataset.tooltip) {
+      tooltip.style.display = "block";
+    }
+  });
+
+  document.addEventListener("mouseout", function(event) {
+    if (event.target.dataset.tooltip) {
+      tooltip.style.display = "none";
+    }
+  });
 });
 
 async function firstInfoFulfilment() {
@@ -136,6 +155,7 @@ function clickableTextFunc(incomingText){
       break;
     case "spell":
       srcInTable();
+      break;
     }
 
     alert(result);
