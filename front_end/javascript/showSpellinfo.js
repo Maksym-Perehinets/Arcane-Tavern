@@ -20,14 +20,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var tooltip = document.getElementById("tooltip");
 
-  document.addEventListener("mousemove", function(event) {
-    tooltip.style.left = (event.pageX + 5) + "px";
-    tooltip.style.top = (event.pageY + -200) + "px";
-  });
-
   document.addEventListener("mouseover", function(event) {
     if (event.target.dataset.tooltip) {
       tooltip.style.display = "block";
+      tooltip.style.left = (event.pageX + 5) + "px";
+      tooltip.style.top = (event.pageY + -200) + "px";
     }
   });
 
@@ -89,15 +86,27 @@ function insertInfoIntoDescription(data) {
   spellDescription.innerHTML = " ";
   sdata.description.forEach(entries=> {
     console.log(entries.type);
-    if(entries.type){
-      spellDescription.innerHTML += "<p>" + entries.name + " " + entries.entries + "</a>";
+    if(entries.type == "table"){
+      spellDescription.innerHTML += 
+      "<table id='spellInfoTable'>" +
+        "<thead>"+
+          "<tr>"+
+            "<th><a>" + entries.colLabels[0] +"</a></th>"+
+            "<th><a>" + entries.colLabels[1] +"</a></th>"+
+          "</tr>"+
+        "</thead>"+
+        "<tbody>"+ fillInfoIntoTable(entries) +"</tbody>"+
+      "</table>";
+    }
+    else if(typeof(entries.type) != "undefined"){
+      spellDescription.innerHTML += "<p>" + (typeof(entries.name) != "undefined" ? " " : entries.name)  + " " + entries.entries + "</a>";
     } else {
       spellDescription.innerHTML += "<p>" + entries + "</a>";
     }
 })
 
   spellDescription.innerHTML = spellDescription.innerHTML.replace(/\{.*?\}/g, 
-    function(capturedText){ return "<a href='#sad' data-tooltip='Click me!' class='clickable' onclick='clickableTextFunc(\" " + capturedText + "\")'>" + capturedText + "</a>";}
+    function(capturedText){ return "<a href='#sad' data-tooltip='Click me!' class='clickable' onclick='clickableTextFunc(\" " + capturedText.slice(2, -1) + "\")'>" + capturedText.slice(2, -1) + "</a>";}
   );
 
   spellLevel.innerHTML = sdata.level;
@@ -138,12 +147,16 @@ function clickableTextFunc(incomingText){
   var dice =  matches[2].split("d");
   var result = [];
   var resultSum = 0;
-
+console.log(matches);
 
   switch(textType){
     case "dice": 
       for (var i = 0; i < dice[0]; i++){
-        result.push(Math.floor((Math.random() * dice[1]) + 1));
+        for (var i = 0; i < dice[0]; i++){
+          randSum = Math.floor((Math.random() * dice[1]) + 1)
+          result.push(randSum);
+          resultSum += randSum;
+        }
       }
       break;
     case "damage":
@@ -163,6 +176,21 @@ function clickableTextFunc(incomingText){
 }
 
 
+function fillInfoIntoTable(description){
+  var result = "";
+  for( var i = 0; i < description.rows.length; i++){
+    result += "<tr>";
+    console.log(description.rows[i].lengthh);
+
+    for( var j = 0; j < description.rows[i].length; j++){
+console.log(description.rows[i][j]);
+      result += "<th><a>" + description.rows[i][j] +"</a></th>";
+    }
+
+    result += "</tr>";
+  }
+  return result;
+}
 
 
 // "casters": [
