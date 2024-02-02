@@ -89,8 +89,20 @@ function insertInfoIntoDescription(data) {
   spellDescription.innerHTML = " ";
   sdata.description.forEach(entries=> {
     console.log(entries.type);
-    if(entries.type){
-      spellDescription.innerHTML += "<p>" + entries.name + " " + entries.entries + "</a>";
+    if(entries.type == "table"){
+      spellDescription.innerHTML += 
+      "<table id='spellInfoTable'>" +
+        "<thead>"+
+          "<tr>"+
+            "<th><a>" + entries.colLabels[0] +"</a></th>"+
+            "<th><a>" + entries.colLabels[1] +"</a></th>"+
+          "</tr>"+
+        "</thead>"+
+        "<tbody>"+ fillInfoIntoTable(entries) +"</tbody>"+
+      "</table>";
+    }
+    else if(typeof(entries.type) != "undefined"){
+      spellDescription.innerHTML += "<p>" + (typeof(entries.name) != "undefined" ? " " : entries.name)  + " " + entries.entries + "</a>";
     } else {
       spellDescription.innerHTML += "<p>" + entries + "</a>";
     }
@@ -144,7 +156,11 @@ function clickableTextFunc(incomingText){
   switch(textType){
     case "dice": 
       for (var i = 0; i < dice[0]; i++){
-        result.push(Math.floor((Math.random() * dice[1]) + 1));
+        for (var i = 0; i < dice[0]; i++){
+          randSum = Math.floor((Math.random() * dice[1]) + 1)
+          result.push(randSum);
+          resultSum += randSum;
+        }
       }
       break;
     case "damage":
