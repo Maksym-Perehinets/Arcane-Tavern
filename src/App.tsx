@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 
 import "./css/MainStyle.css";
 import "./css/navbar.css"
+import "./css/signup.css";
 
 import SignInForm from "./_auth/forms/SignInForm";
 import SignUpForm from "./_auth/forms/SignUpForm";
