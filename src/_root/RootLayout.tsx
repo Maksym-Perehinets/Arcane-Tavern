@@ -1,9 +1,13 @@
-import React from 'react'
+import Navbar from './pages/Home/Navbar'
+import Sidebar from './pages/Home/Sidebar'
 
 const RootLayout = () => {
   return (
-    <div>RootLayout</div>
-  )
+    <div>
+        <Navbar />
+        <Sidebar />
+    </div>
+    )
 }
 
 export default RootLayout
