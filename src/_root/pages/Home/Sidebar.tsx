@@ -1,5 +1,6 @@
 import navbarFeature from "../../../components/shared/navbarFeature";
 import FilterDropdowns from "../../../components/FilterDropdowns";
+import { applyFilters } from "../../../queries/queries";
 
 const Sidebar = () => {
   return (
@@ -18,6 +19,8 @@ const Sidebar = () => {
       <div className="sidebar_menu">
         <FilterDropdowns />
       </div>
+      <button className="apply" onClick="">Apply</button>
+        <button className="clear" onClick="resetAllDropdowns()">Reset</button>
     </div>
   );
 };

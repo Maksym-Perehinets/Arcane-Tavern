@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { dictionaries } from "../utils";
 
-const Dropdown: React.FC<{ category: keyof typeof dictionaries }> = ({ category }) => { 
+const Dropdown: React.FC<{ category: keyof typeof dictionaries }> = ({ category }) => {
+  const options = dictionaries[category];
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
 
@@ -10,12 +11,11 @@ const Dropdown: React.FC<{ category: keyof typeof dictionaries }> = ({ category 
   };
 
   const handleOptionToggle = (option: string) => {
-    const isSelected = selectedOptions.includes(option);
-    if (isSelected) {
-      setSelectedOptions(selectedOptions.filter((item) => item !== option));
-    } else {
-      setSelectedOptions([...selectedOptions, option]);
-    }
+    setSelectedOptions(prevOptions =>
+      prevOptions.includes(option)
+        ? prevOptions.filter(item => item !== option)
+        : [...prevOptions, option]
+    );
   };
 
   return (
@@ -25,7 +25,7 @@ const Dropdown: React.FC<{ category: keyof typeof dictionaries }> = ({ category 
       </button>
       {isOpen && (
         <ul className="dropdown-menu">
-          {Object.keys(dictionaries[category]).map((option) => (
+          {Object.keys(options).map(option => (
             <li
               key={option}
               onClick={() => handleOptionToggle(option)}
@@ -44,7 +44,7 @@ const FilterDropdowns: React.FC = () => {
   return (
     <>
       {Object.keys(dictionaries).map(category => (
-        <Dropdown key={category} category={category as keyof typeof dictionaries} /> 
+        <Dropdown key={category} category={category as keyof typeof dictionaries} />
       ))}
     </>
   );
