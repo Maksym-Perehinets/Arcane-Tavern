@@ -4,7 +4,7 @@ const Navbar = () => {
   return (
     <header className="header">
       <button className="btn-toggle" onClick={navbarFeature} role="button">
-        <img className="ListIco" src="/front_end/IMGs/ListIco.png" />
+        <img className="ListIco" src="public/ListIco.png" />
       </button>
 
       <div className="wrap">

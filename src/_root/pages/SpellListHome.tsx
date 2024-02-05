@@ -1,4 +1,30 @@
+import { useEffect, useState } from "react";
+import { insertData } from "../../components/shared/InsertData";
+import { getAllSpells } from "../../queries/queries";
+
 const SpellListHome = () => {
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getAllSpells();
+        console.log("Received data:", data);
+  
+        if (data && data.data && Array.isArray(data.data)) {
+          insertData(data, false);
+
+        } else {
+          console.error("Invalid data object received:", data);
+        }
+      } catch (error) {
+        throw error;
+      }
+    };
+  
+    fetchData();
+  }, []); 
+  
+
   return (
     <div className="table-lines">
       <table id="spellList" className="custom-table">
