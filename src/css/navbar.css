@@ -137,7 +137,7 @@ img {
 
 
 .dropdown-toggle:hover,
-.dropdown-toggle:active {
+.dropdown-toggle.open {
   background-color: initial;
   background-position: 0 0;
   color: #a20c04;

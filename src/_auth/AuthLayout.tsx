@@ -15,7 +15,7 @@ const AuthLayout = () => {
     ): (
         <>
         <div className='signDiv'>
-          <SignUpForm />
+          <Outlet />
         </div>
         <div className='rightDiv'><h2>About our website</h2>
         <p>Welcome to Arcane Tavern!</p><br />

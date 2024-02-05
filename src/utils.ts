@@ -1,32 +1,17 @@
-import {casters} from  './_root/pages/Home/dictionaries/Caster';
-import {actions} from "./_root/pages/Home/dictionaries/Action";
-import {schools} from "./_root/pages/Home/dictionaries/School";
-import {damageTypes} from "./_root/pages/Home/dictionaries/DamageType";
-import {ranges} from "./_root/pages/Home/dictionaries/Range";
-import {durations} from "./_root/pages/Home/dictionaries/Duration";
-
-
-type CasterDictionary = { [key: string]: string };
-type ActionDictionary = { [key: string]: string };
-type SchoolsDictionary = { [key: string]: string };
-type damageTypesDictionary = { [key: string]: string };
-type rangesDictionary = { [key: string]: string };
-type DurationDictionary = { [key: string]: string };
+type Dictionary = { [key: string]: string };
 
 type Dictionaries = {
-  casters: CasterDictionary; 
-  actions: ActionDictionary; 
-  schools : SchoolsDictionary;
-  damageTypes : damageTypesDictionary;
-  ranges : rangesDictionary;
-  durations : DurationDictionary;
+  [key: string]: Dictionary;
 };
 
-export const dictionaries: Dictionaries = {
-  casters,
-  actions, 
-  schools,
-  damageTypes,
-  ranges,
-  durations,
+
+const dictionaries: Dictionaries = {
+  casters: await import('./components/dictionaries/Caster').then((module) => module.casters),
+  actions: await import('./components/dictionaries/Action').then((module) => module.actions),
+  schools: await import('./components/dictionaries/School').then((module) => module.schools),
+  damageTypes: await import('./components/dictionaries/DamageType').then((module) => module.damageTypes),
+  ranges: await import('./components/dictionaries/Range').then((module) => module.ranges),
+  durations: await import('./components/dictionaries/Duration').then((module) => module.durations),
 };
+
+export { dictionaries };
