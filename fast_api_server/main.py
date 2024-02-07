@@ -31,7 +31,7 @@ beforehand you must have installed venv and all requirements
 """
 
 
-@app.get("/")
+@app.get("/api/")
 async def root():
     return {
             "status": "success",
@@ -39,7 +39,7 @@ async def root():
             }
 
 
-@app.get("/spells")
+@app.get("/api/spells")
 async def dbtest(
         db: Session = Depends(get_db)
 ):
@@ -88,7 +88,7 @@ async def dbtest(
         }
 
 
-@app.get("/get-spell/{spell_id}")
+@app.get("/api/get-spell/{spell_id}")
 async def get_spell(
         spell_id: int,
         db: Session = Depends(get_db)
@@ -161,7 +161,7 @@ async def get_spell(
         }
 
 
-@app.get("/data-sort/")
+@app.get("/api/data-sort/")
 async def data_sort(
         filter_name: str,
         asc_value: bool = True,
@@ -228,7 +228,7 @@ async def data_sort(
         }
 
 
-@app.get("/data-filter/")
+@app.get("/api/data-filter/")
 async def data_filter(
         level: int = None,
         caster_class: str = None,
