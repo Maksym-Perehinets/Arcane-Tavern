@@ -1,4 +1,4 @@
-const backendSearchUrl = "http://localhost:8000/api/findSpellByName/";
+const backendSearchUrl = "http://172.208.57.166/api/findSpellByName/";
 
 document.addEventListener("DOMContentLoaded", () => {
   let searchBar = document.getElementById("searchTerm");

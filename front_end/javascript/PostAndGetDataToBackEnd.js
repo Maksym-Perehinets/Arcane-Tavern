@@ -18,7 +18,7 @@
 
 
 async function getAllSpells() {
-  const backendUrl = "http://127.0.0.1:8000/api/spells";
+  const backendUrl = "http://172.208.57.166/api/spells";
   try {
     const response = await axios.get(backendUrl);
     return response.data;
@@ -30,7 +30,7 @@ async function getAllSpells() {
 
 
 async function SendCurrentSpell(dataToSend) {
-  const backendUrl = `http://127.0.0.1:8000/api/get-spell/${dataToSend}`;
+  const backendUrl = `http://172.208.57.166/api/get-spell/${dataToSend}`;
   try {
     const response = await axios.get(backendUrl);
     return response.data;
@@ -43,7 +43,7 @@ async function SendCurrentSpell(dataToSend) {
 async function SortTableData(filterName, sortingType) {
   console.log(filterName);
   console.log(sortingType);
-  const backendUrl = `http://127.0.0.1:8000/api/data-sort/?filter_name=${filterName}&asc_value=${sortingType}`;
+  const backendUrl = `http://172.208.57.166/api/data-sort/?filter_name=${filterName}&asc_value=${sortingType}`;
   try {
     const response = await axios.get(backendUrl);
     return response.data;
@@ -54,7 +54,7 @@ async function SortTableData(filterName, sortingType) {
 }
 
 async function ApplyFilters(url) {
-  const backendUrl = `http://127.0.0.1:8000/api/data-filter/`;
+  const backendUrl = `http://172.208.57.166/api/data-filter/`;
 
   var trueURL = backendUrl + '?' + url.substring(1);
   trueURL = trueURL.replace(' ', '');
