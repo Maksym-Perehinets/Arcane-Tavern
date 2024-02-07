@@ -18,7 +18,7 @@
 
 
 async function getAllSpells() {
-  const backendUrl = "http://127.0.0.1:8000/spells";
+  const backendUrl = "http://127.0.0.1:8000/api/spells";
   try {
     const response = await axios.get(backendUrl);
     return response.data;

@@ -10,11 +10,8 @@ from database.models import Sources, Durations, Ranges, Spell
 app = FastAPI()
 
 origins = [
-    "http://localhost",
-    "http://localhost:5500",
-    "http://127.0.0.1:5500",
-    "http://127.0.0.1:443",
-    "http://127.0.0.1:80"
+    "http://172.208.57.166:80",
+    "http://172.208.57.166:443"
 ]
 
 app.add_middleware(
