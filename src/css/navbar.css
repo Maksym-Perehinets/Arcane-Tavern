@@ -1,4 +1,4 @@
-/* ШРИФТ */
+/* Font */
 @font-face {
   font-family: DraconicFont;
   src: url(../Fonts/Draconis-JRw6B.ttf);
@@ -37,8 +37,8 @@ select {
 }
 
 /* ////////////////////
-  ////////// General Styles
-  //////////////////// */
+////////// General Styles
+//////////////////// */
 * {
   margin: 0;
   padding: 0;
@@ -47,17 +47,17 @@ select {
 }
 
 /* ////////////////////
-  ////////// Main container
-  //////////////////// */
+////////// Main container
+//////////////////// */
 .container {
   width: auto;
-  min-height: 100vh;
+  height: 100vh;
   transition: margin-left 0.3s linear;
 }
 
 /* ////////////////////
-  ////////// Sidebar Menu
-  //////////////////// */
+////////// Sidebar Menu
+//////////////////// */
 .sidebar {
   width: 0;
   height: 100%;
@@ -103,73 +103,88 @@ img {
   color: white;
 }
 
-
-
-/* ------------------------------------------------------------------------------------------------------------ */
-.dropdown-check-list{
-  display: inline-block;
-  margin-bottom: 4%;
-  margin-left: 3%;
-  font-size: 160%;
-  font-weight: lighter;
-  font-family: DraconicFont;
-  color: white;
-  width: 86%;
+/* -----------------------------------------------Ihor ivantso terraria------------------------------------------------------------- */
+.dropdown {
+  background-color:#151515;
+  width: fit-content;
+  margin-left: 5%;
 }
 
-.dropdown-check-list .anchor {
-  position: relative;
+.dropdown-toggle{
+  background: #a20c04;
+  border: 1px solid #a20c04;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
   cursor: pointer;
   display: inline-block;
-  padding: 5px 50px 5px 10px;
-  border: 1px solid #ccc;
-  width: 100%;
+  font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 16px;
+  min-height: 40px;
+  outline: 0;
+  padding: 12px 14px;
+  text-align: left;
+  text-rendering: geometricprecision;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
 }
 
-.dropdown-check-list .anchor:after {
-  position: absolute;
-  content: "";
-  border-left: 2px solid black;
-  border-top: 2px solid black;
-  padding: 5px;
-  right: 10px;
-  top: 20%;
-  -moz-transform: rotate(-135deg);
-  -ms-transform: rotate(-135deg);
-  -o-transform: rotate(-135deg);
-  -webkit-transform: rotate(-135deg);
-  transform: rotate(-135deg);
+
+.dropdown-toggle:hover,
+.dropdown-toggle.open {
+  background-color: initial;
+  background-position: 0 0;
+  color: #a20c04;
 }
 
-.dropdown-check-list .anchor:active:after {
-  right: 8px;
-  top: 21%;
+.dropdown-toggle:active {
+  opacity: .5;
 }
 
-.dropdown-check-list ul.items {
-  padding: 2px;
-  display: none;
-  margin: 0;
-  border: 1px solid #ccc;
-  border-top: none;
+.dropdown-toggle p {
+  margin-right: 15%;
 }
 
-.dropdown-check-list ul.items li {
-  list-style: none;
+
+.dropdown-menu{
+  background-color: #2a2a2a;
 }
 
-.dropdown-check-list.visible .anchor {
-  color: #0094ff;
+
+.selected {
+  background-color: #e2e2e2; /* Change background color */
+  font-weight: bold;
+  
 }
 
-.dropdown-check-list.visible .items {
-  display: block;
-  padding-left: 3%;
+/* .dropdown input{
+
+} */
+
+.dropdown li{
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  list-style-type:none;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+     -moz-user-select: none; /* Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+          user-select: none; 
+}
+
+.dropdown li:hover{
+  background-color: #363636
 }
 
 /* -------------------------------------------------------------------------------------------------------- */
-
-
 
 .active {
   width: 350px;
@@ -193,7 +208,7 @@ img {
   margin-top: 4%;
   cursor: pointer;
   transition: all 0.3s linear;
-    }
+}
 
 .backwardico {
   justify-content: center;
@@ -211,8 +226,8 @@ img {
 }
 
 /* ////////////////////
-  ////////// HEADER
-  //////////////////// */
+////////// HEADER
+//////////////////// */
 .header {
   width: 100%;
   height: 50px;
@@ -236,7 +251,7 @@ img {
   margin-bottom: 5%;
   font-family: DraconicFont;
   font-size: 170%;
-  background-color: red;
+  background-color: rgb(163, 12, 4);
   color: rgba(21, 21, 21, 1);
   outline: none;
   cursor: pointer;
@@ -259,7 +274,7 @@ img {
   margin-bottom: 5%;
   font-family: DraconicFont;
   font-size: 170%;
-  background-color: red;
+  background-color: rgb(163, 12, 4);
   color: rgba(21, 21, 21, 1);
   outline: none;
   cursor: pointer;
@@ -283,7 +298,7 @@ img {
   border: none;
   border-radius: 10px;
   display: flex;
-  background-color: red;
+  background-color: rgb(163, 12, 4);
   /* font-family: DraconicFont; */
   /* font-size: 160%; */
   color: rgba(21, 21, 21, 1);
@@ -315,86 +330,75 @@ img {
 
 /* Phones */
 @media only screen and (max-width: 1000px) {
-  
   .header {
-    position: fixed;
-    z-index: 2;
-  }
-  
-  .active_margin_left
-  {
-    margin-left: 0%;
-  }
-  
-  .sidebar
-  {
-    z-index: 3;
+      position: fixed;
+      z-index: 2;
   }
 
+  .active_margin_left {
+      margin-left: 0%;
+  }
+
+  .sidebar {
+      z-index: 3;
+  }
 
   .sidebar.active {
-    z-index: 3;
-    width: 100%;
+      z-index: 3;
+      width: 100%;
   }
 
-  .backward
-  {
-    margin-top: 5px;
-    margin-left: 2%;
+  .backward {
+      margin-top: 5px;
+      margin-left: 2%;
   }
 
   .logo {
-    width: 100px;
+      width: 100px;
   }
 
   .btn-toggle {
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    margin: 7px;
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      margin: 7px;
   }
 
   .ListIco {
-    width: 100%;
-    height: 100%;
+      width: 100%;
+      height: 100%;
   }
 
   .text {
-    padding-right: 0%;
-    word-break: break-all;
+      padding-right: 0%;
+      word-break: break-all;
   }
 
-    .sidebar_menu {
+  .sidebar_menu {
       z-index: 2;
-      
+
       display: inline-block;
       flex-direction: column;
-    }
-    
-  
-    .DropList
-    {
+  }
+
+  .DropList {
       margin-left: 60%;
       margin-bottom: 0px;
       margin-top: 0%;
-
-    }
-
-
-    .apply
-    {
-      font-size: 150%;
-      margin-bottom: 17%;
-      width: 90%; 
-      margin-right: 5%;
-      margin-bottom: 60px; 
-    }
-    
-    .clear {
-      font-size: 150%;
-      width: 90%; 
-      margin-right: 5%;
-      margin-bottom: 15px;
-    }
   }
 
+  .apply {
+      font-size: 150%;
+      margin-bottom: 17%;
+      width: 90%;
+      margin-right: 5%;
+      margin-bottom: 60px;
+  }
+
+  .clear {
+      font-size: 150%;
+      width: 90%;
+      margin-right: 5%;
+      margin-bottom: 15px;
+  }
+}

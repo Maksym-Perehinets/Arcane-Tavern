@@ -1,0 +1,15 @@
+export const damageTypes: { [key: string]: string } = {
+    "Acid": "&damage_type=acid",
+    "Bludgeoning": "&damage_type=bludgeoning",
+    "Cold": "&damage_type=cold",
+    "Fire": "&damage_type=fire",
+    "Force": "&damage_type=force",
+    "Lightning": "&damage_type=lightning",
+    "Necrotic": "&damage_type=necrotic",
+    "Piercing": "&damage_type=piercing",
+    "Poison": "&damage_type=poison",
+    "Psychic": "&damage_type=psychic",
+    "Radiant": "&damage_type=radiant",
+    "Slashing": "&damage_type=slashing",
+    "Thunder": "&damage_type=thunder",
+};
