@@ -26,5 +26,6 @@ dist-ssr
 /venv
 pycache
 flask-env
-
 package-lock.json
+__pycache__
+flask-env
