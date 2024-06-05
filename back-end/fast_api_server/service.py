@@ -3,6 +3,7 @@ from fastapi import HTTPException
 from database import models
 import json
 
+
 class Service:
     def __init__(self):
         pass
