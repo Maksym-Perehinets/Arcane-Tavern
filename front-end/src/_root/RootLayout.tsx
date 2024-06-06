@@ -1,5 +1,5 @@
-import Navbar from './pages/Home/Navbar'
-import Sidebar from './pages/Home/Sidebar'
+import Navbar from './pages/SpellList/Navbar'
+import Sidebar from './pages/SpellList/Sidebar'
 
 import { Outlet } from 'react-router-dom'
 

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { insertData } from "../../components/shared/InsertData";
 import { getAllSpells } from "../../queries/queries";
 
-const SpellListHome = () => {
+const SpellList = () => {
 
   useEffect(() => {
     const fetchData = async () => {
@@ -56,4 +56,4 @@ const SpellListHome = () => {
   );
 };
 
-export default SpellListHome;
+export default SpellList;

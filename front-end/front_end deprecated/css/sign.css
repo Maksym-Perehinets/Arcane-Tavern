@@ -1,0 +1,78 @@
+.rightDiv::before {
+    border-radius: 20px;
+    position: absolute;
+    /* float: right; */
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background: url("../css/img/dicesBg.jpg") repeat;
+    background-size: 110%;
+    opacity: 0.05;
+    content: "";
+    animation:mymove 15s infinite linear;
+    overflow: hidden;
+    background-repeat:repeat-y;
+
+}
+
+.rightDiv {
+    position: relative;
+    width: 40vw;
+    height: 50vw;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #fff;
+    font-size: 16px;
+    float: right;
+    padding: 2vw;
+    padding-top: 2vw;
+    margin-right: 8vw;
+    margin-top: 4vw;
+}
+
+@-webkit-keyframes mymove {
+    from {
+        background-position: 0% 0%;
+    }
+    to {
+        background-position: 0% 100%;
+    }
+}
+@keyframes mymove {
+    from {
+        background-position: 0% 0%;
+    }
+    to {
+        background-position: 0% 100%;
+    }
+}
+
+
+
+
+
+h2 {
+    /* margin-left: 4vw; */
+    position: relative;
+    font-size: 26px;
+    padding-bottom: 5vw;
+
+}
+
+.rightDiv h2 {
+    text-align: center;
+    
+}
+
+li {
+    padding-bottom: 2vw;
+}
+
+strong {
+    padding-bottom: 2vw;
+}
+
+
+
+
+
