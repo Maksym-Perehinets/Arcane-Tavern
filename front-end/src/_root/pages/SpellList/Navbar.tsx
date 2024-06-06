@@ -1,27 +1,23 @@
-import navbarFeature from "../../../components/shared/navbarFeature";
 
 const Navbar = () => {
   return (
-    <header className="header">
-      <button className="btn-toggle" onClick={navbarFeature} role="button">
-        <img className="ListIco" src="public/ListIco.png" />
-      </button>
+        
+    <div className='navbar'>
+        <div className="logo-wrap">
+          <img className="logo" src="../../../../public/logo2.png" alt=":("/>
+          {/* <label className="logo"></label> */}
+          <label className="logo-text" htmlFor="">Arcane Tavern</label>
+        </div>
+        <div className="buttons-wrap">
+            <label className='btn' htmlFor="">Home</label>
+            <label className='btn' htmlFor="">Spells</label>
+            <label className='btn' htmlFor="">Characters</label>
+            <label className='btn' htmlFor="">About Us</label>
+            <label className='btn' htmlFor="">Contact</label>
+        </div>
+    </div>
 
-      <div className="wrap">
-          <input
-            type="text"
-            id="searchTerm"
-            className="searchTerm search"
-            placeholder="What are you looking for?"
-          />
-      </div>
-      <b id="signupBtn">
-        <a href="/front_end/html/signup.html">
-          <span>Sign Up</span>
-        </a>
-      </b>
-    </header>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

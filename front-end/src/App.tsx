@@ -1,8 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 
-import "./css/MainStyle.css";
-import "./css/navbar.css"
-import "./css/signup.css";
+import "./css/MainStyle.scss";
+import "./css/navbar.scss"
+import "./css/signup.scss";
+import "./css/sign.scss";
 
 import SignInForm from "./_auth/forms/SignInForm";
 import SignUpForm from "./_auth/forms/SignUpForm";
