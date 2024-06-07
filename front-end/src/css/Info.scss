@@ -6,8 +6,22 @@
     .upper-text {
         font-size: 2vmax;
         color: #fff;
-        float: right;
         margin-right: 2%;
         margin-top: 2%;
+    }
+
+    .headerText {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 11%;
+        margin-top: 2%;
+    }
+    
+    .infoTextLeft {
+        font-size: 20px;
+        color: #fff;
+        margin-left: 4%;
+        margin-top: 3%;
     }
 }

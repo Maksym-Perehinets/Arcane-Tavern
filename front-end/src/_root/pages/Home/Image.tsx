@@ -4,9 +4,9 @@ const Image = () => {
   return (
     <div className="bg-image">
         <div className="welcome-text-div">
-            <label className="title">Welcome to Arcane Tavern</label>
-            <p className="text">Are u trying to find some spells?</p>
-            <p className="text">suk ma balls</p>
+            <label className="title">Were happy to see you.</label>
+            <p className="text"></p>
+            <p className="text">Don't forget to have fun.</p>
             <button className="button">Explore</button>
         </div>
     </div>
