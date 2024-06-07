@@ -7,8 +7,6 @@ from database.database import engine, get_db
 from database.models import Sources, Durations, Ranges, Spell
 from database import models
 
-
-
 app = FastAPI()
 
 origins = [

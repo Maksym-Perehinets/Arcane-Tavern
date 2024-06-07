@@ -1,4 +1,3 @@
-
 const Navbar = () => {
   return (
         
@@ -6,7 +5,7 @@ const Navbar = () => {
         <div className="logo-wrap">
           <img className="logo" src="../../../../public/logo2.svg" alt=":("/>
           {/* <label className="logo"></label> */}
-          <label className="logo-text" htmlFor="">Arcane Tavern</label>
+          <p className="logo-text" htmlFor="">Arcane Tavern</p>
         </div>
         <div className="buttons-wrap">
             <label className='btn' htmlFor="">Home</label>

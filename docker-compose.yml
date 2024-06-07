@@ -1,0 +1,22 @@
+version: '3'
+services:
+  backend:
+    build:
+      context: ./back-end
+      dockerfile: ./Dockerfile
+    volumes:
+      - type: bind
+        source: ./back-end
+        target: /back-end
+    ports:
+      - "8080:80"
+  frontend:
+    build:
+      context: ./front-end
+      dockerfile: ./Dockerfile
+    volumes:
+      - type: bind
+        source: ./front-end
+        target: /app
+    ports:
+      - "8181:5173"

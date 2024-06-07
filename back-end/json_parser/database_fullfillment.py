@@ -28,6 +28,8 @@ models.Base.metadata.create_all(bind=engine)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 session = SessionLocal()
 # Latest satable version of this shit code pray to your gods to never do the same
+
+
 def fill_database():
     try:
         get_data = JsonParser('spells_json/index.json')
@@ -50,6 +52,7 @@ def fill_database():
         session.commit()
     finally:
         session.close()
+
 
 if __name__ == "__main__":
     fill_database()
