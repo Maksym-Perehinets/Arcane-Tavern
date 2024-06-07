@@ -1,69 +1,150 @@
-@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap");
 
 .navbar {
-    // position:absolute;
-    position:fixed;
-    top: 0px;
-    background-color: #1d1d1b3f;
-    color:#ffffff;
-    height: 60px;
-    width: 100%;
+  // position:absolute;
+  position: fixed;
+  top: 0px;
+  background-color: #1d1d1b3f;
+  color: #ffffff;
+  height: 60px;
+  width: 100%;
+  display: flex;
+  font-family: "Inconsolata", monospace;
+  font-weight: 350;
+  line-height: 60px;
+  vertical-align: middle;
+  user-select: none;
+
+  .logo-wrap {
     display: flex;
-    font-family: "Inconsolata", monospace;
-    font-weight: 350;
-    line-height: 60px;
-    vertical-align: middle;
-    user-select: none;
-
-    .logo-wrap {
-        
-        display: flex;
-        height: 60px;
-        margin-left: 5%;
-        width: 20%;
-        .logo {
-            background-image: url("../../public/logo.png");
-            height: 50px;
-            width: auto;
-            position: relative;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-        }
-        .logo-text {
-            font-size: 1vmax;
-            margin-left: 15px;
-            cursor: pointer;
-        }
+    height: 60px;
+    margin-left: 5%;
+    width: 20%;
+    .logo {
+      //   background-image: url("../../public/logo2.svg");
+      height: 50px;
+      width: ato;
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: red;
     }
+    .logo-text {
+      font-size: 1.25vmax;
+      font-weight: bold;
+      margin-left: 15px;
+      cursor: pointer;
+      transition: 0.3s;
 
+      color: hsl(0, 0%, 50%);
 
-    .buttons-wrap {
-        // display: flex;
-        width: 30%;
-        height: 60px;
-        margin-left: 40%;
-        
+      & .letter {
+        --_fw-900: 900;
+        --_fw-700: 700;
+        --_fw-400: 400;
 
-        .btn {
-            position: relative;
-            // top: 30%;
-            font-size: 1.1vmax;
-            transition: 0.3s;
-            cursor:pointer;
-            // line-height: 0px;
-            margin-right: 4%;
-            // vertical-align: middle;
-    
-            &:hover {
-                color: #f8f8f8;
-                font-weight: 600;            
-                
-            }
-            
-    
+        --_clr-900: hsl(0, 0%, 100%);
+        --_clr-700: hsl(0, 0%, 80%);
+        --_clr-400: hsl(0, 0%, 60%);
+
+        font-weight: 200;
+        transition: font-weight 0.5s ease;
+
+        &:hover {
+          font-weight: var(--_fw-900);
+          color: var(--_clr-900);
         }
-    }
-    
 
+        // right side
+        &:hover + .letter {
+          font-weight: var(--_fw-700);
+          color: var(--_clr-700);
+        }
+        &:hover + .letter + .letter {
+          font-weight: var(--_fw-400);
+          color: var(--_clr-400);
+        }
+
+        // left side
+        &:has(+ .letter:hover) {
+          font-weight: var(--_fw-700);
+          color: var(--_clr-700);
+        }
+        &:has(+ .letter + .letter:hover) {
+          font-weight: var(--_fw-400);
+          color: var(--_clr-400);
+        }
+      }
+
+      &:hover {
+        color: #f8f8f8;
+        font-weight: 600;
+      }
+    }
+  }
+
+  .buttons-wrap {
+    // display: flex;
+    width: 30%;
+    height: 60px;
+    margin-left: 40%;
+
+    .btn {
+      position: relative;
+      // top: 30%;
+      font-size: 1.1vmax;
+      transition: 0.3s;
+      cursor: pointer;
+      // line-height: 0px;
+      margin-right: 4%;
+      // vertical-align: middle;
+
+      //   font-size: clamp(2rem, calc(2rem + 1.5vw), 8rem);
+      color: hsl(0, 0%, 50%);
+
+      & .letter {
+        --_fw-900: 900;
+        --_fw-700: 700;
+        --_fw-400: 400;
+
+        --_clr-900: hsl(0, 0%, 100%);
+        --_clr-700: hsl(0, 0%, 80%);
+        --_clr-400: hsl(0, 0%, 60%);
+
+        font-weight: 200;
+        transition: font-weight 0.5s ease;
+
+        &:hover {
+          font-weight: var(--_fw-900);
+          color: var(--_clr-900);
+        }
+
+        // right side
+        &:hover + .letter {
+          font-weight: var(--_fw-700);
+          color: var(--_clr-700);
+        }
+        &:hover + .letter + .letter {
+          font-weight: var(--_fw-400);
+          color: var(--_clr-400);
+        }
+
+        // left side
+        &:has(+ .letter:hover) {
+          font-weight: var(--_fw-700);
+          color: var(--_clr-700);
+        }
+        &:has(+ .letter + .letter:hover) {
+          font-weight: var(--_fw-400);
+          color: var(--_clr-400);
+        }
+      }
+
+      &:hover {
+        color: #f8f8f8;
+        font-weight: 600;
+      }
+    }
+  }
 }
