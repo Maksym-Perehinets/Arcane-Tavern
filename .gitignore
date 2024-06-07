@@ -24,8 +24,9 @@ dist-ssr
 *.sw?
 
 /venv
-.venv
 pycache
 flask-env
 
 package-lock.json
+
+venv
