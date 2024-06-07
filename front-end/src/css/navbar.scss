@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap');
 
 .navbar {
-    position: sticky;
+    // position:absolute;
+    position:fixed;
     top: 0px;
-    background-color: #1d1d1b75;
+    background-color: #1d1d1b3f;
     color:#ffffff;
     height: 60px;
     width: 100%;
@@ -12,8 +13,10 @@
     font-weight: 350;
     line-height: 60px;
     vertical-align: middle;
+    user-select: none;
 
     .logo-wrap {
+        
         display: flex;
         height: 60px;
         margin-left: 5%;
@@ -25,10 +28,12 @@
             position: relative;
             top: 50%;
             transform: translateY(-50%);
+            cursor: pointer;
         }
         .logo-text {
             font-size: 1vmax;
             margin-left: 15px;
+            cursor: pointer;
         }
     }
 
@@ -38,6 +43,7 @@
         width: 30%;
         height: 60px;
         margin-left: 40%;
+        
 
         .btn {
             position: relative;

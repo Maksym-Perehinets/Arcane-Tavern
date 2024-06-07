@@ -2,8 +2,10 @@ import { Routes, Route } from "react-router-dom";
 
 import "./css/MainStyle.scss";
 import "./css/navbar.scss"
+import "./css/Image.scss"
 import "./css/signup.scss";
 import "./css/sign.scss";
+import "./css/Info.scss";
 
 import SignInForm from "./_auth/forms/SignInForm";
 import SignUpForm from "./_auth/forms/SignUpForm";
