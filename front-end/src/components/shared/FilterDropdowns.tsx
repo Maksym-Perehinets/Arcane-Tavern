@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { dictionaries } from "../utils";
+import { dictionaries } from "../../utils";
 
 const Dropdown: React.FC<{ category: keyof typeof dictionaries }> = ({ category }) => {
   const options = dictionaries[category];

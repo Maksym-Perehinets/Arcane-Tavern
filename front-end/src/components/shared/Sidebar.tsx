@@ -1,5 +1,5 @@
-import navbarFeature from "../../../components/scripts_tmp/navbarFeature";
-import FilterDropdowns from "../../../components/FilterDropdowns";
+import navbarFeature from "../scripts_tmp/navbarFeature";
+import FilterDropdowns from "./FilterDropdowns";
 // import { applyFilters } from "../../../queries/queries";
 
 const Sidebar = () => {
