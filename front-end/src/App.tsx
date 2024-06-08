@@ -7,6 +7,7 @@ import "./css/signup.scss";
 import "./css/sign.scss";
 import "./css/Info.scss";
 import "./css/SpellOfTheDay.scss";
+import "./css/Footer.scss";
 
 import SignInForm from "./_auth/forms/SignInForm";
 import SignUpForm from "./_auth/forms/SignUpForm";
