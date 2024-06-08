@@ -1,4 +1,6 @@
-import { Link } from "react-router-dom"
+import { NavLink } from "react-router-dom"
+import { navbarLinks } from "../../constants"
+import { INavLink } from "../../types"
 
 const Navbar = () => {
   return (
@@ -9,9 +11,26 @@ const Navbar = () => {
           {/* <label className="logo"></label> */}
           <p className="logo-text">Arcane Tavern</p>
         </div>
-        <div className="buttons-wrap">
+        {/* <div className="buttons-wrap"> */}
 
-            <Link to="/"> 
+            <ul className="buttons-wrap">
+              {navbarLinks.map((link: INavLink) => {
+                return (
+                  <li key={link.label}
+                    className="btn">
+                      
+                      <NavLink 
+                        to={link.route} 
+                        className="navlink">
+
+                          {link.label}
+                      </NavLink>
+                    </li>
+                )
+              })}
+
+            </ul>
+            {/* <Link to="/"> 
               <label className='btn' htmlFor="">Home</label>
             </Link>
 
@@ -31,7 +50,7 @@ const Navbar = () => {
               <label className='btn' htmlFor="">Contact</label> 
             </Link>
 
-        </div>
+        </div> */}
     </div>
 
   )
