@@ -9,7 +9,7 @@ const Navbar = () => {
         <div className="logo-wrap">
           <img className="logo" src="../../../../public/logo2.svg" alt=":("/>
           {/* <label className="logo"></label> */}
-          <p className="logo-text">Arcane Tavern</p>
+          <NavLink to="/" className="logo-text">Arcane Tavern</NavLink>
         </div>
         {/* <div className="buttons-wrap"> */}
 

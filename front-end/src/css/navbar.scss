@@ -36,6 +36,7 @@
       margin-left: 15px;
       cursor: pointer;
       transition: 0.3s;
+      text-decoration: none;
 
       color: hsl(0, 0%, 50%);
 
@@ -103,10 +104,10 @@
       // vertical-align: middle;
 
       //   font-size: clamp(2rem, calc(2rem + 1.5vw), 8rem);
-      color: hsl(0, 0%, 50%);
 
       & .navlink {
         text-decoration: none;
+        color: hsl(0, 0%, 50%);
       }
 
       & .letter {

@@ -3,6 +3,7 @@ import { insertData } from "../../components/scripts_tmp/InsertData";
 import { getAllSpells } from "../../queries/queries";
 import { spellsTableElem } from "../../constants"
 import { ITableElem } from "../../types";
+import SpellDescription from "../../components/shared/SpellDescription";
 
 const SpellList = () => {
 
@@ -28,8 +29,10 @@ const SpellList = () => {
   
 
   return (
+    <>
     <div className="table-lines">
       <table id="spellList" className="custom-table">
+        
         <thead>
           <tr>
             {spellsTableElem.map((link: ITableElem) => {
@@ -43,9 +46,13 @@ const SpellList = () => {
             })}
           </tr>
         </thead>
+
         <tbody id="tableBody"></tbody>
+
       </table>
     </div>
+    <SpellDescription />
+    </>
   );
 };
 
