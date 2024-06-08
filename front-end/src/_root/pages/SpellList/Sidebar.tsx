@@ -1,4 +1,4 @@
-import navbarFeature from "../../../components/shared/navbarFeature";
+import navbarFeature from "../../../components/scripts_tmp/navbarFeature";
 import FilterDropdowns from "../../../components/FilterDropdowns";
 // import { applyFilters } from "../../../queries/queries";
 

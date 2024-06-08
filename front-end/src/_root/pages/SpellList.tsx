@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { insertData } from "../../components/shared/InsertData";
+import { insertData } from "../../components/scripts_tmp/InsertData";
 import { getAllSpells } from "../../queries/queries";
 
 const SpellList = () => {
