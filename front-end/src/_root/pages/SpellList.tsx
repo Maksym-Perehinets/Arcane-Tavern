@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { insertData } from "../../components/scripts_tmp/InsertData";
 import { getAllSpells } from "../../queries/queries";
+import { spellsTableElem } from "../../constants"
+import { ITableElem } from "../../types";
 
 const SpellList = () => {
 
@@ -30,24 +32,15 @@ const SpellList = () => {
       <table id="spellList" className="custom-table">
         <thead>
           <tr>
-            <th>
-              <a id="lvl">Lvl</a>
-            </th>
-            <th>
-              <a id="name">Name</a>
-            </th>
-            <th>
-              <a id="concentration">C</a>
-            </th>
-            <th>
-              <a id="duration">Duration</a>
-            </th>
-            <th>
-              <a id="time">Time</a>
-            </th>
-            <th>
-              <a id="range">Range</a>
-            </th>
+            {spellsTableElem.map((link: ITableElem) => {
+              return (
+                <th>
+                  <a id={link.id}>
+                    {link.label}
+                  </a>
+                </th>
+              )
+            })}
           </tr>
         </thead>
         <tbody id="tableBody"></tbody>

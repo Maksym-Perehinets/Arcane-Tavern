@@ -21,3 +21,31 @@ export const navbarLinks = [
     },
 
 ]
+
+export const spellsTableElem = [
+    {
+        id: "lvl",
+        label: "lvl"
+    },
+    {
+        id: "name",
+        label: "Name"
+    },
+    {
+        id: "concentration",
+        label: "C"
+    },
+    {
+        id: "duration",
+        label: "Duration"
+    },
+    {
+        id: "time",
+        label: "Time"
+    },
+    {
+        id: "range",
+        label: "Range"
+    },
+
+]
