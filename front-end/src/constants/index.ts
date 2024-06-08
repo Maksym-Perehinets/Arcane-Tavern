@@ -1,22 +1,22 @@
 export const navbarLinks = [
     {
         route: "/",
-        label: "Home"
+       я
     },
     {
         route: "/spell-list",
         label: "Spells"
     },
     {
-        route: "/",
+        route: "/characters",
         label: "Characters"
     },
     {
-        route: "/",
+        route: "/about-us",
         label: "About Us"
     },
     {
-        route: "/",
+        route: "/contact",
         label: "Contact"
     },
 
