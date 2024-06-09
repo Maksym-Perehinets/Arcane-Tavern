@@ -1,7 +1,6 @@
 export const navbarLinks = [
     {
         route: "/",
-       я
     },
     {
         route: "/spell-list",
