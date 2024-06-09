@@ -2,6 +2,7 @@ from fastapi import FastAPI, Depends, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 from fast_api_server.service import Service
+from .api_v2 import all_spells
 
 from database.database import engine, get_db
 from database.models import Sources, Durations, Ranges, Spell
@@ -26,6 +27,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.include_router(all_spells.router)
 
 """
 To run server pleas enter the following command 
