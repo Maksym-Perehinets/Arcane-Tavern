@@ -1,5 +1,12 @@
 
 const SpellOfTheDay = () => {
+
+  // const today = new Date();
+  // const spellLength = 572;
+  // const day = today.getDate();
+  // const month = today.getMonth();
+  // const spellID = day * month;
+
   return (
     <div className="daily-spell-div">
             <div className="show-spell-div">
