@@ -1,9 +1,10 @@
 import { useEffect } from "react";
 import { insertData } from "../../components/scripts_tmp/InsertData";
 import { getAllSpells } from "../../queries/queries";
-import { spellsTableElem } from "../../constants"
-import { ITableElem } from "../../types";
-import SpellDescription from "../../components/shared/SpellDescription";
+// import { spellsTableElem } from "../../constants"
+// import { ITableElem } from "../../types";
+// import SpellDescription from "../../components/shared/SpellDescription";
+import SpellTable from "./SpellList/SpellTable";
 
 const SpellList = () => {
 
@@ -30,7 +31,7 @@ const SpellList = () => {
 
   return (
     <>
-    <div className="table-lines">
+    {/* <div className="table-lines">
       <table id="spellList" className="custom-table">
         
         <thead>
@@ -51,7 +52,12 @@ const SpellList = () => {
 
       </table>
     </div>
-    <SpellDescription />
+    <SpellDescription /> */}
+
+<SpellTable />
+
+
+
     </>
   );
 };

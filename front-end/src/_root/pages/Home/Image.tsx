@@ -21,7 +21,9 @@ const Image = () => {
             <p className="text"></p>
             <p className="text">Don't forget to have fun.</p>
             <button className="button">Explore</button>
+            
         </div>
+
     </div>
   )
 }
