@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { insertData } from "../../components/scripts_tmp/InsertData";
 import { getAllSpells } from "../../queries/queries";
-import { spellsTableElem } from "../../constants"
-import { ITableElem } from "../../types";
-import SpellDescription from "../../components/shared/SpellDescription";
+
+import SpellDescription from "./SpellDescription";
 import "../../css/SpellPageCSS/SpellTable.scss"
+import ListOfSpells from "./ListOfSpells";
 
 
 const SpellList = () => {
@@ -32,27 +32,7 @@ const SpellList = () => {
 
   return (
     <>
-    <div className="table-lines">
-      <table id="spellList" className="custom-table">
-        
-        <thead>
-          <tr>
-            {spellsTableElem.map((link: ITableElem) => {
-              return (
-                <th>
-                  <a id={link.id}>
-                    {link.label}
-                  </a>
-                </th>
-              )
-            })}
-          </tr>
-        </thead>
-
-        <tbody id="tableBody"></tbody>
-
-      </table>
-    </div>
+    <ListOfSpells />
     <SpellDescription />
 
 {/* <SpellTable /> */}

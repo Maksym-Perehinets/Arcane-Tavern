@@ -6,25 +6,12 @@ const SpellOfTheDay = () => {
 
   const [btnStatus, setBtnStatus] = useState(0);
 
-  const btnStatusChangeTrue = () => {
-    setBtnStatus(1);
-  }
-  const btnStatusChangeFalse = () => {
-    setBtnStatus(0);
-  }
-
   const showSpell = () => {
-    if (btnStatus) {
-      return (
-        <SpellOfTheDayDiv />
-      )
-    }
-    else {
-      return (
-        <img className="gif" src="/alchemyThing.gif" alt="" />
-      )
-    }
-  }
+    return ( btnStatus
+      ? (<SpellOfTheDayDiv />) 
+      : (<img className="gif" src="/alchemyThing.gif" alt="Alchemy in action" />)
+    );
+  };
 
   return (
     <div className="daily-spell-div">
@@ -34,8 +21,8 @@ const SpellOfTheDay = () => {
             
             <p className="title-text">Do you want to reveal your spell of the day?</p>
             <div className="btn-div">
-                <button onClick={btnStatusChangeFalse} className="no-btn">No</button>
-                <button onClick={btnStatusChangeTrue} className="yes-btn">Yes</button>
+                <button onClick={() => setBtnStatus(0)} className="no-btn">No</button>
+                <button onClick={() => setBtnStatus(1)} className="yes-btn">Yes</button>
             </div>
     </div>
   )

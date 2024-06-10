@@ -1,5 +1,3 @@
-
-
 const Image = () => {
   // const animText = "Animmmmmated text"
   // const animTextWrapper = document.querySelector('.titile')
