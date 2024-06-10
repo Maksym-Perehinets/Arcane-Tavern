@@ -16,7 +16,7 @@ const SpellOfTheDay = () => {
   const showSpell = () => {
     if (btnStatus == 0) {
       return (
-        <img className="gif" src="/alchemyThing.gif" alt="" />
+        <img className="gif" src="https://dvoxsotka.s3.amazonaws.com/arcane-tavern/alchemyThing.gif" alt="" />
       )
     }
     else {
