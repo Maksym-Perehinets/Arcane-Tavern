@@ -1,0 +1,46 @@
+body {
+  background-image: url(https://dvoxsotka.s3.amazonaws.com/arcane-tavern/spellPageBG.png);
+  background-size: cover;
+}
+
+.navbar {
+  background-color: rgba(12, 12, 12, 1);
+}
+
+.table-lines {
+  color: aliceblue;
+  float: left;
+  width: 50%;
+  height: 800px;
+  margin-top: 90px;
+  left: 3%;
+
+  margin-left: 3%;
+
+  background-color: rgba(12, 12, 12, 0.5);
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 2px solid #424242;
+  // overflow-y: scroll;
+  overflow-x: hidden;
+  border-radius: 5px;
+
+  .custom-table {
+    top: 100px;
+    width: 100%;
+    border-collapse: collapse;
+    a:hover {
+      color: #555;
+      transition: all 0.2s linear;
+    }
+
+    th {
+      background-color: rgba(12, 12, 12, 0.7);
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      color: white;
+      height: 40px;
+    }
+  }
+}
