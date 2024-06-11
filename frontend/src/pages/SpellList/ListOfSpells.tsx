@@ -1,26 +1,15 @@
-import { spellsTableElem } from "../../constants"
-import { ITableElem } from "../../types";
+import SpellTableBody from "./SpellTable/SpellTableBody";
+import SpellTableHead from "./SpellTable/SpellTableHead";
 
-export default function ListOfSpells() {
+
+export default function ListOfSpells(spellArray: unknown) {
   return (
     <div className="table-lines">
     <table id="spellList" className="custom-table">
       
-      <thead>
-        <tr>
-          {spellsTableElem.map((link: ITableElem) => {
-            return (
-              <th>
-                <a id={link.id}>
-                  {link.label}
-                </a>
-              </th>
-            )
-          })}
-        </tr>
-      </thead>
-
-      <tbody id="tableBody"></tbody>
+      <SpellTableHead />
+      <SpellTableBody />
+      
 
     </table>
   </div>

@@ -11,12 +11,7 @@ from database import models
 app = FastAPI()
 
 origins = [
-    "http://localhost",
-    "http://localhost:8181",
-    "http://localhost:5500",
-    "http://127.0.0.1:5500",
-    "http://localhost:5173",
-    "http://127.0.0.1:443"
+    "*"
 ]
 
 
@@ -47,9 +42,11 @@ async def root():
             }
 
 
-@app.get("/spells")
+@app.get("/spells&per_page={per_page}&page={page}")
 async def dbtest(
-        db: Session = Depends(get_db)
+        per_page: int,
+        page: int,
+        db: Session = Depends(get_db),
 ):
     """
     Get short information of each spell in the database.
@@ -80,6 +77,8 @@ async def dbtest(
         db.query(Spell, Durations, Ranges)
         .join(Durations, Durations.id == Spell.duration_id)
         .join(Ranges, Ranges.id == Spell.spell_range_id)
+        .limit(per_page)
+        .offset(page)
     )
 
     # Data consistency check

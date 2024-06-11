@@ -6,7 +6,7 @@ export function insertData(data: { data: Spell[] } | any, clear: boolean): void 
       const tbody = spellListTable.getElementsByTagName("tbody")[0];
       if (tbody) {
         if (clear) {
-          tbody.innerHTML = ""; // Clear existing table rows
+          tbody.innerHTML = "";
         }
   
         if (Array.isArray(data.data)) {

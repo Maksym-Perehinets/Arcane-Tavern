@@ -7,7 +7,7 @@ services:
     volumes:
       - type: bind
         source: ./backend
-        target: /backend
+        target: /back-end
     ports:
       - "8080:80"
   frontend:

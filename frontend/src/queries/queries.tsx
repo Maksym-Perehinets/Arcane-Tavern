@@ -2,8 +2,8 @@ import axios from 'axios';
 
 const backendUrl = "http://127.0.0.1:8080";
 
-export async function getAllSpells() {
-  const apiUrl = `${backendUrl}/spells`;
+export async function getAllSpells(per_page: number, page: number) {
+  const apiUrl = `${backendUrl}/spells&per_page=${per_page}&page=${page}`;
   try {
     const response = await axios.get(apiUrl);
     return response.data;
