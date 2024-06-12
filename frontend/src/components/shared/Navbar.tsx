@@ -7,7 +7,7 @@ const Navbar = () => {
         
     <div className='navbar'>
         <div className="logo-wrap">
-          <img className="logo" src="../../../../public/logo2.svg" alt=":("/>
+          <img className="logo" src="https://dvoxsotka.s3.amazonaws.com/arcane-tavern/logo2.png" alt=":("/>
           
           <NavLink to="/" className="logo-text">Arcane Tavern</NavLink>
         </div>
