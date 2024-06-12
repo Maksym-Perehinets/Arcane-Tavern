@@ -78,7 +78,7 @@ async def dbtest(
         .join(Durations, Durations.id == Spell.duration_id)
         .join(Ranges, Ranges.id == Spell.spell_range_id)
         .limit(per_page)
-        .offset(page)
+        .offset(per_page * page)
     )
 
     # Data consistency check
