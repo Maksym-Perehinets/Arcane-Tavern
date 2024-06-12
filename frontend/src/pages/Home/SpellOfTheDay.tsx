@@ -9,7 +9,7 @@ const SpellOfTheDay = () => {
   const showSpell = () => {
     return ( btnStatus
       ? (<SpellOfTheDayDiv />) 
-      : (<img className="gif" src="/alchemyThing.gif" alt="Alchemy in action" />)
+      : (<img className="spellCard" src="https://dvoxsotka.s3.amazonaws.com/arcane-tavern/spellCard.png" alt="Alchemy in action" />)
     );
   };
 
