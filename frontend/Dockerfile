@@ -7,9 +7,9 @@ COPY package.json .
 COPY package-lock.json .
 
 
-RUN npm install
-RUN npm i react-icons
-RUN npm install -D sass
+RUN npm install \
+    npm i react-icons \
+    npm install -D sass
 
 # Add app
 COPY . .
