@@ -1,4 +1,4 @@
-export interface Spell {
+export interface SpellMainStats {
     id: number;
     level: string;
     name: string;
@@ -21,5 +21,9 @@ export interface Spell {
       };
       type: string;
     };
-  }
-  
+}
+
+
+export interface SpellDescription extends SpellMainStats {
+
+}

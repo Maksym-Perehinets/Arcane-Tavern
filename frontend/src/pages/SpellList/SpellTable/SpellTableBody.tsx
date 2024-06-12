@@ -1,17 +1,17 @@
-import { Spell } from "@/interfaces/spell";
+import { SpellMainStats } from "@/interfaces/spell";
 import SpellTableRow from "./SpellTableRow";
 
 interface ListProps {
-  spells: Spell[]; 
+  spells: SpellMainStats[]; 
 }
 
 const SpellTableBody: React.FC<ListProps> = ({spells}) => {
   return (
     <tbody id="tableBody">
       
-      {spells.map((spell: Spell) => {
+      {spells.map((spell: SpellMainStats) => {
         return(
-          <SpellTableRow spell={spell}/>)
+          <SpellTableRow key={spell.id} spell={spell}/>)
         }
       )}
       

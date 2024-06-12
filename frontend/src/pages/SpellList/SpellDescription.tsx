@@ -1,9 +1,16 @@
+import { SpellMainStats } from "@/interfaces/spell"
+
+interface ISpellDescriptionProps {
+    spell: SpellMainStats
+}
+
+
 const SpellDescription = () => {
   return (
     <>
         <div className="spellNameDiv">
             <div className="spellNameText">
-                <span id="spellName">Spell Name</span>
+                <span id="spellName">фіщошрщафірщшаіф</span>
                 <div className="bookName">
                     <span id="bookName">PHB</span>
                     <div className="bookPage">

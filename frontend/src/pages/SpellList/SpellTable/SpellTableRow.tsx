@@ -1,12 +1,12 @@
-import { Spell } from '@/interfaces/spell'
+import { SpellMainStats } from '@/interfaces/spell'
 
 interface spellProp {
-    spell: Spell; 
+    spell: SpellMainStats; 
 }
   
 const SpellTableRow : React.FC<spellProp>= ({spell}) => {
   return (
-    <tr key={spell.id}>
+    <tr>
         <td>{spell.level}</td>
         <td>{spell.name}</td>
         <td>{spell.duration.concentration ? "✔" : "✖"}</td>

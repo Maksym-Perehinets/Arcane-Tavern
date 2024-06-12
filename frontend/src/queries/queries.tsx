@@ -12,7 +12,7 @@ export async function getAllSpells(per_page: number, page: number) {
   }
 }
 
-export async function getSpellById(spellId: string) {
+export async function getSpellById(spellId: number) {
   const apiUrl = `${backendUrl}/get-spell/${spellId}`;
   try {
     const response = await axios.get(apiUrl);
@@ -22,7 +22,7 @@ export async function getSpellById(spellId: string) {
   }
 }
 
-export async function sortTableData(filterName: string, sortingType: string) {
+export async function sortTableData(filterName: string, sortingType: boolean) {
   const apiUrl = `${backendUrl}/data-sort/?filter_name=${filterName}&asc_value=${sortingType}`;
   try {
     const response = await axios.get(apiUrl);

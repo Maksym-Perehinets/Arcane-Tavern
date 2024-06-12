@@ -1,42 +1,33 @@
 import { useEffect, useRef, useState } from "react";
-import { getAllSpells } from "@/queries/queries";
+import { getAllSpells, getSpellById } from "@/queries/queries";
 
 import SpellTableBody from "./SpellTable/SpellTableBody";
 import SpellTableHead from "./SpellTable/SpellTableHead";
-import { Spell } from "@/interfaces/spell";
+import { SpellMainStats } from "@/interfaces/spell";
+import test from "node:test";
 
 
 const ListOfSpells = () => {
 
-  const[spells, setSpells] = useState<Spell[]>([])
+  const[spells, setSpells] = useState<SpellMainStats[]>([])
   const[page, setPage] = useState(0)
-  const tableRef = useRef<HTMLDivElement>(null);
+  const tableRef = useRef<HTMLDivElement>(null)
 
 
   const handleScroll = () => {
-    // console.log("Height: ", window.innerHeight)
-    // console.log("Top: ", document.documentElement.scrollTop)
-    // console.log("Window: ", document.documentElement.scrollHeight)
-
       const table = tableRef.current;
       if (table) {
-        if (table.scrollTop + table.clientHeight + 1 >= table.scrollHeight) {
+        if (table.scrollTop + table.clientHeight + 1 >= table.scrollHeight) 
           setPage((prev) => prev + 1);
-        }
       }
-    
-    
   }
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getAllSpells(50, page);
+      const data = await getAllSpells(50, page)
       setSpells((prev: any[]) => { 
         return [...prev, ...data.data]
       });
-      console.log("spells", spells.length)
-
-      // console.log(data)
     };
   
     fetchData();
@@ -53,7 +44,6 @@ const ListOfSpells = () => {
     <table id="spellList" className="custom-table">
       <SpellTableHead />
       <SpellTableBody spells={spells}/>
-      
 
     </table>
 

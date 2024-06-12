@@ -6,12 +6,12 @@ ENV PATH /app/node_modules/.bin:$PATH
 COPY package.json .
 COPY package-lock.json .
 
-
 RUN npm install \
     npm i react-icons \
-    npm install -D sass
+    npm i -D sass \
+    npm i react-query
 
-# Add app
+
 COPY . .
 
 EXPOSE 5173
