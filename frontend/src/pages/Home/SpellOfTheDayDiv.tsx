@@ -2,8 +2,6 @@ const SpellOfTheDayDiv = () => {
   const today = new Date()
   const spellID = today.getMonth() * today.getDay();
 
-
-
   return (
     <div className='sofd-div'>
       <div className="header-div"><p className='spell-name'>Acid Splash</p></div>

@@ -1,5 +1,8 @@
 export const navbarLinks = [
-
+    {
+        route: "/",
+        label: "Home"
+    },
     {
         route: "/spell-list",
         label: "Spells"
