@@ -1,6 +1,6 @@
 const SpellOfTheDayDiv = () => {
-  const today = new Date()
-  const spellID = today.getMonth() * today.getDay();
+  // const today = new Date()
+  // const spellID = today.getMonth() * today.getDay();
 
   return (
     <div className='sofd-div'>

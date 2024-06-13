@@ -25,6 +25,7 @@ body {
   overflow-x: hidden;
   border-radius: 5px;
 
+
   .custom-table {
     top: 100px;
     width: 100%;
@@ -41,6 +42,19 @@ body {
       z-index: 2;
       color: white;
       height: 40px;
+
+
+    }
+  }
+  .row {
+    padding-top: 1%;
+    padding-left: 1%;
+    color: lightgray;
+
+    &:hover {
+      color: white;
+      cursor: pointer;
+      // background-color: rgba(12, 12, 12, 0.8);
     }
   }
 }

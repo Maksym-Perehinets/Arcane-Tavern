@@ -6,10 +6,10 @@ const Footer = () => {
     [
       { label: "Company", key: "header-1" },
       { label: "About us", key: "item-1-1" },
-      { label: "blog", key: "item-1-2" },
+      { label: "Blog", key: "item-1-2" },
       { label: "Contact us", key: "item-1-3" },
-      { label: "Pricing", key: "item-1-4" },
-      { label: "Testimonials", key: "item-1-5" },
+      { label: "Spell DB", key: "item-1-4" },
+      { label: "Feedback", key: "item-1-5" },
     ],
     [
       { label: "Support", key: "header-2" },
@@ -24,13 +24,13 @@ const Footer = () => {
     <div className="footer">
       <div className="footer-company-info">
         <div className="footer-img">
-          <img src="src\assets\ReactLogo.png" alt="aboba" />
-          <span>Made on React</span>
+          <img src="https://dvoxsotka.s3.amazonaws.com/arcane-tavern/logo2.png" alt="aboba" />
+          {/* <span>Made on React</span> */}
         </div>
 
         <div className="infos">
-          <span>Using for University Project</span>
-          <span>All Content uses for study</span>
+          {/* <span>Using for University Project</span>
+          <span>All Content uses for study</span> */}
         </div>
         <div className="footer-icons"></div>
       </div>
@@ -49,7 +49,7 @@ const Footer = () => {
         </a>
         <a
           id="GitHubLink"
-          href="https://github.com/Maksym-Perehinets/Hotel-site"
+          href="https://github.com/Maksym-Perehinets/Arcane-Tavern-full-stack-site-that-organize-spells-for-TTRPG-game"
         >
           <FaGithub />
         </a>

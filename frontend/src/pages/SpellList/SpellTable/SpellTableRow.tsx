@@ -7,12 +7,12 @@ interface spellProp {
 const SpellTableRow : React.FC<spellProp>= ({spell}) => {
   return (
     <tr>
-        <td>{spell.level}</td>
-        <td>{spell.name}</td>
-        <td>{spell.duration.concentration ? "✔" : "✖"}</td>
-        <td>{spell.duration.type}</td>
-        <td>{spell.time[0].number + " " + spell.time[0].unit}</td>
-        <td>{spell.ranges.distance 
+        <td className='row'>{spell.level}</td>
+        <td className='row'>{spell.name}</td>
+        <td className='row'>{spell.duration.concentration ? "✔" : "✖"}</td>
+        <td className='row'>{spell.duration.type}</td>
+        <td className='row'>{spell.time[0].number + " " + spell.time[0].unit}</td>
+        <td className='row'>{spell.ranges.distance 
             ? (spell.ranges.distance.amount 
                 ? spell.ranges.distance.amount + " " + spell.ranges.distance.type 
                 : spell.ranges.distance.type) 

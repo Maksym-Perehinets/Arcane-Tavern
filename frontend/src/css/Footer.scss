@@ -41,7 +41,7 @@
   font-family: "poppins";
 }
 .footer {
-  $bg-clr: #352344;
+  $bg-clr: #191020;
   $text-main-clr: #fff;
   $text-secondary-clr: #cccccc;
   width: auto;
@@ -58,6 +58,11 @@
     & .footer-img {
       display: flex;
       align-items: center;
+
+      img {
+        height: 100px;
+        width: auto;
+      }
 
       & span {
         font-size: 1.75rem;
