@@ -1,0 +1,90 @@
+.spell-details {
+    background: linear-gradient(#000000be, #000000bb);
+    width: 35%;
+    height: 700px;
+    float: right;
+    margin-top: 150px;
+    margin-right: 4%;
+    color: antiquewhite;
+    padding: 10px 10px;
+    border-radius: 15px;
+    position: relative;
+
+    .spell-name-div {
+        width: 100%;
+        text-align: center;
+        padding-top: 1%;
+
+        .spell-name {
+            color: azure;
+            font-size: 1.8vmax;
+        }
+    }
+
+    .main-extras {
+        width: 35%;
+        display: flex;
+        color: lightgray;
+        background-color: #19132042;
+        border-radius: 10px;
+        float: right;
+        padding: 10px 10px;
+
+        .extras-text {
+            padding-left: 15%;
+            font-size: .9vmax;
+        }
+    }
+    
+    .spell-main-info {
+        padding-top: 10px;
+        display: flex;
+        width: 100%;
+
+        &.value {
+            padding-top: 1px;
+        }
+
+        .main-info-text {
+            width: 20%;
+            float: right;
+            color: gray;
+            text-align: center;
+            font-size: 1vmax;
+
+            &.value {
+                color: lightgray;
+            }
+        }
+    }
+    .spell-description {
+        background-image: linear-gradient(rgb(0,0,0,0.7), rgb(0,0,0,0.7)), url("https://dvoxsotka.s3.amazonaws.com/arcane-tavern/spellsBG.png");
+        margin-top: 40px;
+        width: 100%;
+        height: 425px;
+        border-radius: 20px;
+
+        .desc-text {
+            color: lightgray;
+            font-size: .9vmax;
+            padding: 15px 2%;
+
+            &.higher {
+                padding-top: 10px;
+                color: lightgrey;
+            }
+        }
+    }
+    .casters-div {
+        width: 100%;
+        padding-left: 2%;
+        position: absolute;
+        bottom: 25px;
+        
+        .casters-text {
+            font-size: 1vmax;
+            color: lightgray;
+        }
+    }
+
+}

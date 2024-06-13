@@ -10,6 +10,7 @@ import "./css/SpellOfTheDay.scss";
 import "./css/Footer.scss";
 import "./css/SpellOfTheDayDiv.scss";
 import "./css/CharacterDiv.scss";
+import "./css/SpellPageCSS/SpellDedscription.scss";
 
 import SignInForm from "./pages/SignInForm/SignInForm";
 import SignUpForm from "./pages/SignUpForm/SignUpForm";
