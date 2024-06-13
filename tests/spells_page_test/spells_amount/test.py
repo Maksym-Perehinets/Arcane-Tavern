@@ -13,4 +13,7 @@ class ButtonsTest:
 
     def nav_bar_tests(self, element: str):
         self.locators.find_and_click(self.driver, By.CSS_SELECTOR, element)
-        return self.driver.current_url
+
+    def count_amount_of_rows(self, element: str):
+        all_rows = self.locators.locate_item(self.driver, By.CSS_SELECTOR, element)
+        return len(all_rows)

@@ -30,3 +30,13 @@ class DefaultLocators:
             wait.until(
                 EC.element_to_be_clickable((by_type, item_name))
             ).send_keys(data)
+
+    @staticmethod
+    def locate_item(driver, by_type, item_name):
+        try:
+            return driver.find_element(by_type, item_name)
+        except NoSuchElementException:
+            wait = WebDriverWait(driver, 10)
+            return wait.until(
+                EC.find_element((by_type, item_name))
+            )
