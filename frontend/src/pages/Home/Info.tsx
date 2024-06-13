@@ -19,9 +19,9 @@ const Info = () => {
             <div onClick={handleClick('/charsheet')} className="circle"><img className="png" src="https://dvoxsotka.s3.amazonaws.com/arcane-tavern/diceBrush.png" alt="womp womp :(" /></div>
           </div>
           <div className="wrapper">
-            <p className="under-text">Robust database with spells, complete with filters, search and a tool to create your own spells</p>
+            <p className="under-text">Robust database full of spells, complete with filters, search and a tool to create your own spells</p>
             <p className="under-text">Character creation tool, using DnD 5e charsheet, fully editable to suit all of your needs</p>
-            <p className="under-text">Character creation tool, using DnD 5e charsheet, fully editable to suit all of your needs</p>
+            <p className="under-text">Nice and cozy menus, designed with minimizing eye strain in mind</p>
           </div>
         </div>
       
