@@ -4,7 +4,11 @@ const AbtUsText = () =>
     {
 return(
     <div className="CardHolder">
+    <div className="TeamLabel">
+      <h2>Dream Team Brawl Stars</h2>
+    </div>
     <div className="InfoUs">
+
       
       <div className="main">
         <img 
@@ -81,9 +85,9 @@ return(
     </div>
 
 
-    {/* <div className="InfoTiny">
-      <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil minus ad eligendi ipsam adipisci illo placeat, in asperiores distinctio similique provident numquam molestias quam sed reiciendis accusamus laborum fugiat ducimus.</h2>
-    </div> */}
+    <div className="InfoTiny">
+      <h2>Our team is always trying to improve itself</h2>
+    </div>
 
 
     </div>

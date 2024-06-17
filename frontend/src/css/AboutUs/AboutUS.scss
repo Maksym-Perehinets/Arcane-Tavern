@@ -11,9 +11,10 @@ body {
 }
 
 .CardHolder {
+  margin-top: 70px;
   text-align: center;
   display: flex;
-  height: 50%;
+  // height: 1000px;
 }
 
 .InfoUs {
@@ -41,7 +42,7 @@ body {
 
   .main {
     h3 {
-      color: cyan;
+      color: #9651b1;
     }
     display: flex;
     flex-direction: column;
@@ -94,9 +95,24 @@ body {
 }
 
 .InfoTiny {
+  font-size: 40px;
   position: absolute;
+  // margin-bottom: 0px;
   bottom: 0;
+  margin-bottom: 170px;
   width: auto;
   height: 100px;
-  margin-top: 100px;
+  // margin-top: 100px;
+  width: 100%;
+  height: 100px;
+}
+
+.TeamLabel {
+  font-size: 40px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #9651b1;
+  z-index: 2;
+  padding-top: 00px;
+  position: absolute;
+  width: 100%;
 }
