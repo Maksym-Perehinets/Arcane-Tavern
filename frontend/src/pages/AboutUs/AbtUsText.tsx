@@ -1,0 +1,92 @@
+import "../../css/AboutUs/AboutUS.scss"
+
+const AbtUsText = () => 
+    {
+return(
+    <div className="CardHolder">
+    <div className="InfoUs">
+      
+      <div className="main">
+        <img 
+          className="Photo" 
+          src="../../../public/AboutUsPhoto/Evgen.jpg" 
+          alt="Evgen" 
+        />
+        <h2>Evgen</h2>
+        <h3> Designer </h3>
+
+        <p className="description">
+             Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit quasi voluptate fugiat, molestias doloremque labore adipisci earum sequi laborum ipsum odio, sed rerum dolorem exercitationem iure dolore in ad maxime?</p> 
+      </div>
+    </div>
+
+    <div className="InfoUs">
+      
+      <div className="main">
+        <img 
+          className="Photo" 
+          src="./../../public/AboutUsPhoto/Yura.jpg" 
+          alt="NFT" 
+        />
+        <h2>Yura Voloshchak</h2>
+        <h3> Front-end </h3>
+
+        <p className="description">
+             Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit quasi voluptate fugiat, molestias doloremque labore adipisci earum sequi laborum ipsum odio, sed rerum dolorem exercitationem iure dolore in ad maxime?</p> 
+      </div>
+    </div>
+
+    <div className="InfoUs">
+      
+      <div className="main">
+        <img 
+          className="Photo" 
+          src="./../../public/AboutUsPhoto/Artem.jpg"alt="NFT" 
+        />
+        <h2>Artem Maslovskyi</h2>
+        <h3> Front-End </h3>
+
+        <p className="description">
+             Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit quasi voluptate fugiat, molestias doloremque labore adipisci earum sequi laborum ipsum odio, sed rerum dolorem exercitationem iure dolore in ad maxime?</p> 
+      </div>
+    </div>
+
+    <div className="InfoUs">
+      
+      <div className="main">
+        <img 
+          className="Photo" 
+          src="./../../public/AboutUsPhoto/Ihor.jpg"alt="NFT" 
+        />
+        <h2>Ihor Ivantso</h2>
+        <h3> Full-Stack </h3>
+
+        <p className="description">
+             Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit quasi voluptate fugiat, molestias doloremque labore adipisci earum sequi laborum ipsum odio, sed rerum dolorem exercitationem iure dolore in ad maxime?</p> 
+      </div>
+    </div>
+
+    <div className="InfoUs">
+      
+      <div className="main">
+        <img 
+          className="Photo" 
+          src="./../../public/AboutUsPhoto/Maks.jpg"alt="NFT" 
+        />
+        <h2>Maksym Perehinets</h2>
+        <h3> DevOps </h3>
+        <p className="description">
+             Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit quasi voluptate fugiat, molestias doloremque labore adipisci earum sequi laborum ipsum odio, sed rerum dolorem exercitationem iure dolore in ad maxime?</p> 
+      </div>
+    </div>
+
+
+    {/* <div className="InfoTiny">
+      <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil minus ad eligendi ipsam adipisci illo placeat, in asperiores distinctio similique provident numquam molestias quam sed reiciendis accusamus laborum fugiat ducimus.</h2>
+    </div> */}
+
+
+    </div>
+  );
+};
+    export default AbtUsText;

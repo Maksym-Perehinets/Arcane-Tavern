@@ -1,59 +1,56 @@
 .sofd-div {
-    display: inline-block;
-    float: left;
-    width: 70%;
-    height: 680px;
-    user-select: none;
-    background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url('https://dvoxsotka.s3.amazonaws.com/arcane-tavern/spellCard.png');
-    background-size:contain;
-    backdrop-filter: brigtness;
-    border-radius: 30px;
-    transition: all 4s ease-in-out;
-    // margin-top: 32%;
+  display: inline-block;
+  float: left;
+  width: 70%;
+  height: 680px;
+  user-select: none;
+  background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)),
+    url("https://dvoxsotka.s3.amazonaws.com/arcane-tavern/spellCard.png");
+  background-size: contain;
+  backdrop-filter: brigtness;
+  border-radius: 30px;
+  transition: all 4s ease-in-out;
 
-    &:hover {
-        box-shadow: #170618 5px 5px 75px;
-
-        .header-div {
-            transition: .4s;
-            background-color: rgba(45, 0, 71, 0.137);
-            .spell-name{
-                transition: all .4s ease-in-out;
-                color: #bbbbbb;
-            }
-        }
-    }
+  &:hover {
+    box-shadow: #170618 5px 5px 75px;
 
     .header-div {
-        background-color: #2900401c;
-        border-radius: 15px 15px 0px 0px;
-
-        .spell-name {
-            text-align: center;
-            text-transform: uppercase;
-            font-size: 1.5vmax;
-            padding-top: 40%;
-            padding-bottom: 5%;
-            color: #969696;
-        }
+      transition: 0.4s;
+      background-color: rgba(45, 0, 71, 0.137);
+      .spell-name {
+        transition: all 0.4s ease-in-out;
+        color: #bbbbbb;
+      }
     }
-    .spell-main-info-div {
-        background-color: #3c194469;
-        display: flex;
-        width: 100%;
-        
+  }
 
-        .info-text {
-            // text-align: center;
-            color: lightgray;
-            padding: 1% 4% ;
-            font-size: .9vmax;
-        }
-    }
-    .spell-desc {
-        font-size: .9vmax;
-        padding: 4% 8%;
-        color: lightgrey;
-    }
+  .header-div {
+    background-color: #2900401c;
+    border-radius: 15px 15px 0px 0px;
 
+    .spell-name {
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 1.5vmax;
+      padding-top: 40%;
+      padding-bottom: 5%;
+      color: #969696;
+    }
+  }
+  .spell-main-info-div {
+    background-color: #3c194469;
+    display: flex;
+    width: 100%;
+
+    .info-text {
+      color: lightgray;
+      padding: 1% 4%;
+      font-size: 0.9vmax;
+    }
+  }
+  .spell-desc {
+    font-size: 0.9vmax;
+    padding: 4% 8%;
+    color: lightgrey;
+  }
 }

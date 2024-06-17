@@ -18,6 +18,8 @@ import { SpellList, Home } from "./pages";
 
 import AuthLayout from "./pages/AuthLayout";
 import RootLayout from "./pages/RootLayout";
+import AboutUS from "./pages/AboutUs/AboutUS"
+
 
 const App = () => {
   return (
@@ -31,6 +33,7 @@ const App = () => {
         <Route element={<RootLayout />}>
           <Route index element={<Home />} />
           <Route path="/spell-list" element={<SpellList />} />
+          <Route path="/About-us" element={<AboutUS />} />  
         </Route>
       </Routes>
     </main>

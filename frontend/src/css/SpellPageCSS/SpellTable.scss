@@ -1,3 +1,7 @@
+@font-face {
+  font-family: DraconicFont;
+  src: url(../../../public/fonts/Draconis-JRw6B.ttf);
+}
 body {
   background-image: url(https://dvoxsotka.s3.amazonaws.com/arcane-tavern/spellPageBG.png);
   background-size: cover;
@@ -27,6 +31,7 @@ body {
   border-radius: 5px;
 
   .custom-table {
+    font-family: DraconicFont;
     top: 100px;
     width: 100%;
     border-collapse: collapse;

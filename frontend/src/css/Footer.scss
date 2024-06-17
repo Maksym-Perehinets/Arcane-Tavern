@@ -51,7 +51,6 @@
   position: relative;
 
   &-company-info {
-    // display: grid;
     row-gap: 16px;
 
     & .footer-img {
@@ -61,14 +60,7 @@
       text-align: center;
 
       img {
-        // display: block;
         height: 150px;
-        // width: auto;
-        // float:inherit;
-        // text-align: center;
-        // align-items: center;
-        // align-self: center;
-        // align-self: start;
       }
 
       & span {
