@@ -86,4 +86,15 @@
       }
 
 
+      .show-spell-div {
+        position: relative;
+    &.fade {
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+&:not(.fade) {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+      }
 }
