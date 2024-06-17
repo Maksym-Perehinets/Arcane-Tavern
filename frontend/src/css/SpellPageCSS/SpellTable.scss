@@ -8,10 +8,11 @@ body {
 }
 
 .table-lines {
+  background-image: url(../../../public/BackspellTb.png);
   color: aliceblue;
   float: left;
   width: 50%;
-  height: 800px;
+  height: 85vh;
   margin-top: 90px;
   left: 3%;
 
@@ -21,10 +22,9 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   border: 2px solid #424242;
-  // overflow-y: scroll;
+
   overflow-x: hidden;
   border-radius: 5px;
-
 
   .custom-table {
     top: 100px;
@@ -36,25 +36,43 @@ body {
     }
 
     th {
-      background-color: rgba(12, 12, 12, 0.7);
+      background-color: rgba(12, 12, 12, 1);
       position: sticky;
       top: 0;
       z-index: 2;
       color: white;
       height: 40px;
 
+      padding: 5px;
+      font-size: 21px;
+      cursor: pointer;
 
+      &:hover {
+        transition: 0.3s;
+        color: rgb(68, 5, 68);
+      }
+    }
+    td {
+      text-align: center;
+      font-size: 21px;
+      margin: 125px;
+    }
+  }
+
+  tr {
+    &:hover {
+      background-color: rgba(39, 8, 38, 0.9);
+      transition: 0.3s;
     }
   }
   .row {
-    padding-top: 1%;
-    padding-left: 1%;
+    cursor: pointer;
+    padding: 5px;
     color: lightgray;
 
     &:hover {
-      color: white;
-      cursor: pointer;
-      // background-color: rgba(12, 12, 12, 0.8);
+      color: lightcyan;
+      transition: 0.3s;
     }
   }
 }

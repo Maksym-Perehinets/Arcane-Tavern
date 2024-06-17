@@ -1,9 +1,9 @@
 .spell-details {
     background: linear-gradient(#000000be, #000000bb);
     width: 35%;
-    height: 700px;
+    height: 82vh;
     float: right;
-    margin-top: 150px;
+    margin-top: 100px;
     margin-right: 4%;
     color: antiquewhite;
     padding: 10px 10px;
@@ -51,6 +51,7 @@
             color: gray;
             text-align: center;
             font-size: 1vmax;
+            text-wrap: nowrap;
 
             &.value {
                 color: lightgray;
@@ -59,16 +60,20 @@
     }
     .spell-description {
         background-image: linear-gradient(rgb(0,0,0,0.7), rgb(0,0,0,0.7)), url("https://dvoxsotka.s3.amazonaws.com/arcane-tavern/spellsBG.png");
-        margin-top: 40px;
+        margin-top: 10px;
+        // margin-right: 1000px;
         width: 100%;
-        height: 425px;
+        // height: 425px;
+        height: 60vh;
         border-radius: 20px;
+        background-image: url(../../../public/BackspellTb.png);
+
 
         .desc-text {
-            color: lightgray;
+            color: rgb(255, 255, 255);
             font-size: .9vmax;
             padding: 15px 2%;
-
+            border-radius: 10%;
             &.higher {
                 padding-top: 10px;
                 color: lightgrey;

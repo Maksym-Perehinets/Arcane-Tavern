@@ -28,11 +28,8 @@ const Footer = () => {
           {/* <span>Made on React</span> */}
         </div>
 
-        <div className="infos">
-          {/* <span>Using for University Project</span>
-          <span>All Content uses for study</span> */}
-        </div>
-        <div className="footer-icons"></div>
+        
+       
       </div>
       <div className="footer-links">
         {links.map((col, index) => (

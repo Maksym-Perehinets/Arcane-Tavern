@@ -12,7 +12,6 @@
       transition: 0.9s;
     }
   }
-  // aboba
   & #GitHubLink {
     margin-left: 50px;
     color: grey;
@@ -52,16 +51,24 @@
   position: relative;
 
   &-company-info {
-    display: grid;
+    // display: grid;
     row-gap: 16px;
 
     & .footer-img {
-      display: flex;
+      display: block;
       align-items: center;
+      height: auto;
+      text-align: center;
 
       img {
-        height: 100px;
-        width: auto;
+        // display: block;
+        height: 150px;
+        // width: auto;
+        // float:inherit;
+        // text-align: center;
+        // align-items: center;
+        // align-self: center;
+        // align-self: start;
       }
 
       & span {

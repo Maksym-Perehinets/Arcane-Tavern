@@ -88,7 +88,7 @@ const SpellComponent: React.FC<SpellComponentProps> = ({ spellId }) => {
 
       <div className="spell-description">
         {spell.description.map((desc, index) => (
-          <p key={index} className="desc-text">{desc}</p>
+          <p key={index} className="desc-text">{desc.toString()}</p>
         ))}
         {spell.descriptionOnHigherLevels && (
           <p className="desc-text higher">

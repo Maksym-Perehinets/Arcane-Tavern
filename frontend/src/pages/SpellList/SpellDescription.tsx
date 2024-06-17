@@ -15,7 +15,7 @@ const SpellDescription = () => {
 
   return (
     <>
-        <SpellComponent spellId={4} />
+        <SpellComponent spellId={10} />
     </>
   )
 }
