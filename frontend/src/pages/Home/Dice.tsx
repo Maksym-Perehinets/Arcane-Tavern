@@ -35,7 +35,7 @@ const DiceRoller = () => {
   };
 
   return (
-    <div className="MainCointiner">
+    <div className="MainDiceCointiner">
       <h1>Try Your Luck!</h1>
       <div className="content">
         <div className={`die ${rolling ? "rolling" : ""}`} data-face={face}>
