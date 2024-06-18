@@ -1,8 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 
 import "./css/MainStyle.scss";
-import "./css/navbar.scss"
-import "./css/Image.scss"
+import "./css/navbar.scss";
+import "./css/Image.scss";
 import "./css/signup.scss";
 import "./css/sign.scss";
 import "./css/Info.scss";
@@ -18,8 +18,8 @@ import { SpellList, Home } from "./pages";
 
 import AuthLayout from "./pages/AuthLayout";
 import RootLayout from "./pages/RootLayout";
-import AboutUS from "./pages/AboutUs/AboutUS"
-
+import AboutUS from "./pages/AboutUs/AboutUS";
+import ContactUs from "./pages/ContactUs/ContactUsMain";
 
 const App = () => {
   return (
@@ -33,7 +33,8 @@ const App = () => {
         <Route element={<RootLayout />}>
           <Route index element={<Home />} />
           <Route path="/spell-list" element={<SpellList />} />
-          <Route path="/About-us" element={<AboutUS />} />  
+          <Route path="/About-us" element={<AboutUS />} />
+          <Route path="/Contact" element={<ContactUs />} />
         </Route>
       </Routes>
     </main>

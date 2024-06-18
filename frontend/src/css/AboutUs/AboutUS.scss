@@ -14,14 +14,11 @@ body {
   margin-top: 70px;
   text-align: center;
   display: flex;
-  // height: 1000px;
 }
 
 .InfoUs {
-  //   padding-top: 10px;
   user-select: none;
   max-width: 300px;
-  // margin-top: 10px;
   margin-top: 100px;
   margin-bottom: 200px;
   margin-left: auto;
@@ -95,16 +92,22 @@ body {
 }
 
 .InfoTiny {
+  text-align: center;
   font-size: 40px;
   position: absolute;
-  // margin-bottom: 0px;
   bottom: 0;
   margin-bottom: 170px;
   width: auto;
   height: 100px;
-  // margin-top: 100px;
   width: 100%;
   height: 100px;
+  text-align: center;
+
+  h2 {
+    background-color: #9651b1;
+    width: auto;
+    border-radius: 5%;
+  }
 }
 
 .TeamLabel {
