@@ -36,7 +36,9 @@ const DiceRoller = () => {
 
   return (
     <div className="MainDiceCointiner">
-      <h1>Try Your Luck!</h1>
+      <div className="DiceLabel">
+        <h1>Try Your Luck!</h1>
+      </div>
       <div className="content">
         <div className={`die ${rolling ? "rolling" : ""}`} data-face={face}>
           {[...Array(sides)].map((_, i) => (

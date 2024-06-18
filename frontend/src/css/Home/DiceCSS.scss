@@ -1,3 +1,7 @@
+@font-face {
+  font-family: DraconicFont;
+  src: url(../../../public/fonts/Draconis-JRw6B.ttf);
+}
 $containerWidth: 25vh;
 $containerHeight: $containerWidth;
 
@@ -10,7 +14,7 @@ $animationDuration: 3s;
 $angle: 53deg;
 $ringAngle: -11deg;
 $sideAngle: 360deg / 5;
-$opacity: 0.75;
+$opacity: 1.75;
 $color: rgba(79, 18, 113, $opacity);
 
 $rotateX: -$angle;
@@ -53,11 +57,28 @@ $translateLowerY: $faceHeight * 0.78 + $translateRingY;
   background-color: #191020;
   height: auto;
   padding-bottom: 100px;
+  //   background-image: url(../../../public/Red-Carpet-Textur.jpg);
+  //   background-repeat: no-repeat;
+  //   background-size: cover;
 
-  h1 {
+  .DiceLabel {
+    justify-content: center;
+    justify-items: center;
     text-align: center;
-    font-size: 60px;
-    padding: 10px;
+    justify-self: center;
+    width: 100%;
+    height: auto;
+    // background-color: #d877ff;
+    h1 {
+      background-color: #d877ff;
+      display: inline-block;
+      height: 70px;
+      width: 60vh;
+      border-radius: 20px;
+      font-size: 60px;
+      padding: 10px;
+      text-wrap: nowrap;
+    }
   }
 }
 
@@ -70,6 +91,7 @@ $translateLowerY: $faceHeight * 0.78 + $translateRingY;
 }
 
 .die {
+  margin-top: 40px;
   z-index: -1;
   position: absolute;
   width: 100%;
@@ -77,6 +99,10 @@ $translateLowerY: $faceHeight * 0.78 + $translateRingY;
   transform-style: preserve-3d;
   transition: transform $transitionDuration ease-out;
   cursor: pointer;
+  font-family: DraconicFont;
+  &.face {
+    color: aqua;
+  }
 
   transform: rotateX($rotateX);
 
@@ -138,7 +164,7 @@ $translateLowerY: $faceHeight * 0.78 + $translateRingY;
       position: absolute;
       top: $faceHeight * 0.25;
       left: -$faceWidth;
-      color: #fff;
+      color: #d877ff;
       text-shadow: 1px 1px 3px #000;
       font-size: $faceHeight * 0.5;
       text-align: center;
