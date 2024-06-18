@@ -5,7 +5,7 @@ const AbtUsText = () =>
 return(
     <div className="CardHolder">
     <div className="TeamLabel">
-      <h2>Dream Team Brawl Stars</h2>
+      <h2>BTS</h2>
     </div>
     <div className="InfoUs">
 
