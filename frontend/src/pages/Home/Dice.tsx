@@ -43,9 +43,7 @@ const DiceRoller = () => {
             <figure key={i + 1} className={`face face-${i + 1}`}></figure>
           ))}
         </div>
-        <button className="randomize" onClick={handleRollClick}>
-          Roll
-        </button>
+        <button className="randomize" onClick={handleRollClick}></button>
       </div>
     </div>
   );
