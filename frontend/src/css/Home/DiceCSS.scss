@@ -60,24 +60,33 @@ $translateLowerY: $faceHeight * 0.78 + $translateRingY;
   //   background-image: url(../../../public/Red-Carpet-Textur.jpg);
   //   background-repeat: no-repeat;
   //   background-size: cover;
+  background: linear-gradient(#191020, #020202);
 
   .DiceLabel {
-    justify-content: center;
-    justify-items: center;
-    text-align: center;
-    justify-self: center;
     width: 100%;
     height: auto;
-    // background-color: #d877ff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
     h1 {
-      background-color: #d877ff;
-      display: inline-block;
-      height: 70px;
-      width: 60vh;
-      border-radius: 20px;
       font-size: 60px;
-      padding: 10px;
-      text-wrap: nowrap;
+      text-transform: uppercase;
+      font-family: "Gambetta", serif;
+      //   font-family: DraconicFont;
+      letter-spacing: -3px;
+      transition: 700ms ease;
+      font-variation-settings: "wght" 311;
+      margin-bottom: 0.8rem;
+      color: PaleGoldenRod;
+      outline: none;
+      text-align: center;
+
+      &:hover {
+        font-variation-settings: "wght" 582;
+        letter-spacing: 1px;
+      }
     }
   }
 }
@@ -88,6 +97,7 @@ $translateLowerY: $faceHeight * 0.78 + $translateRingY;
   width: $containerWidth;
   height: $containerHeight;
   perspective: 1500px;
+  //   background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85));
 }
 
 .die {
