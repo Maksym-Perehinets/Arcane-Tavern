@@ -45,7 +45,7 @@ class JsonParser:
             if key in self.wanted_data:
                 result[key] = value
                 if key == 'name':
-                    with open('./spells_json/sources.json', 'r') as opened_json:
+                    with open('spells_json/sources.json', 'r') as opened_json:
                         data = json.load(opened_json)
                         try:
                             result['class'] = data[book_name][value]['class']

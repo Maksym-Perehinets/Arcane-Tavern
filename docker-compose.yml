@@ -2,11 +2,11 @@ version: '3'
 services:
   backend:
     build:
-      context: ./backend
+      context: ./backend/legacy_spells
       dockerfile: ./Dockerfile
     volumes:
       - type: bind
-        source: ./backend
+        source: ./backend/legacy_spells
         target: /back-end
     ports:
       - "8080:80"

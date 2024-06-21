@@ -1,3 +1,3 @@
 .gitignore
 README.md
-backend/json_parser/spells_json
+backend/legacy-spells/json_parser/spells_json
