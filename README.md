@@ -1,4 +1,4 @@
-# Arcane-Tavern-full-stack-site-that-organize-spells-for-TTRPG-game
+# Arcane-Tavern
 
 Repo Description:
 
