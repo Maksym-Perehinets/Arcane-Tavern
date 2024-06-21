@@ -1,30 +1,45 @@
-# React + TypeScript + Vite
+# Arcane-Tavern-full-stack-site-that-organize-spells-for-TTRPG-game
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Repo Description:
 
-Currently, two official plugins are available:
+This full-stack web application is a collaborative effort by a dynamic team of developers, each contributing their expertise to deliver a seamless and visually appealing user experience. The project's front-end is meticulously crafted using JavaScript, HTML, and CSS, ensuring a responsive and engaging interface.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Maksym Perehinets:**
+Maksym spearheaded the development of the robust back-end, leveraging FastAPI and employing SQLAlchemy and JSON libraries for efficient data handling. He seamlessly integrated JSON file parsing to populate the SQLite database, demonstrating prowess in server-side logic for sorting and filtering data. Additionally, Maksym took charge of the repository setup, fostering a cohesive development environment for the entire team.
 
-## Expanding the ESLint configuration
+**Ihor Ivantso:**
+Ihor focused on the functional aspects of the front-end, establishing effective communication with the back-end. His contributions include feature implementation and meticulous HTML debugging, ensuring a smooth and functional user interface. Beyond his coding skills, Ihor showcased excellent collaboration by actively participating in discussions on user experience improvements.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+**MrVoice:**
+MrVoice played a pivotal role in crafting the UI/UX design, introducing intuitive buttons, adapting the site for various resolutions, and designing an aesthetically pleasing table for displaying spells. His creative touch extended to defining the color scheme and contributing to the navigation bar's visual appeal. MrVoice's attention to detail and commitment to a user-centric design enriched the overall aesthetics of the project.
 
-- Configure the top-level `parserOptions` property like this:
+**YuranJo:**
+YuranJo's expertise shines in crafting the navigation bar, registration and login pages, and refining the UX/UI elements. He also implemented the search bar along with its logical functionalities, enhancing the overall user experience. YuranJo demonstrated versatility by seamlessly integrating both design and functionality, creating a cohesive and visually appealing user journey.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+**Chang31ing:**
+Chang31ing assumed the role of a meticulous bugfixer, resolving issues to ensure a smooth user experience. Additionally, he made valuable contributions by creating the site logo background, adding a distinctive visual element to the project. Chang31ing's commitment to perfection and eye for detail played a crucial role in maintaining the project's integrity and overall visual appeal.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+**How to Use This Repo:**
+1. **Clone the Repository:** Start by cloning this repository to your local machine using the provided Git URL.
+
+   ```bash
+   git clone https://github.com/your-username/repository-name.git
+   ```
+
+2. **Set Up the Environment:**
+   - Ensure you have the necessary dependencies installed for both the front-end and back-end. Refer to the documentation provided by each developer in their respective sections of the project.
+   - Install any required packages or libraries by following the instructions in the documentation.
+
+3. **Run the Application:**
+   - Navigate to the front-end directory and launch the application using the appropriate commands or scripts.
+   - Similarly, start the back-end server by following the instructions provided in the back-end section.
+
+4. **Explore and Contribute:**
+   - Once the application is running, explore the features and functionalities implemented by each developer.
+   - If you wish to contribute, follow the guidelines outlined in the project's contributing documentation.
+
+5. **Collaborate and Communicate:**
+   - Use the designated communication channels to collaborate with the team.
+   - Report issues, suggest improvements, or discuss potential enhancements with your fellow developers.
+
+By following these steps, you'll be able to set up, run, and contribute to this full-stack web application effectively.
