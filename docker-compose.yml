@@ -16,7 +16,13 @@ services:
       dockerfile: ./Dockerfile
     volumes:
       - type: bind
-        source: ./frontend
-        target: /app
+        source: ./frontend/public
+        target: /app/public
+      - type: bind
+        source: ./frontend/index.html
+        target: /app/index.html
+      - type: bind
+        source: ./frontend/src
+        target: /app/src
     ports:
       - "8181:5173"

@@ -1,3 +1,4 @@
 .gitignore
 README.md
 backend/json_parser/spells_json
+Dockerfile
