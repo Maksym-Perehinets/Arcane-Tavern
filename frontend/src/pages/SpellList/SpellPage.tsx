@@ -10,7 +10,7 @@ const SpellList = () => {
   return (
     <>
       <ListOfSpells />
-      <SpellDescription/>
+      <SpellDescription spellId={10}/>
     </>
   );
 };

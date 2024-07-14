@@ -4,7 +4,6 @@ import { getAllSpells, getSpellById } from "@/queries/queries";
 import SpellTableBody from "./SpellTable/SpellTableBody";
 import SpellTableHead from "./SpellTable/SpellTableHead";
 import { SpellMainStats } from "@/interfaces/spell";
-import test from "node:test";
 
 
 const ListOfSpells = () => {

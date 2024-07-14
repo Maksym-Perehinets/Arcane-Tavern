@@ -9,8 +9,9 @@ COPY package-lock.json .
 RUN npm install \
     npm i react-icons \
     npm i -D sass \
-    npm i react-query
-
+    npm i react-query \
+    npm install -D tailwindcss postcss autoprefixer \ 
+    npx tailwindcss init -p
 
 COPY . .
 
