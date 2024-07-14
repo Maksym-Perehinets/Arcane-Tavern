@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer base{
+    .home-bg-url {
+        background: url("https://dvoxsotka.s3.amazonaws.com/arcane-tavern/homePageBG.png");
+    }
+}
