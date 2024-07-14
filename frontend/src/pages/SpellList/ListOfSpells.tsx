@@ -5,8 +5,11 @@ import SpellTableBody from "./SpellTable/SpellTableBody";
 import SpellTableHead from "./SpellTable/SpellTableHead";
 import { SpellMainStats } from "@/interfaces/spell";
 
+interface SpellTableProps {
+  onRowClick: (id: number) => void;
+}
 
-const ListOfSpells = () => {
+const ListOfSpells:React.FC<SpellTableProps> = ({ onRowClick }) => {
 
   const[spells, setSpells] = useState<SpellMainStats[]>([])
   const[page, setPage] = useState(0)
@@ -42,7 +45,7 @@ const ListOfSpells = () => {
     <div className="table-lines" ref={tableRef}>
     <table id="spellList" className="custom-table">
       <SpellTableHead />
-      <SpellTableBody spells={spells}/>
+      <SpellTableBody spells={spells} onRowClick={onRowClick} />
 
     </table>
 
