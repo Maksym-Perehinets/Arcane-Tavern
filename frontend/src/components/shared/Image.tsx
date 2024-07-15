@@ -1,3 +1,6 @@
+import { useEffect, useState } from "react";
+import MagicCircles from "./MagicCircles";
+
 const Image = () => {
 
   const buttonExplore = () => {
@@ -14,6 +17,7 @@ const Image = () => {
     return textArray[randomString];
   }
 
+
   return (
     <div className="w-full h-screen bg-cover home-bg-url">
         <div className="text-white pt-[20%]">
@@ -21,9 +25,8 @@ const Image = () => {
             <p className="text"></p>
             <p className="text">Don't forget to have fun.</p>
             <button onClick={buttonExplore} className="button">Explore</button>
-            
         </div>
-
+        <MagicCircles />
     </div>
   )
 }
