@@ -11,6 +11,8 @@ import "./css/Footer.scss";
 import "./css/SpellOfTheDayDiv.scss";
 import "./css/CharacterDiv.scss";
 import "./css/SpellPageCSS/SpellDedscription.scss";
+import "./css/Characters/Characters.scss";
+import "./css/Characters/Selection.scss";
 
 import SignInForm from "./pages/SignInForm/SignInForm";
 import SignUpForm from "./pages/SignUpForm/SignUpForm";
@@ -20,6 +22,7 @@ import AuthLayout from "./pages/AuthLayout";
 import RootLayout from "./pages/RootLayout";
 import AboutUS from "./pages/AboutUs/AboutUS";
 import ContactUs from "./pages/ContactUs/ContactUsMain";
+import Characters from "./pages/Characters/Characters";
 
 const App = () => {
   return (
@@ -33,6 +36,7 @@ const App = () => {
         <Route element={<RootLayout />}>
           <Route index element={<Home />} />
           <Route path="/spell-list" element={<SpellList />} />
+          <Route path="/characters" element={<Characters />} />
           <Route path="/About-us" element={<AboutUS />} />
           <Route path="/Contact" element={<ContactUs />} />
         </Route>
