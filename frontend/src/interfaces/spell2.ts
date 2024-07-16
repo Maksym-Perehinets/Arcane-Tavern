@@ -24,6 +24,10 @@ export interface Duration {
     s?: boolean;
     m?: { text?: string };
   }
+
+  export interface SpellDescription {
+    content: string | string[];
+  }
   
   export interface Spell {
     id: number;
@@ -32,7 +36,7 @@ export interface Duration {
     duration: Duration;
     time: Time[];
     ranges: Ranges;
-    description: string[];
+    description: SpellDescription[];
     descriptionOnHigherLevels?: { name: string; entries: string }[];
     source: string;
     page: number;
