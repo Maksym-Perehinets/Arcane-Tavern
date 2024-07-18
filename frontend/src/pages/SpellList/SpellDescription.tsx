@@ -78,9 +78,9 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
         {spell.description.map((desc, index) => {
           if (typeof desc === "string") {
             return (
-              <p key={index} className="desc-text">
-                <SpecialText description={desc} />
-              </p>
+
+                <SpecialText key={index} description={desc} className="desc-text"/>
+              
             );
           } else if (typeof desc == "object") {
             switch (desc.type) {
