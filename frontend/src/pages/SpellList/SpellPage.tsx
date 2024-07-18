@@ -14,10 +14,10 @@ const SpellList = () => {
   };
 
   return (
-    <>
+    <div className="flex justify-around mt-[90px]"> 
       <ListOfSpells onRowClick={handleRowClick} />
       <SpellDescription spellId={selectedSpellId}/>
-    </>
+    </div>
   );
 };
 

@@ -49,7 +49,7 @@ const SpellTable: React.FC<ListProps> = ({ spells, onRowClick }) => {
             </thead>
             <tbody id="tableBody" className="snap-mandatory snap-y">
                 {spells.map((spell: SpellMainStats) => (
-                    <tr key={spell.id} onClick={() => onRowClick(spell.id)} className="snap-start h-60 border-rose-700 border-2    ">
+                    <tr key={spell.id} onClick={() => onRowClick(spell.id)} className="snap-start pt-3">
                         {getSpellProperties(spell).map((property, index) => (
                             <td key={index}>{property}</td>
                         ))}
