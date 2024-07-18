@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import useSpell from "./useSpell.ts";
-import { waitForDebugger } from "inspector";
+import SpecialText from "@/components/shared/SpecialText.tsx";
 
 interface SpellComponentProps {
   spellId: number;
@@ -79,11 +79,11 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
           if (typeof desc === "string") {
             return (
               <p key={index} className="desc-text">
-                {desc}
+                <SpecialText description={desc} />
               </p>
             );
           } else if (typeof desc == "object") {
-            switch (desc["type"]) {
+            switch (desc.type) {
 
               case "entries":
                 return <p key={index} className="desc-text">{Object.values(desc)[2]}</p>;
@@ -94,27 +94,42 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
               case "list":
                 return (
                   <ul className="desc-text" key={index}>
-                    {Object.values(desc)[1].map((e: string, key: number) => 
-                       <li className="m-3 list-disc" key={key}>{e}</li>
+                    {Object.values(desc)[1].map((e: string, key: number) =>
+                      <li className="m-3 list-disc" key={key}>{e}</li>
                     )}
                   </ul>
+                )
+
+              case "table":
+                return (
+                  <table>
+                    <caption>{desc.table.caption}</caption>
+                    <thead>
+                      <tr>
+                        {desc.table.colLabels.map((cell: string, key) =>
+                          <th className="m-3" key={key}>{cell}</th>
+                        )}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {desc.table.rows.map((row: string[], key) =>
+                        <tr key={key}>
+                          {row.map((cell: string, key: number) =>
+                            <th key={key}>{cell}</th>
+                          )}
+                        </tr>
+                      )}
+                    </tbody>
+                  </table>
                 )
 
               default: return error
             }
 
-
-            // console.log(getKeyByValue(desc, "type"))
-            // console.log(Object.values(desc)[2])
-            // return (
-            //   <p key={index} className="desc-text">
-            //     {entry} as
-            //   </p>
-            // );
           } else {
             return (
               <p key={index} className="desc-text">
-                ass {desc.content}
+                ass {desc}
               </p>
             );
           }

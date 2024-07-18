@@ -27,6 +27,14 @@ export interface Duration {
 
   export interface SpellDescription {
     content: string | string[];
+    type?: string;
+    table: SpellDescriptionTable;
+  }
+
+  export interface SpellDescriptionTable {
+    caption: string;
+    colLabels: string[];
+    rows: []
   }
   
   export interface Spell {
