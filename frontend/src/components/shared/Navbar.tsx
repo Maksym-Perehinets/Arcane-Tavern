@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom"
 import { navbarLinks } from "../../constants"
-import { INavLink } from "types"
+import { INavLink } from "../../types"
 
 const Navbar = () => {
   return (

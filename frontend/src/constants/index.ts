@@ -49,3 +49,26 @@ export const spellsTableElem = [
     },
 
 ]
+
+export const spellDescriptionPlaceholder = [
+    {
+        id: "lvl",
+        label: "Level"
+    },
+    {
+        id: "range",
+        label: "Range"
+    },
+    {
+        id: "castTime",
+        label: "Casting Time"
+    },    
+    {
+        id: "components",
+        label: "Components"
+    },
+    {
+        id: "duration",
+        label: "Duration"
+    }
+]

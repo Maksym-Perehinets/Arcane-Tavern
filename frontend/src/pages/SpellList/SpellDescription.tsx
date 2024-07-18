@@ -27,22 +27,54 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
 
   return (
     <div className="spell-details">
-      <div className="spell-name-div">
+      {/* <div className="spell-name-div">
         <h1 className="spell-name">{spell.name}</h1>
       </div>
 
       <div className="main-extras">
         <p className="extras-text">Book Name: {spell.source}</p>
         <p className="extras-text">Page: {spell.page}</p>
-      </div>
+      </div> */}
 
+      <table>
+        <thead className="w-full">
+          <tr className="flex w-full pt-10">
+            {spellDescriptionPlaceholder.map((cell: ITableElem) =>
+              <th className="text-center text-nowrap m-3" key={cell.id}>{cell.label}</th>
+            )}</tr>
+        </thead>
+        <tbody>
+          <tr className="text-nowrap">
+            <td rowSpan={3}>{spell.level}</td>
+            <td>{spell.ranges.distance
+              ? spell.ranges.distance.amount
+                ? `${spell.ranges.distance.amount} ${spell.ranges.distance.type}`
+                : spell.ranges.distance.type
+              : spell.ranges.type}
+            </td>
+            <td>
+              {spell.time.map((t) => `${t.number} ${t.unit}`).join(", ")}
+            </td>
+            <td>{spell.components.v ? "V " : ""}
+              {spell.components.s ? "S " : ""}
+              {spell.components.m ? `M (${spell.components.m.text || ""})` : ""}</td>
+            <td>   {spell.duration.concentration ? "Concentration " : ""}
+              {["instant", "permanent", "special"].includes(
+                spell.duration.type.toLowerCase()
+              )
+                ? spell.duration.type
+                : `${spell.duration.time} ${spell.duration.type}`}</td>
+          </tr>
+        </tbody>
+      </table>
+      {/* 
       <div className="spell-main-info">
         <p className="main-info-text">Level</p>
         <p className="main-info-text">Range</p>
         <p className="main-info-text">Casting Time</p>
         <p className="main-info-text">Components</p>
         <p className="main-info-text">Duration</p>
-      </div>
+      </div> 
 
       <div className="spell-main-info value">
         <p className="main-info-text value">{spell.level}</p>
@@ -72,9 +104,9 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
             ? spell.duration.type
             : `${spell.duration.time} ${spell.duration.type}`}
         </p>
-      </div>
+      </div>*/}
 
-      <div className="spell-description overflow-y-scroll mb-20 h-[50vh]">
+      <div className="spell-description overflow-y-auto mb-20 h-[50vh]">
         {spell.description.map((desc, index) => {
           if (typeof desc === "string") {
             return (
@@ -94,6 +126,8 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
               case "list":
                 return (
                   <ul className="desc-text" key={index}>
+                    {Object.values(desc)[1].map((e: string, key: number) =>
+                      <li className="m-3 list-disc" key={key}>{e}</li>
                     {Object.values(desc)[1].map((e: string, key: number) =>
                       <li className="m-3 list-disc" key={key}>{e}</li>
                     )}

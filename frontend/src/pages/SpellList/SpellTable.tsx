@@ -35,7 +35,7 @@ const SpellTable: React.FC<ListProps> = ({ spells, onRowClick }) => {
 
 
     return (
-        <table id="spellList" className="custom-table">
+        <table id="spellList" className="custom-table outline-shadow">
             <thead>
                 <tr>
                     {spellsTableElem.map((link: ITableElem) => (
@@ -47,9 +47,9 @@ const SpellTable: React.FC<ListProps> = ({ spells, onRowClick }) => {
                     ))}
                 </tr>
             </thead>
-            <tbody id="tableBody">
+            <tbody id="tableBody" className="snap-mandatory snap-y">
                 {spells.map((spell: SpellMainStats) => (
-                    <tr key={spell.id} onClick={() => onRowClick(spell.id)}>
+                    <tr key={spell.id} onClick={() => onRowClick(spell.id)} className="snap-start h-60 border-rose-700 border-2    ">
                         {getSpellProperties(spell).map((property, index) => (
                             <td key={index}>{property}</td>
                         ))}

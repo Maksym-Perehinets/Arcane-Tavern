@@ -28,7 +28,27 @@ body {
   border: 2px solid #424242;
 
   overflow-x: hidden;
-  border-radius: 5px;
+  border-radius: 10px;
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: blue orange;
+  }
+  
+  /* Works on Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+  *::-webkit-scrollbar-track {
+    background: orange;
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    background-color: blue;
+    border-radius: 20px;
+    border: 3px solid orange;
+  }
 
   .custom-table {
     font-family: DraconicFont;
@@ -54,7 +74,7 @@ body {
 
       &:hover {
         transition: 0.3s;
-        color: rgb(68, 5, 68);
+        color: rgb(168, 53, 168);
       }
     }
     td {
@@ -66,7 +86,7 @@ body {
 
   tr {
     &:hover {
-      background-color: rgba(39, 8, 38, 0.9);
+      background-color: rgba(104, 13, 101, 0.9);
       transition: 0.3s;
     }
   }
