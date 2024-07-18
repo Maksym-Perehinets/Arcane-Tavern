@@ -121,10 +121,10 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
             switch (desc.type) {
 
               case "entries":
-                return <p key={index} className="desc-text">{Object.values(desc)[2]}</p>;
+                return <SpecialText key={index} description={Object.values(desc)[2]} className="desc-text" />;
 
               case "quote":
-                return <p key={index} className="desc-text">{Object.values(desc)[1]} by {Object.values(desc)[2]}</p>;
+                return <SpecialText key={index} description={`${Object.values(desc)[1]} by ${Object.values(desc)[2]}`} className="desc-text" />; 
 
               case "list":
                 return (
@@ -138,16 +138,16 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
               case "table":
                 return (
                   <table>
-                    <caption>{desc.table.caption}</caption>
+                    <caption>{Object.values(desc)[1]}</caption>
                     <thead>
                       <tr>
-                        {desc.table.colLabels.map((cell: string, key) =>
+                        {Object.values(desc)[2].map((cell: string, key: number) =>
                           <th className="m-3" key={key}>{cell}</th>
                         )}
                       </tr>
                     </thead>
                     <tbody>
-                      {desc.table.rows.map((row: string[], key) =>
+                      {Object.values(desc)[4].map((row: string[], key:number) =>
                         <tr key={key}>
                           {row.map((cell: string, key: number) =>
                             <th key={key}>{cell}</th>
