@@ -1,12 +1,12 @@
 interface DescriptionText {
     description: string | object,
-    className: string
+    className?: string
 }
 
 const SpecialText: React.FC<DescriptionText> = ({ description, className }) => {
 
     const regex = /\{([^}]+)\}/g;
-    console.log(description)
+    console.log(typeof description)
     const descriptionSection =  typeof description == "object" ? Object.values(description)[0].split(regex) : description.split(regex)
 
     return (

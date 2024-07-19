@@ -60,7 +60,7 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
               {spell.components.s ? "S " : ""}
               {spell.components.m ? "M" : ""}
               <div className="group-focus:hidden group-hover:visible ">{spell.components.m ? spell.components.m.text : ""}</div>
-            </td> 
+            </td>
             <td className="text-wrap">
               {spell.duration.concentration ? "Concentration " : ""}
               {["instant", "permanent", "special"].includes(
@@ -124,13 +124,15 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
                 return <SpecialText key={index} description={Object.values(desc)[2]} className="desc-text" />;
 
               case "quote":
-                return <SpecialText key={index} description={`${Object.values(desc)[1]} by ${Object.values(desc)[2]}`} className="desc-text" />; 
+                return <SpecialText key={index} description={`${Object.values(desc)[1]} by ${Object.values(desc)[2]}`} className="desc-text" />;
 
               case "list":
                 return (
                   <ul className="desc-text" key={index}>
-                    {Object.values(desc)[1].map((e: string, key: number) =>
-                      <li className="m-3 list-disc" key={key}>{e}</li>
+                    {desc['items']['entries'].map((e: string, key: number) =>
+                      <li className="m-3 list-disc" key={key}>
+                        <SpecialText key={key} description={e}/>
+                      </li>
                     )}
                   </ul>
                 )
@@ -147,7 +149,7 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
                       </tr>
                     </thead>
                     <tbody>
-                      {Object.values(desc)[4].map((row: string[], key:number) =>
+                      {Object.values(desc)[4].map((row: string[], key: number) =>
                         <tr key={key}>
                           {row.map((cell: string, key: number) =>
                             <th key={key}>{cell}</th>
