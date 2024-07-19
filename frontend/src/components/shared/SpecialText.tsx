@@ -9,36 +9,38 @@ const SpecialText: React.FC<DescriptionText> = ({ description, className }) => {
     const descriptionSection =  typeof description == "object" ? Object.values(description)[0].split(regex) : description.split(regex)
 
     const clickOnTag = (tag: string) => {
-        switch (tag.split(" ")[0]) {
+        switch (tag) {
             case "@spell":
-                return
+                return tag[1]
             case "@creature":
-                return
+                return tag[1]
             case "@hit":
-                return
+                return tag[1]
             case "@dice":
-                return 
+                return tag[1]
             case "@damage":
-                return 
+                return tag[1]
             case "@condition":
-                return
+                return tag[1]
             case "@sense":
-                return
+                return tag[1]
             case "@scaledamage":
-                return
+                return tag[1]
             case "@chance":
-                return
-            case "@i":
-                return
+                return tag[1]
+            case "@item":
+                return tag[1]
+            default: return tag[1]
         }
     }
 
     return (
         <p className={className}>
-           {descriptionSection.map((part:string, index:number) => {
+           {descriptionSection.map((part:any, index:number) => {
+                const tag = part.split(" ")
                 return /@(\w+)/g.test(`${part}`) 
-                    ? <span onMouseOver={() => clickOnTag(part)} key={index} className="cursor-pointer">
-                        {part}
+                    ? <span onMouseOver={() => clickOnTag(tag[0])} key={index} className="cursor-pointer">
+                        {tag[1]}
                     </span> 
                     : part;
             })}

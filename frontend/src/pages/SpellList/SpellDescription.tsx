@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import useSpell from "./useSpell.ts";
 import SpecialText from "@/components/shared/SpecialText.tsx";
 import { spellDescriptionPlaceholder } from "@/constants/index.ts";
@@ -24,7 +23,7 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
   }
 
   return (
-    <div className="spell-details h-[85vh]">
+    <div className="spell-details h-[85vh] pr-1/4">
       <div className="w-full flex justify-between">
         {spell.name.length > 15 
         ? <h1 className="spell-name text-4xl m-4">{spell.name}</h1> 
@@ -133,7 +132,9 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
                 return (
                   <ul className="desc-text" key={index}>
                     {Object.values(desc)[1].map((e: string, key: number) =>
-                      <li className="m-3 list-disc" key={key}>{e}</li>
+                      <li className="m-3 list-disc" key={key}>
+                        <SpecialText description={e} />
+                      </li>
                     )}
                   </ul>
                 )
@@ -145,7 +146,9 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
                     <thead>
                       <tr>
                         {Object.values(desc)[2].map((cell: string, key: number) =>
-                          <th className="m-3" key={key}>{cell}</th>
+                          <th className="m-3" key={key}>
+                            <SpecialText description={cell} />
+                          </th>
                         )}
                       </tr>
                     </thead>
@@ -153,7 +156,9 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
                       {Object.values(desc)[4].map((row: string[], key:number) =>
                         <tr key={key}>
                           {row.map((cell: string, key: number) =>
-                            <th key={key}>{cell}</th>
+                            <th key={key}> 
+                              <SpecialText description={cell} />
+                            </th>
                           )}
                         </tr>
                       )}

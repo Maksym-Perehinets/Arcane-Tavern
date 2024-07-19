@@ -72,3 +72,21 @@ export const spellDescriptionPlaceholder = [
         label: "Duration"
     }
 ]
+
+export const filterWindow = [
+    {
+        id: "search",
+        label: "Search",
+        icon: "/icons/search.svg"
+    },    
+    {
+        id: "filter",
+        label: "Filter",
+        icon: "/icons/checkbox.svg"
+    }, 
+    {
+        id: "create",
+        label: "Create",
+        icon: "/icons/createSpell.svg"
+    }
+]
