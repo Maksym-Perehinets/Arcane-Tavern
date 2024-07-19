@@ -24,9 +24,11 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
   }
 
   return (
-    <div className="spell-details">
-      <div className="w-full flex justify-between ">
-        <h1 className="spell-name text-5xl m-5">{spell.name}</h1>
+    <div className="spell-details h-[85vh]">
+      <div className="w-full flex justify-between">
+        {spell.name.length > 15 
+        ? <h1 className="spell-name text-4xl m-4">{spell.name}</h1> 
+        : <h1 className="spell-name text-5xl m-5">{spell.name}</h1>}
 
         <div className="main-extras mt-6">
           <p className="extras-text">Book Name: {spell.source}</p>
@@ -55,12 +57,12 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
             <td>
               {spell.time.map((t) => `${t.number} ${t.unit}`).join(", ")}
             </td>
-            <td className="text-wrap group transition ease-in duration-150">
+            <td className="text-wrap group transition ease-in duration-150 relative">
               {spell.components.v ? "V " : ""}
               {spell.components.s ? "S " : ""}
               {spell.components.m ? "M" : ""}
-              <div className="group-focus:hidden group-hover:visible ">{spell.components.m ? spell.components.m.text : ""}</div>
-            </td>
+              <div className="absolute opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 rounded-xl p-4 bg-black">{spell.components.m ? spell.components.m.text : ""}</div>
+            </td> 
             <td className="text-wrap">
               {spell.duration.concentration ? "Concentration " : ""}
               {["instant", "permanent", "special"].includes(
@@ -110,29 +112,28 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
             : `${spell.duration.time} ${spell.duration.type}`}
         </p>
       </div>*/}
+      <div className="flex flex-col justify-between">
+        
+        <div className="overflow-y-auto spell-description h-[60vh]">
+          {spell.description.map((desc, index) => {
+            if (typeof desc === "string") {
+              return (
+                <SpecialText key={index} description={desc} className="desc-text" />
+              );
+            } else if (typeof desc == "object") {
+              switch (desc.type) {
 
-      <div className="spell-description overflow-y-auto mb-20 h-[50vh]">
-        {spell.description.map((desc, index) => {
-          if (typeof desc === "string") {
-            return (
-              <SpecialText key={index} description={desc} className="desc-text" />
-            );
-          } else if (typeof desc == "object") {
-            switch (desc.type) {
-
-              case "entries":
-                return <SpecialText key={index} description={Object.values(desc)[2]} className="desc-text" />;
+                case "entries":
+                  return <SpecialText key={index} description={Object.values(desc)[2]} className="desc-text" />;
 
               case "quote":
-                return <SpecialText key={index} description={`${Object.values(desc)[1]} by ${Object.values(desc)[2]}`} className="desc-text" />;
+                return <SpecialText key={index} description={`${Object.values(desc)[1]} by ${Object.values(desc)[2]}`} className="desc-text" />; 
 
               case "list":
                 return (
                   <ul className="desc-text" key={index}>
-                    {desc['items']['entries'].map((e: string, key: number) =>
-                      <li className="m-3 list-disc" key={key}>
-                        <SpecialText key={key} description={e}/>
-                      </li>
+                    {Object.values(desc)[1].map((e: string, key: number) =>
+                      <li className="m-3 list-disc" key={key}>{e}</li>
                     )}
                   </ul>
                 )
@@ -149,7 +150,7 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
                       </tr>
                     </thead>
                     <tbody>
-                      {Object.values(desc)[4].map((row: string[], key: number) =>
+                      {Object.values(desc)[4].map((row: string[], key:number) =>
                         <tr key={key}>
                           {row.map((cell: string, key: number) =>
                             <th key={key}>{cell}</th>
@@ -160,29 +161,30 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
                   </table>
                 )
 
-              default: return error
+                default: return error
+              }
+
+            } else {
+              return (
+                <p key={index} className="desc-text">
+                  ass {desc}
+                </p>
+              );
             }
+          })}
+          {spell.descriptionOnHigherLevels && (
+            <p className="desc-text higher">
+              {spell.descriptionOnHigherLevels[0].name}:{" "}
+              {spell.descriptionOnHigherLevels[0].entries}
+            </p>
+          )}
+        </div>
 
-          } else {
-            return (
-              <p key={index} className="desc-text">
-                ass {desc}
-              </p>
-            );
-          }
-        })}
-        {spell.descriptionOnHigherLevels && (
-          <p className="desc-text higher">
-            {spell.descriptionOnHigherLevels[0].name}:{" "}
-            {spell.descriptionOnHigherLevels[0].entries}
+        <div className="w-full pl-[2%]">
+          <p className="casters-text h-full text-lg">
+            Casters: {spell.casters.map((caster) => caster.name).join(", ")}
           </p>
-        )}
-      </div>
-
-      <div className="casters-div">
-        <p className="casters-text">
-          Casters: {spell.casters.map((caster) => caster.name).join(", ")}
-        </p>
+        </div>
       </div>
     </div>
   );
