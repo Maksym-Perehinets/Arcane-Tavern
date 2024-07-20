@@ -1,5 +1,7 @@
 FROM mongo:8.0.0-rc13-jammy
 
+ENV DATABASE_NAME=spells_service
+
 COPY *.json /docker-entrypoint-initdb.d/
 COPY init-mongo.sh /docker-entrypoint-initdb.d/
 
