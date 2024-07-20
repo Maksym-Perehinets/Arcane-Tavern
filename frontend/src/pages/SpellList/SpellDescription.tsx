@@ -32,9 +32,9 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
   return (
     <div className="spell-details h-[85vh] pr-1/4 flex flex-col">
       <div className="w-full flex justify-between">
-        {spell.name.length > 15 
-        ? <h1 className="spell-name text-5xl m-4 cursor-pointer" onClick={() => {copyText(spell.name)}}>{spell.name}</h1> 
-        : <h1 className="spell-name text-5xl m-5 cursor-pointer" onClick={() => {copyText(spell.name)}}>{spell.name}</h1>}
+        {spell.name.length > 15
+          ? <h1 className="spell-name text-5xl m-4 cursor-pointer" onClick={() => { copyText(spell.name) }}>{spell.name}</h1>
+          : <h1 className="spell-name text-5xl m-5 cursor-pointer" onClick={() => { copyText(spell.name) }}>{spell.name}</h1>}
 
         <div className="main-extras mt-6">
           <p className="extras-text">Book: {spell.source}</p>
@@ -68,7 +68,7 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
               {spell.components.s ? "S " : ""}
               {spell.components.m ? "M" : ""}
               <div className="absolute opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 rounded-xl p-4 bg-black">{spell.components.m ? spell.components.m.text : ""}</div>
-            </td> 
+            </td>
             <td className="text-wrap">
               {spell.duration.concentration ? "Concentration " : ""}
               {["instant", "permanent", "special"].includes(
@@ -119,7 +119,7 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
         </p>
       </div>*/}
       <div className="flex flex-col justify-between h-[79%]">
-        
+
         <div className="overflow-y-auto spell-descriptiona mt-5 w-full rounded-2xl h-[90%] bg-spell-description">
           {spell.description.map((desc, index) => {
             if (typeof desc === "string") {
@@ -127,68 +127,85 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
                 <SpecialText key={index} description={desc} className="desc-text" />
               );
             } else if (typeof desc == "object") {
+
               switch (desc.type) {
-
                 case "entries":
-                  return <SpecialText key={index} description={Object.values(desc)[2]} className="desc-text" />;
+                  return <SpecialText key={index} description={desc.entries} className="desc-text" />;
 
-              case "quote":
-                return <SpecialText key={index} description={`${Object.values(desc)[1]} by ${Object.values(desc)[2]}`} className="desc-text" />; 
+                case "quote":
+                  return <div><p key={index} className="desc-text pb-0 italic">
+                    "{desc.entries}" </p>
+                  <p className="text-stone-300 text-right mr-4 mb-5"> — {desc.by}</p>
+                  </div>
+                  
 
-              case "list":
-                return (
-                  <ul className="desc-text" key={index}>
-                    {Object.values(desc)[1].map((e: string, key: number) =>
-                      <li className="m-3 list-disc" key={key}>
-                        <SpecialText description={e} />
-                      </li>
-                    )}
-                  </ul>
-                )
+                case "list":
+                  return (
+                    <ul className="desc-text" key={index}>
+                      {desc.items.map((e: string, key: number) =>
+                        <li className="m-3 list-disc" key={key}>
+                          <SpecialText description={e} />
+                        </li>
+                      )}
+                    </ul>
+                  )
 
-              case "table":
-                return (
-                  <table>
-                    <caption>{Object.values(desc)[1]}</caption>
-                    <thead>
-                      <tr>
-                        {Object.values(desc)[2].map((cell: string, key: number) =>
-                          <th className="m-3" key={key}>
-                            <SpecialText description={cell} />
-                          </th>
-                        )}
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {Object.values(desc)[4].map((row: string[], key:number) =>
-                        <tr key={key}>
-                          {row.map((cell: string, key: number) =>
-                            <th key={key}> 
+                case "table":
+                  console.log(desc.colStyles[1].split(" ")[0].split("-").slice(-1)[0])
+                  return (
+                    <table>
+                      <caption>{desc.caption}</caption>
+                      <thead>
+                        <tr> 
+
+                          {desc.colLabels.map((cell: string, key: number) =>
+                            <th 
+                              key={key}
+                              colSpan={parseInt(desc.colStyles[key].split(" ")[-1])}
+                              className="m-3"  
+                            >
                               <SpecialText description={cell} />
                             </th>
                           )}
                         </tr>
-                      )}
-                    </tbody>
-                  </table>
-                )
+                      </thead>
+                      <tbody>
+                        {desc.rows.map((row, key: number) =>
+                          <tr key={key}>
+                            {row.map((cell, key: number) =>
+                              <th 
+                                key={key}
+                                className="col-span-2" 
+                                colSpan={parseInt(desc.colStyles[key].split("-")[-1])}
+                              >
+                                <SpecialText description={cell} />
+                              </th>
+                            )}
+                          </tr>
+                        )}
+                      </tbody>
+                    </table>
+                  )
 
-                default: return error
+                  default:
+                    return <p key={index}>Error occured while loading description</p>
               }
 
             } else {
               return (
                 <p key={index} className="desc-text">
-                  ass {desc}
+                  Error occured while loading description
                 </p>
               );
             }
           })}
+          
+
           {spell.descriptionOnHigherLevels && (
-            <p className="desc-text higher">
-              {spell.descriptionOnHigherLevels[0].name}:{" "}
-              {spell.descriptionOnHigherLevels[0].entries}
-            </p>
+            <div className="desc-text higher">
+              {spell.descriptionOnHigherLevels[0].name} :
+              <SpecialText description={spell.descriptionOnHigherLevels[0].entries}/>
+            </div>
           )}
         </div>
 

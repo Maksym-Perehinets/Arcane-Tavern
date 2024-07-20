@@ -25,17 +25,47 @@ export interface Duration {
     m?: { text?: string };
   }
 
-  export interface SpellDescription {
-    content: string | string[];
-    type?: string;
-    table: SpellDescriptionTable;
+  interface SpellDescription {
+    type: string;
   }
 
-  export interface SpellDescriptionTable {
+  interface SpellDescriptionTableRoll {
+    min: number;
+    max: number;
+    pad?: boolean;
+  }
+
+  interface SpellDescriptionTableCell {
+    type: string;
+    roll: SpellDescriptionTableRoll;
+  }
+
+  export interface SpellDescriptionTable extends SpellDescription {
+    type: "table";
     caption: string;
     colLabels: string[];
-    rows: []
+    colStyles: string[]
+    rows: (string | SpellDescriptionTableCell)[][];
   }
+
+  interface SpellDescriptionList extends SpellDescription {
+    type: "list";
+    items: string[];
+  }
+
+  interface SpellDescriptionEntry extends SpellDescription {
+    type: 'entries';
+    name: string;
+    entries: string[];
+  }
+
+  interface SpellDescriptionQuote extends SpellDescription {
+    type: 'quote';
+    entries: string[];
+    by: string;
+  }
+
+  export type Entry = string | SpellDescriptionEntry | SpellDescriptionQuote | SpellDescriptionTable | SpellDescriptionList;;
   
   export interface Spell {
     id: number;
@@ -44,7 +74,7 @@ export interface Duration {
     duration: Duration;
     time: Time[];
     ranges: Ranges;
-    description: SpellDescription[];
+    description: Entry[];
     descriptionOnHigherLevels?: { name: string; entries: string }[];
     source: string;
     page: number;

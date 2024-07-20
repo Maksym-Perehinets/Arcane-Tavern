@@ -39,7 +39,7 @@ const SpecialText: React.FC<DescriptionText> = ({ description, className }) => {
            {descriptionSection.map((part:any, index:number) => {
                 const tag = part.split(" ")
                 return /@(\w+)/g.test(`${part}`) 
-                    ? <span onMouseOver={() => clickOnTag(tag[0])} key={index} className="cursor-pointer">
+                    ? <span onMouseOver={() => clickOnTag(tag[0])} key={index} className="cursor-pointer text-indigo-400">
                         {tag[1]}
                     </span> 
                     : part;
