@@ -48,9 +48,15 @@ export interface Duration {
     rows: (string | SpellDescriptionTableCell)[][];
   }
 
-  interface SpellDescriptionList extends SpellDescription {
+  interface SpellDescriptionListItems {
+    type: string;
+    name: string;
+    entries: string;
+  }
+
+  interface SpellDescriptionList extends SpellDescriptionListItems {
     type: "list";
-    items: string[];
+    items: (string| SpellDescriptionListItems)[];
   }
 
   interface SpellDescriptionEntry extends SpellDescription {

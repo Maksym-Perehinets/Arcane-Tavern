@@ -151,7 +151,7 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
                   )
 
                 case "table":
-                  const styles = (index: number) => desc.colStyles[index].split(" ")
+                  const styles = (index: number, splitBy: string) => desc.colStyles[index].split(splitBy)
                   return (
                     <table className="w-full text-left a border-indigo-500">
                       <caption className="text-2xl text-indigo-400 text-left">{desc.caption}</caption>
@@ -160,7 +160,7 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
                           {desc.colLabels.map((cell: string, key: number) =>
                             <th 
                               key={key}
-                              colSpan={parseInt(desc.colStyles[key].split(" ")[-1])}
+                              colSpan={parseInt(styles(key, " ")[-1])}
                               className="m-3"  
                             >
                               <SpecialText description={cell} />
@@ -178,7 +178,7 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
                               <th 
                                 key={key}
                                 className="col-span-2" 
-                                colSpan={parseInt(desc.colStyles[key].split("-")[-1])}
+                                colSpan={parseInt(styles(key, "-")[-1])}
                               >
                                 <SpecialText description={cell} />
                               </th>

@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 interface DescriptionText {
     description: string | object,
     className?: string
@@ -6,20 +8,23 @@ interface DescriptionText {
 const SpecialText: React.FC<DescriptionText> = ({ description, className }) => {
 
     const regex = /\{([^}]+)\}/g;
+    const [tagText, setTagText] = useState("") 
     const descriptionSection =  typeof description == "object" ? Object.values(description)[0].split(regex) : description.split(regex)
 
-    const clickOnTag = (tag: string) => {
-        switch (tag) {
+    const getTagText = (part: string) => {
+        const tag = part.split(" ")
+        console.log(part.split("|")[0].slice(1))
+        switch (tag[0]) {
             case "@spell":
                 return tag[1]
             case "@creature":
-                return tag[1]
+                return tag.slice(2)
             case "@hit":
                 return tag[1]
             case "@dice":
-                return tag[1]
+                return part.split("|")[0].split(" ").slice(1)
             case "@damage":
-                return tag[1]
+                return tag.slice(1)
             case "@condition":
                 return tag[1]
             case "@sense":
@@ -29,7 +34,8 @@ const SpecialText: React.FC<DescriptionText> = ({ description, className }) => {
             case "@chance":
                 return tag[1]
             case "@item":
-                return tag[1]
+                return tag[1];
+                
             default: return tag[1]
         }
     }
@@ -37,10 +43,9 @@ const SpecialText: React.FC<DescriptionText> = ({ description, className }) => {
     return (
         <p className={className}>
            {descriptionSection.map((part:any, index:number) => {
-                const tag = part.split(" ")
                 return /@(\w+)/g.test(`${part}`) 
-                    ? <span onMouseOver={() => clickOnTag(tag[0])} key={index} className="cursor-pointer text-indigo-400">
-                        {tag[1]}
+                    ? <span key={index} className="cursor-pointer text-indigo-400">
+                        {getTagText(part)}
                     </span> 
                     : part;
             })}
@@ -72,5 +77,17 @@ export default SpecialText
 //     case "@chance":
 //         return
 //     case "@i":
-//         return        
+//         return   
 
+
+/*
+Frontend tasks:
+    Spell page:
+        Spell table:
+            Fix this by making fixed columns;
+            Fix Gift of Alacrity;
+            Add sort functionality;
+            
+
+
+*/
