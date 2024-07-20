@@ -120,7 +120,7 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
       </div>*/}
       <div className="flex flex-col justify-between h-[79%]">
 
-        <div className="overflow-y-auto spell-descriptiona mt-5 w-full rounded-2xl h-[90%] bg-spell-description">
+        <div className="overflow-y-auto spell-descriptiona mt-5 p-5 w-full rounded-2xl h-[90%] bg-spell-description">
           {spell.description.map((desc, index) => {
             if (typeof desc === "string") {
               return (
@@ -151,18 +151,17 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
                   )
 
                 case "table":
-                  console.log(desc.colStyles[1].split(" ")[0].split("-").slice(-1)[0])
+                  const styles = (index: number) => desc.colStyles[index].split(" ")
                   return (
-                    <table>
-                      <caption>{desc.caption}</caption>
-                      <thead>
+                    <table className="w-full text-left a border-indigo-500">
+                      <caption className="text-2xl text-indigo-400 text-left">{desc.caption}</caption>
+                      <thead >
                         <tr> 
-
                           {desc.colLabels.map((cell: string, key: number) =>
                             <th 
                               key={key}
-                              colSpan={parseInt(desc.colStyles[key].split(" ")[-1])}
-                              className="m-3"  
+                              colSpan={parseInt(styles(key)[0].split("-").slice(1)[0])}
+                              className={styles(key).slice(1)[0] + " " + "px-2 py-1"}  
                             >
                               <SpecialText description={cell} />
                             </th>
@@ -171,12 +170,15 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
                       </thead>
                       <tbody>
                         {desc.rows.map((row, key: number) =>
-                          <tr key={key}>
+                          <tr 
+                            key={key}
+                            className="odd:bg-indigo-600/5"  
+                          >
                             {row.map((cell, key: number) =>
                               <th 
                                 key={key}
-                                className="col-span-2" 
-                                colSpan={parseInt(desc.colStyles[key].split("-")[-1])}
+                                colSpan={parseInt(desc.colStyles[key].split("-").slice(1)[0])}
+                                className={styles(key).slice(1)[0]  + " " + "px-2 py-1"}  
                               >
                                 <SpecialText description={cell} />
                               </th>
