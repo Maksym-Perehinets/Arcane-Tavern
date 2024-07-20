@@ -160,8 +160,8 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
                           {desc.colLabels.map((cell: string, key: number) =>
                             <th 
                               key={key}
-                              colSpan={parseInt(styles(key)[0].split("-").slice(1)[0])}
-                              className={styles(key).slice(1)[0] + " " + "px-2 py-1"}  
+                              colSpan={parseInt(desc.colStyles[key].split(" ")[-1])}
+                              className="m-3"  
                             >
                               <SpecialText description={cell} />
                             </th>
@@ -177,8 +177,8 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
                             {row.map((cell, key: number) =>
                               <th 
                                 key={key}
-                                colSpan={parseInt(desc.colStyles[key].split("-").slice(1)[0])}
-                                className={styles(key).slice(1)[0]  + " " + "px-2 py-1"}  
+                                className="col-span-2" 
+                                colSpan={parseInt(desc.colStyles[key].split("-")[-1])}
                               >
                                 <SpecialText description={cell} />
                               </th>
