@@ -15,7 +15,7 @@ const SpellList = () => {
   };
 
   return (
-    <div className="mt-[90px] flex">
+    <div className="mt-[90px] flex flex-row">
       <FilterWindow />
 
       <div className="flex justify-between pr-20 px-5">

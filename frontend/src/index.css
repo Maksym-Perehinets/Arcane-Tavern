@@ -10,4 +10,14 @@
     .outline-shadow {
         text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     }
+    .desc-text {
+        color: rgb(255, 255, 255);
+        font-size: 0.9vmax;
+        padding: 15px 2%;
+        border-radius: 10%;
+    }
+    .higher {
+        padding-top: 10px;
+        color: lightgrey;
+    }
 }

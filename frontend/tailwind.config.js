@@ -17,6 +17,9 @@ export default {
       },
       colors: {
         'funny-purple': '#2D223A',
+      },
+      backgroundImage: {
+        'spell-description': "url('/BackspellTb.png')"
       }
     },
    

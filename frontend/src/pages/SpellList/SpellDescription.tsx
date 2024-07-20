@@ -10,6 +10,12 @@ interface SpellComponentProps {
 const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
   const { spell, loading, error } = useSpell(spellId);
 
+  const copyText = (spellName: string) => {
+    navigator.clipboard.writeText(spellName);
+    <p className="absolute">copied</p>
+  }
+
+
   if (loading) {
     return <p>Loading...</p>;
   }
@@ -22,15 +28,16 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
     return <p>No spell data found</p>;
   }
 
+
   return (
-    <div className="spell-details h-[85vh] pr-1/4">
+    <div className="spell-details h-[85vh] pr-1/4 flex flex-col">
       <div className="w-full flex justify-between">
         {spell.name.length > 15 
-        ? <h1 className="spell-name text-4xl m-4">{spell.name}</h1> 
-        : <h1 className="spell-name text-5xl m-5">{spell.name}</h1>}
+        ? <h1 className="spell-name text-5xl m-4 cursor-pointer" onClick={() => {copyText(spell.name)}}>{spell.name}</h1> 
+        : <h1 className="spell-name text-5xl m-5 cursor-pointer" onClick={() => {copyText(spell.name)}}>{spell.name}</h1>}
 
         <div className="main-extras mt-6">
-          <p className="extras-text">Book Name: {spell.source}</p>
+          <p className="extras-text">Book: {spell.source}</p>
           <p className="extras-text">Page: {spell.page}</p>
         </div>
 
@@ -75,7 +82,7 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
       </table>
       {/*
       <div className="spell-main-info">
-        <p className="main-info-text">Level</p>
+        <p className="main-info-text">Level</p> make element dont 
         <p className="main-info-text">Range</p>
         <p className="main-info-text">Casting Time</p>
         <p className="main-info-text">Components</p>
@@ -111,9 +118,9 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
             : `${spell.duration.time} ${spell.duration.type}`}
         </p>
       </div>*/}
-      <div className="flex flex-col justify-between">
+      <div className="flex flex-col justify-between h-[79%]">
         
-        <div className="overflow-y-auto spell-description h-[60vh]">
+        <div className="overflow-y-auto spell-descriptiona mt-5 w-full rounded-2xl h-[90%] bg-spell-description">
           {spell.description.map((desc, index) => {
             if (typeof desc === "string") {
               return (
