@@ -21,6 +21,7 @@ export default {
       backgroundImage: {
         'spell-table': "url('/BackspellTb.png')",
         'home-page': " url(https://dvoxsotka.s3.amazonaws.com/arcane-tavern/homePageBG.png);",
+        'characters-page': "url('/bg-characters.png');",
         'spell-page': "url(https://dvoxsotka.s3.amazonaws.com/arcane-tavern/spellPageBG.png);",
         'test-home-page': " url('/test-home-page-bg.webp');",
       }

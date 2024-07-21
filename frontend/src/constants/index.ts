@@ -1,3 +1,5 @@
+import {hp, eye, moon, running, shield, tools} from '../../public/icons'
+
 export const navbarLinks = [
     {
         route: "/",
@@ -89,4 +91,33 @@ export const filterWindow = [
         label: "Create",
         icon: "/icons/createSpell.svg"
     }
+]
+
+export const charactersPageStatsIcons = [
+
+    {    id: "eye-icon",
+        icon: eye,
+        iconIndex: 0
+    },
+    {    id: "shield-icon",
+        icon: shield,
+        iconIndex: 1
+    },
+    {    id: "tools-icon",
+        icon: tools,
+        iconIndex: 2
+    },
+    {    id: "moon-icon",
+        icon: moon,
+        iconIndex: 3
+    },
+    {    id: "hp-icon",
+        icon: hp,
+        iconIndex: 4
+    },
+    {    id: "running-icon",
+        icon: running,
+        iconIndex: 5
+    }
+
 ]

@@ -13,3 +13,9 @@ export type IFilterWindow = {
   label: string;
   icon: string;
 }
+
+export type ICharactersStatsIcons = {
+  id: string;
+  icon: string;
+  iconIndex: number;
+}

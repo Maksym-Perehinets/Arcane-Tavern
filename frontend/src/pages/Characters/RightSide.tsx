@@ -1,7 +1,7 @@
 
 const RightSide = () => {
   return (
-    <div className="right-side-div">Hui</div>
+    <div className="right-side-div">Right Side :/</div>
   )
 }
 
