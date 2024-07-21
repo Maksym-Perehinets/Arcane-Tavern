@@ -14,16 +14,16 @@ const MagicCircles: React.FC = () => {
 
   useEffect(() => {
     const createRandomImages = () => {
-      const numberOfImages = Math.floor(Math.random() * 6) + 5;
+      const numberOfImages = Math.floor(Math.random() * 50) + 5;
       const newImages: ImageProperties[] = [];
 
       for (let i = 0; i < numberOfImages; i++) {
         newImages.push({
           id: i,
-          src: 'https://w7.pngwing.com/pngs/256/454/png-transparent-transmutation-circle-magic-circle-fairy-magic-purple-libra-symmetry-thumbnail.png',
+          src: '/alchemyThing.gif',
           top: Math.floor(Math.random() * window.innerHeight),
           left: Math.floor(Math.random() * window.innerWidth),
-          size: Math.floor(Math.random() * 100) + 100,
+          size: Math.floor(Math.random() * 50) + 100,
           visible: true,
         });
       }
@@ -70,10 +70,10 @@ const MagicCircles: React.FC = () => {
             left: `${image.left - image.size}px`,
             width: `${image.size}px`,
             height: `${image.size}px`,
-            opacity: image.visible ? 0.2 : 0.3,
-            transition: `opacity 1s, top 0s, left 0s, width 0s, height 0s`,
+            opacity: image.visible ? 1 : 1,
+            transition: `opacity 1s, top 1s, left 1s, width 0s, height 0s`,
           }}
-          className="rounded-full flex box-shadow shadow-white animate-spin-slow opacity-20"
+          className="rounded-full flex box-shadow shadow-white animate-spin-"
         />
       ))}
     </div>

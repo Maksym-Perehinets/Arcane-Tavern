@@ -15,13 +15,15 @@ const SpellList = () => {
   };
 
   return (
-    <div className="mt-[90px] flex flex-row">
-      <FilterWindow />
+    <div className="mt-[90px]">
+      <div className="grid grid-cols-[0.3fr_1.8fr_1.4fr] grid-rows-[43%_54%] rows-1 ">
+        <FilterWindow />
 
-      <div className="flex justify-between pr-20 px-5">
-        <ListOfSpells onRowClick={handleRowClick} />
-        <SpellDescription spellId={selectedSpellId} />
-      </div>
+        {/* <div className="flex justify-between pr-20 px-5"> */}
+          <ListOfSpells onRowClick={handleRowClick} />
+          <SpellDescription spellId={selectedSpellId} />
+        </div>
+      {/* </div> */}
     </div>
   );
 };

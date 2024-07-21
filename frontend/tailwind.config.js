@@ -19,7 +19,10 @@ export default {
         'funny-purple': '#2D223A',
       },
       backgroundImage: {
-        'spell-description': "url('/BackspellTb.png')"
+        'spell-table': "url('/BackspellTb.png')",
+        'home-page': " url(https://dvoxsotka.s3.amazonaws.com/arcane-tavern/homePageBG.png);",
+        'spell-page': "url(https://dvoxsotka.s3.amazonaws.com/arcane-tavern/spellPageBG.png);",
+        'test-home-page': " url('/test-home-page-bg.webp');",
       }
     },
    

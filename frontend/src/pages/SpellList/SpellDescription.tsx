@@ -120,7 +120,7 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
       </div>*/}
       <div className="flex flex-col justify-between h-[79%]">
 
-        <div className="overflow-y-auto spell-descriptiona mt-5 p-5 w-full rounded-2xl h-[90%] bg-spell-description">
+        <div className="overflow-y-auto spell-descriptiona mt-5 p-5 w-full rounded-2xl h-[90%] bg-spell-page">
           {spell.description.map((desc, index) => {
             if (typeof desc === "string") {
               return (
