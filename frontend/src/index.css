@@ -52,7 +52,7 @@
         text-align: center;
         cursor: pointer;
         transition: .2s ease-in;
-
+        
         &.mselection {
             width: 10%;
             border-radius: 0px;
@@ -70,7 +70,8 @@
         }
         &.stats-div {
             width: 12%;
-            height: 180px;
+            height: 12em;
+            
         }
     }
 }
