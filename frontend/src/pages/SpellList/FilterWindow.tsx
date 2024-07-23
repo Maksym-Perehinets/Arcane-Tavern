@@ -5,19 +5,22 @@ import { useState } from "react"
 
 const FilterWindow = () => {
 
-    const [isVisible, setVisibility] = useState(true)
+    const [isVisible, setVisibility] = useState(false)
+    const [translateOnX, setTranslateOnX] = useState(0);
 
     const toggleVisibility = () => {
-        if(isVisible){
-            
-        }
+        isVisible ? setTranslateOnX(prev => prev + 120) : setTranslateOnX(prev => prev - 120)
         setVisibility(!isVisible)
     }
 
 
     return (
-        <div className="">
-            <div className="rounded-br-xl bg-opacity-65 bg-funny-purple h-min w-min flex flex-col p-4 gap-4">
+        <div 
+            className="flex" 
+            style={{
+                transform: `translate(${translateOnX}px)`,
+                transition: 'transform 0.5s'}}>
+            <div className="rounded-r-xl bg-opacity-95 bg-funny-purple h-min w-min flex flex-col p-4 gap-4">
                 {filterWindow.map((elem: IFilterWindow) => (
                     <p key={elem.id} className="flex gap-2 mr-8">
                         <img 
@@ -28,15 +31,6 @@ const FilterWindow = () => {
                         {elem.label}
                     </p>
                 ))}
-            </div>
-            <div className="bg-funny-purple bg-opacity-65 h-min w-fit p-2 rounded-r-xl">
-                <button onClick={() => toggleVisibility}>
-                    <img
-                        src="../public/icons/burger.svg"
-                        alt=""
-                        width={150}
-                    />
-                </button>
             </div>
         </div>
     )
