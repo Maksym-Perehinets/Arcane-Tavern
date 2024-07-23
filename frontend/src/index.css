@@ -54,29 +54,33 @@ html {
         font-size: 1vmax;
         width: 25%;
         height: 10%;
-        background-color:#00000060;
+        background-color:#00000040;
         color: whitesmoke;
         display: inline-block;
         padding: 10px 1%;
         border-radius: 10px;
         border: 2px solid rgb(0, 0, 0);
         text-align: center;
-        cursor: pointer;
-        transition: .2s ease-in;
+        transition: .4s ease-in;
+        backdrop-filter: blur(2px);
         
         &.mselection {
-            width: 10%;
+            /* width: 10%; */
             border-radius: 0px;
             border: 0px solid rgb(0, 0, 0);
-            padding: 2% 0%;
+            padding: 0.5% 0%;
             width: 15%;
-            background-color: #00000080;
+            background-color: #00000050;
+            color: gray;
+            font-size: 2vh;
 
             &:focus{
-                background-color: rgba(76, 0, 130, 0.7);
+                background-color: rgba(76, 0, 130, 0.5);
+                font-weight: 600;
             }
             &:hover{
-                background-color: rgba(0, 0, 0, 0.6);
+                background-color: #1d1d1b9f;
+                color: white;
             }
         }
         &.stats-div {
