@@ -4,7 +4,6 @@ import "./css/navbar.scss";
 import "./css/Image.scss";
 import "./css/signup.scss";
 import "./css/sign.scss";
-import "./css/Info.scss";
 import "./css/SpellOfTheDay.scss";
 import "./css/Footer.scss";
 import "./css/SpellOfTheDayDiv.scss";
