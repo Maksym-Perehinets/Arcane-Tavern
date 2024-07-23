@@ -94,30 +94,53 @@ export const filterWindow = [
 ]
 
 export const charactersPageStatsIcons = [
-
-    {    id: "eye-icon",
+    {    
+        id: "eye-icon",
         icon: eye,
         iconIndex: 0
     },
-    {    id: "shield-icon",
+    {    
+        id: "shield-icon",
         icon: shield,
         iconIndex: 1
     },
-    {    id: "tools-icon",
+    {    
+        id: "tools-icon",
         icon: tools,
         iconIndex: 2
     },
-    {    id: "moon-icon",
+    {    
+        id: "moon-icon",
         icon: moon,
         iconIndex: 3
     },
-    {    id: "hp-icon",
+    {    
+        id: "hp-icon",
         icon: hp,
         iconIndex: 4
     },
-    {    id: "running-icon",
+    {    
+        id: "running-icon",
         icon: running,
         iconIndex: 5
     }
 
+]
+
+export const HomeIntroductionLinks = [
+    {
+        link: "/spell-list",
+        logoLink: "https://dvoxsotka.s3.amazonaws.com/arcane-tavern/databaseWizard.png",
+        entries: "Robust database full of spells, complete with filters, search and a tool to create your own spells"
+    },
+    {
+        link: "/characters",
+        logoLink: "https://dvoxsotka.s3.amazonaws.com/arcane-tavern/cuteChar.png",
+        entries: "Character creation tool, using DnD 5e charsheet, fully editable to suit all of your needs"
+    },
+    {
+        link: "/spell-list",
+        logoLink: "https://dvoxsotka.s3.amazonaws.com/arcane-tavern/diceBrush.png",
+        entries: "Nice and cozy menus, designed with minimizing eye strain in mind"
+    }
 ]

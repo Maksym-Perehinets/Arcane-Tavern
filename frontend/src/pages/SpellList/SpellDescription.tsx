@@ -43,7 +43,7 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
 
       </div>
 
-      <table className="w-full mt-4">
+      <table className="w-full mt-4 object-scale-down">
         <thead>
           <tr>
             {spellDescriptionPlaceholder.map((cell: ITableElem) =>

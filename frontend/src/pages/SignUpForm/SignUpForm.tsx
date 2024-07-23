@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import { changeImg, checkPasswordMatch } from "../../components/scripts_tmp/showHidePass";
 
-;
 
 const SignUpForm = () => {
 

@@ -19,3 +19,9 @@ export type ICharactersStatsIcons = {
   icon: string;
   iconIndex: number;
 }
+
+export type IHomeIntroductionLinks = {
+  link: string;
+  logoLink: string;
+  entries: string;
+}
