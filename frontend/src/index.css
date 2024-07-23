@@ -2,14 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
-
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-  }
+    margin: 0px 0px;
+    padding: 0px 0px;
+}
   
+body {
+    margin: 0px 0px;
+    padding: 0px 0px;
+    background-color: #191020;
+    overflow: auto;
+}
+
+html {
+    margin: 0px 0px;
+    padding: 0px 0px;
+    scroll-behavior: smooth;
+}
+
+
 
 @layer base{   
     body {
@@ -74,4 +85,36 @@
             
         }
     }
+
+    .messages-div {
+        width: 100%;
+        color: rgb(201, 201, 201);
+        font-size: 1.2vmax;
+        margin-top: 4%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .intro-message{
+        width: fit-content;
+        padding: 10px 3%;
+        border-radius: 20px;
+        font-size: 1.2vmax;
+        margin-top: 2%;
+    }
+
+    .intro-circle:hover {
+        background-color: #1e1125;
+        box-shadow: #1e1125 10px 10px 100px;
+    }
+    .png {
+        display: grid;
+        width: 8vmax;
+        height: auto;
+        margin-left: 15%;
+        margin-top: 10%;
+        color: white;
+        user-select: none;
+      }
+    
 }

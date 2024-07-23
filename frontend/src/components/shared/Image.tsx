@@ -25,7 +25,7 @@ const Image = () => {
             <p className="text">Don't forget to have fun.</p>
             <button onClick={buttonExplore} className="button">Explore</button>
         </div>
-        <MagicCircles />
+        {/* <MagicCircles /> */}
     </div>
   )
 }

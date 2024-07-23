@@ -2,8 +2,6 @@
 import {Outlet, Navigate} from 'react-router-dom';
 import SignInForm from '../pages/SignInForm/SignInForm';
 import SignUpForm from '../pages/SignUpForm/SignUpForm';
-import "../css/signup.scss";
-import "../css/sign.scss";
 
 const AuthLayout = () => {
   let isAuth = false;

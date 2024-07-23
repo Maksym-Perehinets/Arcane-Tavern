@@ -24,6 +24,7 @@ export default {
         'characters-page': "url('/bg-characters.png');",
         'spell-page': "url(https://dvoxsotka.s3.amazonaws.com/arcane-tavern/spellPageBG.png);",
         'test-home-page': " url('/test-home-page-bg.webp');",
+        'test-spell-page': "url('/test-spells-page-bg.webp')"
       }
     },
    

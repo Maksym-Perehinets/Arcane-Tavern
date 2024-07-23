@@ -3,6 +3,7 @@
   text-align: center;
   margin-top: 35px;
   margin-left: 40px;
+  display: flex;
 
   & #DiscordLink {
     color: grey;
@@ -33,7 +34,7 @@
 }
 
 .app {
-  min-height: 100vh;
+  min-height: 100px;
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -110,6 +111,7 @@
       & li:not(:first-child) {
         color: $text-secondary-clr;
         cursor: pointer;
+        height: min;
       }
     }
   }

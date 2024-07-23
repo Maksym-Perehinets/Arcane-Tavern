@@ -15,7 +15,7 @@ const SpellOfTheDay = () => {
     }
   }, [fade]);
 
-  const handleClick = (status) => {
+  const handleClick = (status: number) => {
     setFade(true);
     setTimeout(() => setBtnStatus(status), 500); // Match the duration of the fade effect
   };

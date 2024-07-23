@@ -34,7 +34,7 @@ const SpellTable: React.FC<ListProps> = ({ spells, onRowClick }) => {
     return (
         <table
             id="spellList"
-            className="font-[DraconicFont] top-24 w-full border-collapse outline-shadow"
+            className="font-[DraconicFont] top-24 w-full border-collapse outline-shadow "
         >
             <thead>
                 <tr>
@@ -51,7 +51,7 @@ const SpellTable: React.FC<ListProps> = ({ spells, onRowClick }) => {
                     ))}
                 </tr>
             </thead>
-            <tbody id="tableBody" className="snap-mandatory snap-y bg-spell-page">
+            <tbody id="tableBody" className="snap-mandatory snap-y bg-spell-table">
                 {spells.map((spell: SpellMainStats) => (
                     <tr
                         key={spell.id}
