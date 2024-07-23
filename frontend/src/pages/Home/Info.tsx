@@ -1,5 +1,6 @@
 import { HomeIntroductionLinks } from "@/constants";
 import { IHomeIntroductionLinks } from "@/types";
+import { Link } from "react-router-dom";
 
 const Info = () => {
   const handleClick = (myLink: string) => () => {
@@ -35,17 +36,20 @@ const Info = () => {
 
         </div>
 
-        <div className="w-full flex justify-around mt-14">
+        <div className="w-full flex justify-around mt-20">
           {HomeIntroductionLinks.map((elem: IHomeIntroductionLinks, key) => {
             return (
               <div
                 key={key} 
-                onClick={() => handleClick(elem.link)} 
                 className="w-min"
               >
-                <div className="intro-circle rounded-full bg-[#130b18] size-60 cursor-pointer">
+                <Link to={elem.link}>
+                <div 
+                  className="intro-circle rounded-full bg-[#130b18] size-60 cursor-pointer"
+                >
                   <img className="w-[9vmax] ml-[15%] pt-[10%]" src={elem.logoLink} alt="womp womp :(" />
                 </div>
+                </Link>
                 <p className="text-center text-xl ml-[5%] mt-2 text-stone-500">{elem.entries}</p>
               </div>
             )
