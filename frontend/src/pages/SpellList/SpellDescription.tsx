@@ -39,7 +39,7 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
 
         <div className="main-extras mt-6">
           <p className="extras-text">Book: {spell.source}</p>
-          <p className="extras-text">Page: {spell.page}</p>
+          <p className="extras-text text-nowrap">Page: {spell.page}</p>
         </div>
 
       </div>

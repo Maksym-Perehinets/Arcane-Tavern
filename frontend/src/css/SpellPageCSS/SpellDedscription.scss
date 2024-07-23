@@ -18,16 +18,17 @@
   }
 
   .main-extras {
-    width: 35%;
     display: flex;
     color: lightgray;
     background-color: #19132042;
     border-radius: 10px;
     float: right;
-    padding: 10px 10px;
+    padding: 5px;
+    flex-direction:  column;
+    text-align: right;
 
     .extras-text {
-      padding-left: 15%;
+      padding-left: 5%;
       font-size: 0.9vmax;
     }
   }
