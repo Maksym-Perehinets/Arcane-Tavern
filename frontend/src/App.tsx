@@ -2,12 +2,9 @@ import { Routes, Route } from "react-router-dom";
 
 import "./css/navbar.scss";
 import "./css/Image.scss";
-import "./css/signup.scss";
-import "./css/sign.scss";
 import "./css/SpellOfTheDay.scss";
 import "./css/Footer.scss";
 import "./css/SpellOfTheDayDiv.scss";
-import "./css/CharacterDiv.scss";
 import "./css/SpellPageCSS/SpellDedscription.scss";
 import "./css/Characters/Characters.scss";
 import "./css/Characters/Selection.scss";

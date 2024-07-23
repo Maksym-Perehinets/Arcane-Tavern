@@ -120,29 +120,29 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
       </div>*/}
       <div className="flex flex-col justify-between h-[79%]">
 
-        <div className="overflow-y-auto spell-descriptiona mt-5 p-5 w-full rounded-2xl h-[90%] bg-spell-page">
-          {spell.description.map((desc, index) => {
+        <div className="overflow-y-auto spell-descriptiona mt-5 p-5 w-full rounded-2xl h-[90%] bg-spell-table">
+          {spell.description.map((desc, key) => {
             if (typeof desc === "string") {
               return (
-                <SpecialText key={index} description={desc} className="desc-text" />
+                <SpecialText key={key} description={desc} className="desc-text" />
               );
             } else if (typeof desc == "object") {
 
               switch (desc.type) {
                 case "entries":
-                  return <SpecialText key={index} description={desc.entries} className="desc-text" />;
+                  return <SpecialText key={key} description={desc.entries} className="desc-text" />;
 
                 case "quote":
-                  return <div><p key={index} className="desc-text pb-0 italic">
-                    "{desc.entries}" </p>
-                  <p className="text-stone-300 text-right mr-4 mb-5"> — {desc.by}</p>
+                  return <div key={key}>
+                    <p key={key} className="desc-text pb-0 italic">"{desc.entries}" </p>
+                    <p className="text-stone-300 text-right mr-4 mb-5"> — {desc.by}</p>
                   </div>
                   
 
                 case "list":
                   return (
-                    <ul className="desc-text" key={index}>
-                      {desc.items.map((e: string, key: number) =>
+                    <ul className="desc-text" key={key}>
+                      {desc.items.map((e: string | object, key: number) =>
                         <li className="m-3 list-disc" key={key}>
                           <SpecialText description={e} />
                         </li>
@@ -153,7 +153,7 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
                 case "table":
                   const styles = (index: number, splitBy: string) => desc.colStyles[index].split(splitBy)
                   return (
-                    <table className="w-full text-left a border-indigo-500">
+                    <table key={key} className="w-full text-left a border-indigo-500">
                       <caption className="text-2xl text-indigo-400 text-left">{desc.caption}</caption>
                       <thead >
                         <tr> 
@@ -190,12 +190,12 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
                   )
 
                   default:
-                    return <p key={index}>Error occured while loading description</p>
+                    return <p key={key}>Error occured while loading description</p>
               }
 
             } else {
               return (
-                <p key={index} className="desc-text">
+                <p key={key} className="desc-text">
                   Error occured while loading description
                 </p>
               );

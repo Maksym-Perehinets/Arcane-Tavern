@@ -56,7 +56,7 @@ export interface Duration {
 
   interface SpellDescriptionList extends SpellDescriptionListItems {
     type: "list";
-    items: (string| SpellDescriptionListItems)[];
+    items: (string | SpellDescriptionListItems)[];
   }
 
   interface SpellDescriptionEntry extends SpellDescription {
