@@ -6,7 +6,12 @@ const MainSelection = () => {
     <>
     <div className="mt-[3.7em] ml-[10%] rounded p-0 ">
       {navSelection.map((value: string, index: number) => {
-        return <div className="selection-div mselection" tabIndex={index}>{value}</div>
+        return (
+          <div 
+            className="selection-div mselection" 
+            tabIndex={index}
+            key={index}>{value}</div>
+          )
       })}
     </div>
     </>
