@@ -68,7 +68,9 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
               {spell.components.v ? "V " : ""}
               {spell.components.s ? "S " : ""}
               {spell.components.m ? "M" : ""}
-              <div className="absolute opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 rounded-xl p-4 bg-black">{spell.components.m ? spell.components.m.text : ""}</div>
+              {(spell.components.m ) ? <div className="absolute opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 rounded-xl p-4 bg-black">
+                  {spell.components.m ? spell.components.m.text : ""} 
+               </div> : ""}
             </td>
             <td className="text-wrap">
               {spell.duration.concentration ? "Concentration " : ""}
