@@ -15,7 +15,7 @@ const Summary = () => {
 
         const [notesText, setNotesText] = useState("");
 
-        const onInput = (e) => setNotesText(e.target.value);
+        const onInput = (e: any) => setNotesText(e.target.value);
       
         const onClear = () => {
           setNotesText("");
@@ -30,6 +30,7 @@ const Summary = () => {
             {cardStats.map((value: string,index: number) => {
                 return <div 
                 tabIndex={index}
+                key={index}
                 className="selection-div stats-div ml-[3%] flex flex-col justify-between items-center cursor-default select-text">
                     
                     <p 
@@ -85,7 +86,7 @@ const Summary = () => {
                 return <div className="inline-block w-[50%] my-0.5"
                 key={index}>
                     
-                    <p className="text-gray-200">{value}: 
+                    <div className="text-gray-200">{value}: 
                     <div 
                     className="bg-indigo-400/70 rounded-full
                      w-[2em] h-[2em] text-[1em] p-1 text-center inline
@@ -93,7 +94,7 @@ const Summary = () => {
                       align-middle leading-1 text-gray-100 cursor-pointer
                       transition ease-in-out delay-150 hover:scale-110
                     hover:bg-indigo-500/70 duration-300 hover:text-white">+{index}</div>
-                     </p></div>
+                     </div></div>
             })}
         </div>
         
@@ -102,7 +103,7 @@ const Summary = () => {
             
             <textarea placeholder="Type your notes here..." 
             className="bg-transparent w-full h-[15em] focus:outline-none resize-none text-[2vh]" 
-            name="notes" cols="30" rows="10" onInput={onInput} value={notesText}></textarea>
+            name="notes" cols={30} rows={10} onInput={onInput} value={notesText}></textarea>
             
             <button 
             className="text-violet-400 cursor-pointer transition ease-in-out delay-150

@@ -6,13 +6,13 @@ import DiceRoller from "./Dice";
 
 const Home = () => {
   return (
-    <>
+    <div>
       <Image />
       <Info />
       <SpellOfTheDay />
       <DiceRoller />
       <Footer />
-    </>
+    </div>
   );
 };
 

@@ -34,7 +34,7 @@ const SpellTable: React.FC<ListProps> = ({ spells, onRowClick }) => {
     return (
         <table
             id="spellList"
-            className="font-[DraconicFont] top-24 w-full border-collapse outline-shadow "
+            className="font-[DraconicFont] top-24 w-full border-collapse outline-shadow"
         >
             <thead>
                 <tr>

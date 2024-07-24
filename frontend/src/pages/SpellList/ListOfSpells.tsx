@@ -1,8 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { getAllSpells, getSpellById } from "@/queries/queries";
+import { getAllSpells } from "@/queries/queries";
 
-// import SpellTableBody from "./SpellTable/SpellTableBody";
-// import SpellTableHead from "./SpellTable/SpellTableHead";
 import { SpellMainStats } from "@/interfaces/spell";
 import SpellTable from "./SpellTable";
 
@@ -44,9 +42,9 @@ const ListOfSpells: React.FC<SpellTableProps> = ({ onRowClick }) => {
 
   return (
     <div
-      className="table-lines text-gray-100 w-[90%] h-[85vh] bg-[rgba(12,_12,_12,_0.5)] bg-no-repeat bg-cover border-[2px] border-[solid] border-[#424242] overflow-x-hidden rounded-[10px]" 
-      ref={tableRef}
-    >
+      className="table-lines text-gray-100 w-[90%] h-[85vh] bg-[rgb(12,12,12)] bg-no-repeat bg-cover border-[2px] border-[solid] border-[#424242] overflow-x-hidden rounded-[10px]" 
+      ref={tableRef}>
+        
       <SpellTable spells={spells} onRowClick={onRowClick} />
 
     </div>
