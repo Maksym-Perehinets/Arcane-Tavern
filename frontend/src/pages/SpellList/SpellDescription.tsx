@@ -1,7 +1,9 @@
+import CopyToClipboard from "@/components/shared/CopyToClipboard.tsx";
 import useSpell from "./useSpell.ts";
 import SpecialText from "@/components/shared/SpecialText.tsx";
 import { spellDescriptionPlaceholder } from "@/constants/index.ts";
 import { ITableElem } from "@/types/index.ts";
+import { useState } from "react";
 
 interface SpellComponentProps {
   spellId: number;
@@ -9,12 +11,6 @@ interface SpellComponentProps {
 
 const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
   const { spell, loading, error } = useSpell(spellId);
-
-  const copyText = (spellName: string) => {
-    navigator.clipboard.writeText(spellName);
-    <p className="absolute">copied</p>
-  }
-
 
   if (loading) {
     return <p>Loading...</p>;
@@ -28,14 +24,16 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
     return <p>No spell data found</p>;
   }
 
-
   return (
-    // <div className="">
     <>
       <div className="w-full flex justify-between">
-        {spell.name.length > 15
-          ? <h1 className="spell-name text-5xl m-4 cursor-pointer" onClick={() => { copyText(spell.name) }}>{spell.name}</h1>
-          : <h1 className="spell-name text-5xl m-5 cursor-pointer" onClick={() => { copyText(spell.name) }}>{spell.name}</h1>}
+          
+        <CopyToClipboard className="p-3" text={spell.name}>
+          <h1 className="spell-name text-5xl m-5">
+            {spell.name}
+          </h1>
+        </CopyToClipboard>
+            
 
         <div className="main-extras mt-6">
           <p className="extras-text">Book: {spell.source}</p>
@@ -64,13 +62,16 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
             <td>
               {spell.time.map((t) => `${t.number} ${t.unit}`).join(", ")}
             </td>
-            <td className="text-wrap group transition ease-in duration-150 relative">
+            <td className={`text-wrap group relative ${spell.components.m?.text ? "underline" : ""}`}>
               {spell.components.v ? "V " : ""}
               {spell.components.s ? "S " : ""}
               {spell.components.m ? "M" : ""}
-              {(spell.components.m ) ? <div className="absolute opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 rounded-xl p-4 bg-black">
+              {spell.components.m?.text ?
+                <div 
+                  className="absolute opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 rounded-xl p-4 bg-black">
                   {spell.components.m ? spell.components.m.text : ""} 
-               </div> : ""}
+                </div> :
+                ""}
             </td>
             <td className="text-wrap">
               {spell.duration.concentration ? "Concentration " : ""}
