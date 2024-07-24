@@ -47,6 +47,27 @@ html {
         padding-top: 10px;
         color: lightgrey;
     }
+    .fade-in-out-up {
+        animation: fadeInOutUp 2s ease-in-out;
+    }
+    @keyframes fadeInOutUp {
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        10% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        90% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        100% {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+    }
 }
 
 @layer components{

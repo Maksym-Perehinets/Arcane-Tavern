@@ -44,7 +44,7 @@ const ListOfSpells: React.FC<SpellTableProps> = ({ onRowClick }) => {
 
   return (
     <div
-      className="table-lianes text-gray-100 w-[90%] h-[85vh] bg-[rgba(12,_12,_12,_0.5)] bg-no-repeat bg-cover border-[2px] border-[solid] border-[#424242] overflow-x-hidden rounded-[10px]" 
+      className="table-lines text-gray-100 w-[90%] h-[85vh] bg-[rgba(12,_12,_12,_0.5)] bg-no-repeat bg-cover border-[2px] border-[solid] border-[#424242] overflow-x-hidden rounded-[10px]" 
       ref={tableRef}
     >
       <SpellTable spells={spells} onRowClick={onRowClick} />

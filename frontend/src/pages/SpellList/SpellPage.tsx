@@ -15,15 +15,20 @@ const SpellList = () => {
   };
 
   return (
-    <div className="bg-test-spell-page h-screen absolute bg-cover">
-      <div className="mt-[90px] grid grid-cols-[0.3fr_1.8fr_1.4fr] grid-rows-[43%_54%] rows-1 ">
-        <FilterWindow />
+    <div className="bg-test-spell-page h-screen bg-cover">
+      <div className="pt-[90px] flex">
 
-        {/* <div className="flex justify-between pr-20 px-5"> */}
+          <FilterWindow />
+
+
+        <div className="px-5 w-[100vh] grow">
           <ListOfSpells onRowClick={handleRowClick} />
-          <SpellDescription spellId={selectedSpellId} />
         </div>
-      {/* </div> */}
+
+        <div className="spell-details h-[85vh] pr-1/4 flex flex-col mr-24">
+            <SpellDescription spellId={selectedSpellId} />
+        </div>
+      </div>
     </div>
   );
 };
