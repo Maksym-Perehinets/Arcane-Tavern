@@ -65,11 +65,7 @@
   }
 
   .show-spell-div {
-    display: inline-block;
-    float: left;
     width: 30%;
-    margin-top: 100px;
-    margin-left: 10%;
     user-select: none;
     transition: all 1s ease-in;
 
@@ -81,11 +77,11 @@
 
   .show-spell-div {
     position: relative;
-    &.fade {
+    &.flipped {
       opacity: 0;
       transition: opacity 0.5s ease-in-out;
     }
-    &:not(.fade) {
+    &:not(.flipped) {
       opacity: 1;
       transition: opacity 0.5s ease-in-out;
     }

@@ -21,7 +21,6 @@ const Image = () => {
     <div className="w-full h-screen bg-cover bg-test-home-page">
         <div className="text-white pt-[20%]">
             <label className="pl-[3%] pb-[1.5%] text-6xl block text-neutral-200">{randomStringText(randomString)}</label>
-            <p className="text"></p>
             <p className="text">Don't forget to have fun.</p>
             <button onClick={buttonExplore} className="button">Explore</button>
         </div>
