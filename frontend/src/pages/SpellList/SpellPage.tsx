@@ -1,5 +1,4 @@
 import SpellDescription from "./SpellDescription";
-import "@/css/SpellPageCSS/SpellTable.scss"
 import ListOfSpells from "./ListOfSpells";
 import { useState } from "react";
 import FilterWindow from "./FilterWindow";
