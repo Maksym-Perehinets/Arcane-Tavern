@@ -78,8 +78,8 @@ html {
         transform-style: preserve-3d;
     }
     
-    .flip-card:hover .flip-card-inner {
-        transform: rotateY(180deg);
+    .flip-card .flip-card-inner {
+        transform: rotateY(900deg);
     }
     
     .flip-card-front, .flip-card-back {
@@ -87,7 +87,7 @@ html {
     }
     
     .flip-card-back {
-        transform: rotateY(180deg);
+        transform: rotateY(900deg);
     }
     
 }

@@ -1,10 +1,14 @@
 import { getSpellById } from "@/queries/queries";
 
+interface spellCardProp {
+  flip: boolean;
+}
 
-const SpellOfTheDayDiv = () => {
+const SpellOfTheDayDiv: React.FC<spellCardProp> = ({flip}) => {
   return (
-    <div className="sofd-div flip-card">
-      <div className="flip-card-inner relative w-full h-full shadow-lg transition-transform duration-600 transform-style-3d">
+    <div className={`sofd-div ${flip? "flip-card" : ""} `}>
+      <div className="flip-card-inner relative w-full h-full shadow-lg transition-transform duration-600">
+
         <div className="flip-card-front absolute sofd-div w-full h-full bg-gray-400 text-black">
           <img
             className="w-full h-full "
@@ -12,10 +16,13 @@ const SpellOfTheDayDiv = () => {
             alt="Alchemy in action"
           />
         </div>
-        <div className="flip-card-back absolute w-full h-full text-white transform rotate-y-180">
+        
+        <div className="flip-card-back absolute w-full h-full text-white transform">
+
           <div className="header-div">
             <p className="spell-name">Acid Splash</p>
           </div>
+
           <div className="spell-main-info-div">
             <p className="info-text">Range: 60 feet</p>
             <p className="info-text">Casting Time: 1 action</p>
@@ -30,7 +37,9 @@ const SpellOfTheDayDiv = () => {
             by 1d6 when you reach 5th level (2d6), 11th level (3d6), and 17th
             level (4d6).
           </p>
+
         </div>
+
       </div>
     </div>
   );
