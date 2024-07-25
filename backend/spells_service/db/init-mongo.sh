@@ -8,8 +8,8 @@ for filename in /docker-entrypoint-initdb.d/*.json; do
     mongoimport --db "$DATABASE_NAME" --collection "$collection_name" --file "$filename" --drop
   else
     # For spell file import differs in order to gave each of them a unique _id
-    jq -c '.spell[]' "$filename" | while read -r spell; do # Remove the array and iterate over the objects
-      mongoimport --db "$DATABASE_NAME" --collection "$collection_name" --type json
+    jq -c '.spell' "$filename" | while read -r spell; do # Remove the array and iterate over the objects
+      mongoimport --db "$DATABASE_NAME" --collection "$collection_name" --type json --jsonArray --file <(echo "$spell") --drop
     done
   fi
 done
