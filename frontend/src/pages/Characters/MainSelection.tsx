@@ -1,12 +1,19 @@
-const MainSelection = () => {
+
+interface MainSelectionProps {
+  onSelectionClick: (key: number) => void
+}
+
+
+const MainSelection: React.FC<MainSelectionProps> = ({onSelectionClick}) => {
 
   const navSelection = ["Summary", "Combat", "Probiciency", "Spells", "Features", "Equipment"]
+  
 
   return (
     <>
     <div className="mt-[3.7em] ml-[10%] rounded p-0 ">
       {navSelection.map((value: string, index: number) => {
-        return <div className="selection-div mselection" tabIndex={index}>{value}</div>
+        return <div className="selection-div mselection" onClick={() =>onSelectionClick(index)} key={index} tabIndex={index}>{value}</div>
       })}
     </div>
     </>

@@ -3,7 +3,7 @@ import RightSide from "./RightSide"
 
 const Characters = () => {
   return (
-    <div className="main-side-div bg-characters-page">
+    <div className="flex bg-characters-page">
         <LeftSide />
         <RightSide />
     </div>

@@ -1,7 +1,7 @@
 
 const RightSide = () => {
   return (
-    <div className="right-side-div">Right Side :/</div>
+    <div className="w-[40%] inline-block mt-16">Right Side :/</div>
   )
 }
 
