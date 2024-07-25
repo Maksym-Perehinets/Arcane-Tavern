@@ -11,7 +11,9 @@ RUN npm install \
     npm i -D sass \
     npm i react-query \
     npm install -D tailwindcss postcss autoprefixer \ 
-    npx tailwindcss init -p
+    npx tailwindcss init -p \
+    npm i @tanstack/react-query \ 
+    npm i @tanstack/react-query-devtools
 
 COPY . .
 
