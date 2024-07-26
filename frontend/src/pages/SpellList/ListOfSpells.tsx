@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { getAllSpells, getSpellById } from "@/queries/queries";
+import { getAllSpells, getSpellById } from "@/api";
 
 // import SpellTableBody from "./SpellTable/SpellTableBody";
 // import SpellTableHead from "./SpellTable/SpellTableHead";
