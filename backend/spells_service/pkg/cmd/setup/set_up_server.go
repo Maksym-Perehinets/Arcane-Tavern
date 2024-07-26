@@ -9,9 +9,10 @@ import (
 )
 
 var corsConfig = cors.Config{
-	AllowOrigins: []string{"localhost*"},
-	AllowMethods: []string{"GET"},
-	AllowHeaders: []string{"*"},
+	AllowOrigins:     []string{"http://localhost:8181"},
+	AllowMethods:     []string{"GET", "POST", "PUT", "PATCH", "DELETE", "HEAD"},
+	AllowHeaders:     []string{"Origin", "Content-Length", "Content-Type"},
+	AllowCredentials: true,
 }
 
 func setupServer() *gin.Engine {
