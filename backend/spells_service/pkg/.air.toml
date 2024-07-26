@@ -1,0 +1,25 @@
+# .air.toml example
+[build]
+  cmd = "go build -o ./tmp/main"
+  bin = "./tmp/main"
+  full_bin = "APP_ENV=dev ./tmp/main"
+  include_ext = ["go"]
+  exclude_dir = ["tmp", "vendor"]
+  exclude_file = ["air.toml"]
+  log = "debug"
+  mode = "replace"
+  # The place to store your PID
+  pid_file = ".air.pid"
+
+[log]
+  time = "2006-01-02 15:04:05"
+
+[color]
+  main = "cyan"
+  watcher = "yellow"
+  building = "magenta"
+  running = "green"
+  logging = "yellow"
+
+[misc]
+  clean_on_exit = false
