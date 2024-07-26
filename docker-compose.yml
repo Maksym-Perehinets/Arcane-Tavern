@@ -1,6 +1,6 @@
 version: '3'
 services:
-  mongodb_spell_service:
+  spell_db:
     build:
         context: ./backend/spells_service/db
         dockerfile: ./Dockerfile
@@ -10,7 +10,7 @@ services:
       driver: "none"
   spell_service:
     depends_on:
-      - mongodb
+      - spell_db
     build:
       context: ./backend/spells_service/pkg
       target: prod
