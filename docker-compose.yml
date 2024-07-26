@@ -1,13 +1,25 @@
 version: '3'
 services:
-  backend:
+  spell_db:
     build:
-      context: ./backend/legacy_spells
+        context: ./backend/spells_service/db
+        dockerfile: ./Dockerfile
+#    ports:  for debug only
+#      - "27017:27017"
+    logging:
+      driver: "none"
+  spell_service:
+    depends_on:
+      - spell_db
+    build:
+      context: ./backend/spells_service/pkg
+      target: prod
       dockerfile: ./Dockerfile
-    volumes:
-      - type: bind
-        source: ./backend/legacy_spells
-        target: /back-end
+    environment:
+        - MONGO_URI=mongodb://spell_db:27017
+        - MONGO_DB=spells_service
+        - GIN_MODE=release
+        - GIN_PORT=80
     ports:
       - "8080:80"
   frontend:
@@ -20,3 +32,25 @@ services:
         target: /app
     ports:
       - "8181:5173"
+#  legacy_backend: ## Switch to golang api latter
+#    build:
+#      context: ./backend/legacy_spells
+#      dockerfile: ./Dockerfile
+#    volumes:
+#      - type: bind
+#        source: ./backend/legacy_spells
+#        target: /back-end
+#    ports:
+#      - "8080:80"
+######### DEV ONLY
+#  spells_service_dev:
+#    build:
+#      context: ./backend/spells_service/pkg
+#      target: dev
+#      dockerfile: ./Dockerfile
+#    volumes:
+#      - type: bind
+#        source: ./backend/spells_service/pkg
+#        target: /app
+#    ports:
+#      - "8080:80"
