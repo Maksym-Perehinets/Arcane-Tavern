@@ -1,6 +1,6 @@
 import { spellsTableElem } from "@/constants";
 import { SpellMainStats } from "@/interfaces/spell";
-import { sortTableData } from "@/queries/queries";
+import { sortTableData } from "@/api";
 import { ITableElem } from "@/types";
 import { useState } from "react";
 
