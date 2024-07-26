@@ -66,13 +66,13 @@ const Summary = () => {
         
         <div className=" selection-div float-right mr-[9%] mt-[2%] h-[8.5em] w-[47.5%]">
             
-            <p className="text-center text-[3vh] text-gray-400">Saving throws</p>
+            <p className="text-center text-[1.4em] text-gray-400">Saving throws</p>
             {cardStats.map((value: string, index: number) => {
                 return <div className="inline-flex flex-col justify-between items-center 
                 px-[1em] py-[.5em] transition ease-in-out delay-150 hover:-translate-y-[1px] hover:scale-105"
                 key={index}>
                     
-                    <p className="text-[4vh] text-indigo-300 cursor-pointer ransition ease-in-out
+                    <p className="text-[1.8em] text-indigo-300 cursor-pointer ransition ease-in-out
                      hover:text-indigo-200 duration-300">+{demoMod[index]}</p>
                     
                     <p className="text-gray-400 font-bold text-[2vh] transition ease-in-out 

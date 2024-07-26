@@ -1,4 +1,4 @@
-import {hp, eye, moon, running, shield, tools} from '../../public/icons'
+import {hp, eye, moon, running, shield, tools} from '../../public/icons/index.ts'
 
 export const navbarLinks = [
     {
@@ -143,4 +143,75 @@ export const HomeIntroductionLinks = [
         logoLink: "https://dvoxsotka.s3.amazonaws.com/arcane-tavern/diceBrush.png",
         entries: "Nice and cozy menus, designed with minimizing eye strain in mind"
     }
+]
+
+export const CharactersCombatStats = [
+    {
+        id: "armor-class",
+        icon: shield,
+        label: "Armor Class",
+        index: 0,
+        readonly: true
+    },
+    {
+        id: "max-hit-points",
+        icon: hp,
+        label: "Max Hit Points",
+        index: 1,
+        readonly: false
+    },
+    {
+        id: "speed",
+        icon: running,
+        label: "Speed",
+        index: 2,
+        readonly: true
+    },
+    {
+        id: "initiative",
+        icon: moon,
+        label: "Initiative",
+        index: 3,
+        readonly: true
+    }
+]
+
+export const CharactersCombatTableHeaders = [
+        "Name",
+       "Profocient?",
+        "Details",
+        "AC"
+]
+export const CharactersCombatTableHeadersWeapons = [
+    "Name",
+   "Profocient?",
+    "Details",
+    "Attack",
+    "Damage"
+]
+
+export const CharactersCombatTableValues = [
+    {
+        name: "No armor",
+        proficience: false,
+        details: "Base",
+        AC: 13
+    },
+    {
+        name: "Light Armor",
+        proficience: true,
+        details: "Medium",
+        AC: 15
+    }
+]
+
+export const CharactersCombatTableWeaponsValues = [
+    {
+        name: "Javelin",
+        proficience: true,
+        details: "melee",
+        attack: "1d20+4",
+        damage: "1d6+2"
+    }
+
 ]

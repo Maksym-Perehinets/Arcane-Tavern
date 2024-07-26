@@ -25,3 +25,28 @@ export type IHomeIntroductionLinks = {
   logoLink: string;
   entries: string;
 }
+
+export type ICharactersCombatStats = {
+  id: string;
+  icon: string;
+  label:string;
+  index: number;
+  readonly: boolean;
+}
+
+export type ITableValues = {
+  [key: string]: string | boolean | number;
+  name: string,
+  proficience: boolean,
+  details: string,
+  // AC: number, 
+}
+
+export type ITableValuesWeapon = ITableValues & {
+  damage:string,
+  attack: string 
+}
+
+export type ITableValuesArmor = ITableValues & {
+  AC:string
+}
