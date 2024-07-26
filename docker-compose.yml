@@ -16,7 +16,7 @@ services:
       target: prod
       dockerfile: ./Dockerfile
     environment:
-        - MONGO_URI=mongodb://mongodb:27017
+        - MONGO_URI=mongodb://spell_db:27017
         - MONGO_DB=spells_service
         - GIN_MODE=release
         - GIN_PORT=80
