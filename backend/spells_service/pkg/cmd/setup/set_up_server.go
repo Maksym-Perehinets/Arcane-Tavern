@@ -1,11 +1,18 @@
 package setup
 
 import (
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"os"
 	"spell-service/routers"
 )
+
+var corsConfig = cors.Config{
+	AllowOrigins: []string{"localhost*"},
+	AllowMethods: []string{"GET"},
+	AllowHeaders: []string{"*"},
+}
 
 func setupServer() *gin.Engine {
 	mode := os.Getenv("GIN_MODE")
@@ -14,6 +21,7 @@ func setupServer() *gin.Engine {
 	}
 	gin.SetMode(mode)
 	r := gin.Default()
+	r.Use(cors.New(corsConfig))
 
 	// Set up your routes
 	routers.SetupRoutes(r)
