@@ -13,15 +13,15 @@ const TableComponent: React.FC<TableProps> = ({ header, value }) => {
       <thead>
         <tr>
           {header.map((elem: string, key: number) => {
-            return <th key={key}>{elem}</th>;
+            return <th className="text-gray-400 font-semibold" key={key}>{elem}</th>;
           })}
         </tr>
       </thead>
       <tbody>
         {value.map((elem: ITableValues, rowIndex: number) => (
-          <tr key={rowIndex}>
+          <tr key={rowIndex} className="transition cursor-pointer text-gray-300 hover:text-white hover:bg-black/15">
             {Object.keys(elem).map((key: string, cellIndex: number) => {
-              return <td key={cellIndex}>{elem[key]}</td>;
+              return <td className="font-medium" key={cellIndex}>{elem[key]}</td>;
             })}
           </tr>
         ))}
