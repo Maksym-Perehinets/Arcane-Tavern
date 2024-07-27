@@ -23,7 +23,6 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
   if (!spell) {
     return <p>No spell data found</p>;
   }
-  {console.log(spell.components.m)}
 
   const getMaterials = (materials: { text?: string } | string): string | undefined => {
     if (typeof materials === 'object' && 'text' in materials) {
@@ -84,7 +83,6 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
           </tr>
         </tbody>
       </table>
-      {console.log(spell.casters)}
       <div className="overflow-y-auto spell-descriptiona mt-5 p-5 w-full rounded-2xl bg-spell-table grow">
         {spell.entries.map((desc, key) => {
           if (typeof desc === "string") {
@@ -178,7 +176,7 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
 
       <div className="w-full pl-[2%] my-3">
         <p className="casters-text h-full text-lg">
-          Casters: {spell.casters? spell.casters.map((caster) => caster.name).join(", ") : ""}
+          Casters: {spell.casters?.map((caster) => caster.name).join(", ")}
         </p>
       </div>
     </>

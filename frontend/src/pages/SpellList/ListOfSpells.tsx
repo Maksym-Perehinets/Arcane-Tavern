@@ -16,28 +16,31 @@ const ListOfSpells: React.FC<SpellTableProps> = ({ onRowClick }) => {
   const [page, setPage] = useState(0)
   const tableRef = useRef<HTMLDivElement>(null)
 
+  
+  const { data, fetchNextPage, isLoading, isError, error } = useGetAllSpells(1, 50)
+  console.log(data?.pages)
+  // setSpells(data?.pages[data?.pageParams.reverse[0]])
 
-  const { isLoading, data, isError, error } = useGetAllSpells(1, 50)
-  console.log(data)
   if (isLoading) {
     return <span>Loading...</span>
   }
   if (isError) {
     return <span>Error: {error.message}</span>
   }
-  // const handleScroll = () => {
-  //   const table = tableRef.current;
-  //   if (table) {
-  //     if (table.scrollTop + table.clientHeight + 1 >= table.scrollHeight)
-  //       setPage((prev) => prev + 1);
-  //   }
-  // }
+
+  const handleScroll = () => {
+    const table = tableRef.current;
+    if (table) {
+      if (table.scrollTop + table.clientHeight + 1 >= table.scrollHeight)
+        fetchNextPage()
+    }
+  }
 
   // useEffect(() => {
   //   const fetchData = async () => {
   //     const { isError, data, error  } = await useGetAllSpells(page + 1, 50)
   //     setSpells((prev: any[]) => {
-  //       return [...prev, ...data.]
+  //       return [...prev, ...data?.pages[0]]
   //     });
   //   };
 
@@ -45,18 +48,23 @@ const ListOfSpells: React.FC<SpellTableProps> = ({ onRowClick }) => {
   // }, [page]);
 
   // useEffect(() => {
-  //   const table = tableRef.current;
+  //   const table = 
   //   if (table)
   //     table.addEventListener("scroll", handleScroll);
   // }, []);
 
+  tableRef.current?.addEventListener("scroll", handleScroll);
   return (
     <div
       className="table-lines text-gray-100 w-[90%] h-[85vh] bg-[rgba(12,_12,_12,_0.5)] bg-no-repeat bg-cover border-[2px] border-[solid] border-[#424242] overflow-x-hidden rounded-[10px]" 
       ref={tableRef}
     >
-      <SpellTable spells={data} onRowClick={onRowClick} />
-
+      {data?.pages.map((page, index) =>  
+          <SpellTable key={index} spells={page} onRowClick={onRowClick} />
+        )}
+     
+      <button
+          onClick={() => fetchNextPage()}>click</button>
     </div>
   )
 }
