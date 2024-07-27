@@ -21,14 +21,10 @@ const SpellTable: React.FC<ListProps> = ({ spells, onRowClick }) => {
     const getSpellProperties = (spell: SpellMainStats) => [
         spell.level,
         spell.name,
-        spell.duration.concentration ? "✔" : "✖",
-        spell.duration.type,
-        `${spell.time[0].number} ${spell.time[0].unit}`,
-        spell.ranges.distance
-            ? spell.ranges.distance.amount
-                ? `${spell.ranges.distance.amount} ${spell.ranges.distance.type}`
-                : spell.ranges.distance.type
-            : spell.ranges.type,
+        spell.concentration ? "✔" : "✖",
+        spell.duration,
+        spell.time,
+        spell.ranges
     ];
 
     return (
