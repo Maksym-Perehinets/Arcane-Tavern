@@ -4,8 +4,8 @@ services:
     build:
         context: ./backend/spells_service/db
         dockerfile: ./Dockerfile
-#    ports:  for debug only
-#      - "27017:27017"
+    ports:  #for debug only
+      - "27017:27017"
     logging:
       driver: "none"
   spell_service:
