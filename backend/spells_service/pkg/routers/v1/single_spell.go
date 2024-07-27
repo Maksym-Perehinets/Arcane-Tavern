@@ -19,5 +19,9 @@ func GetSingleSpell(c *gin.Context) {
 		return
 	}
 
-	c.JSON(200, services.GetSpell(id))
+	if result, ok := services.GetSpell(id); ok {
+		c.JSON(200, result)
+	} else {
+		c.JSON(404, gin.H{"error": "Spell not found"})
+	}
 }
