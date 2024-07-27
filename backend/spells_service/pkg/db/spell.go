@@ -19,16 +19,16 @@ func GetSpellsPipeline(id string) mongo.Pipeline {
 			{"let", bson.D{{"spell_name", "$name"}, {"spell_source", "$source"}}},
 			{"pipeline", mongo.Pipeline{
 				{{"$addFields", bson.D{
-					{"sourceData", bson.D{{"$getField", bson.D{
+					{"casters", bson.D{{"$getField", bson.D{
 						{"field", "$$spell_source"},
 						{"input", "$$ROOT"},
 					}}}},
 				}}},
 				{{"$project", bson.D{
 					{"_id", 0},
-					{"class", bson.D{
+					{"spellData", bson.D{
 						{"$filter", bson.D{
-							{"input", bson.D{{"$objectToArray", "$sourceData"}}},
+							{"input", bson.D{{"$objectToArray", "$casters"}}},
 							{"as", "item"},
 							{"cond", bson.D{
 								{"$eq", bson.A{"$$item.k", "$$spell_name"}},
@@ -36,21 +36,15 @@ func GetSpellsPipeline(id string) mongo.Pipeline {
 						}},
 					}},
 				}}},
-				{{"$unwind", "$class"}},
-				{{"$project", bson.D{
-					{"classes", "$class.v.class"},
-				}}},
-				{{"$unwind", "$classes"}},
-				{{"$group", bson.D{
-					{"_id", nil},
-					{"casters", bson.D{{"$push", "$classes"}}},
-				}}},
-				{{"$project", bson.D{
-					{"_id", 0},
-					{"casters", 1},
+				{{"$unwind", "$spellData"}},
+				{{"$replaceRoot", bson.D{
+					{"newRoot", "$spellData.v"},
 				}}},
 			}},
 			{"as", "casters"},
+		}}},
+		{{"$addFields", bson.D{
+			{"casters", bson.D{{"$arrayElemAt", bson.A{"$casters.class", 0}}}},
 		}}},
 		{{"$project", bson.D{
 			{"_id", 0}, // Exclude the _id field from the output
@@ -62,7 +56,7 @@ func GetSpellsPipeline(id string) mongo.Pipeline {
 			{"components", 1},
 			{"entries", 1},
 			{"entriesHigherLevel", 1},
-			{"casters", bson.D{{"$arrayElemAt", bson.A{"$casters.casters", 0}}}},
+			{"casters", 1},
 			{"duration", bson.D{
 				{"$arrayElemAt", bson.A{
 					bson.D{
