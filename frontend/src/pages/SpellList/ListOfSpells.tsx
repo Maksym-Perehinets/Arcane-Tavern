@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { getAllSpells, getSpellById } from "@/api";
-import useGetAllSpells from "@/hooks/useGetAllSpells"
+import useGetAllSpells from "@/api/queries"
 
 // import SpellTableBody from "./SpellTable/SpellTableBody";
 // import SpellTableHead from "./SpellTable/SpellTableHead";
@@ -19,7 +18,7 @@ const ListOfSpells: React.FC<SpellTableProps> = ({ onRowClick }) => {
 
 
   const { isLoading, data, isError, error } = useGetAllSpells(1, 50)
-
+  console.log(data)
   if (isLoading) {
     return <span>Loading...</span>
   }
@@ -56,7 +55,7 @@ const ListOfSpells: React.FC<SpellTableProps> = ({ onRowClick }) => {
       className="table-lines text-gray-100 w-[90%] h-[85vh] bg-[rgba(12,_12,_12,_0.5)] bg-no-repeat bg-cover border-[2px] border-[solid] border-[#424242] overflow-x-hidden rounded-[10px]" 
       ref={tableRef}
     >
-      <SpellTable spells={data?.data} onRowClick={onRowClick} />
+      <SpellTable spells={data} onRowClick={onRowClick} />
 
     </div>
   )

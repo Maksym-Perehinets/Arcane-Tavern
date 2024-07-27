@@ -1,8 +1,7 @@
 import { spellsTableElem } from "@/constants";
 import { SpellMainStats } from "@/interfaces/spell";
-import { sortTableData } from "@/api";
 import { ITableElem } from "@/types";
-import { useState } from "react";
+// import { useState } from "react";
 
 interface ListProps {
     spells: SpellMainStats[];
@@ -10,12 +9,10 @@ interface ListProps {
 }
 
 const SpellTable: React.FC<ListProps> = ({ spells, onRowClick }) => {
-    const [asc, setAsc] = useState(true);
+    // const [asc, setAsc] = useState(true);
 
-    const sortTable = async (filterName: string) => {
-        const res = sortTableData(filterName, asc);
-        setAsc(!asc);
-        console.log(res);
+    const sortTable = async () => {
+        console.log("Sorting table")
     };
 
     const getSpellProperties = (spell: SpellMainStats) => [
@@ -37,7 +34,7 @@ const SpellTable: React.FC<ListProps> = ({ spells, onRowClick }) => {
                         <th
                             key={link.id}
                             onClick={() => {
-                                sortTable(link.id);
+                                sortTable();
                             }}
                             className="bg-zinc-950 sticky top-0 text-white h-10 p-2 text-xl cursor-pointer
                             [&:nth-child(3)]:pr-12"
@@ -50,9 +47,9 @@ const SpellTable: React.FC<ListProps> = ({ spells, onRowClick }) => {
             <tbody className="snap-mandatory snap-y bg-spell-table w-full">
                 {spells.map((spell: SpellMainStats) => (
                     <tr
-                        key={spell.id}
-                        tabIndex={spell.id}
-                        onClick={() => onRowClick(spell.id)}
+                        key={spell.spell_url}
+                        tabIndex={spell.spell_url}
+                        onClick={() => onRowClick(spell.spell_url)}
                         className="snap-start pt-3 cursor-pointer p-1
                         text-gray-300 hover:[transition:0.3s] hover:bg-violet-400/25
                         hover:text-white focus:bg-violet-500/40 focus:text-white" 

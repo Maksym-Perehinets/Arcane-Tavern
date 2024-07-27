@@ -1,5 +1,5 @@
 export interface SpellMainStats {
-    id: number;
+    spell_url: number;
     level: string;
     name: string;
     concentration: boolean;
