@@ -3,17 +3,11 @@ import axios from "axios";
 const API_URL = "http://127.0.0.1:8080";
 
 export async function getAllSpells(page: number, amount: number) {
-  return await axios.get(`${API_URL}/api/v1/spells/?page=${page}&amount=${amount}`);
+  return (await axios.get(`${API_URL}/api/v1/spells/?page=${page}&amount=${amount}`)).data;
 }
 
 export async function getSpellById(spellId: number) {
-  const apiUrl = `${API_URL}/get-spell/${spellId}`;
-  try {
-    const response = await axios.get(apiUrl);
-    return response.data;
-  } catch (error) {
-    throw error;
-  }
+  return (await axios.get(`${API_URL}/get-spell/${spellId}`)).data;
 }
 
 export async function sortTableData(filterName: string, sortingType: boolean) {
