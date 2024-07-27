@@ -11,11 +11,16 @@ var SpellsBasePipeline = mongo.Pipeline{
 		{"name", 1},
 		{"concentration", bson.D{
 			{"$cond", bson.A{
-				bson.D{{"$ifNull", bson.A{"$duration.concentration", false}}},
-				"true",
-				"false",
-			}},
-		}},
+				bson.D{{"$anyElementTrue", bson.A{
+					bson.D{{"$map", bson.D{
+						{"input", "$duration"},
+						{"as", "dur"},
+						{"in", bson.D{{"$ifNull", bson.A{"$$dur.concentration", false}}}},
+					}}}}}},
+				true,
+				false,
+			}}},
+		},
 		{"duration", bson.D{
 			{"$arrayElemAt", bson.A{
 				bson.D{

@@ -14,7 +14,7 @@ func GetSpells(c *gin.Context) {
 		c.JSON(400, gin.H{"error": "Invalid page number"})
 		return
 	}
-	amount, err := strconv.ParseInt(c.DefaultQuery("amount", "10"), 10, 64)
+	amount, err := strconv.ParseInt(c.DefaultQuery("amount", "50"), 10, 64)
 	if err != nil {
 		c.JSON(400, gin.H{"error": "Invalid limit number"})
 		return
