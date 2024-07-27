@@ -7,9 +7,9 @@ import FilterWindow from "./FilterWindow";
 const SpellList = () => {
 
   //const {data, isLoading, error, isError} = 
-  const [selectedSpellId, setSelectedSpellId] = useState(1);
+  const [selectedSpellId, setSelectedSpellId] = useState("");
 
-  const handleRowClick = (id: number) => {
+  const handleRowClick = (id: string) => {
     setSelectedSpellId(id);
   };
 

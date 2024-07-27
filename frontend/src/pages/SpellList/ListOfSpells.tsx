@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import useGetAllSpells from "@/api/queries"
+import { useGetAllSpells } from "@/api/queries"
 
 // import SpellTableBody from "./SpellTable/SpellTableBody";
 // import SpellTableHead from "./SpellTable/SpellTableHead";
@@ -7,7 +7,7 @@ import { SpellMainStats } from "@/interfaces/spell";
 import SpellTable from "./SpellTable";
 
 interface SpellTableProps {
-  onRowClick: (id: number) => void;
+  onRowClick: (id: string) => void;
 }
 
 const ListOfSpells: React.FC<SpellTableProps> = ({ onRowClick }) => {

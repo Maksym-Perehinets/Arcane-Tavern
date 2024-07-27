@@ -1,16 +1,17 @@
 import axios from "axios";
 
+
 const API_URL = "http://127.0.0.1:8080";
 
 export async function getAllSpells(page: number, amount: number) {
   return (await axios.get(`${API_URL}/api/v1/spells/?page=${page}&amount=${amount}`)).data;
 }
 
-export async function getSpellById(spellId: number) {
-  return (await axios.get(`${API_URL}/get-spell/${spellId}`)).data;
+export async function getSpellById(spellId: string) {
+  return (await axios.get(`${API_URL}${spellId}`)).data[0];
 }
 
-export async function sortTableData(filterName: string, sortingType: boolean) {
+export async function sortTableData(filterName: string, sortingType: boolean){
   const apiUrl = `${API_URL}/data-sort/?filter_name=${filterName}&asc_value=${sortingType}`;
   try {
     const response = await axios.get(apiUrl);

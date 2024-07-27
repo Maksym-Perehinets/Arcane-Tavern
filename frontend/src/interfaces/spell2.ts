@@ -1,28 +1,13 @@
-export interface Duration {
-    type: string;
-    concentration: boolean;
-    time?: number;
-  }
-  
-  export interface Time {
-    number: number;
-    unit: string;
-  }
-  
-  export interface Distance {
-    amount?: number;
-    type: string;
-  }
-  
-  export interface Ranges {
-    distance?: Distance;
-    type?: string;
+ 
+  export interface Casters {
+    name: string;
+    source: string;
   }
   
   export interface Components {
     v?: boolean;
     s?: boolean;
-    m?: { text?: string };
+    m?: { text?: string } | string;
   }
 
   interface SpellDescription {
@@ -77,13 +62,14 @@ export interface Duration {
     id: number;
     name: string;
     level: number;
-    duration: Duration;
-    time: Time[];
-    ranges: Ranges;
-    description: Entry[];
+    duration: string;
+    concentration: string;
+    time: string;
+    ranges: string;
+    entries: Entry[];
     descriptionOnHigherLevels?: { name: string; entries: string }[];
     source: string;
     page: number;
     components: Components;
-    casters: { name: string }[];
+    casters: Casters[];
   }

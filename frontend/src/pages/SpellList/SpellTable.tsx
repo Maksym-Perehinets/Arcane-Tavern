@@ -5,7 +5,7 @@ import { ITableElem } from "@/types";
 
 interface ListProps {
     spells: SpellMainStats[];
-    onRowClick: (id: number) => void;
+    onRowClick: (id: string) => void;
 }
 
 const SpellTable: React.FC<ListProps> = ({ spells, onRowClick }) => {
@@ -45,10 +45,10 @@ const SpellTable: React.FC<ListProps> = ({ spells, onRowClick }) => {
                 </tr>
             </thead>
             <tbody className="snap-mandatory snap-y bg-spell-table w-full">
-                {spells.map((spell: SpellMainStats) => (
+                {spells.map((spell: SpellMainStats, index) => (
                     <tr
                         key={spell.spell_url}
-                        tabIndex={spell.spell_url}
+                        tabIndex={index}
                         onClick={() => onRowClick(spell.spell_url)}
                         className="snap-start pt-3 cursor-pointer p-1
                         text-gray-300 hover:[transition:0.3s] hover:bg-violet-400/25
