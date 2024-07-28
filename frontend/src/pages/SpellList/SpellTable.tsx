@@ -17,7 +17,7 @@ const SpellTable: React.FC<ListProps> = ({ spells, onRowClick }) => {
   ];
 
   return (
-    <tbody className="snap-mandatory snap-y bg-spell-table w-full">
+    <tbody className="snap-mandatory snap-y  w-full">
       {spells.map((spell: SpellMainStats, index) => (
         <tr
           key={spell.spell_url}
