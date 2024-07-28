@@ -1,3 +1,4 @@
+
 export type INavLink = {
     route: string;
     label: string;
@@ -39,7 +40,6 @@ export type ITableValues = {
   name: string,
   proficience: boolean,
   details: string,
-  // AC: number, 
 }
 
 export type ITableValuesWeapon = ITableValues & {
@@ -50,3 +50,9 @@ export type ITableValuesWeapon = ITableValues & {
 export type ITableValuesArmor = ITableValues & {
   AC:string
 }
+
+export type IAdditionalDetailsTable = {
+  header: string,
+  value: string | boolean | number
+}
+

@@ -215,3 +215,38 @@ export const CharactersCombatTableWeaponsValues = [
     }
 
 ]
+
+export const AdditionalWeaponsTableHeaders = [
+    {
+      utilType: "Javelin",
+      details: [
+        { header: "Type", value: "simple" },
+        { header: "Damage Type", value: "piercing" },
+        { header: "Melee/Ranged", value: "melee" },
+        { header: "Range", value: "30/120ft" },
+        { header: "Finesse?", value: false },
+        { header: "Two-handed?", value: false },
+      ],
+    },
+  ];
+
+export const AdditionalArmorTableValues = [
+    {
+      utilType: "No Armor",
+      details: [
+        { header: "Base AC", value: 10 },
+        { header: "Stealth Disadvantage?", value: true },
+      ],
+    },
+    {
+      utilType: "Light Armor",
+      details: [
+        { header: "Type", value: "medium" },
+        { header: "Base AC", value: 13 },
+        { header: "Max DEX AC Bonus", value: 2 },
+        { header: "Stealth Disadvantage", value: false },
+        { header: "Weight", value: "20lbs" },
+      ],
+    },
+  ];
+  
