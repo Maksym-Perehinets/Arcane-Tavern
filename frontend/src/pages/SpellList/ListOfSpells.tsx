@@ -1,10 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { useGetAllSpells } from "@/api/queries"
 
-// import SpellTableBody from "./SpellTable/SpellTableBody";
-// import SpellTableHead from "./SpellTable/SpellTableHead";
 import { SpellMainStats } from "@/interfaces/spell";
 import SpellTable from "./SpellTable";
+import SpellTableHead from "./SpellTableHead";
 
 interface SpellTableProps {
   onRowClick: (id: string) => void;
@@ -17,9 +16,17 @@ const ListOfSpells: React.FC<SpellTableProps> = ({ onRowClick }) => {
   const tableRef = useRef<HTMLDivElement>(null)
 
   
-  const { data, fetchNextPage, isLoading, isError, error } = useGetAllSpells(1, 50)
+  const { data, fetchNextPage, isLoading, isError, error, isFetchingNextPage } = useGetAllSpells(1, 50)
   console.log(data?.pages)
-  // setSpells(data?.pages[data?.pageParams.reverse[0]])
+  // setSpells(data?.pages.map((page) => page.result))
+
+
+  useEffect(() => {
+    const table = tableRef.current
+    console.log(table)
+    table?.addEventListener("scroll", handleScroll);
+  }, [data]);
+
 
   if (isLoading) {
     return <span>Loading...</span>
@@ -27,6 +34,7 @@ const ListOfSpells: React.FC<SpellTableProps> = ({ onRowClick }) => {
   if (isError) {
     return <span>Error: {error.message}</span>
   }
+
 
   const handleScroll = () => {
     const table = tableRef.current;
@@ -47,24 +55,23 @@ const ListOfSpells: React.FC<SpellTableProps> = ({ onRowClick }) => {
   //   fetchData();
   // }, [page]);
 
-  // useEffect(() => {
-  //   const table = 
-  //   if (table)
-  //     table.addEventListener("scroll", handleScroll);
-  // }, []);
 
-  tableRef.current?.addEventListener("scroll", handleScroll);
+  // tableRef.current?.addEventListener("scroll", handleScroll);
   return (
     <div
       className="table-lines text-gray-100 w-[90%] h-[85vh] bg-[rgba(12,_12,_12,_0.5)] bg-no-repeat bg-cover border-[2px] border-[solid] border-[#424242] overflow-x-hidden rounded-[10px]" 
       ref={tableRef}
     >
-      {data?.pages.map((page, index) =>  
+       <table
+            className="font-[DraconicFont] top-24 w-full border-collapse outline-shadow grow-0 flex-shrink-0"
+        >
+          <SpellTableHead />
+          {data?.pages.map((page, index) =>  
+          
           <SpellTable key={index} spells={page} onRowClick={onRowClick} />
-        )}
-     
-      <button
-          onClick={() => fetchNextPage()}>click</button>
+        )}      
+      </table>
+      {isFetchingNextPage && <p>Loading</p>}
     </div>
   )
 }

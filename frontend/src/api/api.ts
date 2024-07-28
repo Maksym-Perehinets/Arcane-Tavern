@@ -3,7 +3,7 @@ import axios from "axios";
 
 const API_URL = "http://127.0.0.1:8080";
 
-export const getAllSpells = async ({ pageParam = 0 }): Promise<any> => {
+export const getAllSpells = async ({ pageParam = 0 }) => {
   return (await axios.get(`${API_URL}/api/v1/spells/?page=${pageParam}&amount=${50}`)).data;
 }
 
