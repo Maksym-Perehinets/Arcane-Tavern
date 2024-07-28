@@ -26,6 +26,10 @@ const ListOfSpells: React.FC<SpellTableProps> = ({ onRowClick }) => {
     table?.addEventListener("scroll", handleScroll);
   }, [data]);
 
+  useEffect(() => {
+    onRowClick(data?.pages[0][0].spell_url)
+  }, [data?.pages[0]]);
+
   if (isLoading) {
     return <span>Loading...</span>;
   }
@@ -38,7 +42,8 @@ const ListOfSpells: React.FC<SpellTableProps> = ({ onRowClick }) => {
     if (table) {
       if (table.scrollTop + table.clientHeight + 1 >= table.scrollHeight) {
         hasNextPage && fetchNextPage();
-      }
+        
+      }console.log(hasNextPage)
     }
   };
 
@@ -53,9 +58,11 @@ const ListOfSpells: React.FC<SpellTableProps> = ({ onRowClick }) => {
         ))}
       </table>
       <div className="flex justify-center">
-        {isFetchingNextPage && <img src="/alchemyThing.gif" className="w-[10%] h-auto"/>}
+        {(isFetchingNextPage) && <img src="/alchemyThing.gif" className="w-[10%] h-auto"/>}
       </div>
     </div>
   );
 };
 export default ListOfSpells;
+
+
