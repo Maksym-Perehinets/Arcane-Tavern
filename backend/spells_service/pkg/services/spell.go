@@ -8,7 +8,7 @@ import (
 	"spell-service/db"
 )
 
-func GetSpell(id string) (result []bson.M) {
+func GetSpell(id string) (result []bson.M, ok bool) {
 	requestPipeline := db.GetSpellsPipeline(id)
 	database, clientClose := db.Init()
 	defer clientClose()
@@ -28,6 +28,8 @@ func GetSpell(id string) (result []bson.M) {
 	if err = cursor.All(context.TODO(), &result); err != nil {
 		log.Println(err)
 	}
-
-	return result
+	if len(result) == 0 {
+		return nil, false
+	}
+	return result, true
 }

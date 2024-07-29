@@ -5,8 +5,8 @@ for filename in /docker-entrypoint-initdb.d/*.json; do
 
   if [[ $filename != *"spell"* ]]; then
     # add each document to the collection as separate element
-    jq -c 'to_entries | map({ (.key): .value })' "$filename" | while read -r doc; do
-      mongoimport --db "$DATABASE_NAME" --collection "$collection_name" --type json --jsonArray --file <(echo "$doc")
+    jq -c 'to_entries | .[] | {(.key): .value}' "$filename" | while read -r doc; do
+      mongoimport --db "$DATABASE_NAME" --collection "$collection_name" --type json --file <(echo "$doc")
     done
   else
     # For spell file import differs in order to gave each of them a unique _id
