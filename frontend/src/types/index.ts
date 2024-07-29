@@ -35,24 +35,104 @@ export type ICharactersCombatStats = {
   readonly: boolean;
 }
 
-export type ITableValues = {
-  [key: string]: string | boolean | number;
-  name: string,
-  proficience: boolean,
-  details: string,
-}
+// prev
 
-export type ITableValuesWeapon = ITableValues & {
-  damage:string,
-  attack: string 
-}
+// export type Combat = {
+//   [key: string]: string | boolean | number;
+//   name: string,
+//   proficience: boolean,
+//   details: string,
+// }
 
-export type ITableValuesArmor = ITableValues & {
-  AC:string
-}
+// export type CombatWeapons = Combat & {
+//   damage:string,
+//   attack: string 
+// }
+
+// export type CombatArmor = Combat & {
+//   AC:string
+// }
 
 export type IAdditionalDetailsTable = {
   header: string,
   value: string | boolean | number
 }
 
+// export type ProficiencySkills = {
+//   name: string,
+//   proficience: boolean,
+//   expertise: boolean,
+//   bonus: string
+// }
+// export type ProficiencyTools = ProficiencySkills & {
+//   roll: Element
+// }
+
+// export type ITableGlobalValues = {
+//   CombatArmor: {
+//     [key: string]: string | boolean | number;
+//     name: string,
+//     proficience: boolean,
+//     details: string,
+//     AC:string
+//   };
+//   CombatWeapons: {
+//     name: string,
+//     proficience: boolean,
+//     details: string,
+//     damage:string,
+//     attack: string 
+//   };
+//   ProficiencySkills: {
+//     name: string,
+//     proficience: boolean,
+//     expertise: boolean,
+//     bonus: string
+//   };
+//   ProficiencyTools: {
+//     name: string,
+//     proficience: boolean,
+//     expertise: boolean,
+//     bonus: string,
+//     roll: Element
+//   }
+
+// }
+
+export interface CombatArmor {
+  name: string;
+  proficience: boolean;
+  details: string;
+  AC: number;
+  // [key: string]: string | boolean | number;
+}
+
+export interface CombatWeapons {
+  name: string;
+  proficience: boolean;
+  details: string;
+  damage: string;
+  attack: string;
+}
+
+export interface ProficiencySkills {
+  name: string;
+  proficience: boolean;
+  expertise: boolean;
+  bonus: string;
+}
+
+export interface ProficiencyTools {
+  name: string;
+  proficience: boolean;
+  expertise: boolean;
+  bonus: string;
+  roll: string;
+}
+
+export type ITableGlobalValues = {
+  CombatArmor: CombatArmor[];
+  CombatWeapons: CombatWeapons[];
+  ProficiencySkills: ProficiencySkills[];
+  ProficiencyTools: ProficiencyTools[];
+}

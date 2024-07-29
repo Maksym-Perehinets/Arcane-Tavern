@@ -1,3 +1,4 @@
+import { ITableGlobalValues } from '@/types/index.ts'
 import {hp, eye, moon, running, shield, tools} from '../../public/icons/index.ts'
 
 export const navbarLinks = [
@@ -190,22 +191,22 @@ export const CharactersCombatTableHeadersWeapons = [
     "Damage"
 ]
 
-export const CharactersCombatTableValues = [
+export const CharactersCombatTableValues: ITableGlobalValues['CombatArmor'] = [
     {
         name: "No armor",
         proficience: false,
         details: "Base",
-        AC: 13
+        AC: 13,
     },
     {
         name: "Light Armor",
         proficience: true,
         details: "Medium",
-        AC: 15
+        AC: 15,
     }
 ]
 
-export const CharactersCombatTableWeaponsValues = [
+export const CharactersCombatTableWeaponsValues: ITableGlobalValues['CombatWeapons'] = [
     {
         name: "Javelin",
         proficience: true,
@@ -250,3 +251,27 @@ export const AdditionalArmorTableValues = [
     },
   ];
   
+export const CharactersProficiencyTableSkillsHeaders = [
+    "Name",
+    "Proficient?",
+    "Expertise",
+    "Bonus"
+]
+export const CharactersProficiencyTableHeadersTools = [
+    "Name",
+    "Proficient?",
+    "Expertise",
+    "Bonus",
+    ""
+]
+
+export const CharactersProficiencyTableValuesSkills: ITableGlobalValues['ProficiencySkills'] = [
+    {name: "Acrobatics", proficience: false, expertise: false, bonus: "+2"},
+    {name: "Arcana", proficience: false, expertise: false, bonus: "+1"},
+    {name: "Animal Handling", proficience: false, expertise: false, bonus: "0"}
+]
+export const CharactersProficiencyTableValuesTools: ITableGlobalValues['ProficiencyTools'] = [
+    {name: "Tool1", proficience: false, expertise: false, bonus: "+2", roll: "1d20"},
+    {name: "Tool2", proficience: false, expertise: false, bonus: "+1", roll: "1d20"},
+]
+
