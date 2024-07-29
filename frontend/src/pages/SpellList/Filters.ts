@@ -1,4 +1,4 @@
-import { applyFilters} from '../../queries/queries';
+import { applyFilters} from '../../api';
 import { insertData } from './InsertData';
 
 async function sendFilters(filters: string): Promise<void> {

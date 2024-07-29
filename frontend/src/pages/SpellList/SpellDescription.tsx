@@ -1,28 +1,37 @@
 import CopyToClipboard from "@/components/shared/CopyToClipboard.tsx";
-import useSpell from "./useSpell.ts";
 import SpecialText from "@/components/shared/SpecialText.tsx";
 import { spellDescriptionPlaceholder } from "@/constants/index.ts";
 import { ITableElem } from "@/types/index.ts";
-import { useState } from "react";
+import { useGetSpellById } from "@/api/queries.ts";
+
 
 interface SpellComponentProps {
-  spellId: number;
+  spellId: string;
 }
 
 const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
-  const { spell, loading, error } = useSpell(spellId);
+  const { data: spell, isLoading, isError } = useGetSpellById(spellId);
 
-  if (loading) {
+  if (isLoading) {
     return <p>Loading...</p>;
   }
 
-  if (error) {
-    return <p>Error: {error}</p>;
+  if (isError) {
+    return <p>Error: {isError}</p>;
   }
 
   if (!spell) {
     return <p>No spell data found</p>;
   }
+
+  const getMaterials = (materials: { text?: string } | string): string | undefined => {
+    if (typeof materials === 'object' && 'text' in materials) {
+      return materials.text;
+    } else if (typeof materials === 'string') {
+      return materials;
+    }
+    return undefined;
+  };
 
   return (
     <>
@@ -53,40 +62,29 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
         <tbody>
           <tr className="text-nowrap text-center ">
             <td>{spell.level}</td>
-            <td>{spell.ranges.distance
-              ? spell.ranges.distance.amount
-                ? `${spell.ranges.distance.amount} ${spell.ranges.distance.type}`
-                : spell.ranges.distance.type
-              : spell.ranges.type}
-            </td>
+            <td>{spell.ranges}</td>
             <td>
-              {spell.time.map((t) => `${t.number} ${t.unit}`).join(", ")}
+              {spell.time}
             </td>
-            <td className={`text-wrap group relative ${spell.components.m?.text ? "underline" : ""}`}>
-              {spell.components.v ? "V " : ""}
-              {spell.components.s ? "S " : ""}
-              {spell.components.m ? "M" : ""}
-              {spell.components.m?.text ?
+            <td className={`text-wrap group relative ${spell.components.m && getMaterials(spell.components.m) && "underline"}`}>
+              {spell.components.v && "V "}
+              {spell.components.s && "S "}
+              {spell.components.m && "M"}
+              {spell.components.m &&
                 <div 
                   className="absolute opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 rounded-xl p-4 bg-black">
-                  {spell.components.m ? spell.components.m.text : ""} 
-                </div> :
-                ""}
+                  {getMaterials(spell.components.m)} 
+                </div>}
             </td>
             <td className="text-wrap">
-              {spell.duration.concentration ? "Concentration " : ""}
-              {["instant", "permanent", "special"].includes(
-                spell.duration.type.toLowerCase()
-              )
-                ? spell.duration.type
-                : `${spell.duration.time} ${spell.duration.type}`}
+              {spell.concentration ? "Concentration " : ""}
+              {spell.duration}
             </td>
           </tr>
         </tbody>
       </table>
-      
       <div className="overflow-y-auto spell-descriptiona mt-5 p-5 w-full rounded-2xl bg-spell-table grow">
-        {spell.description.map((desc, key) => {
+        {spell.entries.map((desc, key) => {
           if (typeof desc === "string") {
             return (
               <SpecialText key={key} description={desc} className="desc-text" />
@@ -166,7 +164,7 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
             );
           }
         })}
-        
+         
 
         {spell.descriptionOnHigherLevels && (
           <div className="desc-text higher">
@@ -178,7 +176,7 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
 
       <div className="w-full pl-[2%] my-3">
         <p className="casters-text h-full text-lg">
-          Casters: {spell.casters.map((caster) => caster.name).join(", ")}
+          Casters: {spell.casters?.map((caster) => caster.name).join(", ")}
         </p>
       </div>
     </>
