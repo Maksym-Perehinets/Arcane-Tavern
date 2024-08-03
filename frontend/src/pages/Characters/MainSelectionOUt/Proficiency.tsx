@@ -9,7 +9,7 @@ const languagesProfs = ["Draconic", "Common"]
 const Proficiency = () => {
   return (
     <>
-    <div className="selection-div ml-[10%] mt-8 text-left w-[75%] h-auto">
+    <div className="selection-div ml-[10%] mt-8 text-left w-[81%] h-auto">
       <p className="text-[1.8em] mt-1 ml-[0%] mb-2">Skills</p>
         <TableComponent
         value={CharactersProficiencyTableValuesSkills} 

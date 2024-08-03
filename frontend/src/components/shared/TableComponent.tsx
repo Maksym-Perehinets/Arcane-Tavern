@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { IAdditionalDetailsTable, CombatArmor, CombatWeapons, ProficiencySkills, ProficiencyTools } from "@/types";
+import { IAdditionalDetailsTable, CombatArmor, CombatWeapons, ProficiencySkills, ProficiencyTools, ICharactersPageSpellsSpells } from "@/types";
 import AdditionalDetails from "./AdditionalDetails";
 
 // Union type for table rows
-type TableRow = CombatArmor | CombatWeapons | ProficiencySkills | ProficiencyTools;
+type TableRow = CombatArmor | CombatWeapons | ProficiencySkills | ProficiencyTools | ICharactersPageSpellsSpells;
 
 interface MyTableProps {
     header: string[];
@@ -37,7 +37,7 @@ const TableComponent: React.FC<MyTableProps> = ({ header, value, details }) => {
                         >
                             {Object.keys(elem).map((key: string, cellIndex: number) => (
                                 <td className="font-medium" key={cellIndex}>
-                                    {String((elem as any)[key])}  {/* Cast to any and convert to string */}
+                                    {String((elem as any)[key])}
                                 </td>
                             ))}
                         </tr>

@@ -136,3 +136,25 @@ export type ITableGlobalValues = {
   ProficiencySkills: ProficiencySkills[];
   ProficiencyTools: ProficiencyTools[];
 }
+
+export type ICharactersPageSpellsSpells = {
+  name: string,
+  source: string,
+  ability: string,
+  DC: number,
+  mod: string,
+  attack: string
+}
+
+export type ICharacterPageSpellsSlots = {
+  CasterLevel: number;
+  lvl2: number;
+  lvl3: number;
+  lvl4: number;
+  lvl5: number;
+  lvl6: number;
+  lvl7: number;
+  lvl8: number;
+  lvl9: number;
+  lvl1: number;
+}
