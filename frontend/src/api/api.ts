@@ -8,6 +8,7 @@ export const getAllSpells = async ({ pageParam = 0 }) => {
 }
 
 export async function getSpellById(spellId: string) {
+  console.log(`${API_URL}${spellId}`)
   return (await axios.get(`${API_URL}${spellId}`)).data[0];
 }
 

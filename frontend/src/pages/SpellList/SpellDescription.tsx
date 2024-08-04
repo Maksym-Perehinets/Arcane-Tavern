@@ -24,10 +24,12 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
     return <p>No spell data found</p>;
   }
 
-  const getMaterials = (materials: { text?: string } | string): string | undefined => {
-    if (typeof materials === 'object' && 'text' in materials) {
+  const getMaterials = (
+    materials: { text?: string } | string
+  ): string | undefined => {
+    if (typeof materials === "object" && "text" in materials) {
       return materials.text;
-    } else if (typeof materials === 'string') {
+    } else if (typeof materials === "string") {
       return materials;
     }
     return undefined;
@@ -36,45 +38,45 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
   return (
     <>
       <div className="w-full flex justify-between">
-          
         <CopyToClipboard className="p-3" text={spell.name}>
-          <h1 className="spell-name text-5xl m-5">
-            {spell.name}
-          </h1>
+          <h1 className="spell-name text-5xl m-5">{spell.name}</h1>
         </CopyToClipboard>
-            
 
         <div className="main-extras mt-6">
           <p className="extras-text">Book: {spell.source}</p>
           <p className="extras-text text-nowrap">Page: {spell.page}</p>
         </div>
-
       </div>
 
       <table className="w-full mt-4 object-scale-down">
         <thead>
           <tr>
-            {spellDescriptionPlaceholder.map((cell: ITableElem) =>
-              <th className="text-center text-nowrap px-4" key={cell.id}>{cell.label}</th>
-            )}
+            {spellDescriptionPlaceholder.map((cell: ITableElem) => (
+              <th className="text-center text-nowrap px-4" key={cell.id}>
+                {cell.label}
+              </th>
+            ))}
           </tr>
         </thead>
         <tbody>
           <tr className="text-nowrap text-center ">
             <td>{spell.level}</td>
             <td>{spell.ranges}</td>
-            <td>
-              {spell.time}
-            </td>
-            <td className={`text-wrap group relative ${spell.components.m && getMaterials(spell.components.m) && "underline"}`}>
+            <td>{spell.time}</td>
+            <td
+              className={`text-wrap group relative ${
+                spell.components.m &&
+                getMaterials(spell.components.m) &&
+                "underline"
+              }`}>
               {spell.components.v && "V "}
               {spell.components.s && "S "}
               {spell.components.m && "M"}
-              {spell.components.m &&
-                <div 
-                  className="absolute opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 rounded-xl p-4 bg-black">
-                  {getMaterials(spell.components.m)} 
-                </div>}
+              {spell.components.m && (
+                <div className="absolute opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 rounded-xl p-4 bg-black">
+                  {getMaterials(spell.components.m)}
+                </div>
+              )}
             </td>
             <td className="text-wrap">
               {spell.concentration ? "Concentration " : ""}
@@ -90,72 +92,81 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
               <SpecialText key={key} description={desc} className="desc-text" />
             );
           } else if (typeof desc == "object") {
-
             switch (desc.type) {
               case "entries":
-                return <SpecialText key={key} description={desc.entries} className="desc-text" />;
+                return (
+                  <SpecialText
+                    key={key}
+                    description={desc.entries}
+                    className="desc-text"
+                  />
+                );
 
               case "quote":
-                return <div key={key}>
-                  <p key={key} className="desc-text pb-0 italic">"{desc.entries}" </p>
-                  <p className="text-stone-300 text-right mr-4 mb-5"> — {desc.by}</p>
-                </div>
-                
+                return (
+                  <div key={key}>
+                    <p key={key} className="desc-text pb-0 italic">
+                      "{desc.entries}"
+                    </p>
+                    <p className="text-stone-300 text-right mr-4 mb-5">
+                      &mdash; {desc.by}
+                    </p>
+                  </div>
+                );
 
               case "list":
                 return (
                   <ul className="desc-text" key={key}>
-                    {desc.items.map((e: string | object, key: number) =>
+                    {desc.items.map((e: string | object, key: number) => (
                       <li className="m-3 list-disc" key={key}>
                         <SpecialText description={e} />
                       </li>
-                    )}
+                    ))}
                   </ul>
-                )
+                );
 
               case "table":
-                const styles = (index: number, splitBy: string) => desc.colStyles[index].split(splitBy)
+                const styles = (index: number, splitBy: string) =>
+                  desc.colStyles[index].split(splitBy);
                 return (
-                  <table key={key} className="w-full text-left a border-indigo-500">
-                    <caption className="text-2xl text-indigo-400 text-left">{desc.caption}</caption>
-                    <thead >
-                      <tr> 
-                        {desc.colLabels.map((cell: string, key: number) =>
-                          <th 
+                  <table
+                    key={key}
+                    className="w-full text-left a border-indigo-500">
+                    <caption className="text-2xl text-indigo-400 text-left">
+                      {desc.caption}
+                    </caption>
+                    <thead>
+                      <tr>
+                        {desc.colLabels.map((cell: string, key: number) => (
+                          <th
                             key={key}
                             colSpan={parseInt(styles(key, " ")[-1])}
-                            className="m-3"  
-                          >
+                            className="m-3">
                             <SpecialText description={cell} />
                           </th>
-                        )}
+                        ))}
                       </tr>
                     </thead>
                     <tbody>
-                      {desc.rows.map((row, key: number) =>
-                        <tr 
-                          key={key}
-                          className="odd:bg-indigo-600/5"  
-                        >
-                          {row.map((cell, key: number) =>
-                            <th 
+                      {desc.rows.map((row, key: number) => (
+                        <tr key={key} className="odd:bg-indigo-600/5">
+                          {row.map((cell, key: number) => (
+                            <th
                               key={key}
-                              className="col-span-2" 
-                              colSpan={parseInt(styles(key, "-")[-1])}
-                            >
+                              className="col-span-2"
+                              colSpan={parseInt(styles(key, "-")[-1])}>
                               <SpecialText description={cell} />
                             </th>
-                          )}
+                          ))}
                         </tr>
-                      )}
+                      ))}
                     </tbody>
                   </table>
-                )
+                );
 
-                default:
-                  return <p key={key}>Error occured while loading description</p>
+              default:
+                return <p key={key}>Error occured while loading description</p>;
             }
-
           } else {
             return (
               <p key={key} className="desc-text">
@@ -164,12 +175,13 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
             );
           }
         })}
-         
 
         {spell.descriptionOnHigherLevels && (
           <div className="desc-text higher">
             {spell.descriptionOnHigherLevels[0].name} :
-            <SpecialText description={spell.descriptionOnHigherLevels[0].entries}/>
+            <SpecialText
+              description={spell.descriptionOnHigherLevels[0].entries}
+            />
           </div>
         )}
       </div>
