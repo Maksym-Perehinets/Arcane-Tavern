@@ -1,44 +1,34 @@
-
-import { useState, useEffect } from 'react';
-import SpellOfTheDayDiv from "./SpellOfTheDayDiv";
+import { useState } from "react";
+import SpellOfTheDayDiv from "./SpellOfTheDayCard";
+import { useGetSpellById } from "@/api/queries";
 
 const SpellOfTheDay = () => {
-  const [btnStatus, setBtnStatus] = useState(0);
-  const [fade, setFade] = useState(false);
+  const [flipped, setFlipped] = useState(false);
+  
+  const { data: spell, isLoading, isError } = useGetSpellById("/api/v1/spells/single/66a76be552fc2b8221357c19");
 
-  useEffect(() => {
-    if (fade) {
-      const timeout = setTimeout(() => {
-        setFade(false);
-      }, 500); // Duration of the fade effect in ms
-      return () => clearTimeout(timeout);
-    }
-  }, [fade]);
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
 
-  const handleClick = (status: number) => {
-    setFade(true);
-    setTimeout(() => setBtnStatus(status), 500); // Match the duration of the fade effect
-  };
+  if (isError) {
+    return <p>Error: {isError}</p>;
+  }
 
-  const showSpell = () => {
-    return btnStatus
-      ? (<SpellOfTheDayDiv />) 
-      : (<img className="spellCard" src="https://dvoxsotka.s3.amazonaws.com/arcane-tavern/spellCard.png" alt="Alchemy in action" />);
-  };
-
+  if (!spell) {
+    return <p>No spell data found</p>;
+  }
   return (
-    <div className="daily-spell-div">
-      <div className={`show-spell-div ${fade ? 'fade' : ''}`}>
-        {showSpell()}
-      </div>
-      
-      <p className="title-text">Do you want to reveal your spell of the day?</p>
-      <div className="btn-div">
-        <button onClick={() => handleClick(0)} className="no-btn">No</button>
-        <button onClick={() => handleClick(1)} className="yes-btn">Yes</button>
+    <div className="daily-spell-div flex justify-center">
+      <div
+        className={`show-spell-div flex flex-col items-center`}
+        onClick={() => setFlipped(true)}
+      >
+        <p className="text-3xl m-16">Reveal your spell of the day</p>
+        <SpellOfTheDayDiv flip={flipped} spell={spell}/>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default SpellOfTheDay;

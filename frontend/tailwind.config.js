@@ -25,7 +25,10 @@ export default {
         'spell-page': "url(https://dvoxsotka.s3.amazonaws.com/arcane-tavern/spellPageBG.png);",
         'test-home-page': " url('/test-home-page-bg.webp');",
         'test-spell-page': "url('/test-spells-page-bg.webp')"
-      }
+      },
+      transitionDuration: {
+        '600': '600ms',
+      },
     },
    
   },
