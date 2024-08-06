@@ -8,46 +8,73 @@ interface DescriptionText {
 const SpecialText: React.FC<DescriptionText> = ({ description, className }) => {
 
     const regex = /\{([^}]+)\}/g;
-    const [tagText, setTagText] = useState("") 
-    const descriptionSection =  typeof description == "object" ? Object.values(description)[0].split(regex) : description.split(regex)
+    const [tagText, setTagText] = useState("")
+    const descriptionSection = typeof description == "object" ? Object.values(description)[0].split(regex) : description.split(regex)
 
     const getTagText = (part: string) => {
         const tag = part.split(" ")
-        console.log(part.split("|")[0].slice(1))
         switch (tag[0]) {
             case "@spell":
-                return tag[1]
+                return [tag[0], tag[1]]
             case "@creature":
-                return tag.slice(2)
+                return [tag[0], tag.slice(2)]
             case "@hit":
-                return tag[1]
+                return [tag[0], tag[1]]
             case "@dice":
-                return part.split("|")[0].split(" ").slice(1)
+                return [tag[0], part.split("|", 1)[0].split(" ").slice(1)[0]]
             case "@damage":
-                return tag.slice(1)
+                return [tag[0], tag.slice(1)[0]]
             case "@condition":
-                return tag[1]
+                return [tag[0], tag[1]]
             case "@sense":
-                return tag[1]
+                return [tag[0], tag[1]]
             case "@scaledamage":
-                return tag[1]
+                return [tag[0], tag[1]]
             case "@chance":
-                return tag[1]
+                return [tag[0], tag[1]]
             case "@item":
-                return tag[1];
-                
-            default: return tag[1]
+                return [tag[0], tag[1]]
+            case "@adventure":
+                return [tag[0], part.split("|")[0].split(" ").slice(1).join(" ")]
+
+
+            default: return tag
         }
+    }
+
+    const handleClick = (tag: string[]) => {
+        const dmg = tag.slice(1)[0].split("d")
+        const diceAmount = parseInt(dmg[0])
+        const diceMax = parseInt(dmg[1])
+        const rolledDice = []
+        console.log(dmg[0])
+        Math.ceil
+        let sum = 0;
+        for (let i = 0; i < diceAmount; i++){
+            const rand = (Math.floor(Math.random() * (diceMax)) + 1)
+            sum += rand
+            rolledDice.push(rand)
+            console.log(sum)
+        }
+        alert(`${rolledDice} ${sum}`)
     }
 
     return (
         <p className={className}>
-           {descriptionSection.map((part:any, index:number) => {
-                return /@(\w+)/g.test(`${part}`) 
-                    ? <span key={index} className="cursor-pointer text-indigo-400">
-                        {getTagText(part)}
-                    </span> 
-                    : part;
+            {descriptionSection.map((part: any, index: number) => {
+                const hasTag = /@(\w+)/g.test(`${part}`)
+                if (hasTag) {
+                    const tag = getTagText(part)
+                    console.log(typeof tag[0])
+                    console.log(typeof tag[1])
+                    if (typeof tag[0] === 'undefined' || typeof tag[1] === 'undefined') {
+                        console.error(tag)
+                    }
+                    return <span key={index} onClick={() => handleClick(tag)} className="cursor-pointer text-indigo-400">
+                        {tag[1]}
+                    </span>
+                }
+                else return part
             })}
         </p>
 

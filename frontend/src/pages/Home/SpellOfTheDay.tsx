@@ -22,7 +22,7 @@ const SpellOfTheDay = () => {
     <div className="daily-spell-div flex justify-center">
       <div
         className={`show-spell-div flex flex-col items-center`}
-        onClick={() => setFlipped(true)}
+        onClick={() => setFlipped(!flipped)}
       >
         <p className="text-3xl m-16">Reveal your spell of the day</p>
         <SpellOfTheDayDiv flip={flipped} spell={spell}/>

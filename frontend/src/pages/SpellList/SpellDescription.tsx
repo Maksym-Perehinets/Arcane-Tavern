@@ -73,7 +73,7 @@ const SpellDescription: React.FC<SpellComponentProps> = ({ spellId }) => {
               {spell.components.s && "S "}
               {spell.components.m && "M"}
               {spell.components.m && (
-                <div className="absolute opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 rounded-xl p-4 bg-black">
+                <div className="absolute hidden transition-opacity duration-500 ease-in-out group-hover:block rounded-xl p-4 bg-black">
                   {getMaterials(spell.components.m)}
                 </div>
               )}
