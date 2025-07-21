@@ -26,6 +26,10 @@ func SetupRoutes(r *gin.Engine) {
 				spells.GET("/", v1.GetSpells)
 				spells.GET("/single/:id", v1.GetSingleSpell)
 			}
+			commits := v1Route.Group("/commits")
+			{
+				commits.GET("/top10", v1.GetTop10Commits)
+			}
 		}
 	}
 }

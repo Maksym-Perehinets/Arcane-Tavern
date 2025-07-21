@@ -9,7 +9,7 @@ import (
 )
 
 var corsConfig = cors.Config{
-	AllowOrigins:     []string{"http://localhost:8181"},
+	AllowOrigins:     []string{"http://localhost:8181", "http://localhost:5173"},
 	AllowMethods:     []string{"GET", "POST", "PUT", "PATCH", "DELETE", "HEAD"},
 	AllowHeaders:     []string{"Origin", "Content-Length", "Content-Type"},
 	AllowCredentials: true,

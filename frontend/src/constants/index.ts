@@ -14,6 +14,10 @@ export const navbarLinks = [
         label: "Characters"
     },
     {
+        route: "/top-commits",
+        label: "Top Commits"
+    },
+    {
         route: "/about-us",
         label: "About Us"
     },
