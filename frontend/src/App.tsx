@@ -8,10 +8,11 @@ import "./css/SpellOfTheDayDiv.scss";
 import "./css/SpellPageCSS/SpellDedscription.scss";
 import "./css/Characters/Characters.scss";
 import "./css/Characters/Selection.scss";
+import "./css/TopCommits.scss";
 
 import SignInForm from "./pages/SignInForm/SignInForm";
 import SignUpForm from "./pages/SignUpForm/SignUpForm";
-import { SpellList, Home } from "./pages";
+import { SpellList, Home, TopCommits } from "./pages";
 
 import AuthLayout from "./pages/AuthLayout";
 import RootLayout from "./pages/RootLayout";
@@ -34,6 +35,7 @@ const App = () => {
           <Route path="/characters" element={<Characters />} />
           <Route path="/About-us" element={<AboutUS />} />
           <Route path="/Contact" element={<ContactUs />} />
+          <Route path="/top-commits" element={<TopCommits />} />
         </Route>
       </Routes>
     </main>

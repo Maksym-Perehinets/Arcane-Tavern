@@ -31,3 +31,12 @@ export async function applyFilters(filters: string) {
     throw error;
   }
 }
+
+export async function getTop10Commits() {
+  try {
+    const response = await axios.get(`${API_URL}/api/v1/commits/top10`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+}
